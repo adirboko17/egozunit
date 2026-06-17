@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>הטבות לבוגרים — עמותת אגוז</title>
+<meta name="description" content="עולם הטבות והנחות לבוגרי אגוז — נופש, בריאות, צרכנות, פיננסים והשכלה." />
+<link rel="stylesheet" href="css/site.css" />
+<style>
+  .page-banner { background: var(--olive-900); color: var(--on-dark); padding-block: clamp(40px,6vw,76px); position: relative; overflow: hidden; }
+  .page-banner__deer { position: absolute; inset-inline-end: -2%; top: 50%; transform: translateY(-50%); width: min(34vw,320px); opacity: .06; pointer-events: none; }
+  .page-banner .container { position: relative; z-index: 1; }
+  .cat-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 36px; }
+  .cat-row button { padding: 10px 18px; border-radius: 100px; font-family: var(--font-display); font-weight: 700; font-size: .95rem; color: var(--text-2); border: 1.5px solid var(--line-2); background: var(--card); transition: all .18s; }
+  .cat-row button.is-on { background: var(--olive-800); color: var(--on-dark); border-color: var(--olive-800); }
+  .ben { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; display: flex; flex-direction: column; transition: transform .3s var(--ease-out), box-shadow .3s; }
+  .ben:hover { transform: translateY(-5px); box-shadow: var(--sh-lg); }
+  .ben__logo { height: 120px; display: grid; place-items: center; background: var(--paper-2); border-bottom: 1px solid var(--line); font-family: var(--font-display); font-weight: 800; font-size: 1.2rem; color: var(--olive-700); }
+  .ben__body { padding: 22px 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .ben__cat { font-size: .76rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--brass-700); }
+  .ben__title { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; }
+  .ben__off { font-family: var(--font-display); font-weight: 900; font-size: 1.5rem; color: var(--olive-800); }
+  .ben__off small { font-size: .85rem; color: var(--text-3); font-weight: 600; }
+  .ben__foot { margin-top: auto; padding-top: 8px; }
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">דלג לתוכן הראשי</a>
+<header class="site-header">
+  <div class="utility-bar"><div class="container">
+    <div class="util-left"><span>עמותה רשומה 58-000-000-0</span><a href="mailto:office@egoz.org.il">office@egoz.org.il</a></div>
+    <div class="util-social" aria-label="רשתות חברתיות">
+      <a href="#" aria-label="פייסבוק"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3l.4-3H14V4.5c0-.9.3-1.5 1.6-1.5H17V.2C16.7.1 15.6 0 14.4 0 11.9 0 10 1.5 10 4.3V6H7v3h3v9h4V9z"/></svg></a>
+      <a href="#" aria-label="אינסטגרם"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+      <a href="#" aria-label="יוטיוב"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 7.5c-.3-1.2-1.2-2-2.4-2.3C18.7 4.7 12 4.7 12 4.7s-6.7 0-8.6.5C2.2 5.5 1.3 6.3 1 7.5.5 9.4.5 12 .5 12s0 2.6.5 4.5c.3 1.2 1.2 2 2.4 2.3 1.9.5 8.6.5 8.6.5s6.7 0 8.6-.5c1.2-.3 2.1-1.1 2.4-2.3.5-1.9.5-4.5.5-4.5s0-2.6-.5-4.5zM9.7 15.4V8.6l5.7 3.4-5.7 3.4z"/></svg></a>
+      <a href="#" aria-label="לינקדאין"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.4 8.65 22 11.3 22 14.3V21h-4v-6c0-1.4-.03-3.3-2-3.3-2 0-2.3 1.55-2.3 3.15V21h-4z"/></svg></a>
+    </div>
+  </div></div>
+  <div class="nav-bar"><div class="container">
+    <a href="index.html" class="brand" aria-label="עמותת אגוז — דף הבית"><span class="brand__logo"><img src="assets/egoz-logo.png" alt="" aria-hidden="true" /></span><span class="brand__txt"><b>אגוז</b><span>עמותת הבוגרים והמשפחות</span></span></a>
+    <nav class="nav-links" aria-label="ניווט ראשי">
+      <a href="index.html">בית</a><a href="join.html">בוגרים</a><a href="donate.html">תרומות</a><a href="events.html">אירועים</a><a href="benefits.html" class="is-active">הטבות</a><a href="yizkor.html">יזכור</a><a href="index.html#contact">צור קשר</a>
+    </nav>
+    <div class="nav-cta"><a href="join.html" class="btn btn--ghost btn--sm">התחברות בוגרים</a><a href="donate.html" class="btn btn--accent btn--sm">לתרומה</a><button class="nav-toggle" aria-label="תפריט" aria-expanded="false" aria-controls="navDrawer"><span></span></button></div>
+  </div></div>
+</header>
+<div class="nav-drawer" id="navDrawer"><div class="nav-drawer__scrim"></div><div class="nav-drawer__panel" role="dialog" aria-label="תפריט ניווט" aria-modal="true">
+  <div class="nav-drawer__head"><span><b style="color:var(--on-dark);font-family:var(--font-display);font-size:1.3rem;">אגוז</b></span><button class="nav-drawer__close" aria-label="סגירה"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 5l10 10M15 5L5 15"/></svg></button></div>
+  <a class="m-link" href="index.html">בית</a><a class="m-link" href="join.html">בוגרים</a><a class="m-link" href="donate.html">תרומות</a><a class="m-link" href="events.html">אירועים</a><a class="m-link" href="benefits.html">הטבות לבוגרים</a><a class="m-link" href="yizkor.html">יזכור</a>
+</div></div>
+
+<div class="page-banner">
+  <img class="page-banner__deer" src="assets/egoz-logo.png" alt="" aria-hidden="true" />
+  <div class="container">
+    <span class="eyebrow eyebrow--on-dark">הטבות לבוגרים</span>
+    <h1 class="h1" style="color:var(--on-dark);margin-top:14px;">שווה להיות בקהילה.</h1>
+    <p class="lead" style="color:var(--on-dark-2);margin-top:14px;max-width:54ch;">עולם של הנחות והטבות בלעדיות לבוגרי אגוז ובני משפחותיהם — מתעדכן כל הזמן. הכניסה למימוש דרך האזור האישי.</p>
+  </div>
+</div>
+
+<main id="main" class="section">
+  <div class="container">
+    <div class="cat-row" role="group" aria-label="קטגוריות">
+      <button class="is-on" data-cat="all">הכול</button>
+      <button data-cat="travel">נופש ופנאי</button>
+      <button data-cat="health">בריאות</button>
+      <button data-cat="shop">צרכנות</button>
+      <button data-cat="finance">פיננסים</button>
+      <button data-cat="edu">השכלה</button>
+    </div>
+    <div class="grid cols-3" id="benGrid">
+      <article class="ben" data-c="travel"><div class="ben__logo">מלונות הצפון</div><div class="ben__body"><span class="ben__cat">נופש ופנאי</span><span class="ben__title">חופשה במלונות נבחרים</span><span class="ben__off">15%<small> הנחה ללילה</small></span><p class="card__excerpt">על חבילות נופש בצפון ובכל הארץ, בהזמנה דרך העמותה.</p><div class="ben__foot"><a href="join.html" class="link-arrow">למימוש <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></a></div></div></article>
+      <article class="ben" data-c="health"><div class="ben__logo">מרכז רפואי</div><div class="ben__body"><span class="ben__cat">בריאות</span><span class="ben__title">בדיקות וסקר רפואי</span><span class="ben__off">עד 20%<small> הנחה</small></span><p class="card__excerpt">שירותי רפואה פרטית, פיזיותרפיה וטיפול נפשי במחירי קהילה.</p><div class="ben__foot"><a href="join.html" class="link-arrow">למימוש <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></a></div></div></article>
+      <article class="ben" data-c="shop"><div class="ben__logo">ציוד שטח</div><div class="ben__body"><span class="ben__cat">צרכנות</span><span class="ben__title">חנות ציוד טיולים</span><span class="ben__off">12%<small> קבוע</small></span><p class="card__excerpt">על כל מוצרי השטח, הקמפינג והריצה ברשתות המובילות.</p><div class="ben__foot"><a href="join.html" class="link-arrow">למימוש <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></a></div></div></article>
+      <article class="ben" data-c="finance"><div class="ben__logo">משכנתאות</div><div class="ben__body"><span class="ben__cat">פיננסים</span><span class="ben__title">ייעוץ משכנתא וביטוח</span><span class="ben__off">ללא עלות<small> פגישת ייעוץ</small></span><p class="card__excerpt">בדיקת תיק ביטוחים ופנסיה והוזלת ריביות עם יועצים מהקהילה.</p><div class="ben__foot"><a href="join.html" class="link-arrow">למימוש <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></a></div></div></article>
+      <article class="ben" data-c="edu"><div class="ben__logo">קריירה</div><div class="ben__body"><span class="ben__cat">השכלה</span><span class="ben__title">קורסים והכשרות</span><span class="ben__off">25%<small> על קורסים נבחרים</small></span><p class="card__excerpt">הסבות הייטק, ניהול וקורסים מקצועיים במכללות שותפות.</p><div class="ben__foot"><a href="join.html" class="link-arrow">למימוש <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></a></div></div></article>
+      <article class="ben" data-c="shop"><div class="ben__logo">רכב ותחבורה</div><div class="ben__body"><span class="ben__cat">צרכנות</span><span class="ben__title">השכרת רכב ותחזוקה</span><span class="ben__off">18%<small> הנחה</small></span><p class="card__excerpt">השכרת רכב, מוסכים וטסטים ברשתות שירות ארציות.</p><div class="ben__foot"><a href="join.html" class="link-arrow">למימוש <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></a></div></div></article>
+    </div>
+    <div style="text-align:center;margin-top:40px;"><p class="muted" style="margin-bottom:14px;">ההטבות נפתחות לבוגרים רשומים בלבד.</p><a href="join.html" class="btn btn--accent btn--lg">הצטרפות / כניסה לאזור האישי</a></div>
+  </div>
+</main>
+
+<footer class="site-footer"><div class="container"><div class="footer-bottom" style="border-top:0;">
+  <span>© <span id="year">2026</span> עמותת אגוז — הסיירת הצפונית</span>
+  <div class="flex gap-m wrap"><a href="index.html" style="color:var(--on-dark-2);">חזרה לדף הבית</a><a href="join.html" style="color:var(--on-dark-3);">הצטרפות בוגרים</a></div>
+</div></div></footer>
+
+<script src="js/site.js"></script>
+<script>
+(function(){
+  var btns = document.querySelectorAll('.cat-row button');
+  var cards = document.querySelectorAll('.ben');
+  btns.forEach(function(b){ b.addEventListener('click', function(){
+    btns.forEach(function(x){x.classList.remove('is-on');}); b.classList.add('is-on');
+    var f = b.getAttribute('data-cat');
+    cards.forEach(function(c){ c.style.display = (f==='all' || c.getAttribute('data-c')===f) ? '' : 'none'; });
+  });});
+})();
+</script>
+</body>
+</html>

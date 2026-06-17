@@ -1,0 +1,16 @@
+{
+  "name": "egoz-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "עמותת אגוז — הסיירת הצפונית",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

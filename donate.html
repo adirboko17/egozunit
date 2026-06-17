@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>תרומות ושגרירי אגוז — עמותת אגוז</title>
+<meta name="description" content="תרמו לעמותת אגוז דרך JGive והצטרפו למעגל שגרירי אגוז. כל תרומה תומכת בבוגרים, במשפחות ובשימור המורשת." />
+<link rel="stylesheet" href="css/site.css" />
+<style>
+  .page-banner { background: var(--olive-900); color: var(--on-dark); padding-block: clamp(40px, 6vw, 76px); position: relative; overflow: hidden; }
+  .page-banner__deer { position: absolute; inset-inline-end: -2%; top: 50%; transform: translateY(-50%); width: min(34vw, 320px); opacity: .06; pointer-events: none; }
+  .page-banner .container { position: relative; z-index: 1; }
+
+  .give { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(28px, 4vw, 56px); align-items: start; }
+  @media (max-width: 920px) { .give { grid-template-columns: 1fr; } }
+
+  /* Donation card */
+  .donate-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-xl); box-shadow: var(--sh-lg); overflow: hidden; }
+  .donate-card__top { background: var(--olive-800); color: var(--on-dark); padding: 22px clamp(22px,2.5vw,30px); display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+  .donate-card__top b { font-family: var(--font-display); font-size: 1.15rem; }
+  .jgive-badge { display: inline-flex; align-items: center; gap: 8px; font-size: .82rem; color: var(--on-dark-2); }
+  .jgive-badge .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--brass-400); }
+  .donate-card__body { padding: clamp(22px, 2.6vw, 32px); }
+
+  .toggle-pill { display: flex; background: var(--paper-2); border-radius: 100px; padding: 5px; gap: 5px; }
+  .toggle-pill button { flex: 1; padding: 12px; border-radius: 100px; font-family: var(--font-display); font-weight: 700; font-size: .98rem; color: var(--text-2); transition: all .18s var(--ease); }
+  .toggle-pill button.is-on { background: var(--olive-800); color: var(--on-dark); box-shadow: var(--sh-sm); }
+  .toggle-pill button .tag { display: inline-block; font-size: .72rem; background: var(--brass-500); color: var(--ink); border-radius: 100px; padding: 1px 7px; margin-inline-start: 6px; }
+
+  .amount-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 20px; }
+  .custom-amount { position: relative; margin-top: 12px; }
+  .custom-amount input { width: 100%; padding: 16px 44px 16px 16px; border: 1.5px solid var(--line-2); border-radius: var(--r-sm); font-size: 1.2rem; font-family: var(--font-display); font-weight: 700; }
+  .custom-amount input:focus { outline: none; border-color: var(--olive-600); box-shadow: 0 0 0 4px rgba(94,113,73,.16); }
+  .custom-amount .shk { position: absolute; inset-inline-start: 16px; top: 50%; transform: translateY(-50%); color: var(--text-3); font-weight: 700; font-family: var(--font-display); font-size: 1.2rem; pointer-events: none; }
+
+  .designate { margin-top: 20px; }
+  .total-row { display: flex; align-items: baseline; justify-content: space-between; margin-top: 24px; padding-top: 20px; border-top: 1px dashed var(--line-2); }
+  .total-row .lbl { color: var(--text-2); font-weight: 600; }
+  .total-row .amt { font-family: var(--font-display); font-weight: 900; font-size: 2.1rem; color: var(--olive-800); }
+  .total-row .amt small { font-size: 1rem; color: var(--text-3); font-weight: 600; }
+  .secure-note { display: flex; align-items: center; gap: 8px; font-size: .82rem; color: var(--text-3); margin-top: 16px; justify-content: center; }
+  .secure-note svg { width: 14px; height: 14px; }
+
+  /* Impact panel */
+  .impact-box { background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--r-lg); padding: clamp(22px,2.6vw,30px); }
+  .impact-amt { font-family: var(--font-display); font-weight: 900; font-size: clamp(2rem,4vw,2.6rem); color: var(--olive-800); line-height: 1; }
+  .impact-amt span { color: var(--brass-600); }
+  .impact-list { display: grid; gap: 14px; margin-top: 22px; }
+  .impact-list li { display: flex; gap: 12px; align-items: flex-start; }
+  .impact-list .ic { flex: 0 0 auto; width: 30px; height: 30px; border-radius: 8px; background: var(--olive-800); color: var(--brass-400); display: grid; place-items: center; }
+  .impact-list .ic svg { width: 16px; height: 16px; }
+  .impact-list b { display: block; }
+  .impact-list span.s { color: var(--text-2); font-size: .92rem; }
+
+  /* Tiers */
+  .tier { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg); padding: clamp(24px,2.6vw,32px); text-align: center; position: relative; color: var(--text); transition: transform .3s var(--ease-out), box-shadow .3s; }
+  .tier:hover { transform: translateY(-5px); box-shadow: var(--sh-lg); }
+  .tier--feature { border-color: var(--brass-400); box-shadow: 0 0 0 2px var(--brass-300); }
+  .tier__star { width: 48px; height: 48px; border-radius: 50%; background: var(--olive-800); color: var(--brass-400); display: grid; place-items: center; margin: 0 auto 16px; }
+  .tier__name { font-family: var(--font-display); font-weight: 800; font-size: 1.3rem; }
+  .tier__price { font-family: var(--font-display); font-weight: 900; font-size: 2.4rem; color: var(--olive-800); margin: 8px 0; }
+  .tier__price small { font-size: 1rem; color: var(--text-3); font-weight: 600; }
+  .tier__feat { display: grid; gap: 9px; margin: 18px 0 22px; text-align: start; }
+  .tier__feat li { display: flex; gap: 10px; color: var(--text-2); font-size: .95rem; }
+  .tier__feat svg { width: 18px; height: 18px; color: var(--brass-600); flex: 0 0 auto; margin-top: 2px; }
+  .ribbon { position: absolute; top: 14px; inset-inline-start: 14px; }
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">דלג לתוכן הראשי</a>
+
+<header class="site-header">
+  <div class="utility-bar">
+    <div class="container">
+      <div class="util-left"><span>עמותה רשומה 58-000-000-0</span><a href="mailto:office@egoz.org.il">office@egoz.org.il</a></div>
+      <div class="util-social" aria-label="רשתות חברתיות">
+        <a href="#" aria-label="פייסבוק"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3l.4-3H14V4.5c0-.9.3-1.5 1.6-1.5H17V.2C16.7.1 15.6 0 14.4 0 11.9 0 10 1.5 10 4.3V6H7v3h3v9h4V9z"/></svg></a>
+        <a href="#" aria-label="אינסטגרם"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="יוטיוב"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 7.5c-.3-1.2-1.2-2-2.4-2.3C18.7 4.7 12 4.7 12 4.7s-6.7 0-8.6.5C2.2 5.5 1.3 6.3 1 7.5.5 9.4.5 12 .5 12s0 2.6.5 4.5c.3 1.2 1.2 2 2.4 2.3 1.9.5 8.6.5 8.6.5s6.7 0 8.6-.5c1.2-.3 2.1-1.1 2.4-2.3.5-1.9.5-4.5.5-4.5s0-2.6-.5-4.5zM9.7 15.4V8.6l5.7 3.4-5.7 3.4z"/></svg></a>
+        <a href="#" aria-label="לינקדאין"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.4 8.65 22 11.3 22 14.3V21h-4v-6c0-1.4-.03-3.3-2-3.3-2 0-2.3 1.55-2.3 3.15V21h-4z"/></svg></a>
+      </div>
+    </div>
+  </div>
+  <div class="nav-bar">
+    <div class="container">
+      <a href="index.html" class="brand" aria-label="עמותת אגוז — דף הבית">
+        <span class="brand__logo"><img src="assets/egoz-logo.png" alt="" aria-hidden="true" /></span>
+        <span class="brand__txt"><b>אגוז</b><span>עמותת הבוגרים והמשפחות</span></span>
+      </a>
+      <nav class="nav-links" aria-label="ניווט ראשי">
+        <a href="index.html">בית</a>
+        <a href="join.html">בוגרים</a>
+        <a href="donate.html" class="is-active">תרומות</a>
+        <a href="events.html">אירועים</a>
+        <a href="benefits.html">הטבות</a>
+        <a href="yizkor.html">יזכור</a>
+        <a href="index.html#contact">צור קשר</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="join.html" class="btn btn--ghost btn--sm">התחברות בוגרים</a>
+        <a href="#main" class="btn btn--accent btn--sm">לתרומה</a>
+        <button class="nav-toggle" aria-label="תפריט" aria-expanded="false" aria-controls="navDrawer"><span></span></button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="nav-drawer" id="navDrawer">
+  <div class="nav-drawer__scrim"></div>
+  <div class="nav-drawer__panel" role="dialog" aria-label="תפריט ניווט" aria-modal="true">
+    <div class="nav-drawer__head"><span><b style="color:var(--on-dark);font-family:var(--font-display);font-size:1.3rem;">אגוז</b></span><button class="nav-drawer__close" aria-label="סגירה"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 5l10 10M15 5L5 15"/></svg></button></div>
+    <a class="m-link" href="index.html">בית</a>
+    <a class="m-link" href="join.html">בוגרים</a>
+    <a class="m-link" href="donate.html">תרומות</a>
+    <a class="m-link" href="events.html">אירועים</a>
+    <a class="m-link" href="benefits.html">הטבות לבוגרים</a>
+    <a class="m-link" href="yizkor.html">יזכור</a>
+  </div>
+</div>
+
+<div class="page-banner">
+  <img class="page-banner__deer" src="assets/egoz-logo.png" alt="" aria-hidden="true" />
+  <div class="container">
+    <span class="eyebrow eyebrow--on-dark">תרומות · שגרירי אגוז</span>
+    <h1 class="h1" style="color:var(--on-dark);margin-top:14px;max-width:20ch;">התרומה שלך נשארת איתם הרבה אחרי הקרב.</h1>
+    <p class="lead" style="color:var(--on-dark-2);margin-top:14px;max-width:58ch;">100% מהתרומה הולך לבוגרים, למשפחות השכולות ולשימור המורשת. התרומה מתבצעת בעמוד מאובטח של JGive, וזכאית לזיכוי מס לפי סעיף 46.</p>
+  </div>
+</div>
+
+<main id="main" class="section">
+  <div class="container">
+    <div class="give">
+      <!-- Donation widget -->
+      <div class="donate-card">
+        <div class="donate-card__top">
+          <b>בחירת תרומה</b>
+          <span class="jgive-badge"><span class="dot" aria-hidden="true"></span>מאובטח באמצעות JGive</span>
+        </div>
+        <div class="donate-card__body">
+          <div class="toggle-pill" role="group" aria-label="תדירות התרומה">
+            <button type="button" class="is-on" data-freq="once">תרומה חד־פעמית</button>
+            <button type="button" data-freq="monthly">תרומה חודשית<span class="tag">מומלץ</span></button>
+          </div>
+
+          <div class="amount-grid" id="amountGrid"></div>
+          <div class="custom-amount">
+            <span class="shk">₪</span>
+            <input type="number" id="customAmount" inputmode="numeric" min="1" placeholder="סכום אחר" aria-label="סכום אחר" />
+          </div>
+
+          <div class="field designate">
+            <label for="designation">ייעוד התרומה</label>
+            <select class="select" id="designation">
+              <option value="כללי">לאן שהכי צריך (כללי)</option>
+              <option value="מלגות">קרן המלגות</option>
+              <option value="משפחות">תמיכה במשפחות שכולות</option>
+              <option value="שיקום">שיקום ורווחת נפגעים</option>
+              <option value="מורשת">שימור מורשת והנצחה</option>
+            </select>
+          </div>
+
+          <div class="total-row">
+            <span class="lbl">סך התרומה</span>
+            <span class="amt">₪<span id="totalVal">250</span><small id="totalFreq"></small></span>
+          </div>
+
+          <a href="https://www.jgive.com/new/he/ils/donation-targets/5545" target="_blank" rel="noopener" class="btn btn--accent btn--block btn--lg" style="margin-top:18px;" id="donateBtn">
+            המשך לתרומה מאובטחת
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 6l-6 6 6 6"/></svg>
+          </a>
+          <div class="secure-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
+            תשלום מאובטח (SSL) · קבלה מוכרת למס לפי סעיף 46
+          </div>
+        </div>
+      </div>
+
+      <!-- Impact -->
+      <div>
+        <span class="eyebrow">המשמעות של התרומה</span>
+        <h2 class="h2" style="margin-top:12px;">לאן הולך הכסף שלך</h2>
+        <div class="impact-box" style="margin-top:22px;">
+          <div class="impact-amt">₪<span id="impactVal">250</span> <span id="impactFreqTxt" style="font-size:1rem;"></span></div>
+          <ul class="impact-list" id="impactList">
+            <li><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2.5 9 2.5 12 0v-5"/></svg></span><div><b>חצי חודש לימוד</b><span class="s">מסייע לבוגר/ת לממן תקופת לימודים אקדמיים</span></div></li>
+            <li><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 10-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 000-7.8z"/></svg></span><div><b>ערב ליווי למשפחה שכולה</b><span class="s">מימון פגישת תמיכה אישית לבני משפחה</span></div></li>
+            <li><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></span><div><b>חיבור בוגר לקהילה</b><span class="s">השתתפות במפגש, כנס או פעילות גיבוש</span></div></li>
+          </ul>
+        </div>
+        <div class="flex gap-s ai-c" style="margin-top:18px;color:var(--text-3);font-size:.9rem;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+          עמותה מאוגדת ומבוקרת · אישור ניהול תקין · שקיפות מלאה בדו״חות
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Ambassadors -->
+<section class="section dark tex-topo" id="ambassadors">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <span class="eyebrow eyebrow--on-dark eyebrow--center">מעגל שגרירי אגוז</span>
+      <h2 class="h2" style="color:var(--on-dark);">השותפים שלא עוזבים את היחידה</h2>
+      <p class="lead" style="color:var(--on-dark-2);">שגרירי אגוז הם תורמים חודשיים קבועים — הליבה שמאפשרת לעמותה לתכנן קדימה, להתחייב למשפחות ולהיות שם בכל רגע נתון.</p>
+    </div>
+    <div class="grid cols-3">
+      <div class="tier">
+        <div class="tier__star" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 6 .8-4.5 4.3L18 20l-6-3.3L6 20l1.5-6.9L3 8.8 9 8z"/></svg></div>
+        <div class="tier__name">תומך/ת</div>
+        <div class="tier__price">₪50<small>/חודש</small></div>
+        <ul class="tier__feat">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg> עדכון רבעוני על הפעילות</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg> קבלה למס לפי סעיף 46</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg> שם ברשימת התומכים</li>
+        </ul>
+        <a href="#ambassador-form" class="btn btn--ghost-light btn--block">הצטרפות</a>
+      </div>
+      <div class="tier tier--feature">
+        <span class="ribbon badge badge--brass">הכי נבחר</span>
+        <div class="tier__star" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 6 .8-4.5 4.3L18 20l-6-3.3L6 20l1.5-6.9L3 8.8 9 8z"/></svg></div>
+        <div class="tier__name">שגריר/ה</div>
+        <div class="tier__price">₪120<small>/חודש</small></div>
+        <ul class="tier__feat">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg> כל מה שבחבילת תומך/ת</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg> הזמנה לאירועי שגרירים</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg> דו״ח השפעה אישי שנתי</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg> פין ותעודת שגריר/ה</li>
+        </ul>
+        <a href="#ambassador-form" class="btn btn--accent btn--block">להיות שגריר/ה</a>
+      </div>
+      <div class="tier">
+        <div class="tier__star" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 6 .8-4.5 4.3L18 20l-6-3.3L6 20l1.5-6.9L3 8.8 9 8z"/></svg></div>
+        <div class="tier__name">מייסד/ת</div>
+        <div class="tier__price">₪360<small>/חודש</small></div>
+        <ul class="tier__feat">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg> כל מה שבחבילת שגריר/ה</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg> מפגש שנתי עם הנהלת העמותה</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg> ליווי אישי של פרויקט נבחר</li>
+        </ul>
+        <a href="#ambassador-form" class="btn btn--ghost-light btn--block">הצטרפות</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Ambassador form -->
+<section class="section" id="ambassador-form">
+  <div class="container container--narrow">
+    <div class="section-head section-head--center">
+      <span class="eyebrow eyebrow--center">הצטרפות למעגל</span>
+      <h2 class="h2">בוא/י נהיה שגריר/ה</h2>
+      <p class="lead">מלא/י את הפרטים ונחזור אליך להשלמת ההוראה החודשית. אפשר לעצור בכל עת.</p>
+    </div>
+    <form class="wcard" style="background:var(--card);border:1px solid var(--line);border-radius:var(--r-xl);box-shadow:var(--sh);padding:clamp(24px,3vw,40px);" id="ambForm" novalidate>
+      <div class="form-grid">
+        <div class="field"><label for="a-name">שם מלא <span class="req">*</span></label><input class="input" id="a-name" required /></div>
+        <div class="field"><label for="a-phone">טלפון <span class="req">*</span></label><input class="input" id="a-phone" type="tel" inputmode="tel" required /></div>
+        <div class="field col-span-2"><label for="a-email">אימייל <span class="req">*</span></label><input class="input" id="a-email" type="email" inputmode="email" required /></div>
+        <div class="field"><label for="a-tier">חבילה</label><select class="select" id="a-tier"><option>תומך/ת — ₪50</option><option selected>שגריר/ה — ₪120</option><option>מייסד/ת — ₪360</option><option>סכום אחר</option></select></div>
+        <div class="field"><label for="a-amount">סכום חודשי (₪)</label><input class="input" id="a-amount" inputmode="numeric" value="120" /></div>
+        <div class="field col-span-2"><label for="a-msg">הודעה (לא חובה)</label><textarea class="textarea" id="a-msg" placeholder="ספרו לנו מה מניע אתכם…"></textarea></div>
+        <label class="choice col-span-2"><input type="checkbox" required /><span><span class="choice__t">אני מאשר/ת יצירת קשר להשלמת ההצטרפות <span class="req">*</span></span><span class="choice__s">המידע נשמר ומאובטח לפי חוק הגנת הפרטיות</span></span></label>
+      </div>
+      <button type="submit" class="btn btn--accent btn--lg btn--block" style="margin-top:24px;">שליחת בקשת הצטרפות</button>
+      <p id="ambDone" style="display:none;text-align:center;color:var(--olive-700);font-weight:700;margin-top:16px;">תודה! קיבלנו את הבקשה ונחזור אליך בהקדם 🤝</p>
+    </form>
+  </div>
+</section>
+
+<!-- Other ways -->
+<section class="section paper-2">
+  <div class="container">
+    <div class="section-head section-head--center"><span class="eyebrow eyebrow--center">עוד דרכים לתת</span><h2 class="h2">לא רק בכרטיס אשראי</h2></div>
+    <div class="grid cols-3">
+      <article class="card card--hover"><div class="card__body">
+        <div class="goal__ic" style="width:48px;height:48px;border-radius:12px;background:var(--olive-800);color:var(--brass-400);display:grid;place-items:center;margin-bottom:12px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h12l3 6-9 13L3 8z"/></svg></div>
+        <h3 class="card__title">חנות אגוז</h3><p class="card__excerpt">מרכנתיל ומוצרי מותג של היחידה — כל רכישה תומכת בעמותה.</p>
+        <div class="card__foot"><a href="#" class="link-arrow">לחנות החיצונית <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></a></div>
+      </div></article>
+      <article class="card card--hover"><div class="card__body">
+        <div class="goal__ic" style="width:48px;height:48px;border-radius:12px;background:var(--olive-800);color:var(--brass-400);display:grid;place-items:center;margin-bottom:12px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 10-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 000-7.8z"/></svg></div>
+        <h3 class="card__title">תרומה לכבוד / לזכר</h3><p class="card__excerpt">הנציחו אדם יקר או ציינו אירוע משמח בתרומה ייעודית בשמו.</p>
+        <div class="card__foot"><a href="https://www.jgive.com/new/he/ils/donation-targets/5545" target="_blank" rel="noopener" class="link-arrow">לתרומה ייעודית <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></a></div>
+      </div></article>
+      <article class="card card--hover"><div class="card__body">
+        <div class="goal__ic" style="width:48px;height:48px;border-radius:12px;background:var(--olive-800);color:var(--brass-400);display:grid;place-items:center;margin-bottom:12px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4 8 4v14M9 9h2m4 0h2m-8 4h2m4 0h2"/></svg></div>
+        <h3 class="card__title">תרומה מחברה / עיזבון</h3><p class="card__excerpt">שותפויות עסקיות, תרומות גדולות וצוואות — דברו איתנו אישית.</p>
+        <div class="card__foot"><a href="mailto:office@egoz.org.il" class="link-arrow">ליצירת קשר <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></a></div>
+      </div></article>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom" style="border-top:0;">
+      <span>© <span id="year">2026</span> עמותת אגוז — הסיירת הצפונית · תרומות מאובטחות דרך JGive</span>
+      <div class="flex gap-m wrap"><a href="index.html" style="color:var(--on-dark-2);">חזרה לדף הבית</a><a href="#" style="color:var(--on-dark-3);">דו״חות כספיים</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+<script>
+(function () {
+  var presets = { once: [100, 250, 500, 1000, 1800, 0], monthly: [36, 50, 120, 250, 360, 0] };
+  var freq = 'once';
+  var selected = 250;
+  var grid = document.getElementById('amountGrid');
+  var customInput = document.getElementById('customAmount');
+
+  function freqWord() { return freq === 'monthly' ? ' / חודש' : ''; }
+
+  function renderGrid() {
+    grid.innerHTML = '';
+    presets[freq].forEach(function (v) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'amount';
+      if (v === 0) { b.innerHTML = 'אחר<small>סכום חופשי</small>'; b.dataset.other = '1'; }
+      else { b.innerHTML = '₪' + v.toLocaleString('he-IL') + (freq === 'monthly' ? '<small>לחודש</small>' : ''); b.dataset.val = v; }
+      if (v === selected) b.classList.add('is-on');
+      grid.appendChild(b);
+    });
+  }
+
+  function updateTotals() {
+    document.getElementById('totalVal').textContent = (selected || 0).toLocaleString('he-IL');
+    document.getElementById('totalFreq').textContent = freqWord();
+    document.getElementById('impactVal').textContent = (selected || 0).toLocaleString('he-IL');
+    document.getElementById('impactFreqTxt').textContent = freq === 'monthly' ? 'בכל חודש' : 'תורמים פעם אחת';
+    var btn = document.getElementById('donateBtn');
+    btn.firstChild.textContent = 'תרמו ₪' + (selected || 0).toLocaleString('he-IL') + (freq === 'monthly' ? ' לחודש ' : ' ') + 'דרך JGive ';
+  }
+
+  grid.addEventListener('click', function (e) {
+    var b = e.target.closest('.amount'); if (!b) return;
+    if (b.dataset.other) { customInput.focus(); grid.querySelectorAll('.amount').forEach(function(x){x.classList.remove('is-on');}); b.classList.add('is-on'); selected = parseInt(customInput.value) || 0; updateTotals(); return; }
+    customInput.value = '';
+    selected = parseInt(b.dataset.val);
+    grid.querySelectorAll('.amount').forEach(function (x) { x.classList.remove('is-on'); });
+    b.classList.add('is-on');
+    updateTotals();
+  });
+
+  customInput.addEventListener('input', function () {
+    selected = parseInt(customInput.value) || 0;
+    grid.querySelectorAll('.amount').forEach(function (x) { x.classList.toggle('is-on', !!x.dataset.other); });
+    updateTotals();
+  });
+
+  document.querySelectorAll('[data-freq]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('[data-freq]').forEach(function (b) { b.classList.remove('is-on'); });
+      btn.classList.add('is-on');
+      freq = btn.getAttribute('data-freq');
+      if (presets[freq].indexOf(selected) === -1) selected = presets[freq][1];
+      customInput.value = '';
+      renderGrid(); updateTotals();
+    });
+  });
+
+  renderGrid(); updateTotals();
+
+  // ambassador form
+  document.getElementById('ambForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var reqs = this.querySelectorAll('[required]'); var ok = true;
+    reqs.forEach(function (el) { var v = el.type === 'checkbox' ? el.checked : !!el.value.trim(); el.style.borderColor = v ? '' : 'var(--maroon-600)'; if (!v) ok = false; });
+    if (!ok) return;
+    document.getElementById('ambDone').style.display = 'block';
+    this.querySelector('button[type="submit"]').style.display = 'none';
+  });
+  document.querySelectorAll('.choice input').forEach(function (inp) { inp.addEventListener('change', function () { inp.closest('.choice').classList.toggle('is-on', inp.checked); }); });
+})();
+</script>
+</body>
+</html>

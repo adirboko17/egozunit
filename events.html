@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>אירועים — עמותת אגוז</title>
+<meta name="description" content="לוח האירועים של עמותת אגוז — כנסים, טקסי זיכרון, מפגשי דורות וערבי גיבוש." />
+<link rel="stylesheet" href="css/site.css" />
+<style>
+  .page-banner { background: var(--olive-900); color: var(--on-dark); padding-block: clamp(40px,6vw,76px); position: relative; overflow: hidden; }
+  .page-banner__deer { position: absolute; inset-inline-end: -2%; top: 50%; transform: translateY(-50%); width: min(34vw,320px); opacity: .06; pointer-events: none; }
+  .page-banner .container { position: relative; z-index: 1; }
+  .filter-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 36px; }
+  .filter-row button { padding: 10px 18px; border-radius: 100px; font-family: var(--font-display); font-weight: 700; font-size: .95rem; color: var(--text-2); border: 1.5px solid var(--line-2); background: var(--card); transition: all .18s; }
+  .filter-row button.is-on { background: var(--olive-800); color: var(--on-dark); border-color: var(--olive-800); }
+  .ev-card { display: grid; grid-template-columns: auto 1fr auto; gap: 24px; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 22px 26px; transition: border-color .2s, box-shadow .2s, transform .2s; }
+  .ev-card:hover { border-color: var(--line-2); box-shadow: var(--sh); transform: translateY(-3px); }
+  .ev-date { flex: 0 0 auto; width: 84px; text-align: center; border-radius: var(--r); overflow: hidden; border: 1px solid var(--line); }
+  .ev-date__d { font-family: var(--font-display); font-weight: 900; font-size: 2rem; line-height: 1; padding: 14px 0 8px; color: var(--olive-800); }
+  .ev-date__m { font-size: .8rem; font-weight: 700; letter-spacing: .06em; padding: 7px 0; background: var(--olive-800); color: var(--on-dark); }
+  .ev-main h3 { font-size: 1.3rem; margin-bottom: 8px; }
+  .ev-meta { display: flex; flex-wrap: wrap; gap: 8px 18px; color: var(--text-3); font-size: .92rem; }
+  .ev-meta span { display: inline-flex; align-items: center; gap: 6px; }
+  .ev-meta svg { width: 15px; height: 15px; opacity: .8; }
+  .ev-card--past { opacity: .72; }
+  .ev-card--past .ev-date__d { color: var(--text-3); }
+  .ev-card--past .ev-date__m { background: var(--text-3); }
+  @media (max-width: 680px) { .ev-card { grid-template-columns: auto 1fr; } .ev-card .ev-cta { grid-column: 1 / -1; } }
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">דלג לתוכן הראשי</a>
+<header class="site-header">
+  <div class="utility-bar"><div class="container">
+    <div class="util-left"><span>עמותה רשומה 58-000-000-0</span><a href="mailto:office@egoz.org.il">office@egoz.org.il</a></div>
+    <div class="util-social" aria-label="רשתות חברתיות">
+      <a href="#" aria-label="פייסבוק"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3l.4-3H14V4.5c0-.9.3-1.5 1.6-1.5H17V.2C16.7.1 15.6 0 14.4 0 11.9 0 10 1.5 10 4.3V6H7v3h3v9h4V9z"/></svg></a>
+      <a href="#" aria-label="אינסטגרם"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+      <a href="#" aria-label="יוטיוב"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 7.5c-.3-1.2-1.2-2-2.4-2.3C18.7 4.7 12 4.7 12 4.7s-6.7 0-8.6.5C2.2 5.5 1.3 6.3 1 7.5.5 9.4.5 12 .5 12s0 2.6.5 4.5c.3 1.2 1.2 2 2.4 2.3 1.9.5 8.6.5 8.6.5s6.7 0 8.6-.5c1.2-.3 2.1-1.1 2.4-2.3.5-1.9.5-4.5.5-4.5s0-2.6-.5-4.5zM9.7 15.4V8.6l5.7 3.4-5.7 3.4z"/></svg></a>
+      <a href="#" aria-label="לינקדאין"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.4 8.65 22 11.3 22 14.3V21h-4v-6c0-1.4-.03-3.3-2-3.3-2 0-2.3 1.55-2.3 3.15V21h-4z"/></svg></a>
+    </div>
+  </div></div>
+  <div class="nav-bar"><div class="container">
+    <a href="index.html" class="brand" aria-label="עמותת אגוז — דף הבית"><span class="brand__logo"><img src="assets/egoz-logo.png" alt="" aria-hidden="true" /></span><span class="brand__txt"><b>אגוז</b><span>עמותת הבוגרים והמשפחות</span></span></a>
+    <nav class="nav-links" aria-label="ניווט ראשי">
+      <a href="index.html">בית</a><a href="join.html">בוגרים</a><a href="donate.html">תרומות</a><a href="events.html" class="is-active">אירועים</a><a href="benefits.html">הטבות</a><a href="yizkor.html">יזכור</a><a href="index.html#contact">צור קשר</a>
+    </nav>
+    <div class="nav-cta"><a href="join.html" class="btn btn--ghost btn--sm">התחברות בוגרים</a><a href="donate.html" class="btn btn--accent btn--sm">לתרומה</a><button class="nav-toggle" aria-label="תפריט" aria-expanded="false" aria-controls="navDrawer"><span></span></button></div>
+  </div></div>
+</header>
+<div class="nav-drawer" id="navDrawer"><div class="nav-drawer__scrim"></div><div class="nav-drawer__panel" role="dialog" aria-label="תפריט ניווט" aria-modal="true">
+  <div class="nav-drawer__head"><span><b style="color:var(--on-dark);font-family:var(--font-display);font-size:1.3rem;">אגוז</b></span><button class="nav-drawer__close" aria-label="סגירה"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 5l10 10M15 5L5 15"/></svg></button></div>
+  <a class="m-link" href="index.html">בית</a><a class="m-link" href="join.html">בוגרים</a><a class="m-link" href="donate.html">תרומות</a><a class="m-link" href="events.html">אירועים</a><a class="m-link" href="benefits.html">הטבות לבוגרים</a><a class="m-link" href="yizkor.html">יזכור</a>
+</div></div>
+
+<div class="page-banner">
+  <img class="page-banner__deer" src="assets/egoz-logo.png" alt="" aria-hidden="true" />
+  <div class="container">
+    <span class="eyebrow eyebrow--on-dark">לוח אירועים</span>
+    <h1 class="h1" style="color:var(--on-dark);margin-top:14px;">נפגשים. זוכרים. חוגגים יחד.</h1>
+    <p class="lead" style="color:var(--on-dark-2);margin-top:14px;max-width:54ch;">כל ההזדמנויות להיפגש — מכנסים וטקסי זיכרון ועד מפגשי דורות וערבי גיבוש למשתחררים.</p>
+  </div>
+</div>
+
+<main id="main" class="section">
+  <div class="container">
+    <div class="filter-row" role="group" aria-label="סינון אירועים">
+      <button class="is-on" data-filter="all">הכול</button>
+      <button data-filter="up">הקרובים</button>
+      <button data-filter="ceremony">טקסים</button>
+      <button data-filter="meetup">מפגשים</button>
+      <button data-filter="past">עברו</button>
+    </div>
+    <div class="grid" style="gap:16px;">
+      <article class="ev-card" data-cat="up meetup">
+        <div class="ev-date"><div class="ev-date__d">12</div><div class="ev-date__m">יולי</div></div>
+        <div class="ev-main"><div class="badge badge--brass" style="margin-bottom:8px;">הרשמה פתוחה</div><h3>כנס הבוגרים השנתי</h3><div class="ev-meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> בית אגוז</span><span>16:00</span><span>כל המחזורים</span></div></div>
+        <div class="ev-cta"><a href="#" class="btn btn--accent">הרשמה</a></div>
+      </article>
+      <article class="ev-card" data-cat="up ceremony">
+        <div class="ev-date"><div class="ev-date__d">02</div><div class="ev-date__m">אוג׳</div></div>
+        <div class="ev-main"><h3>טקס יום הזיכרון ליחידה</h3><div class="ev-meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> אנדרטת היחידה</span><span>10:00</span><span>פתוח למשפחות</span></div></div>
+        <div class="ev-cta"><a href="#" class="btn btn--ghost">פרטים</a></div>
+      </article>
+      <article class="ev-card" data-cat="up meetup">
+        <div class="ev-date"><div class="ev-date__d">19</div><div class="ev-date__m">ספט׳</div></div>
+        <div class="ev-main"><h3>ערב גיבוש למשתחררים הטריים</h3><div class="ev-meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> מרכז הארץ</span><span>19:30</span></div></div>
+        <div class="ev-cta"><a href="#" class="btn btn--ghost">פרטים</a></div>
+      </article>
+      <article class="ev-card" data-cat="up meetup">
+        <div class="ev-date"><div class="ev-date__d">07</div><div class="ev-date__m">נוב׳</div></div>
+        <div class="ev-main"><h3>מפגש מחזורי שנות ה־2000</h3><div class="ev-meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> צפון</span><span>18:00</span></div></div>
+        <div class="ev-cta"><a href="#" class="btn btn--ghost">פרטים</a></div>
+      </article>
+      <article class="ev-card ev-card--past" data-cat="past ceremony">
+        <div class="ev-date"><div class="ev-date__d">28</div><div class="ev-date__m">אפר׳</div></div>
+        <div class="ev-main"><h3>עצרת יום הזיכרון הממלכתי</h3><div class="ev-meta"><span>הסתיים</span><span>בית אגוז</span></div></div>
+        <div class="ev-cta"><a href="#" class="btn btn--ghost btn--sm">סיכום ותמונות</a></div>
+      </article>
+      <article class="ev-card ev-card--past" data-cat="past meetup">
+        <div class="ev-date"><div class="ev-date__d">15</div><div class="ev-date__m">פבר׳</div></div>
+        <div class="ev-main"><h3>סדנת הכנה לקריירה אזרחית</h3><div class="ev-meta"><span>הסתיים</span><span>אונליין</span></div></div>
+        <div class="ev-cta"><a href="#" class="btn btn--ghost btn--sm">צפייה בהקלטה</a></div>
+      </article>
+    </div>
+  </div>
+</main>
+
+<section class="section dark tex-topo" style="text-align:center;">
+  <div class="container container--narrow">
+    <span class="eyebrow eyebrow--on-dark eyebrow--center">רוצים לארגן מפגש?</span>
+    <h2 class="h2" style="color:var(--on-dark);margin-top:12px;">יש לכם רעיון למפגש מחזור?</h2>
+    <p class="lead" style="color:var(--on-dark-2);margin-top:14px;">העמותה תשמח לעזור בארגון, מימון ולוגיסטיקה. דברו איתנו ונרים את זה יחד.</p>
+    <a href="index.html#contact" class="btn btn--accent btn--lg" style="margin-top:24px;">דברו איתנו</a>
+  </div>
+</section>
+
+<footer class="site-footer"><div class="container"><div class="footer-bottom" style="border-top:0;">
+  <span>© <span id="year">2026</span> עמותת אגוז — הסיירת הצפונית</span>
+  <div class="flex gap-m wrap"><a href="index.html" style="color:var(--on-dark-2);">חזרה לדף הבית</a><a href="donate.html" style="color:var(--on-dark-3);">תרומה</a></div>
+</div></div></footer>
+
+<script src="js/site.js"></script>
+<script>
+(function(){
+  var btns = document.querySelectorAll('.filter-row button');
+  var cards = document.querySelectorAll('.ev-card');
+  btns.forEach(function(b){ b.addEventListener('click', function(){
+    btns.forEach(function(x){x.classList.remove('is-on');}); b.classList.add('is-on');
+    var f = b.getAttribute('data-filter');
+    cards.forEach(function(c){ c.style.display = (f==='all' || c.getAttribute('data-cat').indexOf(f)>-1) ? '' : 'none'; });
+  });});
+})();
+</script>
+</body>
+</html>

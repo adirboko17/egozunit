@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>התחברות ניהול · עמותת אגוז</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/site.css" />
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body class="admin-page">
+  <main class="admin-card">
+    <div class="admin-brand">
+      <img src="/assets/egoz-logo.png" alt="" />
+      <div>
+        <b>מערכת ניהול</b>
+        <span>עמותת אגוז · הסיירת הצפונית</span>
+      </div>
+    </div>
+
+    <h1>התחברות</h1>
+    <p class="lead">היכנס עם מייל וסיסמה של משתמש מנהל מורשה.</p>
+
+    <div id="loginAlert" hidden></div>
+
+    <form id="loginForm" novalidate>
+      <div class="admin-field">
+        <label for="email">מייל</label>
+        <input id="email" name="email" type="email" autocomplete="username" required />
+      </div>
+      <div class="admin-field">
+        <label for="password">סיסמה</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required />
+      </div>
+      <button class="admin-btn" type="submit" id="loginBtn">כניסה למערכת</button>
+    </form>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/js/supabase-config.js"></script>
+  <script src="/js/admin-auth.js"></script>
+  <script>
+    (function () {
+      var form = document.getElementById('loginForm');
+      var alertBox = document.getElementById('loginAlert');
+      var loginBtn = document.getElementById('loginBtn');
+
+      function showAlert(message, type) {
+        alertBox.hidden = false;
+        alertBox.className = 'admin-alert admin-alert--' + (type || 'error');
+        alertBox.textContent = message;
+      }
+
+      var params = new URLSearchParams(window.location.search);
+      if (params.get('error') === 'unauthorized') {
+        showAlert('אין לך הרשאות ניהול. פנה למנהל המערכת.', 'error');
+      }
+
+      EgozAdminAuth.redirectIfAuthed().catch(function () {});
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        alertBox.hidden = true;
+        loginBtn.disabled = true;
+        loginBtn.textContent = 'מתחבר...';
+
+        var email = document.getElementById('email').value.trim();
+        var password = document.getElementById('password').value;
+
+        EgozAdminAuth.signIn(email, password)
+          .then(function () {
+            window.location.replace('/admin/');
+          })
+          .catch(function (err) {
+            showAlert(err.message || 'ההתחברות נכשלה. נסה שוב.', 'error');
+          })
+          .finally(function () {
+            loginBtn.disabled = false;
+            loginBtn.textContent = 'כניסה למערכת';
+          });
+      });
+    })();
+  </script>
+</body>
+</html>

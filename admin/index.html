@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>לוח ניהול · עמותת אגוז</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/site.css" />
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body class="admin-shell">
+  <header class="admin-topbar">
+    <div class="admin-topbar__inner">
+      <div class="admin-topbar__brand">
+        <img src="/assets/egoz-logo.png" alt="" />
+        <div>
+          <b>לוח ניהול</b>
+          <span>עמותת אגוז</span>
+        </div>
+      </div>
+      <div class="admin-topbar__user">
+        <span id="adminEmail"></span>
+        <button class="admin-topbar__logout" type="button" id="logoutBtn">יציאה</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <section class="admin-panel">
+      <h2>ברוך הבא</h2>
+      <p>כאן תוכל בקרוב להוסיף ולערוך תוכן באתר. התשתית מחוברת ל-Supabase עם אימות מנהלים.</p>
+      <div class="admin-empty" id="contentStatus">טוען נתונים...</div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/js/supabase-config.js"></script>
+  <script src="/js/admin-auth.js"></script>
+  <script>
+    (function () {
+      var emailEl = document.getElementById('adminEmail');
+      var statusEl = document.getElementById('contentStatus');
+      var logoutBtn = document.getElementById('logoutBtn');
+
+      EgozAdminAuth.requireAdmin().then(function (session) {
+        if (!session) return;
+        emailEl.textContent = session.user.email || '';
+
+        return EgozAdminAuth.getClient()
+          .from('site_content')
+          .select('id, slug, title, is_published, updated_at')
+          .order('updated_at', { ascending: false });
+      }).then(function (result) {
+        if (!result) return;
+        if (result.error) throw result.error;
+
+        if (!result.data.length) {
+          statusEl.textContent = 'אין עדיין פריטי תוכן. בפעם הבאה נוסיף כאן טופס להוספה ועריכה.';
+          return;
+        }
+
+        statusEl.innerHTML = result.data.map(function (item) {
+          return '<div style="margin-top:10px;"><b>' + item.title + '</b> · ' + item.slug +
+            (item.is_published ? ' · מפורסם' : ' · טיוטה') + '</div>';
+        }).join('');
+      }).catch(function (err) {
+        statusEl.textContent = err.message || 'שגיאה בטעינת הנתונים';
+      });
+
+      logoutBtn.addEventListener('click', function () {
+        EgozAdminAuth.signOut().then(function () {
+          window.location.replace('/admin/login.html');
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

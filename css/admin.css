@@ -1,0 +1,217 @@
+/* Admin — Egoz CMS shell */
+:root {
+  --admin-bg: #0f1c3c;
+  --admin-panel: #ffffff;
+  --admin-line: #dbe4f3;
+  --admin-text: #0f1c3c;
+  --admin-muted: #6b7894;
+  --admin-accent: #2e76e6;
+  --admin-accent-hover: #2462d6;
+  --admin-danger: #b42318;
+}
+
+.admin-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(46, 118, 230, .18), transparent 42%),
+    linear-gradient(160deg, #0c1830, #142a5e 55%, #0c1830);
+  color: var(--admin-text);
+}
+
+.admin-card {
+  width: min(100%, 420px);
+  background: var(--admin-panel);
+  border: 1px solid var(--admin-line);
+  border-radius: 18px;
+  box-shadow: 0 24px 60px rgba(8, 16, 36, .35);
+  padding: clamp(28px, 4vw, 36px);
+}
+
+.admin-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.admin-brand img {
+  width: auto;
+  height: 52px;
+  display: block;
+}
+
+.admin-brand b {
+  display: block;
+  font-family: var(--font-display, 'Heebo', sans-serif);
+  font-size: 1.2rem;
+  color: var(--admin-text);
+}
+
+.admin-brand span {
+  display: block;
+  font-size: .85rem;
+  color: var(--admin-muted);
+  margin-top: 4px;
+}
+
+.admin-card h1 {
+  font-family: var(--font-display, 'Heebo', sans-serif);
+  font-size: 1.55rem;
+  margin-bottom: 8px;
+}
+
+.admin-card .lead {
+  color: var(--admin-muted);
+  font-size: .96rem;
+  margin-bottom: 22px;
+}
+
+.admin-field {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.admin-field label {
+  font-weight: 600;
+  font-size: .92rem;
+}
+
+.admin-field input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1.5px solid var(--admin-line);
+  border-radius: 10px;
+  font: inherit;
+  background: #fff;
+  transition: border-color .15s, box-shadow .15s;
+}
+
+.admin-field input:focus {
+  outline: none;
+  border-color: var(--admin-accent);
+  box-shadow: 0 0 0 3px rgba(46, 118, 230, .15);
+}
+
+.admin-btn {
+  width: 100%;
+  margin-top: 8px;
+  padding: 14px 18px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--admin-accent);
+  color: #fff;
+  font-family: var(--font-display, 'Heebo', sans-serif);
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background .15s, transform .15s;
+}
+
+.admin-btn:hover { background: var(--admin-accent-hover); }
+.admin-btn:disabled { opacity: .65; cursor: wait; }
+
+.admin-alert {
+  margin-bottom: 16px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-size: .92rem;
+  line-height: 1.45;
+}
+
+.admin-alert--error {
+  background: #fef3f2;
+  color: var(--admin-danger);
+  border: 1px solid #fecdca;
+}
+
+.admin-alert--success {
+  background: #ecfdf3;
+  color: #067647;
+  border: 1px solid #abefc6;
+}
+
+.admin-shell {
+  min-height: 100vh;
+  background: #f3f6fc;
+  color: var(--admin-text);
+}
+
+.admin-topbar {
+  background: var(--admin-bg);
+  color: #f2f6fc;
+  border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+
+.admin-topbar__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.admin-topbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.admin-topbar__brand img { height: 40px; width: auto; }
+.admin-topbar__brand b { font-family: var(--font-display, 'Heebo', sans-serif); font-size: 1.05rem; }
+.admin-topbar__brand span { display: block; font-size: .78rem; color: #bccae6; margin-top: 2px; }
+
+.admin-topbar__user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: .9rem;
+  color: #bccae6;
+}
+
+.admin-topbar__logout {
+  padding: 9px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, .22);
+  background: transparent;
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+
+.admin-main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 24px 48px;
+}
+
+.admin-panel {
+  background: #fff;
+  border: 1px solid var(--admin-line);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(15, 28, 60, .06);
+}
+
+.admin-panel h2 {
+  font-family: var(--font-display, 'Heebo', sans-serif);
+  font-size: 1.35rem;
+  margin-bottom: 8px;
+}
+
+.admin-panel p { color: var(--admin-muted); }
+
+.admin-empty {
+  margin-top: 18px;
+  padding: 18px;
+  border: 1px dashed var(--admin-line);
+  border-radius: 12px;
+  background: #f8fafc;
+  color: var(--admin-muted);
+  font-size: .95rem;
+}

@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>עמותת אגוז — הסיירת הצפונית</title>
+<meta name="description" content="עמותת אגוז מאחדת את בוגרי הסיירת הצפונית, בני המשפחות והתומכים — קהילה אחת שעומדת זה לצד זה, הרבה אחרי השחרור." />
+<link rel="stylesheet" href="css/site.css" />
+<style>
+  /* ---- Hero ---- */
+  .hero { position: relative; min-height: clamp(620px, 92vh, 920px); display: flex; align-items: center; color: var(--on-dark); overflow: hidden; background: var(--olive-950); margin-top: -114px; padding-top: 114px; }
+  .hero__bg { position: absolute; inset: 0; z-index: 0; }
+  .hero__bg image-slot { width: 100%; height: 100%; --slot-bg: #20271a; }
+  .hero__scrim { position: absolute; inset: 0; z-index: 1; background:
+      linear-gradient(255deg, rgba(20,22,14,.30) 0%, rgba(20,22,14,.72) 52%, rgba(20,22,14,.94) 100%),
+      linear-gradient(to top, rgba(20,22,14,.86), rgba(20,22,14,.18) 46%); }
+  .hero__watermark { position: absolute; z-index: 1; inset-inline-start: -3%; bottom: -6%; width: min(46vw, 540px); opacity: .055; pointer-events: none; filter: none; }
+  .hero__inner { position: relative; z-index: 2; padding-block: clamp(60px, 10vh, 120px); }
+  .hero__content { max-width: 720px; }
+  .hero .display { color: #fff; margin-top: 22px; }
+  .hero .lead { color: var(--on-dark-2); margin-top: 22px; max-width: 560px; }
+  .hero__cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
+  .hero__scroll { position: absolute; z-index: 2; bottom: 26px; inset-inline-end: var(--gutter); display: flex; align-items: center; gap: 10px; font-size: .82rem; letter-spacing: .14em; color: var(--on-dark-3); font-family: var(--font-display); font-weight: 600; }
+
+  /* ---- Stats ---- */
+  .stats-wrap { margin-top: clamp(-22px, -1.8vw, -14px); position: relative; z-index: 5; }
+  .stats { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-xl); box-shadow: var(--sh-lg); display: grid; grid-template-columns: repeat(4, 1fr); overflow: hidden; }
+  .stat { padding: clamp(26px, 3vw, 40px) clamp(18px, 2vw, 30px); text-align: center; border-inline-start: 1px solid var(--line); }
+  .stat:first-child { border-inline-start: 0; }
+  .stat__num { font-family: var(--font-display); font-weight: 900; font-size: clamp(2.1rem, 3.6vw, 3.1rem); line-height: 1; color: var(--olive-800); letter-spacing: -.02em; }
+  .stat__num .plus { color: var(--brass-600); }
+  .stat__label { margin-top: 10px; font-weight: 600; color: var(--text-2); font-size: .96rem; }
+  @media (max-width: 760px) { .stats { grid-template-columns: repeat(2, 1fr); } .stat:nth-child(odd) { border-inline-start: 0; } .stat:nth-child(n+3) { border-top: 1px solid var(--line); } }
+
+  /* ---- About split ---- */
+  .split { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(36px, 5vw, 80px); align-items: center; }
+  @media (max-width: 900px) { .split { grid-template-columns: 1fr; } }
+  .about-media { position: relative; }
+  .about-media image-slot { width: 100%; aspect-ratio: 4/5; border-radius: var(--r-lg); --slot-bg: var(--olive-800); }
+  .video-embed { position: relative; display: block; width: 100%; aspect-ratio: 1/1; border-radius: var(--r-lg); overflow: hidden; cursor: pointer; background: var(--olive-900); box-shadow: var(--sh-lg); }
+  .video-embed img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease-out); }
+  .video-embed:hover img { transform: scale(1.06); }
+  .video-embed__scrim { position: absolute; inset: 0; background: linear-gradient(to top, rgba(20,22,14,.78), rgba(20,22,14,.12) 52%, rgba(20,22,14,.42)); }
+  .video-embed__chip { position: absolute; top: 16px; inset-inline-start: 16px; display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 100px; background: rgba(20,22,14,.55); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); color: var(--on-dark); font-family: var(--font-display); font-weight: 700; font-size: .82rem; border: 1px solid rgba(243,241,231,.18); }
+  .video-embed__chip svg { width: 13px; height: 13px; color: var(--brass-400); }
+  .video-embed__play { position: absolute; inset: 0; margin: auto; width: 84px; height: 84px; border-radius: 50%; background: var(--brass-500); color: var(--ink); display: grid; place-items: center; box-shadow: 0 12px 34px rgba(0,0,0,.45); transition: transform .25s var(--ease), background .2s; }
+  .video-embed__play svg { width: 32px; height: 32px; margin-inline-start: 4px; }
+  .video-embed:hover .video-embed__play, .video-embed:focus-visible .video-embed__play { transform: scale(1.09); background: var(--brass-400); }
+  @media (prefers-reduced-motion: reduce) { .video-embed img { transition: none; } }
+  .video-embed iframe { width: 100%; height: 100%; border: 0; display: block; }
+  .about-media__tag { position: absolute; inset-block-end: -22px; inset-inline-start: -22px; background: var(--olive-800); color: var(--on-dark); padding: 22px 26px; border-radius: var(--r); box-shadow: var(--sh-lg); max-width: 230px; }
+  .about-media__tag b { font-family: var(--font-display); font-size: 1.9rem; display: block; line-height: 1; color: var(--brass-400); }
+  .about-media__tag span { font-size: .88rem; color: var(--on-dark-2); }
+  .feature-list { display: grid; gap: 14px; margin-top: 26px; }
+  .feature-list li { display: flex; gap: 13px; align-items: flex-start; }
+  .feature-list .fi { flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%; background: var(--brass-200); color: var(--brass-800); display: grid; place-items: center; margin-top: 2px; }
+  .feature-list .fi svg { width: 14px; height: 14px; }
+  .feature-list b { font-weight: 700; }
+
+  /* ---- Goals ---- */
+  .goal { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg); padding: clamp(24px, 2.6vw, 34px); transition: transform .3s var(--ease-out), box-shadow .3s var(--ease-out), border-color .3s; }
+  .goal:hover { transform: translateY(-5px); box-shadow: var(--sh-lg); border-color: var(--line-2); }
+  .goal__ic { width: 54px; height: 54px; border-radius: var(--r); background: var(--olive-800); color: var(--brass-400); display: grid; place-items: center; margin-bottom: 18px; }
+  .goal__ic svg { width: 26px; height: 26px; }
+  .goal h3 { font-size: 1.22rem; margin-bottom: 8px; }
+  .goal p { color: var(--text-2); font-size: .97rem; }
+
+  /* ---- Projects feature ---- */
+  .project { position: relative; border-radius: var(--r-lg); overflow: hidden; min-height: 340px; display: flex; align-items: flex-end; color: var(--on-dark); }
+  .project image-slot { position: absolute; inset: 0; width: 100%; height: 100%; --slot-bg: var(--olive-800); }
+  .project__scrim { position: absolute; inset: 0; background: linear-gradient(to top, rgba(20,22,14,.92), rgba(20,22,14,.12) 70%); }
+  .project__body { position: relative; padding: clamp(24px, 2.6vw, 34px); }
+  .project__body h3 { color: #fff; font-size: 1.5rem; margin: 10px 0 8px; }
+  .project__body p { color: var(--on-dark-2); font-size: .98rem; max-width: 42ch; }
+  .project--tall { grid-row: span 2; }
+  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 1fr; gap: clamp(18px, 2vw, 26px); }
+  @media (max-width: 760px) { .projects-grid { grid-template-columns: 1fr; } .project--tall { grid-row: auto; } }
+
+  /* ---- Events ---- */
+  .event-row { display: flex; gap: 20px; align-items: center; padding: 20px; border: 1px solid var(--line); border-radius: var(--r); background: var(--card); transition: border-color .2s, box-shadow .2s, transform .2s; }
+  .event-row:hover { border-color: var(--line-2); box-shadow: var(--sh); }
+  .event-row__main { flex: 1; min-width: 0; }
+  .event-row__main h3 { font-size: 1.18rem; }
+  .event-row__meta { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 7px; color: var(--text-3); font-size: .9rem; }
+  .event-row__meta span { display: inline-flex; align-items: center; gap: 6px; }
+  .event-row__meta svg { width: 15px; height: 15px; opacity: .8; }
+
+  /* ---- Chair word ---- */
+  .chair { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(32px, 5vw, 70px); align-items: center; }
+  @media (max-width: 860px) { .chair { grid-template-columns: 1fr; } }
+  .chair__portrait { position: relative; }
+  .chair__portrait image-slot { width: 100%; max-width: 360px; aspect-ratio: 3/4; border-radius: var(--r-lg); --slot-bg: var(--olive-700); }
+  .chair__quote { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.4rem, 2.6vw, 2.05rem); line-height: 1.32; color: var(--on-dark); letter-spacing: -.01em; }
+  .chair__quote .q { color: var(--brass-400); }
+  .chair__sign { margin-top: 26px; display: flex; align-items: center; gap: 14px; }
+  .chair__sign b { font-family: var(--font-display); display: block; color: var(--on-dark); }
+  .chair__sign span { font-size: .9rem; color: var(--on-dark-3); }
+  .chair__sign .bar { width: 40px; height: 2px; background: var(--brass-500); }
+
+  /* ---- Yizkor teaser ---- */
+  .yizkor { position: relative; background: var(--ink); color: var(--on-dark); overflow: hidden; text-align: center; }
+  .yizkor__candle { width: 44px; height: 44px; margin: 0 auto 22px; color: var(--brass-400); }
+  .yizkor__names { display: flex; flex-wrap: wrap; gap: 10px 22px; justify-content: center; margin-top: 30px; max-width: 760px; margin-inline: auto; }
+  .yizkor__names span { font-family: var(--font-display); font-weight: 500; color: var(--on-dark-2); font-size: 1rem; }
+  .yizkor__names span::after { content: "·"; color: var(--brass-600); margin-inline-start: 11px; }
+  .yizkor__names span:last-child::after { content: ""; }
+
+  /* ---- Donate band ---- */
+  .donate-band { position: relative; background: linear-gradient(120deg, var(--olive-850), var(--olive-900)); color: var(--on-dark); overflow: hidden; }
+  .donate-band__deer { position: absolute; inset-inline-end: -4%; top: 50%; transform: translateY(-50%); width: min(40vw, 400px); opacity: .06; pointer-events: none; }
+  .donate-inner { position: relative; display: grid; grid-template-columns: 1.3fr 1fr; gap: 50px; align-items: center; }
+  @media (max-width: 860px) { .donate-inner { grid-template-columns: 1fr; } }
+  .jgive-card { background: var(--card); color: var(--text); border-radius: var(--r-lg); padding: clamp(24px, 2.6vw, 32px); box-shadow: var(--sh-lg); }
+  .jgive-card__head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
+  .jgive-logo { font-family: var(--font-display); font-weight: 800; font-size: 1.05rem; color: var(--olive-800); display: inline-flex; align-items: center; gap: 8px; }
+  .jgive-logo .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--brass-500); }
+  .toggle-pill { display: inline-flex; background: var(--paper-2); border-radius: 100px; padding: 4px; gap: 4px; }
+  .toggle-pill button { padding: 9px 16px; border-radius: 100px; font-family: var(--font-display); font-weight: 700; font-size: .9rem; color: var(--text-2); transition: all .18s var(--ease); }
+  .toggle-pill button.is-on { background: var(--olive-800); color: var(--on-dark); box-shadow: var(--sh-sm); }
+  .secure-note { display: flex; align-items: center; gap: 8px; font-size: .82rem; color: var(--text-3); margin-top: 16px; justify-content: center; }
+  .secure-note svg { width: 14px; height: 14px; }
+  /* ---- Give CTA (entry to JGive) ---- */
+  .give-cta { display: block; background: var(--card); color: var(--text); border: 1px solid var(--line); border-radius: var(--r-lg); padding: clamp(28px,3vw,38px); box-shadow: var(--sh-lg); text-align: center; position: relative; overflow: hidden; transition: transform .3s var(--ease-out), box-shadow .3s; }
+  .give-cta:hover { transform: translateY(-2px); box-shadow: var(--sh-lg); }
+  .give-cta__head { display: flex; justify-content: center; }
+  .give-cta__icon { width: 76px; height: 76px; border-radius: 50%; margin: 18px auto 16px; background: var(--olive-800); color: var(--brass-400); display: grid; place-items: center; }
+  .give-cta__icon svg { width: 38px; height: 38px; }
+  .give-cta__title { display: block; font-family: var(--font-display); font-weight: 900; font-size: clamp(1.55rem,2.4vw,1.95rem); color: var(--olive-800); letter-spacing: -.01em; }
+  .give-cta__sub { display: block; color: var(--text-2); margin-top: 10px; font-size: .98rem; max-width: 32ch; margin-inline: auto; }
+  .give-cta__btn { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 22px; padding: 17px 24px; border-radius: var(--r-sm); background: var(--brass-500); color: var(--ink); font-family: var(--font-display); font-weight: 800; font-size: 1.1rem; transition: background .2s var(--ease), gap .2s var(--ease); }
+  .give-cta:hover .give-cta__btn { background: var(--brass-400); gap: 14px; }
+  .give-cta__btn svg { width: 1.15em; height: 1.15em; }
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">דלג לתוכן הראשי</a>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" data-transparent="true">
+  <div class="utility-bar">
+    <div class="container">
+      <div class="util-left">
+        <span>עמותה רשומה 58-000-000-0</span>
+        <a href="mailto:office@egoz.org.il">office@egoz.org.il</a>
+      </div>
+      <div class="util-social" aria-label="רשתות חברתיות">
+        <a href="#" aria-label="פייסבוק"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3l.4-3H14V4.5c0-.9.3-1.5 1.6-1.5H17V.2C16.7.1 15.6 0 14.4 0 11.9 0 10 1.5 10 4.3V6H7v3h3v9h4V9z"/></svg></a>
+        <a href="#" aria-label="אינסטגרם"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="יוטיוב"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 7.5c-.3-1.2-1.2-2-2.4-2.3C18.7 4.7 12 4.7 12 4.7s-6.7 0-8.6.5C2.2 5.5 1.3 6.3 1 7.5.5 9.4.5 12 .5 12s0 2.6.5 4.5c.3 1.2 1.2 2 2.4 2.3 1.9.5 8.6.5 8.6.5s6.7 0 8.6-.5c1.2-.3 2.1-1.1 2.4-2.3.5-1.9.5-4.5.5-4.5s0-2.6-.5-4.5zM9.7 15.4V8.6l5.7 3.4-5.7 3.4z"/></svg></a>
+        <a href="#" aria-label="לינקדאין"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.4 8.65 22 11.3 22 14.3V21h-4v-6c0-1.4-.03-3.3-2-3.3-2 0-2.3 1.55-2.3 3.15V21h-4z"/></svg></a>
+      </div>
+    </div>
+  </div>
+  <div class="nav-bar">
+    <div class="container">
+      <a href="index.html" class="brand" aria-label="עמותת אגוז — דף הבית">
+        <span class="brand__logo"><img src="assets/egoz-logo.png" alt="" aria-hidden="true" /></span>
+        <span class="brand__txt"><b>אגוז</b><span>עמותת הבוגרים והמשפחות</span></span>
+      </a>
+      <nav class="nav-links" aria-label="ניווט ראשי">
+        <a href="index.html" class="is-active">בית</a>
+        <a href="join.html">בוגרים</a>
+        <a href="donate.html">תרומות</a>
+        <a href="events.html">אירועים</a>
+        <a href="benefits.html">הטבות</a>
+        <a href="yizkor.html">יזכור</a>
+        <a href="#contact">צור קשר</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="join.html" class="btn btn--ghost btn--sm">התחברות בוגרים</a>
+        <a href="donate.html" class="btn btn--accent btn--sm">לתרומה</a>
+        <button class="nav-toggle" aria-label="תפריט" aria-expanded="false" aria-controls="navDrawer"><span></span></button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- mobile drawer -->
+<div class="nav-drawer" id="navDrawer">
+  <div class="nav-drawer__scrim"></div>
+  <div class="nav-drawer__panel" role="dialog" aria-label="תפריט ניווט" aria-modal="true">
+    <div class="nav-drawer__head">
+      <span class="brand__txt"><b style="color:var(--on-dark);font-family:var(--font-display);font-size:1.3rem;">אגוז</b></span>
+      <button class="nav-drawer__close" aria-label="סגירה"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 5l10 10M15 5L5 15"/></svg></button>
+    </div>
+    <a class="m-link" href="index.html">בית</a>
+    <a class="m-link" href="join.html">בוגרים</a>
+    <a class="m-link" href="donate.html">תרומות</a>
+    <a class="m-link" href="events.html">אירועים</a>
+    <a class="m-link" href="benefits.html">הטבות לבוגרים</a>
+    <a class="m-link" href="yizkor.html">יזכור</a>
+    <a class="m-link" href="#contact">צור קשר</a>
+    <div style="display:flex;gap:10px;margin-top:20px;">
+      <a href="join.html" class="btn btn--ghost-light btn--sm btn--block">התחברות</a>
+      <a href="donate.html" class="btn btn--accent btn--sm btn--block">לתרומה</a>
+    </div>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero__bg">
+    <image-slot id="hero-bg" placeholder="גרור תמונת נושא — לוחמים / נוף הצפון" fit="cover"></image-slot>
+  </div>
+  <div class="hero__scrim"></div>
+  <img class="hero__watermark" src="assets/egoz-logo.png" alt="" aria-hidden="true" />
+  <div class="container hero__inner">
+    <div class="hero__content">
+      <span class="eyebrow eyebrow--on-dark" data-reveal>עמותת בוגרי אגוז · הסיירת הצפונית</span>
+      <h1 class="display" data-reveal data-delay="1">אחים לנשק.<br />משפחה לכל החיים.</h1>
+      <p class="lead" data-reveal data-delay="2">עמותת אגוז מאחדת את בוגרי הסיירת הצפונית, בני המשפחות והתומכים — קהילה אחת שממשיכה לעמוד זה לצד זה, הרבה אחרי השחרור.</p>
+      <div class="hero__cta" data-reveal data-delay="3">
+        <a href="join.html" class="btn btn--accent btn--lg">להצטרפות הבוגרים</a>
+        <a href="donate.html" class="btn btn--ghost-light btn--lg">תרמו לעמותה</a>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="section section--tight" style="padding-block: clamp(46px,5.5vw,66px) clamp(24px,3vw,36px);" aria-label="העמותה במספרים">
+  <div class="container">
+    <div class="ledger" data-reveal>
+      <div class="ledger__item"><div class="ledger__num">4,200</div><div class="ledger__label">בוגרים בקהילה</div></div>
+      <div class="ledger__item"><div class="ledger__num">120</div><div class="ledger__label">מיזמים ופרויקטים</div></div>
+      <div class="ledger__item"><div class="ledger__num">1,500</div><div class="ledger__label">חברי עמותה</div></div>
+      <div class="ledger__item"><div class="ledger__num">21</div><div class="ledger__label">שנות פעילות</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="section" id="about" style="padding-top: clamp(40px,4.5vw,60px);">
+  <div class="container">
+    <div class="split">
+      <div data-reveal>
+        <div class="kicker-row"><span class="kicker-row__no">01</span><span class="kicker-row__txt">אודות היחידה</span><span class="kicker-row__line"></span></div>
+        <h2 class="h2" style="margin-top:6px;">הסיירת הצפונית — חוד החנית בזירה הצפונית</h2>
+        <p class="lead" style="margin-top:18px;">אגוז היא יחידת סיור ולוחמה מובחרת, שהתמחתה לאורך השנים בלחימה בשטח הררי ומורכב ובלוחמת גרילה בגזרה הצפונית. מאחורי כל לוחם עומדים ערכים של רעות, מקצועיות בלתי מתפשרת ונאמנות מוחלטת.</p>
+        <ul class="feature-list">
+          <li><span class="fi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg></span><div><b>רעות בלי תנאים.</b> מי שעבר את אגוז יודע — לא משאירים אף אחד מאחור, גם לא עשרות שנים אחרי.</div></li>
+          <li><span class="fi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg></span><div><b>מורשת חיה.</b> שימור הסיפור, ההיסטוריה והדמויות שעיצבו את היחידה ואת רוחה.</div></li>
+          <li><span class="fi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg></span><div><b>אחריות הדדית.</b> מהשירות הפעיל ועד החיים האזרחיים — הקהילה ממשיכה ללוות ולתמוך.</div></li>
+        </ul>
+        <a href="#about" class="link-arrow" style="margin-top:24px;display:inline-flex;">קראו עוד על היחידה <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></a>
+      </div>
+      <div class="about-media" data-reveal data-delay="1">
+        <div class="video-embed" id="aboutVideo" data-yt="1UJ_xoOkxjM" role="button" tabindex="0" aria-label="נגן סרטון על הסיירת הצפונית">
+          <img src="https://img.youtube.com/vi/1UJ_xoOkxjM/hqdefault.jpg" alt="סרטון על הסיירת הצפונית" loading="lazy" />
+          <span class="video-embed__scrim"></span>
+          <span class="video-embed__chip"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>צפו בסיפור היחידה</span>
+          <span class="video-embed__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="about-media__tag"><b>1995</b><span>שנת הקמת היחידה ותחילת המסורת</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GOALS ============ -->
+<section class="section paper-2" id="goals">
+  <div class="container">
+    <div class="section-head" style="max-width:680px;">
+      <div class="kicker-row"><span class="kicker-row__no">02</span><span class="kicker-row__txt">מטרות העמותה</span><span class="kicker-row__line"></span></div>
+      <h2 class="h2" style="margin-top:6px;">מגילת היסוד — ששת צירי הפעולה</h2>
+      <p class="lead" style="margin-top:14px;">העמותה פועלת בשישה צירים מרכזיים, מהרגע שהלוחם משתחרר ולאורך כל החיים.</p>
+    </div>
+    <div class="charter" data-reveal>
+      <div class="charter__item"><div class="charter__no">01</div><h3>חיזוק הקהילה</h3><p>מפגשים, כנסים ומסורות שמחברים בין דורות של בוגרים ושומרים על הקשר חי לאורך השנים.</p></div>
+      <div class="charter__item"><div class="charter__no">02</div><h3>תמיכה במשפחות ובנפגעים</h3><p>ליווי, סיוע וגב למשפחות השכולות, לנפגעי הפעולות ולמי שנושא את הצלקות.</p></div>
+      <div class="charter__item"><div class="charter__no">03</div><h3>הכוונה ותעסוקה</h3><p>מלגות, ליווי בשחרור, הכוון לאקדמיה ולקריירה ולוח דרושים פנים-קהילתי.</p></div>
+      <div class="charter__item"><div class="charter__no">04</div><h3>שימור המורשת</h3><p>תיעוד ההיסטוריה, סיפורי הלוחמים והדמויות שעיצבו את רוח היחידה.</p></div>
+      <div class="charter__item"><div class="charter__no">05</div><h3>הנצחה וזיכרון</h3><p>שמירה על זכרם של חללי היחידה והנחלת מורשתם לדורות הבאים.</p></div>
+      <div class="charter__item"><div class="charter__no">06</div><h3>רווחה ובריאות הנפש</h3><p>מענה נפשי וחברתי, קבוצות תמיכה וסיוע למי שזקוק לכתף בכל שלב בחיים.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section class="section" id="projects">
+  <div class="container">
+    <div class="section-head" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:18px;max-width:none;">
+      <div style="max-width:620px;">
+        <div class="kicker-row"><span class="kicker-row__no">03</span><span class="kicker-row__txt">מיזמים ופרויקטים</span><span class="kicker-row__line"></span></div>
+        <h2 class="h2" style="margin-top:6px;">הפעילות שלנו בשטח</h2>
+      </div>
+      <a href="#projects" class="link-arrow">לכל הפרויקטים <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></a>
+    </div>
+    <div class="projects-grid" data-reveal>
+      <article class="project project--tall">
+        <image-slot id="project-1" src="assets/project-1.png" placeholder="פרויקט מרכזי" fit="cover"></image-slot>
+        <div class="project__scrim"></div>
+        <div class="project__body">
+          <span class="badge badge--brass">דגל</span>
+          <h3>קרן המלגות של אגוז</h3>
+          <p>מאות מלגות הוענקו לבוגרים בדרכם להשכלה גבוהה ולשיקום אזרחי, כדי שאף אחד לא יישאר מאחור מסיבות כלכליות.</p>
+        </div>
+      </article>
+      <article class="project">
+        <image-slot id="project-2" src="assets/project-2.png" placeholder="פרויקט" fit="cover"></image-slot>
+        <div class="project__scrim"></div>
+        <div class="project__body">
+          <h3>בית אגוז</h3>
+          <p>מרחב קהילתי שמרכז את פעילות העמותה, האירועים והמורשת.</p>
+        </div>
+      </article>
+      <article class="project">
+        <image-slot id="project-3" src="assets/project-3.png" placeholder="פרויקט" fit="cover"></image-slot>
+        <div class="project__scrim"></div>
+        <div class="project__body">
+          <h3>מיזם השיקום והרווחה</h3>
+          <p>ליווי אישי ונפשי לפצועים ולמשפחות לאורך כל הדרך.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHAIR WORD ============ -->
+<section class="section dark tex-topo">
+  <div class="container">
+    <div class="chair">
+      <div class="chair__portrait" data-reveal>
+        <image-slot id="chair-portrait" placeholder="דיוקן היו״ר / מנכ״לית" fit="cover"></image-slot>
+      </div>
+      <div data-reveal data-delay="1">
+        <div class="kicker-row kicker-row--light"><span class="kicker-row__no">04</span><span class="kicker-row__txt">דבר היו״ר</span><span class="kicker-row__line"></span></div>
+        <p class="chair__quote" style="margin-top:20px;"><span class="q">”</span>היחידה לימדה אותנו שאחריות לא נגמרת כשמורידים את המדים. העמותה הזו היא ההוכחה — אנחנו ממשיכים להיות שם זה בשביל זה, בשמחות ובקשות, בדיוק כמו ביום הראשון.<span class="q">“</span></p>
+        <div class="chair__sign">
+          <span class="bar" aria-hidden="true"></span>
+          <div><b>שם היו״ר</b><span>יו״ר עמותת אגוז · בוגר היחידה</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEWS ============ -->
+<section class="section" id="news">
+  <div class="container">
+    <div class="section-head" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:18px;max-width:none;">
+      <div>
+        <div class="kicker-row"><span class="kicker-row__no">05</span><span class="kicker-row__txt">חדשות ועדכונים</span><span class="kicker-row__line"></span></div>
+        <h2 class="h2" style="margin-top:6px;">מה חדש בעמותה</h2>
+      </div>
+      <a href="blog.html" class="link-arrow">לכל הכתבות <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></a>
+    </div>
+    <div class="grid cols-3">
+      <article class="card card--hover" data-reveal>
+        <div class="card__media"><image-slot id="news-1" placeholder="תמונת כתבה" fit="cover"></image-slot></div>
+        <div class="card__body">
+          <span class="card__kicker">אירועים</span>
+          <h3 class="card__title">כנס הבוגרים השנתי — נרשמים עכשיו</h3>
+          <p class="card__excerpt">מאות בוגרים, מספר דורות ומסורת אחת. כל הפרטים וההרשמה למפגש המרכזי של השנה.</p>
+          <div class="card__foot"><a href="events.html" class="link-arrow">קראו עוד <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></a></div>
+        </div>
+      </article>
+      <article class="card card--hover" data-reveal data-delay="1">
+        <div class="card__media"><image-slot id="news-2" placeholder="תמונת כתבה" fit="cover"></image-slot></div>
+        <div class="card__body">
+          <span class="card__kicker">קהילה</span>
+          <h3 class="card__title">פתחנו את קרן המלגות לשנת הלימודים</h3>
+          <p class="card__excerpt">בוגרים שממשיכים ללמוד ולהתפתח — אנחנו כאן כדי לתמוך. הגשת מועמדות פתוחה.</p>
+          <div class="card__foot"><a href="blog.html" class="link-arrow">קראו עוד <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></a></div>
+        </div>
+      </article>
+      <article class="card card--hover" data-reveal data-delay="2">
+        <div class="card__media"><image-slot id="news-3" placeholder="תמונת כתבה" fit="cover"></image-slot></div>
+        <div class="card__body">
+          <span class="card__kicker">מורשת</span>
+          <h3 class="card__title">פרויקט תיעוד הדורות יוצא לדרך</h3>
+          <p class="card__excerpt">אוספים את הסיפורים, הדמויות והרגעים שעשו את אגוז למה שהיא. הצטרפו לתיעוד.</p>
+          <div class="card__foot"><a href="blog.html" class="link-arrow">קראו עוד <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></a></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EVENTS ============ -->
+<section class="section paper-2" id="events">
+  <div class="container">
+    <div class="split" style="align-items:start;">
+      <div data-reveal style="position:sticky;top:120px;">
+        <div class="kicker-row"><span class="kicker-row__no">06</span><span class="kicker-row__txt">לוח אירועים</span><span class="kicker-row__line"></span></div>
+        <h2 class="h2" style="margin-top:6px;">נפגשים. זוכרים. חוגגים יחד.</h2>
+        <p class="lead" style="margin-top:16px;">מימי עיון וטקסי זיכרון ועד מפגשי דורות וערבי גיבוש — תמיד יש סיבה להיפגש.</p>
+        <a href="events.html" class="btn btn--ghost mt-m">לכל האירועים</a>
+      </div>
+      <div class="grid" style="gap:14px;" data-reveal data-delay="1">
+        <a href="events.html" class="event-row">
+          <div class="datechip"><div class="datechip__d">12</div><div class="datechip__m">יולי</div></div>
+          <div class="event-row__main">
+            <h3>כנס הבוגרים השנתי</h3>
+            <div class="event-row__meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> בית אגוז</span><span>16:00</span></div>
+          </div>
+          <span class="badge badge--brass">הרשמה פתוחה</span>
+        </a>
+        <a href="events.html" class="event-row">
+          <div class="datechip"><div class="datechip__d">02</div><div class="datechip__m">אוג׳</div></div>
+          <div class="event-row__main">
+            <h3>טקס יום הזיכרון ליחידה</h3>
+            <div class="event-row__meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> אנדרטת היחידה</span><span>10:00</span></div>
+          </div>
+        </a>
+        <a href="events.html" class="event-row">
+          <div class="datechip"><div class="datechip__d">19</div><div class="datechip__m">ספט׳</div></div>
+          <div class="event-row__main">
+            <h3>ערב גיבוש למשתחררים הטריים</h3>
+            <div class="event-row__meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> מרכז הארץ</span><span>19:30</span></div>
+          </div>
+          <span class="badge">בקרוב</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ YIZKOR TEASER ============ -->
+<section class="section yizkor" id="yizkor-teaser">
+  <div class="container container--narrow">
+    <svg class="yizkor__candle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 2c2 3 3 4.5 3 6a3 3 0 11-6 0c0-1.5 1-3 3-6z"/><path d="M9 13h6v8H9z"/><path d="M7 21h10"/></svg>
+    <span class="eyebrow eyebrow--on-dark eyebrow--center">יזכור</span>
+    <h2 class="h2" style="color:var(--on-dark);margin-top:14px;">לזכר אחינו הלוחמים שנפלו</h2>
+    <p class="lead" style="color:var(--on-dark-2);margin-top:16px;max-width:60ch;margin-inline:auto;">הם יצאו ראשונים, נשארו אחרונים, ושילמו את המחיר היקר מכול. אנו נושאים את זכרם בכל מעשינו — ומבטיחים שלא יישכחו לעולם.</p>
+    <div class="yizkor__names">
+      <span>זכרם</span><span>בלבנו</span><span>תמיד</span>
+    </div>
+    <a href="yizkor.html" class="btn btn--ghost-light btn--lg" style="margin-top:34px;">לעמודי ההנצחה</a>
+  </div>
+</section>
+
+<!-- ============ DONATE BAND ============ -->
+<section class="section donate-band" id="donate">
+  <img class="donate-band__deer" src="assets/egoz-logo.png" alt="" aria-hidden="true" />
+  <div class="container">
+    <div class="donate-inner">
+      <div data-reveal>
+        <span class="eyebrow eyebrow--on-dark">שגרירי אגוז</span>
+        <h2 class="h2" style="color:var(--on-dark);margin-top:14px;">כל תרומה היא עוד יד מושטת לחבר</h2>
+        <p class="lead" style="color:var(--on-dark-2);margin-top:16px;">התרומה שלכם מממנת מלגות, תמיכה במשפחות, שיקום נפגעים ושימור המורשת. הצטרפו למעגל "שגרירי אגוז" והיו שותפים מלאים בשליחות.</p>
+        <div class="flex gap-m wrap mt-m">
+          <a href="donate.html" class="btn btn--accent btn--lg">להצטרפות כשגריר/ה</a>
+          <a href="#" class="btn btn--ghost-light btn--lg">לחנות העמותה</a>
+        </div>
+      </div>
+      <a class="give-cta" href="https://www.jgive.com/new/he/ils/donation-targets/5545" target="_blank" rel="noopener" data-reveal data-delay="1" aria-label="מעבר לתרומה מאובטחת ב-JGive">
+        <span class="give-cta__head"><span class="jgive-logo"><span class="dot" aria-hidden="true"></span>תרומה מאובטחת · JGive</span></span>
+        <span class="give-cta__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 20.3l-1.45-1.32C5.4 14.36 2 11.28 2 7.5 2 4.42 4.42 2 7.5 2c1.74 0 3.41.81 4.5 2.09C13.09 2.81 14.76 2 16.5 2 19.58 2 22 4.42 22 7.5c0 3.78-3.4 6.86-8.55 11.49L12 20.3z"/></svg></span>
+        <span class="give-cta__title">בואו לתת יד</span>
+        <span class="give-cta__sub">בוחרים סכום ותורמים בעמוד המאובטח של JGive — כל שקל מגיע ישיר לעמותה.</span>
+        <span class="give-cta__btn">לתרומה מאובטחת<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></span>
+        <span class="secure-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg> תשלום מאובטח · קבלה לפי סעיף 46</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer" id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="flex ai-c gap-s" style="margin-bottom:18px;">
+          <img class="footer-brand__logo" src="assets/egoz-logo.png" alt="סמל אגוז" />
+          <div><b style="font-family:var(--font-display);font-weight:900;font-size:1.4rem;color:var(--on-dark);display:block;line-height:1;">אגוז</b><span style="font-size:.82rem;color:var(--on-dark-3);">הסיירת הצפונית</span></div>
+        </div>
+        <p style="font-size:.96rem;max-width:34ch;">עמותת בוגרי אגוז — קהילה אחת של לוחמים, משפחות ותומכים, שעומדת זה לצד זה הרבה אחרי השחרור.</p>
+        <a href="donate.html" class="btn btn--accent btn--sm" style="margin-top:20px;">תרמו לעמותה</a>
+      </div>
+      <div class="footer-col">
+        <h4>ניווט</h4>
+        <ul>
+          <li><a href="index.html">בית</a></li>
+          <li><a href="#about">אודות היחידה</a></li>
+          <li><a href="join.html">הצטרפות בוגרים</a></li>
+          <li><a href="events.html">אירועים</a></li>
+          <li><a href="blog.html">חדשות וכתבות</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>קהילה</h4>
+        <ul>
+          <li><a href="benefits.html">הטבות לבוגרים</a></li>
+          <li><a href="jobs.html">לוח דרושים</a></li>
+          <li><a href="pros.html">אינדקס בעלי מקצוע</a></li>
+          <li><a href="donate.html">שגרירי אגוז</a></li>
+          <li><a href="yizkor.html">יזכור</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>צרו קשר</h4>
+        <ul>
+          <li><a href="mailto:office@egoz.org.il">office@egoz.org.il</a></li>
+          <li><a href="tel:+97200000000">03־0000000</a></li>
+          <li><span>בית אגוז, ישראל</span></li>
+        </ul>
+        <div class="footer-social" style="margin-top:18px;" aria-label="רשתות חברתיות">
+          <a href="#" aria-label="פייסבוק"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3l.4-3H14V4.5c0-.9.3-1.5 1.6-1.5H17V.2C16.7.1 15.6 0 14.4 0 11.9 0 10 1.5 10 4.3V6H7v3h3v9h4V9z"/></svg></a>
+          <a href="#" aria-label="אינסטגרם"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="יוטיוב"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 7.5c-.3-1.2-1.2-2-2.4-2.3C18.7 4.7 12 4.7 12 4.7s-6.7 0-8.6.5C2.2 5.5 1.3 6.3 1 7.5.5 9.4.5 12 .5 12s0 2.6.5 4.5c.3 1.2 1.2 2 2.4 2.3 1.9.5 8.6.5 8.6.5s6.7 0 8.6-.5c1.2-.3 2.1-1.1 2.4-2.3.5-1.9.5-4.5.5-4.5s0-2.6-.5-4.5zM9.7 15.4V8.6l5.7 3.4-5.7 3.4z"/></svg></a>
+          <a href="#" aria-label="לינקדאין"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.4 8.65 22 11.3 22 14.3V21h-4v-6c0-1.4-.03-3.3-2-3.3-2 0-2.3 1.55-2.3 3.15V21h-4z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year">2026</span> עמותת אגוז — הסיירת הצפונית · כל הזכויות שמורות</span>
+      <div class="flex gap-m wrap">
+        <a href="#" style="color:var(--on-dark-3);">הצהרת נגישות</a>
+        <a href="#" style="color:var(--on-dark-3);">מדיניות פרטיות</a>
+        <a href="#" style="color:var(--on-dark-3);">תקנון</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="image-slot.js"></script>
+<script src="js/site.js"></script>
+<script>
+  (function () {
+    var av = document.getElementById('aboutVideo');
+    if (!av) return;
+    function play() {
+      var id = av.getAttribute('data-yt');
+      av.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1" title="סרטון על הסיירת הצפונית" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+      av.style.cursor = 'default';
+    }
+    av.addEventListener('click', play);
+    av.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); } });
+  })();
+</script>
+</body>
+</html>
