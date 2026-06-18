@@ -1,0 +1,25 @@
+{
+  "fallen": [
+    {
+      "name": { "he": "שם הנופל ז״ל", "en": "Fallen Name z\"l" },
+      "fallDate": { "he": "7 באוקטובר 2023", "en": "October 7, 2023" },
+      "fallDateISO": "2023-10-07",
+      "image": "",
+      "memorialUrl": "https://egoz.org.il"
+    },
+    {
+      "name": { "he": "שם הנופל ז״ל", "en": "Fallen Name z\"l" },
+      "fallDate": { "he": "12 בנובמבר 2023", "en": "November 12, 2023" },
+      "fallDateISO": "2023-11-12",
+      "image": "",
+      "memorialUrl": "https://egoz.org.il"
+    },
+    {
+      "name": { "he": "שם הנופל ז״ל", "en": "Fallen Name z\"l" },
+      "fallDate": { "he": "15 בינואר 2024", "en": "January 15, 2024" },
+      "fallDateISO": "2024-01-15",
+      "image": "",
+      "memorialUrl": "https://egoz.org.il"
+    }
+  ]
+}

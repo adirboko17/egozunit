@@ -15,10 +15,18 @@
     dictionaries[pageId] = dict;
   }
 
+  function registerShared(dict) {
+    dictionaries._shared = dict;
+  }
+
   function t(pageId, key, lang) {
+    var l = lang || getLang();
     var page = dictionaries[pageId] || {};
-    var bucket = page[lang || getLang()] || {};
-    return bucket[key] != null ? bucket[key] : null;
+    var bucket = page[l] || {};
+    if (bucket[key] != null) return bucket[key];
+    var shared = dictionaries._shared || {};
+    var sb = shared[l] || {};
+    return sb[key] != null ? sb[key] : null;
   }
 
   function apply(pageId) {
@@ -95,6 +103,7 @@
 
   window.EgozI18n = {
     register: register,
+    registerShared: registerShared,
     getLang: getLang,
     setLang: setLang,
     apply: apply,

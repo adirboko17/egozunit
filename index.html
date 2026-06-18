@@ -353,9 +353,15 @@
   .memorial__candle { width: 40px; height: 40px; color: var(--brass-400); margin-bottom: 18px; }
 
   /* ---- Delegations ---- */
-  .deleg { position: relative; min-height: 380px; display: flex; align-items: flex-end; color: var(--on-dark); border-radius: var(--r-lg); overflow: hidden; }
+  .deleg { position: relative; min-height: 380px; display: flex; align-items: center; justify-content: flex-start; color: var(--on-dark); border-radius: var(--r-lg); overflow: hidden; }
   .deleg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-  .deleg__scrim { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,20,46,.92), rgba(10,20,46,.25) 70%); }
+  .deleg__scrim {
+    position: absolute; inset: 0;
+    background: linear-gradient(to left, rgba(10,20,46,.94) 0%, rgba(10,20,46,.78) 42%, rgba(10,20,46,.42) 68%, rgba(10,20,46,.14) 82%, transparent 96%);
+  }
+  html[dir="ltr"] .deleg__scrim {
+    background: linear-gradient(to right, rgba(10,20,46,.94) 0%, rgba(10,20,46,.78) 42%, rgba(10,20,46,.42) 68%, rgba(10,20,46,.14) 82%, transparent 96%);
+  }
   .deleg__body { position: relative; padding: clamp(28px, 3vw, 44px); max-width: 560px; }
   .deleg__body h3 { color: #fff; font-size: clamp(1.5rem, 2.4vw, 2rem); margin-bottom: 10px; }
   .deleg__body p { color: var(--on-dark-2); }
@@ -426,9 +432,9 @@
           <nav class="nav-links" data-i18n-aria="nav.aria" aria-label="ניווט ראשי">
             <a href="index.html" class="is-active" data-i18n="nav.home">בית</a>
             <a href="unit.html" data-i18n="nav.unit">יחידת אגוז</a>
-            <a href="#wounded" data-i18n="nav.wounded">פצועים</a>
-            <a href="#memorial" data-i18n="nav.memorial">הנצחה</a>
-            <a href="#programs" data-i18n="nav.alumni">בוגרים</a>
+            <a href="foundation.html" data-i18n="nav.foundation">עמותה</a>
+            <a href="yizkor.html" data-i18n="nav.yizkor">יזכור</a>
+            <a href="shop.html" data-i18n="nav.shop">חנות</a>
             <a href="#contact" data-i18n="nav.contact">צרו קשר</a>
           </nav>
           <div class="nav-cta">
@@ -470,9 +476,9 @@
     </div>
     <a class="m-link" href="unit.html" data-i18n="nav.unit">יחידת אגוז</a>
     <a class="m-link" href="#goals" data-i18n="nav.goals">המטרות שלנו</a>
-    <a class="m-link" href="#wounded" data-i18n="nav.wounded">פצועים</a>
-    <a class="m-link" href="#memorial" data-i18n="nav.memorial">הנצחה</a>
-    <a class="m-link" href="#programs" data-i18n="nav.alumni">בוגרים</a>
+    <a class="m-link" href="foundation.html" data-i18n="nav.foundation">עמותה</a>
+    <a class="m-link" href="yizkor.html" data-i18n="nav.yizkor">יזכור</a>
+    <a class="m-link" href="shop.html" data-i18n="nav.shop">חנות</a>
     <a class="m-link" href="#contact" data-i18n="nav.contact">צרו קשר</a>
     <div style="display:flex;gap:10px;margin-top:20px;">
       <a href="#join" class="btn btn--ghost-light btn--sm btn--block" data-i18n="nav.join">חבר עמותה</a>
@@ -643,7 +649,7 @@
       <h2 class="h2" style="color:var(--on-dark);margin-top:6px;" data-i18n="memorial.title">אתר ההנצחה בקלעת נמרוד</h2>
       <p class="lead" style="color:var(--on-dark-2);margin-top:16px;" data-i18n="memorial.lead">אתר ההנצחה ממוקם בלב שמורת החרמון, ובמרכזו אמפיתיאטרון שאבני הזיכרון מקיפות אותו. כל אנדרטה קודדה בקוד שניתן לסרוק — ומוביל לעמוד נחיתה של החלל, להכיר, לקרוא, לצפות בסרטונים ולהדליק נר לזכרו.</p>
       <div class="flex gap-m wrap mt-m">
-        <a href="#memorial" class="btn btn--accent" data-i18n="memorial.btn1">חללי יחידת אגוז</a>
+        <a href="yizkor.html" class="btn btn--accent" data-i18n="memorial.btn1">יזכור — חללי היחידה</a>
       </div>
     </div>
     <div class="memorial__media" data-reveal="from-end" data-delay="1">
@@ -652,24 +658,8 @@
   </div>
 </section>
 
-<!-- ============ DELEGATIONS ABROAD (משלחות) ============ -->
-<section class="section" id="delegations">
-  <div class="container">
-    <div class="deleg" data-reveal="scale-up">
-      <img src="assets/diaspora-rally.jpg" data-i18n-alt="deleg.img.alt" alt="עצרת הזדהות עם דגלי ישראל בחו״ל" />
-      <div class="deleg__scrim"></div>
-      <div class="deleg__body">
-        <span class="badge badge--brass" data-i18n="deleg.badge">משלחות אגוז לחו״ל</span>
-        <h3 style="margin-top:14px;" data-i18n="deleg.title">מביאים את הסיפור של אגוז אל הקהילות בעולם</h3>
-        <p data-i18n="deleg.text">רוצים להזמין אותנו למשלחת אליכם? בואו נדבר — ונבנה יחד מפגש שמחבר בין הלוחמים, הבוגרים והתומכים בכל מקום.</p>
-        <a href="#contact" class="btn btn--accent mt-m" data-i18n="deleg.btn">דברו איתנו</a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ============ MEDIA (עלינו בתקשורת) ============ -->
-<section class="section paper-2" id="media" data-scroll-panel>
+<section class="section" id="media" data-scroll-panel>
   <div class="container">
     <div class="section-head" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:18px;max-width:none;">
       <div data-reveal>
@@ -720,6 +710,22 @@
   </div>
 </section>
 
+<!-- ============ DELEGATIONS ABROAD (משלחות) ============ -->
+<section class="section" id="delegations">
+  <div class="container">
+    <div class="deleg" data-reveal="scale-up">
+      <img src="assets/diaspora-rally.jpg" data-i18n-alt="deleg.img.alt" alt="עצרת הזדהות עם דגלי ישראל בחו״ל" />
+      <div class="deleg__scrim"></div>
+      <div class="deleg__body">
+        <span class="badge badge--brass" data-i18n="deleg.badge">משלחות אגוז לחו״ל</span>
+        <h3 style="margin-top:14px;" data-i18n="deleg.title">מביאים את הסיפור של אגוז אל הקהילות בעולם</h3>
+        <p data-i18n="deleg.text">רוצים להזמין אותנו למשלחת אליכם? בואו נדבר — ונבנה יחד מפגש שמחבר בין הלוחמים, הבוגרים והתומכים בכל מקום.</p>
+        <a href="#contact" class="btn btn--accent mt-m" data-i18n="deleg.btn">דברו איתנו</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 </main>
 
 <!-- ============ FOOTER ============ -->
@@ -739,9 +745,9 @@
         <ul>
           <li><a href="unit.html" data-i18n="nav.unit">יחידת אגוז</a></li>
           <li><a href="#goals" data-i18n="nav.goals">המטרות שלנו</a></li>
-          <li><a href="#wounded" data-i18n="nav.wounded">פצועים</a></li>
-          <li><a href="#memorial" data-i18n="nav.memorial">הנצחה</a></li>
-          <li><a href="#programs" data-i18n="nav.alumni">בוגרים</a></li>
+          <li><a href="foundation.html" data-i18n="nav.foundation">עמותה</a></li>
+          <li><a href="yizkor.html" data-i18n="nav.yizkor">יזכור</a></li>
+          <li><a href="shop.html" data-i18n="nav.shop">חנות</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -782,8 +788,10 @@
 
 <script src="image-slot.js"></script>
 <script src="js/i18n.js"></script>
+<script src="js/i18n-shared.js"></script>
 <script src="js/i18n-home.js"></script>
 <script src="js/site.js"></script>
+<script src="js/nav-foundation.js"></script>
 <script src="js/tweaks.js"></script>
 </body>
 </html>

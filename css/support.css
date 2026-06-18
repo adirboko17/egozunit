@@ -1,0 +1,162 @@
+/* Support for injured — sub-page under foundation */
+
+.support-page { background: var(--paper); }
+
+.hero--support .hero__bg img { object-position: 50% 40%; }
+
+.support-crumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: clamp(20px, 2.5vw, 28px);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: .88rem;
+  color: var(--text-3);
+}
+.support-crumb a { color: var(--olive-700); }
+.support-crumb a:hover { color: var(--olive-800); }
+.support-crumb svg { width: 14px; height: 14px; opacity: .55; }
+html[dir="ltr"] .support-crumb svg { transform: scaleX(-1); }
+
+.support-story p + p { margin-top: 14px; color: var(--text-2); line-height: 1.65; }
+.support-story .lead { color: var(--text); }
+.support-story strong { color: var(--olive-800); font-weight: 700; }
+
+.support-activities {
+  margin-top: clamp(28px, 3.5vw, 40px);
+  padding-top: clamp(24px, 3vw, 32px);
+  border-top: 1px solid var(--line);
+}
+.support-activities__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--olive-800);
+  margin-bottom: 16px;
+}
+.support-activities__list {
+  display: grid;
+  gap: 10px;
+}
+.support-activities__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  font-size: .95rem;
+  color: var(--text-2);
+  line-height: 1.55;
+}
+.support-activities__list li::before {
+  content: "";
+  flex: 0 0 8px;
+  width: 8px;
+  height: 8px;
+  margin-top: 8px;
+  border-radius: 50%;
+  background: var(--brass-500);
+}
+
+.support-programs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(16px, 1.8vw, 22px);
+}
+@media (max-width: 720px) { .support-programs { grid-template-columns: 1fr; } }
+.support-prog {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: clamp(22px, 2.4vw, 28px);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform .3s var(--ease-out), box-shadow .3s, border-color .25s;
+}
+.support-prog:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sh-lg);
+  border-color: var(--line-2);
+}
+.support-prog.is-soon { opacity: .88; }
+.support-prog__ic {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--r);
+  background: var(--olive-800);
+  color: var(--brass-400);
+  display: grid;
+  place-items: center;
+  margin-bottom: 14px;
+}
+.support-prog__ic svg { width: 22px; height: 22px; }
+.support-prog__tag {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  color: var(--brass-700);
+  margin-bottom: 6px;
+}
+.support-prog h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  line-height: 1.3;
+  color: var(--text);
+}
+.support-prog p {
+  margin-top: 10px;
+  font-size: .94rem;
+  color: var(--text-2);
+  line-height: 1.6;
+  flex: 1;
+}
+.support-prog__link {
+  margin-top: 16px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: .86rem;
+  color: var(--brass-700);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.support-prog__link:hover { color: var(--olive-800); }
+html[dir="ltr"] .support-prog__link svg { transform: scaleX(-1); }
+.support-prog__soon {
+  margin-top: 16px;
+  font-size: .84rem;
+  font-weight: 600;
+  color: var(--text-3);
+}
+
+.support-cta {
+  text-align: center;
+  max-width: 560px;
+  margin-inline: auto;
+}
+.support-cta .h2 { color: var(--on-dark); }
+.support-cta .lead { color: var(--on-dark-2); margin-top: 12px; }
+.support-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: clamp(24px, 3vw, 32px);
+}
+.support-cta__contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 28px;
+  justify-content: center;
+  margin-top: 20px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: .95rem;
+}
+.support-cta__contact a { color: var(--brass-400); }
+.support-cta__contact a:hover { color: var(--on-dark); }
