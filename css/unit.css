@@ -59,7 +59,16 @@ body.unit-page .unit-main > .section.unit-section--plain .section-head .lead {
 
 /* Panel variants */
 .unit-panel--card { background: var(--card); }
-.unit-panel--paper { background: var(--paper-2); }
+.unit-panel--paper { background: transparent; }
+
+/* Paper panels — on site background, no floating panel */
+body.unit-page .unit-main > .section.unit-panel--paper {
+  margin-inline: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  overflow: visible;
+}
 .unit-panel--blue { background: var(--olive-900); color: var(--on-dark); }
 .unit-panel--ink { background: var(--ink); color: var(--on-dark); }
 
@@ -200,7 +209,7 @@ body.unit-page .unit-main .section-head .lead {
   height: 12px;
   border-radius: 50%;
   background: var(--brass-500);
-  box-shadow: 0 0 0 4px var(--paper-2);
+  box-shadow: 0 0 0 4px var(--paper);
 }
 
 html[dir="rtl"] .unit-timeline__item::before { transform: translateY(-50%); }

@@ -204,7 +204,6 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); font-weight: 800; line-he
 .section.dark,
 .section.darker,
 .section.donate-band,
-.section.paper-2,
 .section.yizkor {
   margin-inline: var(--surface-inset);
   border-radius: var(--surface-radius);
@@ -232,9 +231,17 @@ main > .section.swords,
 main > .section.dark,
 main > .section.darker,
 main > .section.donate-band,
-main > .section.paper-2,
 main > .section.yizkor {
   margin-block-end: var(--surface-gap);
+}
+
+/* Paper sections — on site background, no floating panel */
+.section.paper-2 {
+  background: transparent;
+  margin-inline: 0;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
 }
 
 .site-footer {
