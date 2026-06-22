@@ -1,0 +1,124 @@
+(function () {
+  'use strict';
+
+  var TYPE_LABELS = {
+    article: 'כתבה',
+    video: 'סרטון'
+  };
+
+  function esc(value) {
+    return EgozSupabasePublic.escapeHtml(value);
+  }
+
+  function externalAttrs(url) {
+    if (!url || url.indexOf('http') !== 0) return '';
+    return ' target="_blank" rel="noopener noreferrer"';
+  }
+
+  function imageMarkup(item, className) {
+    if (item.image_url) {
+      return '<img class="' + esc(className || '') + '" src="' + esc(item.image_url) + '" alt="" loading="lazy" decoding="async" />';
+    }
+    return '<div class="' + esc(className || '') + ' media-item__placeholder">' + esc(TYPE_LABELS[item.media_type] || '') + '</div>';
+  }
+
+  function renderHomeCard(item) {
+    var url = item.link_url || '#';
+    var desc = item.description
+      ? '<p class="media-card__desc">' + esc(item.description) + '</p>'
+      : '';
+
+    return (
+      '<a href="' + esc(url) + '" class="media-card"' + externalAttrs(url) + '>' +
+        '<div class="media-card__logo">' + imageMarkup(item, 'media-card__img') + '</div>' +
+        '<div class="media-card__body">' +
+          '<span class="media-card__src">' + esc(TYPE_LABELS[item.media_type] || 'תקשורת') + '</span>' +
+          '<div class="media-card__title">' + esc(item.title) + '</div>' +
+          desc +
+        '</div>' +
+      '</a>'
+    );
+  }
+
+  function renderUnitRow(item) {
+    var url = item.link_url || '#';
+
+    return (
+      '<a href="' + esc(url) + '" class="unit-media-row"' + externalAttrs(url) + '>' +
+        '<div class="unit-media-row__thumb">' + imageMarkup(item, 'unit-media-row__img') + '</div>' +
+        '<div class="unit-media-row__body">' +
+          '<span class="unit-media-row__src">' + esc(TYPE_LABELS[item.media_type] || 'תקשורת') + '</span>' +
+          '<div class="unit-media-row__title">' + esc(item.title) + '</div>' +
+          (item.description ? '<p class="unit-media-row__desc">' + esc(item.description) + '</p>' : '') +
+        '</div>' +
+        '<span class="unit-media-row__arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></span>' +
+      '</a>'
+    );
+  }
+
+  function chunk(items, size) {
+    var groups = [];
+    for (var i = 0; i < items.length; i += size) {
+      groups.push(items.slice(i, i + size));
+    }
+    return groups;
+  }
+
+  function renderHomeGrid(items) {
+    var grid = document.getElementById('mediaGrid');
+    if (!grid) return;
+
+    if (!items.length) {
+      grid.innerHTML = '<div class="media-empty">אין עדיין פריטי תקשורת.</div>';
+      return;
+    }
+
+    grid.innerHTML = items.map(renderHomeCard).join('');
+  }
+
+  function renderUnitCarousel(items) {
+    var track = document.getElementById('unitMediaTrack');
+    var carousel = document.querySelector('[data-unit-media-carousel]');
+    if (!track || !carousel) return;
+
+    if (!items.length) {
+      track.innerHTML =
+        '<div class="unit-media-carousel__slide">' +
+          '<div class="media-empty media-empty--unit">אין עדיין פריטי תקשורת.</div>' +
+        '</div>';
+    } else {
+      var slides = chunk(items, 3);
+      track.innerHTML = slides.map(function (group) {
+        return '<div class="unit-media-carousel__slide">' + group.map(renderUnitRow).join('') + '</div>';
+      }).join('');
+    }
+
+    if (window.EgozUnitMediaCarousel && typeof window.EgozUnitMediaCarousel.init === 'function') {
+      window.EgozUnitMediaCarousel.init(carousel);
+    }
+  }
+
+  async function loadMedia() {
+    var sb = EgozSupabasePublic.getClient();
+    if (!sb) return;
+
+    var result = await sb
+      .from('site_media')
+      .select('id, title, description, image_url, link_url, media_type, sort_order')
+      .eq('is_published', true)
+      .order('sort_order', { ascending: true })
+      .order('created_at', { ascending: false });
+
+    if (result.error) return;
+    var items = result.data || [];
+
+    renderHomeGrid(items);
+    renderUnitCarousel(items);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadMedia);
+  } else {
+    loadMedia();
+  }
+})();

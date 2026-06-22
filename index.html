@@ -435,7 +435,7 @@
             <a href="foundation.html" data-i18n="nav.foundation">עמותה</a>
             <a href="yizkor.html" data-i18n="nav.yizkor">יזכור</a>
             <a href="shop.html" data-i18n="nav.shop">חנות</a>
-            <a href="#contact" data-i18n="nav.contact">צרו קשר</a>
+            <a href="contact.html" data-i18n="nav.contact">צרו קשר</a>
           </nav>
           <div class="nav-cta">
             <div class="lang-switch" role="group" data-i18n-aria="lang.label" aria-label="בחירת שפה">
@@ -479,7 +479,7 @@
     <a class="m-link" href="foundation.html" data-i18n="nav.foundation">עמותה</a>
     <a class="m-link" href="yizkor.html" data-i18n="nav.yizkor">יזכור</a>
     <a class="m-link" href="shop.html" data-i18n="nav.shop">חנות</a>
-    <a class="m-link" href="#contact" data-i18n="nav.contact">צרו קשר</a>
+    <a class="m-link" href="contact.html" data-i18n="nav.contact">צרו קשר</a>
     <div style="display:flex;gap:10px;margin-top:20px;">
       <a href="#join" class="btn btn--ghost-light btn--sm btn--block" data-i18n="nav.join">חבר עמותה</a>
       <a href="https://www.jgive.com/new/he/ils/donation-targets/5545" target="_blank" rel="noopener" class="btn btn--accent btn--sm btn--block" data-i18n="nav.donate">לתרומה</a>
@@ -667,19 +667,8 @@
         <h2 class="h2" style="margin-top:6px;" data-i18n="media.title">מספרים עלינו</h2>
       </div>
     </div>
-    <div class="grid cols-3" data-reveal-stagger>
-      <a href="#media" class="media-card">
-        <div class="media-card__logo"><image-slot id="media-1" data-i18n-placeholder="media.placeholder" placeholder="לוגו / תמונת כתבה" fit="cover"></image-slot></div>
-        <div class="media-card__body"><span class="media-card__src" data-i18n="media.src">שם המקור · תאריך</span><div class="media-card__title" data-i18n="media.article">שם הכתבה</div></div>
-      </a>
-      <a href="#media" class="media-card">
-        <div class="media-card__logo"><image-slot id="media-2" data-i18n-placeholder="media.placeholder" placeholder="לוגו / תמונת כתבה" fit="cover"></image-slot></div>
-        <div class="media-card__body"><span class="media-card__src" data-i18n="media.src">שם המקור · תאריך</span><div class="media-card__title" data-i18n="media.article">שם הכתבה</div></div>
-      </a>
-      <a href="#media" class="media-card">
-        <div class="media-card__logo"><image-slot id="media-3" data-i18n-placeholder="media.placeholder" placeholder="לוגו / תמונת כתבה" fit="cover"></image-slot></div>
-        <div class="media-card__body"><span class="media-card__src" data-i18n="media.src">שם המקור · תאריך</span><div class="media-card__title" data-i18n="media.article">שם הכתבה</div></div>
-      </a>
+    <div class="grid cols-3" id="mediaGrid" data-reveal-stagger>
+      <div class="media-empty">טוען פריטי תקשורת...</div>
     </div>
   </div>
 </section>
@@ -695,7 +684,7 @@
         <p class="lead" style="color:var(--on-dark-2);margin-top:16px;" data-i18n="join.lead">תרומתכם מממנת ליווי פצועים, תמיכה במשפחות שכולות, מלגות וסיוע לבוגרי היחידה לדורותיהם. עכשיו, כשהצורך גדול מתמיד — זה הזמן להושיט יד.</p>
         <div class="flex gap-m wrap mt-m">
           <a href="#join" class="btn btn--ghost-light btn--lg" data-i18n="join.btn1">הצטרפות כחבר עמותה</a>
-          <a href="#contact" class="btn btn--ghost-light btn--lg" data-i18n="join.btn2">הרשמה לניוזלטר</a>
+          <a href="contact.html" class="btn btn--ghost-light btn--lg" data-i18n="join.btn2">הרשמה לניוזלטר</a>
         </div>
       </div>
       <a class="give-cta" href="https://www.jgive.com/new/he/ils/donation-targets/5545" target="_blank" rel="noopener" data-reveal="from-end" data-delay="1" data-i18n-aria="join.give.aria" aria-label="מעבר לתרומה מאובטחת ב-JGive">
@@ -720,7 +709,7 @@
         <span class="badge badge--brass" data-i18n="deleg.badge">משלחות אגוז לחו״ל</span>
         <h3 style="margin-top:14px;" data-i18n="deleg.title">מביאים את הסיפור של אגוז אל הקהילות בעולם</h3>
         <p data-i18n="deleg.text">רוצים להזמין אותנו למשלחת אליכם? בואו נדבר — ונבנה יחד מפגש שמחבר בין הלוחמים, הבוגרים והתומכים בכל מקום.</p>
-        <a href="#contact" class="btn btn--accent mt-m" data-i18n="deleg.btn">דברו איתנו</a>
+        <a href="contact.html" class="btn btn--accent mt-m" data-i18n="deleg.btn">דברו איתנו</a>
       </div>
     </div>
   </div>
@@ -729,7 +718,7 @@
 </main>
 
 <!-- ============ FOOTER ============ -->
-<footer class="site-footer" id="contact">
+<footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-col">
@@ -786,11 +775,15 @@
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/supabase-public.js"></script>
 <script src="image-slot.js"></script>
 <script src="js/i18n.js"></script>
 <script src="js/i18n-shared.js"></script>
 <script src="js/i18n-home.js"></script>
 <script src="js/site.js"></script>
 <script src="js/nav-foundation.js"></script>
+<script src="js/media.js"></script>
 </body>
 </html>
