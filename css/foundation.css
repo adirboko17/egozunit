@@ -61,6 +61,29 @@
   text-decoration: none;
   height: 100%;
   transition: transform .3s var(--ease-out), box-shadow .3s, border-color .25s;
+  overflow: hidden;
+}
+.foundation-card--media {
+  padding: 0;
+}
+.foundation-card__media {
+  margin: 0;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--paper-2);
+}
+.foundation-card__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .4s var(--ease-out);
+}
+.foundation-card--media:hover .foundation-card__media img {
+  transform: scale(1.04);
+}
+.foundation-card--media .foundation-card__body {
+  padding: clamp(18px, 2vw, 24px);
 }
 .foundation-card:hover {
   transform: translateY(-5px);
@@ -143,49 +166,83 @@ html[dir="ltr"] .link-arrow svg { transform: scaleX(-1); }
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  min-height: 0;
   transition: transform .3s var(--ease-out), box-shadow .3s, border-color .25s;
 }
 .ben:hover { transform: translateY(-5px); box-shadow: var(--sh-lg); border-color: var(--line-2); }
 .ben__logo {
-  height: 116px;
-  display: grid;
-  place-items: center;
+  flex: 0 0 120px;
+  height: 120px;
+  min-height: 120px;
+  max-height: 120px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: linear-gradient(150deg, var(--paper-2) 0%, var(--paper-3) 100%);
   border-bottom: 1px solid var(--line);
+  padding: 14px 18px;
   font-family: var(--font-display);
   font-weight: 800;
   font-size: 1.18rem;
   color: var(--olive-700);
   text-align: center;
-  padding: 0 16px;
+  line-height: 1.25;
+}
+.ben__logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: contain;
+  object-position: center;
 }
 .ben__body {
-  padding: 22px 24px;
+  padding: 20px 22px 22px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   flex: 1;
+  min-width: 0;
 }
 .ben__cat {
+  display: block;
   font-size: .76rem;
   font-weight: 700;
   letter-spacing: .1em;
   color: var(--brass-700);
 }
 .ben__title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 1.15rem;
+  font-size: 1.08rem;
+  line-height: 1.35;
   color: var(--text);
 }
 .ben__off {
+  display: block;
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: 1.5rem;
+  font-size: 1.35rem;
+  line-height: 1.2;
   color: var(--olive-800);
 }
 .ben__off small { font-size: .85rem; color: var(--text-3); font-weight: 600; }
-.ben__foot { margin-top: auto; padding-top: 8px; }
+.ben .card__excerpt {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  margin: 0;
+  font-size: .92rem;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+.ben__foot { margin-top: auto; padding-top: 10px; }
 .benefits-cta { text-align: center; margin-top: clamp(32px, 4vw, 44px); }
 
 /* ---- Events (dark band, agenda rows) ---- */
@@ -222,7 +279,7 @@ html[dir="ltr"] .evt-row:hover { transform: translateX(4px); }
   background: rgba(196, 162, 102, 0.1);
   border: 1px solid rgba(196, 162, 102, 0.22);
 }
-.evt-row__no {
+.evt-row__day {
   display: block;
   font-family: var(--font-display);
   font-weight: 900;
@@ -231,14 +288,14 @@ html[dir="ltr"] .evt-row:hover { transform: translateX(4px); }
   color: var(--brass-400);
   font-variant-numeric: tabular-nums;
 }
-.evt-row__tag {
+.evt-row__month {
   display: block;
   margin-top: 5px;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: .68rem;
-  letter-spacing: .1em;
-  color: var(--on-dark-3);
+  font-size: .72rem;
+  letter-spacing: .04em;
+  color: var(--on-dark-2);
 }
 .evt-row__body { min-width: 0; }
 .evt-row__title {

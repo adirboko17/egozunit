@@ -6,8 +6,8 @@
     { href: 'foundation.html', i18n: 'nav.foundationSub.about', page: 'foundation', hash: '' },
     { href: 'support.html', i18n: 'nav.support', page: 'support', hash: '' },
     { href: 'heritage.html', i18n: 'nav.heritage', page: 'heritage', hash: '' },
-    { href: 'foundation.html#projects', i18n: 'nav.foundationSub.projects', page: 'foundation', hash: '#projects' },
-    { href: 'foundation.html#benefits', i18n: 'nav.foundationSub.benefits', page: 'foundation', hash: '#benefits' },
+    { href: 'projects.html', i18n: 'nav.foundationSub.projects', page: 'projects', hash: '' },
+    { href: 'benefits.html', i18n: 'nav.foundationSub.benefits', page: 'benefits', hash: '' },
     { href: 'foundation.html#events', i18n: 'nav.foundationSub.events', page: 'foundation', hash: '#events' }
   ];
 
@@ -51,12 +51,14 @@
     }
     if (item.page === 'support' && page === 'support') return true;
     if (item.page === 'heritage' && page === 'heritage') return true;
+    if (item.page === 'benefits' && page === 'benefits') return true;
+    if (item.page === 'projects' && page === 'projects') return true;
     return false;
   }
 
   function isFoundationSectionActive() {
     var page = pageName();
-    return page === 'foundation' || page === 'support' || page === 'heritage';
+    return page === 'foundation' || page === 'support' || page === 'heritage' || page === 'projects' || page === 'benefits';
   }
 
   function buildDesktopDropdown(trigger) {

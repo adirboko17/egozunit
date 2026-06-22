@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>החנות של אגוז — כל הרכישות לטובת לוחמי היחידה ומשפחותיהם</title>
+<meta name="description" content="חנות עמותת אגוז — הסיירת הצפונית. מרצ׳נדייז, ביגוד וספר מורשת. כל ההכנסות מופנות לליווי הלוחמים, הפצועים והמשפחות." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&family=Alef:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/site.css" />
+<style>
+  /* ===== Blue & White theme — shared with index.html ===== */
+  :root {
+    --ink:#0C1830; --olive-950:#102047; --olive-900:#142A5E; --olive-850:#183168; --olive-800:#1E3E92;
+    --olive-700:#284FA8; --olive-600:#3160C0; --olive-500:#3D74DE; --olive-400:#6E97EC; --olive-300:#9CB8F2; --olive-200:#C6D6F8;
+    --brass-800:#163C86; --brass-700:#1E50B5; --brass-600:#2462D6; --brass-500:#2E76E6; --brass-400:#7FA8F2; --brass-300:#B7D0FA; --brass-200:#DCE9FF;
+    --paper:#F3F6FC; --paper-2:#E9F0FA; --paper-3:#DCE6F5; --card:#FFFFFF; --line:#DBE4F3; --line-2:#C3D2E9;
+    --text:#0F1C3C; --text-2:#41506E; --text-3:#6B7894; --on-dark:#F2F6FC; --on-dark-2:#BCCAE6; --on-dark-3:#8497BE;
+  }
+  .btn--accent { --btn-fg:#fff; }
+  ::selection { background:var(--brass-500); color:#fff; }
+  .brand__logo { width:auto; height:50px; border-radius:0; box-shadow:none; background:transparent; -webkit-mask:none; mask:none; display:grid; place-items:center; }
+  .brand__logo img { display:block; width:auto; height:100%; filter:brightness(0) saturate(100%) invert(19%) sepia(64%) saturate(1837%) hue-rotate(208deg) brightness(94%) contrast(92%); }
+
+  /* ---- Page banner ---- */
+  .page-banner { background:var(--olive-900); color:var(--on-dark); padding-block:clamp(48px,7vw,88px); position:relative; overflow:hidden; }
+  .page-banner__mark { position:absolute; inset-inline-end:-2%; top:50%; transform:translateY(-50%); width:min(34vw,330px); opacity:.07; pointer-events:none; }
+  .page-banner .container { position:relative; z-index:1; }
+  .page-banner .lead { color:var(--on-dark-2); margin-top:16px; max-width:56ch; }
+  .impact-line { display:inline-flex; align-items:center; gap:11px; margin-top:24px; padding:11px 18px; border-radius:100px; background:rgba(127,168,242,.16); border:1px solid rgba(127,168,242,.3); color:var(--on-dark); font-size:.95rem; }
+  .impact-line svg { width:18px; height:18px; color:var(--brass-300); flex:0 0 auto; }
+
+  /* ---- Shop toolbar ---- */
+  .shop-bar { display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:32px; }
+  .filter-row { display:flex; gap:8px; flex-wrap:wrap; }
+  .filter-row button { padding:9px 17px; border-radius:100px; font-family:var(--font-display); font-weight:700; font-size:.92rem; color:var(--text-2); border:1.5px solid var(--line-2); background:var(--card); cursor:pointer; transition:all .18s; }
+  .filter-row button:hover { border-color:var(--brass-400); color:var(--brass-700); }
+  .filter-row button.is-on { background:var(--olive-800); color:var(--on-dark); border-color:var(--olive-800); }
+  .cart-pill { display:inline-flex; align-items:center; gap:10px; padding:11px 18px; border-radius:100px; background:var(--card); border:1.5px solid var(--line-2); font-family:var(--font-display); font-weight:700; color:var(--text); cursor:pointer; transition:border-color .18s, box-shadow .18s; }
+  .cart-pill:hover { border-color:var(--brass-400); box-shadow:var(--sh); }
+  .cart-pill svg { width:20px; height:20px; color:var(--olive-700); }
+  .cart-pill .count { min-width:22px; height:22px; padding:0 6px; border-radius:100px; background:var(--brass-500); color:#fff; font-size:.82rem; display:grid; place-items:center; }
+
+  /* ---- Product grid ---- */
+  .shop-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(18px,2vw,26px); }
+  @media (max-width:900px){ .shop-grid { grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:560px){ .shop-grid { grid-template-columns:1fr; } }
+  .product { background:var(--card); border:1px solid var(--line); border-radius:var(--r-lg); overflow:hidden; display:flex; flex-direction:column; transition:transform .3s var(--ease-out), box-shadow .3s, border-color .3s; }
+  .product:hover { transform:translateY(-5px); box-shadow:var(--sh-lg); border-color:var(--line-2); }
+  .product__media { position:relative; aspect-ratio:1/1; background:var(--paper-2); }
+  .product__media image-slot { width:100%; height:100%; --slot-bg:var(--paper-2); }
+  .product__tag { position:absolute; inset-block-start:14px; inset-inline-start:14px; z-index:2; padding:6px 12px; border-radius:100px; font-family:var(--font-display); font-weight:800; font-size:.74rem; letter-spacing:.02em; }
+  .product__tag--new { background:var(--brass-500); color:#fff; }
+  .product__tag--hot { background:#fff; color:var(--olive-800); border:1px solid var(--line-2); }
+  .product__body { padding:20px 22px 22px; display:flex; flex-direction:column; flex:1; }
+  .product__cat { font-family:var(--font-display); font-weight:700; font-size:.76rem; letter-spacing:.06em; color:var(--brass-700); text-transform:uppercase; }
+  .product__name { font-family:var(--font-display); font-weight:800; font-size:1.16rem; line-height:1.3; margin-top:7px; color:var(--text); }
+  .product__desc { color:var(--text-2); font-size:.92rem; margin-top:8px; flex:1; }
+  .product__foot { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:18px; }
+  .product__price { font-family:var(--font-display); font-weight:900; font-size:1.4rem; color:var(--olive-800); letter-spacing:-.01em; }
+  .product__price small { font-size:.8rem; font-weight:700; color:var(--text-3); }
+  .add-btn { display:inline-flex; align-items:center; gap:7px; padding:11px 16px; border-radius:var(--r-sm); background:var(--brass-500); color:#fff; font-family:var(--font-display); font-weight:800; font-size:.95rem; border:0; cursor:pointer; transition:background .18s, gap .18s; }
+  .add-btn:hover { background:var(--brass-600); gap:10px; }
+  .add-btn svg { width:16px; height:16px; }
+  .add-btn.added { background:var(--olive-700); }
+
+  /* ---- Cart drawer ---- */
+  .cart-drawer { position:fixed; inset:0; z-index:1200; visibility:hidden; }
+  .cart-drawer.is-open { visibility:visible; }
+  .cart-drawer__scrim { position:absolute; inset:0; background:rgba(10,20,46,.5); opacity:0; transition:opacity .3s; }
+  .cart-drawer.is-open .cart-drawer__scrim { opacity:1; }
+  .cart-drawer__panel { position:absolute; inset-block:0; inset-inline-start:0; width:min(420px,92vw); background:var(--paper); display:flex; flex-direction:column; transform:translateX(-100%); transition:transform .35s var(--ease-out); box-shadow:var(--sh-lg); }
+  .cart-drawer.is-open .cart-drawer__panel { transform:translateX(0); }
+  .cart-drawer__head { display:flex; align-items:center; justify-content:space-between; padding:22px 24px; background:var(--olive-900); color:var(--on-dark); }
+  .cart-drawer__head h3 { font-family:var(--font-display); font-weight:800; font-size:1.2rem; }
+  .cart-drawer__close { background:rgba(255,255,255,.1); border:0; color:#fff; width:34px; height:34px; border-radius:9px; cursor:pointer; display:grid; place-items:center; }
+  .cart-drawer__close:hover { background:rgba(255,255,255,.2); }
+  .cart-items { flex:1; overflow-y:auto; padding:16px 20px; display:flex; flex-direction:column; gap:12px; }
+  .cart-empty { text-align:center; color:var(--text-3); margin-top:48px; }
+  .cart-empty svg { width:46px; height:46px; opacity:.4; margin-bottom:12px; }
+  .cart-item { display:grid; grid-template-columns:auto 1fr auto; gap:14px; align-items:center; background:var(--card); border:1px solid var(--line); border-radius:var(--r); padding:13px 15px; }
+  .cart-item__thumb { width:52px; height:52px; border-radius:9px; background:var(--paper-2); display:grid; place-items:center; color:var(--olive-600); }
+  .cart-item__thumb svg { width:24px; height:24px; }
+  .cart-item__name { font-weight:700; font-size:.95rem; color:var(--text); }
+  .cart-item__price { font-size:.85rem; color:var(--text-3); margin-top:3px; }
+  .qty { display:inline-flex; align-items:center; gap:0; border:1px solid var(--line-2); border-radius:8px; overflow:hidden; margin-top:7px; }
+  .qty button { width:26px; height:26px; border:0; background:var(--paper-2); color:var(--olive-800); font-weight:800; cursor:pointer; font-size:1rem; line-height:1; }
+  .qty button:hover { background:var(--paper-3); }
+  .qty span { min-width:30px; text-align:center; font-weight:700; font-size:.9rem; }
+  .cart-item__remove { background:none; border:0; color:var(--text-3); cursor:pointer; padding:4px; }
+  .cart-item__remove:hover { color:#c0392b; }
+  .cart-item__remove svg { width:17px; height:17px; }
+  .cart-foot { padding:20px 24px; border-top:1px solid var(--line); background:var(--card); }
+  .cart-total { display:flex; align-items:baseline; justify-content:space-between; margin-bottom:6px; }
+  .cart-total b { font-family:var(--font-display); font-weight:900; font-size:1.5rem; color:var(--olive-800); }
+  .cart-total span { font-family:var(--font-display); font-weight:700; }
+  .cart-note { font-size:.84rem; color:var(--text-3); margin-bottom:16px; }
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">דלג לתוכן הראשי</a>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header is-stuck">
+  <div class="utility-bar">
+    <div class="container">
+      <div class="util-left">
+        <span>עמותה רשומה 580027720</span>
+        <a href="/cdn-cgi/l/email-protection#076861616e6462476260687d29687560296e6b"><span class="__cf_email__" data-cfemail="a2cdc4c4cbc1c7e2c7c5cdd88ccdd0c58ccbce">[email&#160;protected]</span></a>
+      </div>
+      <div class="util-social" aria-label="רשתות חברתיות">
+        <a href="https://www.facebook.com/amutat.egoz" aria-label="פייסבוק"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3l.4-3H14V4.5c0-.9.3-1.5 1.6-1.5H17V.2C16.7.1 15.6 0 14.4 0 11.9 0 10 1.5 10 4.3V6H7v3h3v9h4V9z"/></svg></a>
+        <a href="https://www.instagram.com/egoz_unit" aria-label="אינסטגרם"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://egoz.org.il" aria-label="אתר העמותה"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18"/></svg></a>
+      </div>
+    </div>
+  </div>
+  <div class="nav-bar">
+    <div class="container">
+      <a href="index.html" class="brand" aria-label="עמותת אגוז — דף הבית">
+        <span class="brand__logo"><img src="assets/egoz-logo.png" alt="" aria-hidden="true" /></span>
+        <span class="brand__txt"><b>אגוז</b><span>הסיירת הצפונית</span></span>
+      </a>
+      <nav class="nav-links" aria-label="ניווט ראשי">
+        <a href="index.html">בית</a>
+        <a href="index.html#about">עלינו</a>
+        <a href="index.html#wounded">פצועים</a>
+        <a href="index.html#memorial">הנצחה</a>
+        <a href="index.html#programs">בוגרים</a>
+        <a href="shop.html" class="is-active">חנות</a>
+        <a href="index.html#contact">צרו קשר</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="https://www.jgive.com/new/he/ils/donation-targets/5545" target="_blank" rel="noopener" class="btn btn--accent btn--sm">לתרומה</a>
+        <button class="nav-toggle" aria-label="תפריט" aria-expanded="false" aria-controls="navDrawer"><span></span></button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="nav-drawer" id="navDrawer">
+  <div class="nav-drawer__scrim"></div>
+  <div class="nav-drawer__panel" role="dialog" aria-label="תפריט ניווט" aria-modal="true">
+    <div class="nav-drawer__head">
+      <span class="brand__txt"><b style="color:var(--on-dark);font-family:var(--font-display);font-size:1.3rem;">אגוז</b></span>
+      <button class="nav-drawer__close" aria-label="סגירה"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 5l10 10M15 5L5 15"/></svg></button>
+    </div>
+    <a class="m-link" href="index.html">בית</a>
+    <a class="m-link" href="index.html#about">עלינו</a>
+    <a class="m-link" href="index.html#wounded">פצועים</a>
+    <a class="m-link" href="index.html#memorial">הנצחה</a>
+    <a class="m-link" href="index.html#programs">בוגרים</a>
+    <a class="m-link" href="shop.html">חנות</a>
+    <a class="m-link" href="index.html#contact">צרו קשר</a>
+    <div style="display:flex;gap:10px;margin-top:20px;">
+      <a href="https://www.jgive.com/new/he/ils/donation-targets/5545" target="_blank" rel="noopener" class="btn btn--accent btn--sm btn--block">לתרומה</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE BANNER ============ -->
+<div class="page-banner">
+  <img class="page-banner__mark" src="assets/egoz-logo.png" alt="" aria-hidden="true" />
+  <div class="container">
+    <span class="eyebrow eyebrow--on-dark">החנות של אגוז</span>
+    <h1 class="h1" style="color:var(--on-dark);margin-top:14px;">לובשים את הגאווה. תומכים בלוחמים.</h1>
+    <p class="lead">מרצ׳נדייז וביגוד היחידה, ספר המורשת ופריטי אספנות. כל פריט הוא דרך להראות שייכות — וכל שקל חוזר אל לוחמי אגוז, הפצועים והמשפחות.</p>
+    <span class="impact-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.4-9.3-9C1.3 9.3 2.6 6 6 6c2 0 3.2 1.2 4 2.3C10.8 7.2 12 6 14 6c3.4 0 4.7 3.3 3.3 6C16 16.6 12 21 12 21z"/></svg> 100% מההכנסות מופנות לפעילות העמותה</span>
+  </div>
+</div>
+
+<main id="main" class="section">
+  <div class="container">
+    <div class="shop-bar">
+      <div class="filter-row" role="group" aria-label="סינון מוצרים">
+        <button class="is-on" data-filter="all">הכול</button>
+        <button data-filter="apparel">ביגוד</button>
+        <button data-filter="gear">ציוד ואביזרים</button>
+        <button data-filter="heritage">מורשת</button>
+        <button data-filter="gift">מתנות ותרומה</button>
+      </div>
+      <button class="cart-pill" id="cartOpen" aria-label="פתיחת עגלת הקניות">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.5 3h2l2.2 12.4a2 2 0 002 1.6h8.7a2 2 0 002-1.6L21 7H6"/></svg>
+        העגלה <span class="count" id="cartCount">0</span>
+      </button>
+    </div>
+
+    <div class="shop-grid" id="shopGrid">
+      <!-- products injected by JS -->
+    </div>
+  </div>
+</main>
+
+<!-- ============ TRUST / IMPACT BAND ============ -->
+<section class="section dark tex-topo" style="text-align:center;">
+  <div class="container container--narrow">
+    <span class="eyebrow eyebrow--on-dark eyebrow--center">מעבר למוצר</span>
+    <h2 class="h2" style="color:var(--on-dark);margin-top:12px;">כל קנייה היא יד מושטת ללוחם</h2>
+    <p class="lead" style="color:var(--on-dark-2);margin-top:14px;">הרכישה שלכם ממַמנת ליווי פצועים, תמיכה במשפחות שכולות ומלגות לבוגרים. רוצים לתת מעבר לקנייה? אפשר גם לתרום ישירות.</p>
+    <a href="https://www.jgive.com/new/he/ils/donation-targets/5545" target="_blank" rel="noopener" class="btn btn--accent btn--lg" style="margin-top:24px;">לתרומה ישירה</a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="flex ai-c gap-s" style="margin-bottom:18px;">
+          <img class="footer-brand__logo" src="assets/egoz-logo.png" alt="סמל אגוז" />
+          <div><b style="font-family:var(--font-display);font-weight:900;font-size:1.4rem;color:var(--on-dark);display:block;line-height:1;">אגוז</b><span style="font-size:.82rem;color:var(--on-dark-3);">הסיירת הצפונית</span></div>
+        </div>
+        <p style="font-size:.96rem;max-width:36ch;">הבית של בוגרי יחידת אגוז, המשפחות השכולות והפצועים — קהילה אחת שעומדת זה לצד זה הרבה אחרי השחרור.</p>
+        <a href="https://www.jgive.com/new/he/ils/donation-targets/5545" target="_blank" rel="noopener" class="btn btn--accent btn--sm" style="margin-top:20px;">תרמו לעמותה</a>
+      </div>
+      <div class="footer-col">
+        <h4>ניווט</h4>
+        <ul>
+          <li><a href="index.html#about">עלינו</a></li>
+          <li><a href="index.html#goals">המטרות שלנו</a></li>
+          <li><a href="index.html#wounded">פצועים</a></li>
+          <li><a href="index.html#memorial">הנצחה</a></li>
+          <li><a href="index.html#programs">בוגרים</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>החנות</h4>
+        <ul>
+          <li><a href="shop.html">כל המוצרים</a></li>
+          <li><a href="shop.html">ביגוד היחידה</a></li>
+          <li><a href="shop.html">ספר המורשת</a></li>
+          <li><a href="shop.html">משלוחים והחזרות</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>צרו קשר</h4>
+        <ul>
+          <li><a href="/cdn-cgi/l/email-protection#365950505f5553765351594c18594451185f5a"><span class="__cf_email__" data-cfemail="cfa0a9a9a6acaa8faaa8a0b5e1a0bda8e1a6a3">[email&#160;protected]</span></a></li>
+          <li><a href="https://egoz.org.il" target="_blank" rel="noopener">egoz.org.il</a></li>
+          <li><span>יפו 161, ירושלים</span></li>
+          <li><span>עמותה רשומה 580027720</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year">2026</span> עמותת אגוז — הסיירת הצפונית · כל הזכויות שמורות</span>
+      <div class="flex gap-m wrap">
+        <a href="index.html" style="color:var(--on-dark-3);">חזרה לדף הבית</a>
+        <a href="#" style="color:var(--on-dark-3);">תקנון ומשלוחים</a>
+        <a href="#" style="color:var(--on-dark-3);">הצהרת נגישות</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ CART DRAWER ============ -->
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-drawer__scrim" data-close></div>
+  <div class="cart-drawer__panel" role="dialog" aria-label="עגלת הקניות" aria-modal="true">
+    <div class="cart-drawer__head">
+      <h3>עגלת הקניות</h3>
+      <button class="cart-drawer__close" data-close aria-label="סגירה"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 5l10 10M15 5L5 15"/></svg></button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-foot">
+      <div class="cart-total"><span>סה״כ</span><b id="cartTotal">₪0</b></div>
+      <p class="cart-note">המחירים כוללים מע״מ. כל ההכנסות לטובת פעילות העמותה.</p>
+      <a href="https://www.jgive.com/new/he/ils/donation-targets/5545" target="_blank" rel="noopener" class="btn btn--accent btn--lg btn--block">מעבר לתשלום מאובטח</a>
+    </div>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="image-slot.js"></script>
+<script src="js/site.js"></script>
+<script>
+(function(){
+  'use strict';
+
+  var PRODUCTS = [
+    { id:'tshirt',   cat:'apparel',  name:'חולצת היחידה',            desc:'חולצת כותנה איכותית עם סמל אגוז הרקום בחזה.', price:79,  tag:'hot',  slot:'p-tshirt' },
+    { id:'hoodie',   cat:'apparel',  name:'קפוצ׳ון אגוז',            desc:'קפוצ׳ון חורף כבד עם הדפס היחידה על הגב.',     price:189, tag:'',     slot:'p-hoodie' },
+    { id:'cap',      cat:'apparel',  name:'כובע מצחייה רקום',        desc:'כובע בגוון נייבי עם סמל אגוז ברקמה עדינה.',   price:59,  tag:'',     slot:'p-cap' },
+    { id:'pin',      cat:'gear',     name:'פין סמל היחידה',          desc:'פין מתכת יצוק לדש הבגד — אספנות אמיתית.',     price:35,  tag:'',     slot:'p-pin' },
+    { id:'flag',     cat:'gear',     name:'דגל אגוז',                desc:'דגל בד 90×150 ס״מ עם סמל היחידה והעמותה.',    price:69,  tag:'',     slot:'p-flag' },
+    { id:'bottle',   cat:'gear',     name:'בקבוק תרמי',              desc:'בקבוק נירוסטה כפול-דופן, שומר חום וקור.',     price:65,  tag:'new',  slot:'p-bottle' },
+    { id:'book',     cat:'heritage', name:'ספר המורשת',              desc:'ספר מורשת היחידה — סיפורים, תמונות ועדויות.', price:128, tag:'hot',  slot:'p-book' },
+    { id:'patch',    cat:'heritage', name:'מארז תגי מורשת',          desc:'אוסף תגי מור״ק היסטוריים במארז מתנה.',        price:48,  tag:'',     slot:'p-patch' },
+    { id:'giftcard', cat:'gift',     name:'תרומה מתנה',              desc:'תורמים בשם אדם יקר ומקבלים תעודת הוקרה.',    price:100, tag:'new',  slot:'p-gift' }
+  ];
+
+  var ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 7l-8-4-8 4 8 4 8-4z"/><path d="M4 7v10l8 4 8-4V7"/><path d="M12 11v10"/></svg>';
+
+  function fmt(n){ return '₪' + n.toLocaleString('he-IL'); }
+
+  /* ---- render product grid ---- */
+  var grid = document.getElementById('shopGrid');
+  PRODUCTS.forEach(function(p){
+    var tagHtml = '';
+    if (p.tag === 'new') tagHtml = '<span class="product__tag product__tag--new">חדש</span>';
+    else if (p.tag === 'hot') tagHtml = '<span class="product__tag product__tag--hot">מבוקש</span>';
+    var catLabel = { apparel:'ביגוד', gear:'ציוד', heritage:'מורשת', gift:'מתנה' }[p.cat] || '';
+    var el = document.createElement('article');
+    el.className = 'product';
+    el.setAttribute('data-cat', p.cat);
+    el.innerHTML =
+      '<div class="product__media">' + tagHtml +
+        '<image-slot id="' + p.slot + '" placeholder="תמונת ' + p.name + '" fit="cover"></image-slot>' +
+      '</div>' +
+      '<div class="product__body">' +
+        '<span class="product__cat">' + catLabel + '</span>' +
+        '<h3 class="product__name">' + p.name + '</h3>' +
+        '<p class="product__desc">' + p.desc + '</p>' +
+        '<div class="product__foot">' +
+          '<span class="product__price">' + fmt(p.price) + '</span>' +
+          '<button class="add-btn" data-id="' + p.id + '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg> הוספה</button>' +
+        '</div>' +
+      '</div>';
+    grid.appendChild(el);
+  });
+
+  /* ---- filter ---- */
+  var fbtns = document.querySelectorAll('.filter-row button');
+  fbtns.forEach(function(b){ b.addEventListener('click', function(){
+    fbtns.forEach(function(x){ x.classList.remove('is-on'); }); b.classList.add('is-on');
+    var f = b.getAttribute('data-filter');
+    document.querySelectorAll('.product').forEach(function(c){
+      c.style.display = (f === 'all' || c.getAttribute('data-cat') === f) ? '' : 'none';
+    });
+  });});
+
+  /* ---- cart state (persisted) ---- */
+  var STORE = 'egoz-cart-v1';
+  var cart = {};
+  try { cart = JSON.parse(localStorage.getItem(STORE) || '{}'); } catch(e){ cart = {}; }
+
+  function save(){ try { localStorage.setItem(STORE, JSON.stringify(cart)); } catch(e){} }
+  function product(id){ return PRODUCTS.filter(function(p){ return p.id === id; })[0]; }
+
+  var countEl = document.getElementById('cartCount');
+  var itemsEl = document.getElementById('cartItems');
+  var totalEl = document.getElementById('cartTotal');
+
+  function render(){
+    var totalQty = 0, totalPrice = 0;
+    var ids = Object.keys(cart);
+    itemsEl.innerHTML = '';
+    if (!ids.length){
+      itemsEl.innerHTML = '<div class="cart-empty">' + ICON + '<p>העגלה ריקה.<br>הוסיפו פריטים מהחנות.</p></div>';
+    }
+    ids.forEach(function(id){
+      var p = product(id); if (!p) return;
+      var qty = cart[id]; totalQty += qty; totalPrice += qty * p.price;
+      var row = document.createElement('div');
+      row.className = 'cart-item';
+      row.innerHTML =
+        '<div class="cart-item__thumb">' + ICON + '</div>' +
+        '<div><div class="cart-item__name">' + p.name + '</div>' +
+        '<div class="cart-item__price">' + fmt(p.price) + ' ליחידה</div>' +
+        '<div class="qty"><button data-dec="' + id + '" aria-label="הפחתה">−</button><span>' + qty + '</span><button data-inc="' + id + '" aria-label="הוספה">+</button></div></div>' +
+        '<button class="cart-item__remove" data-rm="' + id + '" aria-label="הסרה"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg></button>';
+      itemsEl.appendChild(row);
+    });
+    countEl.textContent = totalQty;
+    countEl.style.display = totalQty ? '' : 'grid';
+    totalEl.textContent = fmt(totalPrice);
+  }
+
+  function add(id){ cart[id] = (cart[id] || 0) + 1; save(); render(); }
+
+  grid.addEventListener('click', function(e){
+    var btn = e.target.closest('.add-btn'); if (!btn) return;
+    add(btn.getAttribute('data-id'));
+    btn.classList.add('added');
+    var orig = btn.innerHTML;
+    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg> נוסף';
+    setTimeout(function(){ btn.classList.remove('added'); btn.innerHTML = orig; }, 1100);
+  });
+
+  itemsEl.addEventListener('click', function(e){
+    var t = e.target.closest('button'); if (!t) return;
+    if (t.dataset.inc){ cart[t.dataset.inc]++; }
+    else if (t.dataset.dec){ cart[t.dataset.dec]--; if (cart[t.dataset.dec] < 1) delete cart[t.dataset.dec]; }
+    else if (t.dataset.rm){ delete cart[t.dataset.rm]; }
+    save(); render();
+  });
+
+  /* ---- drawer open/close ---- */
+  var drawer = document.getElementById('cartDrawer');
+  document.getElementById('cartOpen').addEventListener('click', function(){ drawer.classList.add('is-open'); });
+  drawer.querySelectorAll('[data-close]').forEach(function(b){ b.addEventListener('click', function(){ drawer.classList.remove('is-open'); }); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') drawer.classList.remove('is-open'); });
+
+  render();
+})();
+</script>
+</body>
+</html>

@@ -136,24 +136,24 @@
           <div class="kicker-row"><span class="kicker-row__no">02</span><span class="kicker-row__txt" data-i18n="projects.kicker">מה אנחנו עושים</span><span class="kicker-row__line"></span></div>
           <h2 class="h2" data-i18n="projects.title">פרויקטים</h2>
         </div>
-        <a href="https://egoz.org.il/projects/" target="_blank" rel="noopener noreferrer" class="link-arrow" data-i18n="projects.all">כל הפרויקטים <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></a>
+        <a href="projects.html" class="link-arrow" data-i18n="projects.all">כל הפרויקטים <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></a>
       </div>
-      <div class="grid cols-3" data-reveal-stagger>
-        <a class="foundation-card" href="https://egoz.org.il/projects/leaders/" target="_blank" rel="noopener noreferrer">
+      <div class="grid cols-3" id="projectsGrid" data-reveal-stagger aria-live="polite">
+        <a class="foundation-card" href="projects.html#leaders">
           <div class="foundation-card__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 6.9H22l-5.8 4.3 2.2 6.8L12 16l-6.4 4 2.2-6.8L2 8.9h7.6z"/></svg></div>
           <div class="foundation-card__body">
             <h3 class="foundation-card__title" data-i18n="projects.p1">תכנית המנהיגות ופיתוח אישי — הופמן קופמן</h3>
             <span class="foundation-card__link" data-i18n="projects.link">לפרטים <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></span>
           </div>
         </a>
-        <a class="foundation-card" href="https://egoz.org.il/projects/catching-direction-bat-yam/" target="_blank" rel="noopener noreferrer">
+        <a class="foundation-card" href="projects.html#catching-direction">
           <div class="foundation-card__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 4a3 3 0 010 6M19 20c0-2.4-1-4.4-2.5-5.5"/></svg></div>
           <div class="foundation-card__body">
             <h3 class="foundation-card__title" data-i18n="projects.p2">תוכנית תופסים כיוון בת ים — בוגרי אגוז תורמים לקהילה</h3>
             <span class="foundation-card__link" data-i18n="projects.link">לפרטים <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></span>
           </div>
         </a>
-        <a class="foundation-card" href="https://egoz.org.il/projects/pleasat-release/" target="_blank" rel="noopener noreferrer">
+        <a class="foundation-card" href="projects.html#release">
           <div class="foundation-card__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 6"/></svg></div>
           <div class="foundation-card__body">
             <h3 class="foundation-card__title" data-i18n="projects.p3">שחרור נעים — סדנת הכנה לאזרחות</h3>
@@ -180,16 +180,10 @@
         <button type="button" data-cat="finance" data-i18n="benefits.cat.finance">פיננסים</button>
         <button type="button" data-cat="edu" data-i18n="benefits.cat.edu">השכלה</button>
       </div>
-      <div class="grid cols-3" id="benGrid" data-reveal-stagger>
-        <article class="ben" data-c="travel"><div class="ben__logo" data-i18n="benefits.card1.logo">מלונות הצפון</div><div class="ben__body"><span class="ben__cat" data-i18n="benefits.cat.travel">נופש ופנאי</span><span class="ben__title" data-i18n="benefits.card1.title">חופשה במלונות נבחרים</span><span class="ben__off">15%<small data-i18n="benefits.card1.off"> הנחה ללילה</small></span><p class="card__excerpt" data-i18n="benefits.card1.text">על חבילות נופש בצפון ובכל הארץ, בהזמנה דרך העמותה.</p><div class="ben__foot"><a href="join.html" class="link-arrow"><span data-i18n="benefits.redeem">למימוש</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></a></div></div></article>
-        <article class="ben" data-c="health"><div class="ben__logo" data-i18n="benefits.card2.logo">מרכז רפואי</div><div class="ben__body"><span class="ben__cat" data-i18n="benefits.cat.health">בריאות</span><span class="ben__title" data-i18n="benefits.card2.title">בדיקות וסקר רפואי</span><span class="ben__off"><span data-i18n="benefits.card2.offMain">עד 20%</span><small data-i18n="benefits.card2.off"> הנחה</small></span><p class="card__excerpt" data-i18n="benefits.card2.text">שירותי רפואה פרטית, פיזיותרפיה וטיפול נפשי במחירי קהילה.</p><div class="ben__foot"><a href="join.html" class="link-arrow"><span data-i18n="benefits.redeem">למימוש</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></a></div></div></article>
-        <article class="ben" data-c="shop"><div class="ben__logo" data-i18n="benefits.card3.logo">ציוד שטח</div><div class="ben__body"><span class="ben__cat" data-i18n="benefits.cat.shop">צרכנות</span><span class="ben__title" data-i18n="benefits.card3.title">חנות ציוד טיולים</span><span class="ben__off">12%<small data-i18n="benefits.card3.off"> קבוע</small></span><p class="card__excerpt" data-i18n="benefits.card3.text">על כל מוצרי השטח, הקמפינג והריצה ברשתות המובילות.</p><div class="ben__foot"><a href="join.html" class="link-arrow"><span data-i18n="benefits.redeem">למימוש</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></a></div></div></article>
-        <article class="ben" data-c="finance"><div class="ben__logo" data-i18n="benefits.card4.logo">משכנתאות</div><div class="ben__body"><span class="ben__cat" data-i18n="benefits.cat.finance">פיננסים</span><span class="ben__title" data-i18n="benefits.card4.title">ייעוץ משכנתא וביטוח</span><span class="ben__off"><span data-i18n="benefits.card4.offMain">ללא עלות</span><small data-i18n="benefits.card4.off"> פגישת ייעוץ</small></span><p class="card__excerpt" data-i18n="benefits.card4.text">בדיקת תיק ביטוחים ופנסיה והוזלת ריביות עם יועצים מהקהילה.</p><div class="ben__foot"><a href="join.html" class="link-arrow"><span data-i18n="benefits.redeem">למימוש</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></a></div></div></article>
-        <article class="ben" data-c="edu"><div class="ben__logo" data-i18n="benefits.card5.logo">קריירה</div><div class="ben__body"><span class="ben__cat" data-i18n="benefits.cat.edu">השכלה</span><span class="ben__title" data-i18n="benefits.card5.title">קורסים והכשרות</span><span class="ben__off">25%<small data-i18n="benefits.card5.off"> על קורסים נבחרים</small></span><p class="card__excerpt" data-i18n="benefits.card5.text">הסבות הייטק, ניהול וקורסים מקצועיים במכללות שותפות.</p><div class="ben__foot"><a href="join.html" class="link-arrow"><span data-i18n="benefits.redeem">למימוש</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></a></div></div></article>
-        <article class="ben" data-c="shop"><div class="ben__logo" data-i18n="benefits.card6.logo">רכב ותחבורה</div><div class="ben__body"><span class="ben__cat" data-i18n="benefits.cat.shop">צרכנות</span><span class="ben__title" data-i18n="benefits.card6.title">השכרת רכב ותחזוקה</span><span class="ben__off">18%<small data-i18n="benefits.card6.off"> הנחה</small></span><p class="card__excerpt" data-i18n="benefits.card6.text">השכרת רכב, מוסכים וטסטים ברשתות שירות ארציות.</p><div class="ben__foot"><a href="join.html" class="link-arrow"><span data-i18n="benefits.redeem">למימוש</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></a></div></div></article>
-      </div>
+      <div class="grid cols-3" id="benGrid" data-reveal-stagger aria-live="polite"></div>
       <div class="benefits-cta">
         <p class="muted" style="margin-bottom:14px;" data-i18n="benefits.membersOnly">ההטבות נפתחות לבוגרים רשומים בלבד.</p>
+        <a href="benefits.html" class="btn btn--outline btn--lg" style="margin-bottom:12px;">לכל ההטבות</a>
         <a href="join.html" class="btn btn--accent btn--lg" data-i18n="benefits.joinBtn">הצטרפות / כניסה לאזור האישי</a>
       </div>
     </div>
@@ -205,12 +199,12 @@
         </div>
         <a href="events.html" class="link-arrow link-arrow--light" data-i18n="events.allShort">לוח מלא <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></a>
       </div>
-      <div class="evt-list" data-reveal-stagger>
+      <div class="evt-list" id="foundationEventsList" data-reveal-stagger aria-live="polite">
         <a class="evt-row" href="https://egoz.org.il/projects/leaders/" target="_blank" rel="noopener noreferrer">
-          <div class="evt-row__date" aria-hidden="true">
-            <span class="evt-row__no">01</span>
-            <span class="evt-row__tag" data-i18n="events.e1.tag">תוכנית</span>
-          </div>
+          <time class="evt-row__date" datetime="2026-07-15">
+            <span class="evt-row__day" data-i18n="events.e1.day">15</span>
+            <span class="evt-row__month" data-i18n="events.e1.month">יולי</span>
+          </time>
           <div class="evt-row__body">
             <h3 class="evt-row__title" data-i18n="events.e1">תכנית המנהיגות ופיתוח אישי — הופמן קופמן</h3>
             <p class="evt-row__meta" data-i18n="events.e1.meta">פיתוח מנהיגות וכישורים אישיים לבוגרי היחידה</p>
@@ -218,10 +212,10 @@
           <span class="evt-row__go" data-i18n-aria="events.link" aria-label="לפרטים"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></span>
         </a>
         <a class="evt-row" href="https://egoz.org.il/projects/catching-direction-bat-yam/" target="_blank" rel="noopener noreferrer">
-          <div class="evt-row__date" aria-hidden="true">
-            <span class="evt-row__no">02</span>
-            <span class="evt-row__tag" data-i18n="events.e2.tag">קהילה</span>
-          </div>
+          <time class="evt-row__date" datetime="2026-08-02">
+            <span class="evt-row__day" data-i18n="events.e2.day">02</span>
+            <span class="evt-row__month" data-i18n="events.e2.month">אוג׳</span>
+          </time>
           <div class="evt-row__body">
             <h3 class="evt-row__title" data-i18n="events.e2">תוכנית תופסים כיוון בת ים — בוגרי אגוז תורמים לקהילה</h3>
             <p class="evt-row__meta" data-i18n="events.e2.meta">בוגרים מלווים ותורמים לנוער בקהילה</p>
@@ -229,10 +223,10 @@
           <span class="evt-row__go" data-i18n-aria="events.link" aria-label="לפרטים"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></span>
         </a>
         <a class="evt-row" href="https://egoz.org.il/projects/pleasat-release/" target="_blank" rel="noopener noreferrer">
-          <div class="evt-row__date" aria-hidden="true">
-            <span class="evt-row__no">03</span>
-            <span class="evt-row__tag" data-i18n="events.e3.tag">סדנה</span>
-          </div>
+          <time class="evt-row__date" datetime="2026-09-19">
+            <span class="evt-row__day" data-i18n="events.e3.day">19</span>
+            <span class="evt-row__month" data-i18n="events.e3.month">ספט׳</span>
+          </time>
           <div class="evt-row__body">
             <h3 class="evt-row__title" data-i18n="events.e3">שחרור נעים — סדנת הכנה לאזרחות</h3>
             <p class="evt-row__meta" data-i18n="events.e3.meta">סדנת הכנה לחיים האזרחיים אחרי השחרור</p>
@@ -325,12 +319,16 @@
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/supabase-public.js"></script>
 <script src="js/i18n.js"></script>
 <script src="js/i18n-shared.js"></script>
 <script src="js/i18n-foundation.js"></script>
 <script src="js/site.js"></script>
 <script src="js/nav-foundation.js"></script>
 <script src="js/foundation.js"></script>
+<script src="js/foundation-content.js"></script>
 <script>EgozI18n.init('foundation');</script>
 </body>
 </html>

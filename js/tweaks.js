@@ -28,6 +28,10 @@
   function load() {
     var v = {};
     try { v = JSON.parse(localStorage.getItem(STORE) || '{}'); } catch (e) { v = {}; }
+    if (v.accent === 'azure') {
+      v.accent = 'royal';
+      try { localStorage.setItem(STORE, JSON.stringify(v)); } catch (e) {}
+    }
     var out = {};
     for (var k in DEFAULTS) out[k] = (k in v) ? v[k] : DEFAULTS[k];
     return out;
@@ -55,7 +59,7 @@
 
   function apply() {
     var root = document.documentElement;
-    var ac = ACCENTS[state.accent] || ACCENTS.brass;
+    var ac = ACCENTS[state.accent] || ACCENTS.royal;
     root.style.setProperty('--brass-500', ac.a500);
     root.style.setProperty('--brass-400', ac.a400);
     root.style.setProperty('--brass-600', ac.a600);

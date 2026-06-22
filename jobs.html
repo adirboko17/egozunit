@@ -93,17 +93,10 @@
   <div class="flex gap-m wrap"><a href="index.html" style="color:var(--on-dark-2);">חזרה לדף הבית</a><a href="pros.html" style="color:var(--on-dark-3);">אינדקס בעלי מקצוע</a></div>
 </div></div></footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/supabase-public.js"></script>
 <script src="js/site.js"></script>
-<script>
-(function(){
-  var btns = document.querySelectorAll('.jfilter button');
-  var cards = document.querySelectorAll('.job');
-  btns.forEach(function(b){ b.addEventListener('click', function(){
-    btns.forEach(function(x){x.classList.remove('is-on');}); b.classList.add('is-on');
-    var f = b.getAttribute('data-f');
-    cards.forEach(function(c){ c.style.display = (f==='all' || c.getAttribute('data-c')===f) ? '' : 'none'; });
-  });});
-})();
-</script>
+<script src="js/jobs.js"></script>
 </body>
 </html>

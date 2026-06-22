@@ -99,18 +99,49 @@
   </div>
 </div>
 
-<main id="main" class="section">
+<main id="main" class="section yizkor-main">
   <div class="container">
-    <div class="section-head section-head--center" style="margin-bottom:clamp(36px,5vw,52px);">
-      <span class="eyebrow eyebrow--center" data-i18n="grid.kicker">נופלי היחידה</span>
-      <h2 class="h2" data-i18n="grid.title">בנים שלא חזרו</h2>
-      <p class="lead" style="margin-top:14px;max-width:58ch;margin-inline:auto;" data-i18n="grid.lead">לכל שם פנים, סיפור ומשפחה. לחצו על הכרטיס כדי לעבור לעמוד ההנצחה האישי.</p>
-      <p class="muted" style="font-size:.88rem;margin-top:10px;" data-i18n="grid.note">* ניתן לעדכן את רשימת הנופלים בקובץ data/fallen.json — שם, תאריך, תמונה וקישור לעמוד ההנצחה.</p>
-    </div>
+    <header class="yizkor-intro">
+      <div class="yizkor-intro__head section-head section-head--center">
+        <span class="eyebrow eyebrow--center" data-i18n="grid.kicker">נופלי היחידה</span>
+        <h2 class="h2" data-i18n="grid.title">בנים שלא חזרו</h2>
+        <p class="lead" data-i18n="grid.lead">לכל שם פנים, סיפור ומשפחה. לחצו על הכרטיס כדי לעבור לעמוד ההנצחה האישי.</p>
+      </div>
+
+      <div class="yizkor-toolbar">
+        <label class="yizkor-search" for="yizkorSearch">
+          <span class="yizkor-search__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5" stroke-linecap="round"/></svg>
+          </span>
+          <input id="yizkorSearch" type="search" class="yizkor-search__input" data-i18n-placeholder="search.placeholder" data-i18n-aria="search.label" placeholder="חיפוש לפי שם..." autocomplete="off" aria-label="חיפוש חלל לפי שם" />
+        </label>
+        <p class="yizkor-toolbar__count" id="yizkorCount" aria-live="polite"></p>
+      </div>
+      <p class="yizkor-search__status visually-hidden" id="yizkorSearchStatus" aria-live="polite"></p>
+    </header>
 
     <div class="yizkor-grid" id="yizkorGrid" aria-live="polite"></div>
   </div>
 </main>
+
+<div class="yizkor-modal" id="yizkorModal" hidden aria-hidden="true">
+  <div class="yizkor-modal__scrim" data-yizkor-close></div>
+  <div class="yizkor-modal__panel" role="dialog" aria-modal="true" aria-labelledby="yizkorModalTitle">
+    <div class="yizkor-modal__head">
+      <button type="button" class="yizkor-modal__close" data-yizkor-close data-i18n-aria="modal.close" aria-label="סגירה">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg>
+      </button>
+      <div class="yizkor-modal__hero">
+        <div class="yizkor-modal__photo" id="yizkorModalPhoto"></div>
+        <div class="yizkor-modal__intro">
+          <h2 class="yizkor-modal__title" id="yizkorModalTitle"></h2>
+          <p class="yizkor-modal__date" id="yizkorModalDate"></p>
+        </div>
+      </div>
+    </div>
+    <div class="yizkor-modal__body" id="yizkorModalBody"></div>
+  </div>
+</div>
 
 <footer class="site-footer" id="contact">
   <div class="container">
@@ -169,6 +200,9 @@
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/supabase-public.js"></script>
 <script src="js/i18n.js"></script>
 <script src="js/i18n-shared.js"></script>
 <script src="js/i18n-yizkor.js"></script>

@@ -69,7 +69,7 @@
       <div class="hero__content">
         <span class="eyebrow eyebrow--on-dark" data-i18n="hero.eyebrow">קהילת אגוז</span>
         <h1 class="display" data-i18n="hero.title">חנות אגוז</h1>
-        <p class="lead" data-i18n="hero.lead">מוצרי מורשת, לבוש ופריטים לקהילה — בקרוב אונליין.</p>
+        <p class="lead" data-i18n="hero.lead" data-shop-hero-lead>מוצרי מורשת, לבוש ופריטים לקהילה — בקרוב אונליין.</p>
       </div>
     </div>
   </section>
@@ -96,9 +96,30 @@
 </div>
 
 <main id="main">
-  <section class="section">
+  <section class="section shop-catalog" id="shopCatalog" hidden>
     <div class="container">
-      <div class="shop-soon" data-reveal>
+      <div class="section-head section-head--center">
+        <span class="eyebrow" data-i18n="catalog.eyebrow">קהילת אגוז</span>
+        <h2 class="h2" data-i18n="catalog.title">מוצרי החנות</h2>
+        <p class="lead" id="shopCatalogLead" data-i18n="catalog.lead">מוצרי מורשת, לבוש ופריטים לקהילת אגוז — נרכשים בקישור חיצוני.</p>
+      </div>
+      <div class="shop-bar">
+        <div class="filter-row" aria-label="סינון מוצרים">
+          <button class="is-on" type="button" data-i18n="filters.all">כל המוצרים</button>
+          <button type="button" data-i18n="filters.external">רכישה חיצונית</button>
+        </div>
+        <span class="cart-pill shop-impact-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.4-9.3-9C1.3 9.3 2.6 6 6 6c2 0 3.2 1.2 4 2.3C10.8 7.2 12 6 14 6c3.4 0 4.7 3.3 3.3 6C16 16.6 12 21 12 21z"/></svg>
+          <span data-i18n="catalog.impact">כל רכישה תומכת בפעילות העמותה</span>
+        </span>
+      </div>
+      <div class="shop-grid" id="shopGrid" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="section" id="shopEmpty">
+    <div class="container">
+      <div class="shop-soon" id="shopSoon" data-reveal>
         <div class="shop-soon__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 01-8 0"/></svg></div>
         <h2 class="h2" data-i18n="soon.title">החנות בדרך</h2>
         <p class="lead" data-i18n="soon.lead">אנחנו מכינים חנות אונליין עם מוצרי מורשת, לבוש ופריטים לקהילת אגוז. הדף יעודכן בקרוב.</p>
@@ -110,6 +131,33 @@
     </div>
   </section>
 </main>
+
+<section class="section dark shop-impact-band">
+  <div class="container container--narrow">
+    <span class="eyebrow eyebrow--on-dark eyebrow--center" data-i18n="impact.eyebrow">מעבר למוצר</span>
+    <h2 class="h2" data-i18n="impact.title">כל קנייה היא יד מושטת ללוחם</h2>
+    <p class="lead" data-i18n="impact.lead">הרכישה שלכם תומכת בפעילות העמותה, בלוחמים, בפצועים ובמשפחות. רוצים לתת מעבר לקנייה? אפשר גם לתרום ישירות.</p>
+    <a href="https://www.jgive.com/new/he/ils/donation-targets/5545" target="_blank" rel="noopener" class="btn btn--accent btn--lg" data-i18n="impact.donate">לתרומה ישירה</a>
+  </div>
+</section>
+
+<div class="shop-modal" id="shopProductModal" hidden>
+  <div class="shop-modal__backdrop" data-shop-modal-close></div>
+  <article class="shop-modal__panel" role="dialog" aria-modal="true" aria-labelledby="shopModalTitle">
+    <button class="shop-modal__close" type="button" data-shop-modal-close aria-label="סגירה">×</button>
+    <div class="shop-modal__media" id="shopModalMedia"></div>
+    <div class="shop-modal__body">
+      <span class="shop-modal__eyebrow" data-i18n="modal.eyebrow">פרטי מוצר</span>
+      <h2 class="shop-modal__title" id="shopModalTitle"></h2>
+      <p class="shop-modal__desc" id="shopModalDesc"></p>
+      <div class="shop-modal__price-row">
+        <span class="shop-modal__price" id="shopModalPrice"></span>
+        <span class="shop-modal__note" data-i18n="products.external">רכישה באתר חיצוני</span>
+      </div>
+      <a class="btn btn--accent btn--lg shop-modal__buy" id="shopModalBuy" target="_blank" rel="noopener" data-i18n="products.buy">לרכישה</a>
+    </div>
+  </article>
+</div>
 
 <footer class="site-footer" id="contact">
   <div class="container">
@@ -160,11 +208,14 @@
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
 <script src="js/i18n.js"></script>
 <script src="js/i18n-shared.js"></script>
 <script src="js/i18n-shop.js"></script>
 <script src="js/site.js"></script>
 <script src="js/nav-foundation.js"></script>
+<script src="js/shop.js"></script>
 <script>EgozI18n.init('shop');</script>
 </body>
 </html>

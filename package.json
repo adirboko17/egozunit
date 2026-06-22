@@ -5,7 +5,12 @@
   "description": "עמותת אגוז — הסיירת הצפונית",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "import:fallen": "node scripts/import-fallen-from-egoz.js",
+    "import:fallen:apply": "node scripts/import-fallen-from-egoz.js --apply",
+    "import:project-images": "node scripts/import-project-images.js",
+    "import:project-content": "node scripts/import-project-content.js",
+    "import:benefits": "node scripts/import-benefits-from-egoz.js"
   },
   "engines": {
     "node": ">=18"

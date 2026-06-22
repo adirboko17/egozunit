@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ניהול פרויקטים · לוח ניהול · עמותת אגוז</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/site.css" />
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body class="admin-shell">
+  <header class="admin-topbar">
+    <div class="admin-topbar__inner admin-topbar__inner--wide">
+      <div class="admin-topbar__brand"><img src="/assets/egoz-logo.png" alt="" /><div><b>לוח ניהול</b><span>עמותת אגוז</span></div></div>
+      <div class="admin-topbar__user"><span id="adminEmail"></span><button class="admin-topbar__logout" type="button" id="logoutBtn">יציאה</button></div>
+    </div>
+  </header>
+  <div class="admin-layout">
+    <aside class="admin-sidebar" aria-label="ניווט ניהול">
+      <nav class="admin-sidebar__nav">
+        <a href="/admin/" data-admin-nav="home">דף הבית</a>
+        <a href="/admin/yizkor.html" data-admin-nav="yizkor">יזכור</a>
+        <a href="/admin/events.html" data-admin-nav="events">אירועים</a>
+        <a href="/admin/benefits.html" data-admin-nav="benefits">הטבות</a>
+        <a href="/admin/jobs.html" data-admin-nav="jobs">משרות</a>
+        <a href="/admin/projects.html" data-admin-nav="projects">פרויקטים</a>
+        <a href="/admin/shop.html" data-admin-nav="shop">חנות</a>
+      </nav>
+    </aside>
+    <main class="admin-main admin-main--with-sidebar">
+      <section class="admin-panel">
+        <div class="admin-toolbar">
+          <div class="admin-toolbar__intro"><h2>פרויקטים</h2><p id="itemsCount">טוען...</p></div>
+          <div class="admin-toolbar__actions">
+            <label class="admin-search"><span class="admin-search__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></span><input id="itemSearch" type="search" placeholder="חיפוש..." autocomplete="off" /></label>
+            <button type="button" class="admin-btn-add" id="addItemBtn" aria-label="הוספת פרויקט"><span aria-hidden="true">+</span></button>
+          </div>
+        </div>
+        <div class="admin-alert admin-alert--error" id="pageAlert" hidden></div>
+        <div class="admin-products" id="itemsList"></div>
+      </section>
+    </main>
+  </div>
+  <div class="admin-modal" id="itemModal" hidden>
+    <div class="admin-modal__backdrop" id="modalBackdrop"></div>
+    <div class="admin-modal__panel" role="dialog" aria-modal="true" aria-labelledby="formTitle">
+      <div class="admin-modal__head"><h3 id="formTitle">פרויקט חדש</h3><button type="button" class="admin-modal__close" id="closeModalBtn" aria-label="סגירה">×</button></div>
+      <div class="admin-alert admin-alert--error" id="formAlert" hidden></div>
+      <form class="admin-form admin-form--modal" id="itemForm">
+        <input type="hidden" id="itemId" />
+        <div class="admin-form__grid">
+          <div class="admin-field admin-field--full"><label for="title">כותרת</label><input id="title" type="text" required /></div>
+          <div class="admin-field admin-field--full"><label for="description">תיאור קצר</label><textarea id="description" rows="3"></textarea></div>
+          <div class="admin-field admin-field--full">
+            <label>תמונות הפרויקט</label>
+            <div class="admin-project-images">
+              <div class="admin-project-images__block">
+                <span class="admin-project-images__label">תמונה ראשית</span>
+                <div class="admin-project-images__main" id="mainImagePreview">
+                  <div class="admin-project-images__empty">אין תמונה</div>
+                </div>
+              </div>
+              <div class="admin-project-images__block" id="galleryPreviewGroup" hidden>
+                <span class="admin-project-images__label">תמונות נוספות (גלריה)</span>
+                <div class="admin-project-images__gallery" id="galleryPreview"></div>
+              </div>
+            </div>
+          </div>
+          <div class="admin-field admin-field--full">
+            <label for="itemImage">העלאת / החלפת תמונה ראשית</label>
+            <input id="itemImage" type="file" accept="image/jpeg,image/png,image/webp,image/gif" />
+            <img class="admin-form__preview visually-hidden" id="imagePreview" alt="" hidden />
+          </div>
+          <div class="admin-field admin-field--full"><label for="itemBody">תוכן מלא (אופציונלי)</label><textarea id="itemBody" rows="5" placeholder="טקסט מפורט על הפרויקט..."></textarea></div>
+          <div class="admin-field admin-field--full"><label for="itemSlug">עוגן (slug) — לקישור ישיר לפרויקט</label><input id="itemSlug" type="text" placeholder="leaders" dir="ltr" required /></div>
+          <div class="admin-field admin-field--full">
+            <label for="detailUrl">קישור לפרטים</label>
+            <input id="detailUrl" type="text" dir="ltr" readonly tabindex="-1" class="admin-input--locked" aria-readonly="true" />
+            <p class="admin-field__hint">נוצר אוטומטית מה-slug — לא ניתן לעריכה</p>
+          </div>
+          <div class="admin-field"><label for="itemSort">סדר תצוגה</label><input id="itemSort" type="number" value="0" /></div>
+          <div class="admin-field admin-field--checkbox"><label class="admin-check"><input id="itemPublished" type="checkbox" checked /><span>מפורסם באתר</span></label></div>
+        </div>
+        <div class="admin-form__actions"><button class="admin-btn admin-btn--inline" type="submit" id="saveBtn">הוספה</button><button class="admin-btn admin-btn--inline admin-btn--ghost" type="button" id="cancelEditBtn">ביטול</button></div>
+      </form>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/js/supabase-config.js"></script>
+  <script src="/js/admin-auth.js"></script>
+  <script src="/js/admin-shell.js"></script>
+  <script src="/js/admin-utils.js"></script>
+  <script src="/js/admin-projects.js"></script>
+</body>
+</html>
