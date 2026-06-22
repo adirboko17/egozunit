@@ -384,6 +384,7 @@ body.shop-modal-open .hero-stack.is-nav-stuck {
 
 .shop-impact-band {
   text-align: center;
+  margin-block-end: clamp(16px, 2.5vw, 28px);
 }
 
 .shop-impact-band .h2 {
