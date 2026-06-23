@@ -24,17 +24,28 @@
 
   function renderHomeCard(item) {
     var url = item.link_url || '#';
+    var isVideo = item.media_type === 'video';
+    var typeLabel = TYPE_LABELS[item.media_type] || 'תקשורת';
     var desc = item.description
       ? '<p class="media-card__desc">' + esc(item.description) + '</p>'
       : '';
+    var playBtn = isVideo
+      ? '<span class="media-card__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>'
+      : '';
+    var actionLabel = isVideo ? 'לצפייה' : 'לכתבה';
 
     return (
       '<a href="' + esc(url) + '" class="media-card"' + externalAttrs(url) + '>' +
-        '<div class="media-card__logo">' + imageMarkup(item, 'media-card__img') + '</div>' +
+        '<div class="media-card__media">' +
+          imageMarkup(item, 'media-card__img') +
+          '<span class="media-card__badge media-card__badge--' + esc(item.media_type || 'article') + '">' + esc(typeLabel) + '</span>' +
+          playBtn +
+        '</div>' +
         '<div class="media-card__body">' +
-          '<span class="media-card__src">' + esc(TYPE_LABELS[item.media_type] || 'תקשורת') + '</span>' +
-          '<div class="media-card__title">' + esc(item.title) + '</div>' +
+          '<h3 class="media-card__title">' + esc(item.title) + '</h3>' +
           desc +
+          '<span class="media-card__action">' + esc(actionLabel) +
+            ' <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></span>' +
         '</div>' +
       '</a>'
     );

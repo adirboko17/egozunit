@@ -25,17 +25,5 @@ CREATE POLICY "Public read published site_media"
 DROP POLICY IF EXISTS "Admin manage site_media" ON public.site_media;
 CREATE POLICY "Admin manage site_media"
   ON public.site_media FOR ALL
-  USING (
-    EXISTS (
-      SELECT 1 FROM public.admin_profiles
-      WHERE admin_profiles.id = auth.uid()
-        AND admin_profiles.is_active = true
-    )
-  )
-  WITH CHECK (
-    EXISTS (
-      SELECT 1 FROM public.admin_profiles
-      WHERE admin_profiles.id = auth.uid()
-        AND admin_profiles.is_active = true
-    )
-  );
+  USING (is_admin())
+  WITH CHECK (is_admin());
