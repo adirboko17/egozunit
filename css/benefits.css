@@ -47,10 +47,6 @@
   min-height: 0;
 }
 
-.benefit-card__logo {
-  flex: 0 0 120px;
-}
-
 .benefit-card__lead {
   display: -webkit-box;
   -webkit-line-clamp: 2;

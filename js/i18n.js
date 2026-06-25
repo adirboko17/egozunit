@@ -93,11 +93,15 @@
   }
 
   function init(pageId) {
-    document.querySelectorAll('.lang-switch__btn[data-lang]').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        setLang(btn.getAttribute('data-lang'), pageId);
+    if (!document.documentElement.dataset.egozLangBound) {
+      document.documentElement.dataset.egozLangBound = '1';
+      document.addEventListener('click', function (e) {
+        var btn = e.target.closest('.lang-switch__btn[data-lang]');
+        if (!btn) return;
+        var pid = document.body.getAttribute('data-i18n-page') || pageId;
+        setLang(btn.getAttribute('data-lang'), pid);
       });
-    });
+    }
     apply(pageId);
   }
 

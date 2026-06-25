@@ -144,13 +144,20 @@
     var group = document.createElement('div');
     group.className = 'm-nav-group';
 
+    var itemsId = 'mNavFoundationItems';
+
     var head = document.createElement('button');
     head.type = 'button';
     head.className = 'm-nav-group__head';
-    head.innerHTML = '<span data-i18n="nav.foundation">' + (mLink.textContent.trim() || 'עמותה') + '</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>';
+    head.setAttribute('aria-expanded', 'false');
+    head.setAttribute('aria-controls', itemsId);
+    head.innerHTML =
+      '<span data-i18n="nav.foundation">' + (mLink.textContent.trim() || 'עמותה') + '</span>' +
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>';
 
     var items = document.createElement('div');
     items.className = 'm-nav-group__items';
+    items.id = itemsId;
 
     ITEMS.forEach(function (item) {
       var a = document.createElement('a');
@@ -163,14 +170,18 @@
     });
 
     head.addEventListener('click', function () {
-      group.classList.toggle('is-open');
+      var open = group.classList.toggle('is-open');
+      head.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
 
     group.appendChild(head);
     group.appendChild(items);
     mLink.replaceWith(group);
 
-    if (isFoundationSectionActive()) group.classList.add('is-open');
+    if (isFoundationSectionActive()) {
+      group.classList.add('is-open');
+      head.setAttribute('aria-expanded', 'true');
+    }
   }
 
   function applyI18nToNav() {

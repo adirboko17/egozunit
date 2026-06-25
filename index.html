@@ -69,13 +69,30 @@
   .site-header--nav-split .nav-cta { grid-column: 3; grid-row: 1; justify-self: end; margin-inline-end: clamp(-8px, -1vw, 0); }
   @media (max-width: 1080px) {
     .site-header--nav-split .nav-bar .container {
-      display: flex;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      grid-template-areas: "menu logo donate";
       align-items: center;
-      justify-content: space-between;
+      gap: 8px 12px;
     }
     .site-header--nav-split .nav-links { display: none; }
-    .site-header--nav-split .nav-end { margin-inline-start: 0; }
-    .site-header--nav-split .nav-cta { margin-inline-start: auto; margin-inline-end: 0; }
+    .site-header--nav-split .nav-end { display: contents; margin-inline-start: 0; }
+    .site-header--nav-split .nav-end .nav-toggle {
+      grid-area: menu;
+      justify-self: start;
+      margin-inline-start: 0;
+    }
+    .site-header--nav-split .nav-end .brand {
+      grid-area: logo;
+      justify-self: center;
+    }
+    .site-header--nav-split .nav-cta {
+      grid-area: donate;
+      justify-self: end;
+      margin-inline-start: 0;
+      margin-inline-end: 0;
+    }
+    .site-header--nav-split .nav-cta .lang-switch { display: none; }
   }
 
   /* Free-standing logo — no frame; white over hero, navy when header sticks */
@@ -180,12 +197,45 @@
     margin-inline-start: 0;
     margin-inline-end: 0;
   }
+  .site-header--nav-split .nav-cta .btn--accent {
+    border-radius: 999px;
+    padding-inline: clamp(18px, 2vw, 26px);
+  }
   @media (max-width: 1080px) {
-    .site-header--nav-split.is-stuck .nav-bar .container {
-      padding-inline: clamp(14px, 3vw, 20px);
+    .site-header--nav-split.is-stuck .nav-bar {
+      padding-block: 10px 14px;
     }
+
+    .site-header--nav-split.is-stuck .nav-bar .container {
+      min-height: 66px;
+      padding-inline: clamp(16px, 4vw, 24px);
+      padding-block: 11px 13px;
+      gap: 10px 14px;
+    }
+
     .site-header--nav-split.is-stuck .brand__logo,
-    .site-header--nav-split.is-stuck .brand__logo img { height: 46px; }
+    .site-header--nav-split.is-stuck .brand__logo img {
+      height: clamp(54px, 13vw, 62px);
+      width: auto;
+      max-width: min(168px, 40vw);
+    }
+
+    .site-header--nav-split.is-stuck .nav-toggle {
+      width: 50px;
+      height: 50px;
+    }
+
+    .site-header--nav-split.is-stuck .nav-toggle span,
+    .site-header--nav-split.is-stuck .nav-toggle span::before,
+    .site-header--nav-split.is-stuck .nav-toggle span::after {
+      width: 24px;
+    }
+
+    .site-header--nav-split.is-stuck .nav-cta .btn--accent {
+      padding: 11px 18px;
+      font-size: .9rem;
+      min-height: 44px;
+    }
   }
 
   /* ---- Hero stack (header + hero as one floating panel) ---- */
@@ -226,7 +276,7 @@
     left: var(--surface-inset);
     right: var(--surface-inset);
     width: auto;
-    z-index: 1001;
+    z-index: 10000;
   }
   .hero-stack .utility-bar {
     background: rgba(10, 20, 46, 0.42);
@@ -366,24 +416,91 @@
   .deleg__body h3 { color: #fff; font-size: clamp(1.5rem, 2.4vw, 2rem); margin-bottom: 10px; }
   .deleg__body p { color: var(--on-dark-2); }
 
-  /* ---- Media coverage ---- */
-  .media-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: clamp(18px, 2vw, 28px);
+  /* ---- Media coverage carousel ---- */
+  .home-media-carousel {
+    --home-carousel-gap: clamp(18px, 2vw, 28px);
     margin-top: clamp(24px, 3vw, 36px);
   }
-  .media-grid .media-card {
-    flex: 0 1 calc((100% - 2 * clamp(18px, 2vw, 28px)) / 3);
-    min-width: min(100%, 280px);
-    max-width: 380px;
+  .home-media-carousel .unit-media-carousel__track {
+    gap: var(--home-carousel-gap);
+    direction: ltr;
   }
-  @media (max-width: 980px) {
-    .media-grid .media-card { flex: 0 1 calc((100% - clamp(18px, 2vw, 28px)) / 2); }
+  .home-media-carousel .unit-media-carousel__slide {
+    flex: 0 0 100%;
+    min-width: 0;
+    direction: rtl;
+  }
+  @media (min-width: 641px) {
+    .home-media-carousel .unit-media-carousel__slide {
+      flex: 0 0 calc((100% - var(--home-carousel-gap)) / 2);
+    }
+  }
+  @media (min-width: 981px) {
+    .home-media-carousel .unit-media-carousel__slide {
+      flex: 0 0 calc((100% - 2 * var(--home-carousel-gap)) / 3);
+    }
+  }
+  .unit-media-carousel__shell {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: clamp(8px, 1vw, 14px);
+  }
+  .unit-media-carousel__viewport { overflow: hidden; min-width: 0; }
+  .unit-media-carousel__track {
+    display: flex;
+    transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+  }
+  .unit-media-carousel__slide { flex: 0 0 100%; min-width: 0; }
+  .unit-media-carousel__btn {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: var(--card);
+    color: var(--olive-800);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s, opacity 0.2s;
+    box-shadow: var(--sh-sm);
+  }
+  .unit-media-carousel__btn:hover:not(:disabled) {
+    background: var(--olive-800);
+    border-color: var(--olive-800);
+    color: #fff;
+  }
+  .unit-media-carousel__btn:disabled { opacity: 0.35; cursor: default; }
+  .unit-media-carousel.is-static .unit-media-carousel__btn,
+  .unit-media-carousel.is-static .unit-media-carousel__dots { display: none; }
+  .unit-media-carousel__dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: clamp(18px, 2.2vw, 26px);
+  }
+  .unit-media-carousel__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 0;
+    padding: 0;
+    background: var(--line-2);
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .unit-media-carousel__dot.is-active {
+    background: var(--brass-600);
+    transform: scale(1.25);
   }
   @media (max-width: 640px) {
-    .media-grid .media-card { flex: 1 1 100%; max-width: none; }
+    .home-media-carousel .unit-media-carousel__shell {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .home-media-carousel .unit-media-carousel__btn { display: none; }
   }
   .media-card {
     display: flex;
@@ -529,6 +646,12 @@
   .give-cta__btn svg { width: 1.1em; height: 1.1em; }
   .secure-note { display: flex; align-items: center; gap: 8px; font-size: .8rem; color: var(--text-3); margin-top: 14px; justify-content: center; }
   .secure-note svg { width: 14px; height: 14px; }
+
+  @media (max-width: 640px) {
+    .hero-stack .hero { min-height: clamp(460px, 82svh, 580px); }
+    .hero-stack .hero__inner { padding-block: clamp(24px, 4vh, 48px); }
+    .about-media__tag { position: relative; inset: auto; margin-top: 16px; max-width: none; }
+  }
 </style>
 </head>
 <body data-i18n-page="home">
@@ -615,11 +738,7 @@
     <a class="m-link" href="yizkor.html" data-i18n="nav.yizkor">יזכור</a>
     <a class="m-link" href="shop.html" data-i18n="nav.shop">חנות</a>
     <a class="m-link" href="contact.html" data-i18n="nav.contact">צרו קשר</a>
-    <div style="display:flex;gap:10px;margin-top:20px;">
-      <a href="#join" class="btn btn--ghost-light btn--sm btn--block" data-i18n="nav.join">חבר עמותה</a>
-      <a href="https://www.jgive.com/new/he/ils/donation-targets/5545" target="_blank" rel="noopener" class="btn btn--accent btn--sm btn--block" data-i18n="nav.donate">לתרומה</a>
-    </div>
-  </div>
+</div>
 </div>
 
 <main id="main">
@@ -640,8 +759,7 @@
         <a href="#goals" class="link-arrow" style="margin-top:24px;display:inline-flex;"><span data-i18n="about.link">המטרות שלנו</span> <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></a>
       </div>
       <div class="about-media" data-reveal="from-end" data-delay="1">
-        <img src="assets/formation.jpg" data-i18n-alt="about.img.alt" alt="לוחמי אגוז במסדר יחידה" />
-        <div class="about-media__tag"><b>1995</b><span data-i18n="about.tag">השנה שבה הוקמה מחדש יחידת אגוז של ימינו</span></div>
+        <img src="assets/תמונות לאתר אגוז_Artboard 31.webp" data-i18n-alt="about.img.alt" alt="לוחמי אגוז במסדר יחידה" />
       </div>
     </div>
   </div>
@@ -802,8 +920,23 @@
         <h2 class="h2" style="margin-top:6px;" data-i18n="media.title">מספרים עלינו</h2>
       </div>
     </div>
-    <div class="media-grid" id="mediaGrid" data-reveal-stagger>
-      <div class="media-empty">טוען פריטי תקשורת...</div>
+    <div class="unit-media-carousel home-media-carousel" data-home-media-carousel data-reveal>
+      <div class="unit-media-carousel__shell">
+        <button type="button" class="unit-media-carousel__btn unit-media-carousel__btn--prev" data-carousel-prev data-i18n-aria="media.carousel.prev" aria-label="הקודם">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+        <div class="unit-media-carousel__viewport">
+          <div class="unit-media-carousel__track" id="homeMediaTrack">
+            <div class="unit-media-carousel__slide">
+              <div class="media-empty">טוען פריטי תקשורת...</div>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="unit-media-carousel__btn unit-media-carousel__btn--next" data-carousel-next data-i18n-aria="media.carousel.next" aria-label="הבא">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg>
+        </button>
+      </div>
+      <div class="unit-media-carousel__dots" role="tablist" data-i18n-aria="media.carousel.dots" aria-label="עמודי הקרוסלה"></div>
     </div>
   </div>
 </section>
@@ -818,7 +951,6 @@
         <h2 class="h2" style="color:var(--on-dark);margin-top:14px;" data-i18n="join.title">כל תרומה היא עוד יד מושטת ללוחם</h2>
         <p class="lead" style="color:var(--on-dark-2);margin-top:16px;" data-i18n="join.lead">תרומתכם מממנת ליווי פצועים, תמיכה במשפחות שכולות, מלגות וסיוע לבוגרי היחידה לדורותיהם. עכשיו, כשהצורך גדול מתמיד — זה הזמן להושיט יד.</p>
         <div class="flex gap-m wrap mt-m">
-          <a href="#join" class="btn btn--ghost-light btn--lg" data-i18n="join.btn1">הצטרפות כחבר עמותה</a>
           <a href="contact.html" class="btn btn--ghost-light btn--lg" data-i18n="join.btn2">הרשמה לניוזלטר</a>
         </div>
       </div>
@@ -919,6 +1051,7 @@
 <script src="js/i18n-home.js"></script>
 <script src="js/site.js"></script>
 <script src="js/nav-foundation.js"></script>
+<script src="js/home-media-carousel.js"></script>
 <script src="js/media.js"></script>
 </body>
 </html>

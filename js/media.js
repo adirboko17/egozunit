@@ -75,17 +75,52 @@
     return groups;
   }
 
-  function renderHomeGrid(items) {
-    var grid = document.getElementById('mediaGrid');
-    if (!grid) return;
+  var homeMediaItems = [];
+  var homeResizeTimer = null;
 
-    if (!items.length) {
-      grid.innerHTML = '<div class="media-empty">אין עדיין פריטי תקשורת.</div>';
+  function rebuildHomeSlides() {
+    var track = document.getElementById('homeMediaTrack');
+    if (!track) return;
+
+    if (!homeMediaItems.length) {
+      track.innerHTML =
+        '<div class="unit-media-carousel__slide">' +
+          '<div class="media-empty">אין עדיין פריטי תקשורת.</div>' +
+        '</div>';
       return;
     }
 
-    grid.innerHTML = items.map(renderHomeCard).join('');
+    track.innerHTML = homeMediaItems.map(function (item) {
+      return '<div class="unit-media-carousel__slide">' + renderHomeCard(item) + '</div>';
+    }).join('');
   }
+
+  function renderHomeCarousel(items) {
+    var carousel = document.querySelector('[data-home-media-carousel]');
+    homeMediaItems = items || [];
+
+    if (!carousel) return;
+
+    rebuildHomeSlides();
+
+    if (window.EgozHomeMediaCarousel && typeof window.EgozHomeMediaCarousel.init === 'function') {
+      window.EgozHomeMediaCarousel.init(carousel);
+    }
+  }
+
+  function onHomeCarouselResize() {
+    if (!document.getElementById('homeMediaTrack') || !homeMediaItems.length) return;
+    clearTimeout(homeResizeTimer);
+    homeResizeTimer = window.setTimeout(function () {
+      rebuildHomeSlides();
+      var carousel = document.querySelector('[data-home-media-carousel]');
+      if (carousel && window.EgozHomeMediaCarousel) {
+        window.EgozHomeMediaCarousel.init(carousel);
+      }
+    }, 150);
+  }
+
+  window.addEventListener('resize', onHomeCarouselResize, { passive: true });
 
   function renderUnitCarousel(items) {
     var track = document.getElementById('unitMediaTrack');
@@ -123,7 +158,7 @@
     if (result.error) return;
     var items = result.data || [];
 
-    renderHomeGrid(items);
+    renderHomeCarousel(items);
     renderUnitCarousel(items);
   }
 

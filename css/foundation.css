@@ -171,17 +171,16 @@ html[dir="ltr"] .link-arrow svg { transform: scaleX(-1); }
 }
 .ben:hover { transform: translateY(-5px); box-shadow: var(--sh-lg); border-color: var(--line-2); }
 .ben__logo {
-  flex: 0 0 120px;
-  height: 120px;
-  min-height: 120px;
-  max-height: 120px;
+  flex: 0 0 auto;
+  aspect-ratio: 16 / 10;
+  width: 100%;
+  min-height: 0;
+  max-height: none;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(150deg, var(--paper-2) 0%, var(--paper-3) 100%);
+  position: relative;
+  padding: 0;
+  background: #fff;
   border-bottom: 1px solid var(--line);
-  padding: 14px 18px;
   font-family: var(--font-display);
   font-weight: 800;
   font-size: 1.18rem;
@@ -189,13 +188,45 @@ html[dir="ltr"] .link-arrow svg { transform: scaleX(-1); }
   text-align: center;
   line-height: 1.25;
 }
+
+.ben__media-frame {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(14px, 2.2vw, 20px);
+  background: linear-gradient(180deg, #fff 0%, var(--paper-2) 100%);
+}
+
 .ben__logo img {
   display: block;
+  width: auto;
+  height: auto;
+  max-width: 86%;
+  max-height: 86%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.ben__logo.is-photo .ben__media-frame {
+  padding: 0;
+  display: block;
+  background: var(--olive-900);
+}
+
+.ben__logo.is-photo img {
   width: 100%;
   height: 100%;
   max-width: none;
-  object-fit: contain;
+  max-height: none;
+  object-fit: cover;
   object-position: center;
+}
+
+.ben:hover .ben__logo.is-photo img {
+  transform: scale(1.04);
+  transition: transform .45s var(--ease-out);
 }
 .ben__body {
   padding: 20px 22px 22px;

@@ -2,7 +2,34 @@
 
 .heritage-page { background: var(--paper); }
 
+.heritage-page main > .section:first-of-type {
+  padding-bottom: clamp(20px, 2.5vw, 36px);
+}
+
+.heritage-page main > .section:first-of-type + .section {
+  padding-top: clamp(28px, 3.5vw, 48px);
+}
+
 .hero--heritage .hero__bg img { object-position: 50% 35%; }
+
+.heritage-video__embed {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--olive-800);
+  box-shadow: var(--sh-md);
+}
+
+.heritage-video__embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
 
 .heritage-initiatives {
   display: grid;

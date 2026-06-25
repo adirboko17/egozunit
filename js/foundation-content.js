@@ -17,6 +17,29 @@
     return fallback;
   }
 
+  function getLang() {
+    return window.EgozI18n && typeof EgozI18n.getLang === 'function'
+      ? EgozI18n.getLang()
+      : 'he';
+  }
+
+  function localizeBenefit(item) {
+    if (getLang() === 'he' || !item || !item.slug) return item;
+    var tr = window.EgozBenefitsI18n && EgozBenefitsI18n[item.slug];
+    if (!tr) return item;
+    return {
+      slug: item.slug,
+      category: item.category,
+      image_url: item.image_url,
+      redeem_url: item.redeem_url,
+      brand_name: tr.brand_name || item.brand_name,
+      title: tr.title || item.title,
+      offer_main: tr.offer_main != null ? tr.offer_main : item.offer_main,
+      offer_sub: tr.offer_sub != null ? tr.offer_sub : item.offer_sub,
+      description: tr.description != null ? tr.description : item.description
+    };
+  }
+
   function renderProjects(items) {
     if (!projectsGrid || !items.length) return;
     projectsGrid.innerHTML = items.map(function (item) {
@@ -64,19 +87,20 @@
   function renderBenefits(items) {
     if (!benefitsGrid || !items.length) return;
     benefitsGrid.innerHTML = items.map(function (item) {
-      var detailUrl = item.slug ? ('benefits.html#' + item.slug) : (item.redeem_url || 'benefits.html');
-      var logoHtml = item.image_url
-        ? '<img src="' + esc(item.image_url) + '" alt="' + esc(item.brand_name || item.title) + '" loading="lazy" decoding="async" />'
-        : esc(item.brand_name || '');
+      var localized = localizeBenefit(item);
+      var detailUrl = localized.slug ? ('benefits.html#' + localized.slug) : (localized.redeem_url || 'benefits.html');
+      var logoHtml = localized.image_url
+        ? '<div class="ben__media-frame"><img src="' + esc(localized.image_url) + '" alt="' + esc(localized.brand_name || localized.title) + '" loading="lazy" decoding="async" /></div>'
+        : esc(localized.brand_name || '');
 
       return (
-        '<article class="ben" data-c="' + esc(item.category) + '">' +
+        '<article class="ben" data-c="' + esc(localized.category) + '">' +
           '<div class="ben__logo">' + logoHtml + '</div>' +
           '<div class="ben__body">' +
-            '<span class="ben__cat">' + esc(catLabel(item.category)) + '</span>' +
-            '<span class="ben__title">' + esc(item.title) + '</span>' +
-            '<span class="ben__off">' + esc(item.offer_main) + '<small>' + esc(item.offer_sub) + '</small></span>' +
-            (item.description ? '<p class="card__excerpt">' + esc(benefitExcerpt(item.description, 80)) + '</p>' : '') +
+            '<span class="ben__cat">' + esc(catLabel(localized.category)) + '</span>' +
+            '<span class="ben__title">' + esc(localized.title) + '</span>' +
+            '<span class="ben__off">' + esc(localized.offer_main) + '<small>' + esc(localized.offer_sub) + '</small></span>' +
+            (localized.description ? '<p class="card__excerpt">' + esc(benefitExcerpt(localized.description, 80)) + '</p>' : '') +
             '<div class="ben__foot"><a href="' + esc(detailUrl) + '" class="link-arrow"><span>' +
               esc(t('benefits.redeem', 'קרא הכל')) +
               '</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></a></div>' +
@@ -84,6 +108,10 @@
         '</article>'
       );
     }).join('');
+
+    if (typeof window.tuneBenefitCardMedia === 'function') {
+      window.tuneBenefitCardMedia(benefitsGrid);
+    }
 
     if (typeof window.initBenefitsFilter === 'function') {
       window.initBenefitsFilter();
@@ -114,6 +142,8 @@
     }).join('');
   }
 
+  var cachedBenefits = [];
+
   async function loadContent() {
     var sb = EgozSupabasePublic.getClient();
     if (!sb) return;
@@ -125,9 +155,16 @@
     ]);
 
     if (results[0].data && results[0].data.length) renderProjects(results[0].data);
-    if (results[1].data && results[1].data.length) renderBenefits(results[1].data);
+    if (results[1].data && results[1].data.length) {
+      cachedBenefits = results[1].data;
+      renderBenefits(cachedBenefits);
+    }
     if (results[2].data && results[2].data.length) renderFoundationEvents(results[2].data);
   }
+
+  document.addEventListener('egoz:langchange', function () {
+    if (cachedBenefits.length) renderBenefits(cachedBenefits);
+  });
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', loadContent);

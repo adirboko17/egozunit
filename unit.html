@@ -91,16 +91,12 @@
     <a class="m-link" href="yizkor.html" data-i18n="nav.yizkor">יזכור</a>
     <a class="m-link" href="shop.html" data-i18n="nav.shop">חנות</a>
     <a class="m-link" href="contact.html" data-i18n="nav.contact">צרו קשר</a>
-    <div style="display:flex;gap:10px;margin-top:20px;">
-      <a href="index.html#join" class="btn btn--ghost-light btn--sm btn--block" data-i18n="nav.join">חבר עמותה</a>
-      <a href="https://www.jgive.com/new/he/ils/donation-targets/5545" target="_blank" rel="noopener" class="btn btn--accent btn--sm btn--block" data-i18n="nav.donate">לתרומה</a>
-    </div>
-  </div>
+</div>
 </div>
 
 <main id="main" class="unit-main">
 
-<section class="section unit-section--plain" id="intro">
+<section class="section unit-section--plain" id="intro" data-scroll-panel>
   <div class="container">
     <div class="split unit-intro">
       <div class="unit-intro__prose" data-reveal="from-start">
@@ -109,12 +105,17 @@
         <p data-i18n="intro.p1">יחידת אגוז הוקמה על מנת להביא למהפך ביכולות צה״ל מול ארגון הטרור ״חיזבאללה״ — ולהכריע את האויב בכל מפגש. עד היום ״אגוז״ מתמחה בלוחמת גרילה ומביאה את יכולותיה הייחודיות על מנת להכריע כל אויב בכל מקום.</p>
         <p data-i18n="intro.p2">״אגוז״ מתמחה בלחימה בטווחים קרובים, בשטח סבוך, בשדאות, הסוואה וכן בלוחמה זעירה — לחימת טווח קצר שבה איכותו ומקצועיותו של הלוחם מהוות את המרכיב העיקרי להצלחתה. היחידה פועלת בכל זמן, בכל זירה ובכל גזרה.</p>
       </div>
-      <figure class="unit-intro__fig" data-reveal="from-end" data-delay="1">
-        <img src="assets/hero-patrol.jpg" data-i18n-alt="intro.img.alt" alt="לוחמי אגוז בפעילות מבצעית" />
-        <figcaption class="unit-intro__tag">
-          <b data-i18n="intro.tag.year">1995</b>
-          <span data-i18n="intro.tag.text">השנה שבה הוקמה מחדש יחידת אגוז של ימינו</span>
-        </figcaption>
+      <figure class="unit-intro__fig unit-intro__fig--video" data-reveal="from-end" data-delay="1">
+        <div class="unit-intro__embed">
+          <iframe
+            src="https://www.youtube.com/embed/1UJ_xoOkxjM?rel=0&modestbranding=1"
+            title="סרטון על יחידת אגוז — הסיירת הצפונית"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
       </figure>
     </div>
   </div>
@@ -126,7 +127,8 @@
       <div class="kicker-row"><span class="kicker-row__no">02</span><span class="kicker-row__txt" data-i18n="history.kicker">רגע של היסטוריה</span><span class="kicker-row__line"></span></div>
       <h2 class="h2" data-i18n="history.title">מסיירת הפיקודית ועד יחידת הקומנדו</h2>
     </div>
-    <div class="unit-timeline" data-reveal-stagger>
+    <div class="unit-timeline" data-unit-timeline>
+      <div class="unit-timeline__line" aria-hidden="true"><span class="unit-timeline__line-fill"></span></div>
       <article class="unit-timeline__item">
         <div class="unit-timeline__meta">
           <div class="unit-timeline__year" data-i18n="history.t1.year">1956</div>
@@ -214,7 +216,7 @@
       <h2 class="h2" data-i18n="media.title">סיקורי תקשורת על היחידה</h2>
       <p class="lead" data-i18n="media.lead">לחץ על שורה כדי לצפות בכתבה או בסרטון (קישורים יתווספו בהמשך).</p>
     </div>
-    <div class="unit-media-carousel" data-unit-media-carousel data-reveal>
+    <div class="unit-media-carousel" data-unit-media-carousel data-reveal="scale-up" data-delay="1">
       <div class="unit-media-carousel__shell">
         <button type="button" class="unit-media-carousel__btn unit-media-carousel__btn--prev" data-carousel-prev data-i18n-aria="media.carousel.prev" aria-label="הקודם">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
@@ -350,6 +352,7 @@
 <script src="js/i18n-unit.js"></script>
 <script src="js/site.js"></script>
 <script src="js/nav-foundation.js"></script>
+<script src="js/unit-timeline.js"></script>
 <script src="js/unit-media-carousel.js"></script>
 <script src="js/media.js"></script>
 </body>

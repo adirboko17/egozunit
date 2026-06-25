@@ -11,7 +11,9 @@
       'nav.heritage': 'אגוז לדורותיה',
       'nav.shop': 'חנות',
       'nav.foundationMenu': 'תת-עמודי עמותה',
-      'nav.foundationExpand': 'פתיחת תפריט עמותה'
+      'nav.foundationExpand': 'פתיחת תפריט עמותה',
+      'lang.optionHe': 'עברית',
+      'lang.optionEn': 'English'
     },
     en: {
       'nav.foundationSub.about': 'About',
@@ -22,7 +24,9 @@
       'nav.heritage': 'Egoz Through Generations',
       'nav.shop': 'Shop',
       'nav.foundationMenu': 'Foundation pages',
-      'nav.foundationExpand': 'Open foundation menu'
+      'nav.foundationExpand': 'Open foundation menu',
+      'lang.optionHe': 'עברית',
+      'lang.optionEn': 'English'
     }
   });
 })();
