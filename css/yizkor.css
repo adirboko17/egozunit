@@ -73,19 +73,36 @@
 }
 
 .yizkor-search {
-  position: relative;
-  display: block;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 10px;
   flex: 1 1 280px;
   max-width: 460px;
+  height: 46px;
+  padding: 0 16px;
+  border: 1.5px solid var(--line-2);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .92);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .8) inset, var(--sh-sm);
+  transition: border-color .22s var(--ease), box-shadow .22s var(--ease), background .22s;
+}
+.yizkor-search:hover {
+  border-color: rgba(168, 133, 59, .45);
+  background: #fff;
+}
+.yizkor-search:focus-within {
+  border-color: var(--brass-600);
+  background: #fff;
+  box-shadow:
+    0 0 0 4px rgba(196, 162, 102, .18),
+    0 1px 0 rgba(255, 255, 255, .8) inset;
 }
 
 .yizkor-search__icon {
-  position: absolute;
-  inset-inline-start: 18px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 19px;
-  height: 19px;
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
   color: var(--olive-600);
   opacity: .75;
   pointer-events: none;
@@ -97,31 +114,28 @@
 }
 
 .yizkor-search__input {
-  width: 100%;
-  min-height: 52px;
-  padding: 14px 20px;
-  padding-inline-start: 48px;
-  border: 1.5px solid var(--line-2);
-  border-radius: 999px;
+  flex: 1 1 auto;
+  min-width: 0;
+  width: auto;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
   font: inherit;
-  font-size: 1rem;
+  font-size: .96rem;
+  line-height: 1.2;
   color: var(--text);
-  background: rgba(255, 255, 255, .92);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, .8) inset, var(--sh-sm);
-  transition: border-color .22s var(--ease), box-shadow .22s var(--ease), background .22s;
+  background: transparent;
+  box-shadow: none;
+  -webkit-appearance: none;
+  appearance: none;
 }
 .yizkor-search__input::placeholder { color: var(--text-3); }
-.yizkor-search__input:hover {
-  border-color: rgba(168, 133, 59, .45);
-  background: #fff;
-}
 .yizkor-search__input:focus {
   outline: none;
-  border-color: var(--brass-600);
-  background: #fff;
-  box-shadow:
-    0 0 0 4px rgba(196, 162, 102, .18),
-    0 1px 0 rgba(255, 255, 255, .8) inset;
+}
+.yizkor-search__input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
 }
 
 .yizkor-toolbar__count {
@@ -129,14 +143,14 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 52px;
-  padding: 0 18px;
+  min-height: 46px;
+  padding: 0 16px;
   margin: 0;
   border-radius: 999px;
   border: 1.5px solid rgba(43, 58, 31, .12);
   background: rgba(43, 58, 31, .06);
   font-family: var(--font-display);
-  font-size: .9rem;
+  font-size: .88rem;
   font-weight: 700;
   letter-spacing: .01em;
   color: var(--olive-800);
@@ -144,14 +158,37 @@
 }
 
 @media (max-width: 560px) {
+  .yizkor-intro {
+    padding: 22px 16px 18px;
+    margin-bottom: 24px;
+  }
+  .yizkor-intro__head {
+    margin-bottom: 16px;
+  }
+  .yizkor-intro__head .lead {
+    font-size: .92rem;
+    line-height: 1.6;
+  }
   .yizkor-toolbar {
     flex-direction: column;
     align-items: stretch;
+    gap: 10px;
   }
   .yizkor-search {
+    flex: none;
+    width: 100%;
     max-width: none;
+    height: 42px;
+    padding: 0 14px;
+    gap: 8px;
+  }
+  .yizkor-search__input {
+    font-size: .9rem;
   }
   .yizkor-toolbar__count {
+    min-height: 38px;
+    padding: 0 14px;
+    font-size: .82rem;
     justify-content: center;
   }
 }
@@ -185,7 +222,36 @@
   .yizkor-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 560px) {
-  .yizkor-grid { grid-template-columns: 1fr; }
+  .yizkor-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .yizkor-card__body {
+    padding: 12px 10px 14px;
+  }
+  .yizkor-card__name {
+    font-size: .9rem;
+    line-height: 1.25;
+  }
+  .yizkor-card__date {
+    margin-top: 6px;
+    font-size: .74rem;
+  }
+  .yizkor-card__place {
+    margin-top: 2px;
+    font-size: .72rem;
+  }
+  .yizkor-card__cta {
+    padding-top: 10px;
+    font-size: .72rem;
+    gap: 4px;
+  }
+  .yizkor-card__candle {
+    inset-inline-end: 8px;
+    bottom: 8px;
+    width: 22px;
+    height: 22px;
+  }
 }
 
 .hero--yizkor .hero__bg img { object-position: 50% 35%; }
