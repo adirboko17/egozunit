@@ -67,7 +67,7 @@
       'footer.contact.title': 'צרו קשר',
       'footer.address': 'יפו 161, ירושלים',
       'footer.registered': 'עמותה רשומה 580027720',
-      'footer.link1': 'ניהול תקין',
+      'footer.link1': 'תקנון',
       'footer.link2': 'סעיף 46',
       'footer.link3': 'הצהרת נגישות'
     },
@@ -136,7 +136,7 @@
       'footer.contact.title': 'Contact',
       'footer.address': '161 Jaffa St, Jerusalem',
       'footer.registered': 'Registered NGO 580027720',
-      'footer.link1': 'Proper management',
+      'footer.link1': 'Bylaws',
       'footer.link2': 'Section 46',
       'footer.link3': 'Accessibility statement'
     }
@@ -149,8 +149,8 @@
       if (footerCopy && year) {
         var updateCopyright = function () {
           var lang = EgozI18n.getLang();
-          var tpl = '© {year} עמותת אגוז — הסיירת הצפונית · כל הזכויות שמורות';
-          if (lang === 'en') tpl = '© {year} Egoz Association — Northern Command · All rights reserved';
+          var tpl = '© {year} עמותת אגוז — הסיירת הצפונית · הבית של בוגרי היחידה · כל הזכויות שמורות';
+          if (lang === 'en') tpl = '© {year} Egoz Association — Northern Command · Home of unit alumni · All rights reserved';
           footerCopy.textContent = tpl.replace('{year}', year.textContent);
         };
         updateCopyright();

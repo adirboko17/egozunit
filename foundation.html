@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8" />
@@ -58,6 +58,7 @@
               <button type="button" class="lang-switch__btn is-active" data-lang="he" aria-pressed="true" data-i18n="lang.he">עב</button>
               <button type="button" class="lang-switch__btn" data-lang="en" aria-pressed="false" data-i18n="lang.en">EN</button>
             </div>
+            <a href="login.html" class="btn btn--ghost-light btn--sm" data-i18n="nav.join">חבר עמותה</a>
             <a href="https://www.jgive.com/new/he/ils/donation-targets/5545" target="_blank" rel="noopener" class="btn btn--accent btn--sm" data-i18n="nav.donate">לתרומה</a>
           </div>
         </div>
@@ -87,6 +88,7 @@
     <a class="m-link" href="yizkor.html" data-i18n="nav.yizkor">יזכור</a>
     <a class="m-link" href="shop.html" data-i18n="nav.shop">חנות</a>
     <a class="m-link" href="contact.html" data-i18n="nav.contact">צרו קשר</a>
+    <a class="m-link" href="login.html" data-i18n="nav.join">חבר עמותה</a>
 </div>
 </div>
 
@@ -178,9 +180,7 @@
       </div>
       <div class="grid cols-3" id="benGrid" data-reveal-stagger aria-live="polite"></div>
       <div class="benefits-cta">
-        <p class="muted" style="margin-bottom:14px;" data-i18n="benefits.membersOnly">ההטבות נפתחות לבוגרים רשומים בלבד.</p>
-        <a href="benefits.html" class="btn btn--outline btn--lg" style="margin-bottom:12px;">לכל ההטבות</a>
-        <a href="join.html" class="btn btn--accent btn--lg" data-i18n="benefits.joinBtn">הצטרפות / כניסה לאזור האישי</a>
+        <a href="benefits.html" class="btn btn--outline btn--lg">לכל ההטבות</a>
       </div>
     </div>
   </section>
@@ -195,41 +195,7 @@
         </div>
         <a href="events.html" class="link-arrow link-arrow--light" data-i18n="events.allShort">לוח מלא <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></a>
       </div>
-      <div class="evt-list" id="foundationEventsList" data-reveal-stagger aria-live="polite">
-        <a class="evt-row" href="https://egoz.org.il/projects/leaders/" target="_blank" rel="noopener noreferrer">
-          <time class="evt-row__date" datetime="2026-07-15">
-            <span class="evt-row__day" data-i18n="events.e1.day">15</span>
-            <span class="evt-row__month" data-i18n="events.e1.month">יולי</span>
-          </time>
-          <div class="evt-row__body">
-            <h3 class="evt-row__title" data-i18n="events.e1">תכנית המנהיגות ופיתוח אישי — הופמן קופמן</h3>
-            <p class="evt-row__meta" data-i18n="events.e1.meta">פיתוח מנהיגות וכישורים אישיים לבוגרי היחידה</p>
-          </div>
-          <span class="evt-row__go" data-i18n-aria="events.link" aria-label="לפרטים"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></span>
-        </a>
-        <a class="evt-row" href="https://egoz.org.il/projects/catching-direction-bat-yam/" target="_blank" rel="noopener noreferrer">
-          <time class="evt-row__date" datetime="2026-08-02">
-            <span class="evt-row__day" data-i18n="events.e2.day">02</span>
-            <span class="evt-row__month" data-i18n="events.e2.month">אוג׳</span>
-          </time>
-          <div class="evt-row__body">
-            <h3 class="evt-row__title" data-i18n="events.e2">תוכנית תופסים כיוון בת ים — בוגרי אגוז תורמים לקהילה</h3>
-            <p class="evt-row__meta" data-i18n="events.e2.meta">בוגרים מלווים ותורמים לנוער בקהילה</p>
-          </div>
-          <span class="evt-row__go" data-i18n-aria="events.link" aria-label="לפרטים"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></span>
-        </a>
-        <a class="evt-row" href="https://egoz.org.il/projects/pleasat-release/" target="_blank" rel="noopener noreferrer">
-          <time class="evt-row__date" datetime="2026-09-19">
-            <span class="evt-row__day" data-i18n="events.e3.day">19</span>
-            <span class="evt-row__month" data-i18n="events.e3.month">ספט׳</span>
-          </time>
-          <div class="evt-row__body">
-            <h3 class="evt-row__title" data-i18n="events.e3">שחרור נעים — סדנת הכנה לאזרחות</h3>
-            <p class="evt-row__meta" data-i18n="events.e3.meta">סדנת הכנה לחיים האזרחיים אחרי השחרור</p>
-          </div>
-          <span class="evt-row__go" data-i18n-aria="events.link" aria-label="לפרטים"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></span>
-        </a>
-      </div>
+      <div class="evt-list" id="foundationEventsList" data-reveal-stagger aria-live="polite"></div>
       <div class="evt-foot" data-reveal>
         <a href="events.html" class="btn btn--ghost-light" data-i18n="events.all">כל האירועים</a>
       </div>
@@ -247,8 +213,8 @@
         </div>
         <div class="foundation-docs">
           <a href="#" data-i18n="transparency.doc1">תעודת רישום</a>
-          <a href="#" data-i18n="transparency.doc2">סעיף 46</a>
-          <a href="#" data-i18n="transparency.doc3">ניהול תקין</a>
+          <a href="assets/login/סעיף-46.pdf" target="_blank" rel="noopener" data-i18n="transparency.doc2">סעיף 46</a>
+          <a href="bylaws.html" data-i18n="transparency.doc3">ניהול תקין</a>
           <a href="#" data-i18n="transparency.doc4">פרוטוקול ישיבת ועד מנהל Q1 2020</a>
           <a href="#" data-i18n="transparency.doc5">פרוטוקול ישיבת ועד מנהל Q2 2020</a>
           <a href="#" data-i18n="transparency.doc6">פרוטוקול ישיבת ועד מנהל Q3 2020</a>
@@ -258,12 +224,13 @@
   </section>
 </main>
 
-<footer class="site-footer" id="contact">
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-col">
         <div class="flex ai-c gap-s" style="margin-bottom:18px;">
-          <img class="footer-brand__logo" src="assets/egoz-logo.png" data-i18n-alt="brand.alt" alt="סמל אגוז" />
+          <img class="footer-brand__logo" src="assets/egoz-logo.png" data-i18n-alt="footer.logo.alt" alt="סמל אגוז" />
           <div><b style="font-family:var(--font-display);font-weight:900;font-size:1.4rem;color:var(--on-dark);display:block;line-height:1;" data-i18n="footer.brand">אגוז</b><span style="font-size:.82rem;color:var(--on-dark-3);" data-i18n="footer.tag">הסיירת הצפונית</span></div>
         </div>
         <p style="font-size:.96rem;max-width:36ch;" data-i18n="footer.about">הבית של בוגרי יחידת אגוז, המשפחות השכולות והפצועים — קהילה אחת שעומדת זה לצד זה הרבה אחרי השחרור.</p>
@@ -283,7 +250,7 @@
         <h4 data-i18n="footer.community.title">קהילה</h4>
         <ul>
           <li><a href="index.html#hamalim" data-i18n="footer.hamalim">חמ״לי העמותה</a></li>
-          <li><a href="index.html#join" data-i18n="nav.join">חבר עמותה</a></li>
+          <li><a href="login.html" data-i18n="nav.join">חבר עמותה</a></li>
           <li><a href="index.html#delegations" data-i18n="footer.delegations">משלחות לחו״ל</a></li>
           <li><a href="index.html#media" data-i18n="footer.media">עלינו בתקשורת</a></li>
           <li><a href="https://www.jgive.com/new/he/ils/donation-targets/5545" target="_blank" rel="noopener" data-i18n="nav.donate">לתרומה</a></li>
@@ -300,16 +267,15 @@
         <div class="footer-social" style="margin-top:18px;" data-i18n-aria="util.social" aria-label="רשתות חברתיות">
           <a href="https://www.facebook.com/amutat.egoz" aria-label="פייסבוק"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3l.4-3H14V4.5c0-.9.3-1.5 1.6-1.5H17V.2C16.7.1 15.6 0 14.4 0 11.9 0 10 1.5 10 4.3V6H7v3h3v9h4V9z"/></svg></a>
           <a href="https://www.instagram.com/egoz_unit" aria-label="אינסטגרם"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-          <a href="https://egoz.org.il" aria-label="אתר העמותה"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18"/></svg></a>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <span id="footerCopy">© <span id="year">2026</span> עמותת אגוז — הסיירת הצפונית · כל הזכויות שמורות</span>
+      <span id="footerCopy">© <span id="year">2026</span> עמותת אגוז — הסיירת הצפונית · הבית של בוגרי היחידה · כל הזכויות שמורות</span>
       <div class="flex gap-m wrap">
-        <a href="#" style="color:var(--on-dark-3);" data-i18n="footer.link1">ניהול תקין</a>
-        <a href="#" style="color:var(--on-dark-3);" data-i18n="footer.link2">סעיף 46</a>
-        <a href="#" style="color:var(--on-dark-3);" data-i18n="footer.link3">הצהרת נגישות</a>
+        <a href="bylaws.html" style="color:var(--on-dark-3);" data-i18n="footer.link1">ניהול תקין</a>
+        <a href="assets/login/סעיף-46.pdf" target="_blank" rel="noopener" style="color:var(--on-dark-3);" data-i18n="footer.link2">סעיף 46</a>
+        <a href="accessibility.html" style="color:var(--on-dark-3);" data-i18n="footer.link3">הצהרת נגישות</a>
       </div>
     </div>
   </div>
@@ -323,6 +289,7 @@
 <script src="js/i18n-foundation.js"></script>
 <script src="js/benefits-i18n-data.js"></script>
 <script src="js/site.js"></script>
+<script src="js/member-nav.js"></script>
 <script src="js/nav-foundation.js"></script>
 <script src="js/foundation.js"></script>
 <script src="js/foundation-content.js"></script>

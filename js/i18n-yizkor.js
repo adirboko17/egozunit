@@ -61,10 +61,10 @@
       'footer.contact.title': 'צרו קשר',
       'footer.address': 'יפו 161, ירושלים',
       'footer.registered': 'עמותה רשומה 580027720',
-      'footer.link1': 'ניהול תקין',
+      'footer.link1': 'תקנון',
       'footer.link2': 'סעיף 46',
       'footer.link3': 'הצהרת נגישות',
-      'footer.copy': '© {year} עמותת אגוז — הסיירת הצפונית · יהי זכרם ברוך'
+      'footer.copy': '© {year} עמותת אגוז — הסיירת הצפונית · הבית של בוגרי היחידה · כל הזכויות שמורות'
     },
     en: {
       'meta.title': 'Yizkor — Egoz Association · Northern Command',
@@ -125,10 +125,10 @@
       'footer.contact.title': 'Contact',
       'footer.address': '161 Jaffa St, Jerusalem',
       'footer.registered': 'Registered association 580027720',
-      'footer.link1': 'Proper management',
+      'footer.link1': 'Bylaws',
       'footer.link2': 'Section 46',
       'footer.link3': 'Accessibility statement',
-      'footer.copy': '© {year} Egoz Association · Northern Command · May their memory be a blessing'
+      'footer.copy': '© {year} Egoz Association — Northern Command · Home of unit alumni · All rights reserved'
     }
   });
 })();

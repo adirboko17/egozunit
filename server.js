@@ -11,6 +11,30 @@ app.get('/', (_req, res) => {
   res.sendFile(path.join(ROOT, 'index.html'));
 });
 
+const legacyRedirects = {
+  '/events/family-ceremony/': '/event.html?slug=family-ceremony',
+  '/events/family-ceremony': '/event.html?slug=family-ceremony',
+  '/events': '/events.html',
+  '/donate.html': 'https://www.jgive.com/new/he/ils/donation-targets/5545',
+  '/donate': 'https://www.jgive.com/new/he/ils/donation-targets/5545',
+  '/jobs.html': '/contact.html',
+  '/jobs': '/contact.html',
+  '/blog.html': '/index.html',
+  '/blog': '/index.html',
+  '/pros.html': '/contact.html',
+  '/pros': '/contact.html',
+};
+
+Object.entries(legacyRedirects).forEach(([from, to]) => {
+  app.get(from, (_req, res) => {
+    if (to.startsWith('http')) {
+      res.redirect(302, to);
+    } else {
+      res.redirect(301, to);
+    }
+  });
+});
+
 app.get('/admin', (_req, res) => {
   res.sendFile(path.join(ROOT, 'admin', 'index.html'));
 });

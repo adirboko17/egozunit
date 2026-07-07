@@ -508,6 +508,30 @@ body.admin-modal-open {
   border-color: var(--admin-line);
 }
 
+.admin-detail {
+  display: grid;
+  gap: 2px;
+  max-height: 60vh;
+  overflow-y: auto;
+  border: 1px solid var(--admin-line);
+  border-radius: 10px;
+}
+.admin-detail__row {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 12px;
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--admin-line);
+  font-size: .92rem;
+}
+.admin-detail__row:last-child { border-bottom: 0; }
+.admin-detail__row:nth-child(odd) { background: var(--admin-bg-2, #f7f8fa); }
+.admin-detail__label { font-weight: 700; color: var(--admin-muted, #6b7280); }
+.admin-detail__value { word-break: break-word; }
+@media (max-width: 560px) {
+  .admin-detail__row { grid-template-columns: 1fr; }
+}
+
 .admin-field__hint {
   margin-top: 6px;
   font-size: .82rem;

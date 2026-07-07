@@ -214,7 +214,7 @@
   justify-content: center;
   gap: 7px;
   padding: 11px 16px;
-  border-radius: var(--r-sm);
+  border-radius: 999px;
   background: var(--brass-500);
   color: #fff;
   font-family: var(--font-display);

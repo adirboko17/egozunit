@@ -104,7 +104,7 @@ body.nav-drawer-open .site-header.is-stuck {
   .site-header .nav-bar .container {
     display: grid;
     grid-template-columns: auto 1fr auto;
-    grid-template-areas: "menu logo donate";
+    grid-template-areas: "menu logo account";
     align-items: center;
     gap: 8px 12px;
   }
@@ -134,7 +134,7 @@ body.nav-drawer-open .site-header.is-stuck {
   }
 
   .nav-cta {
-    grid-area: donate;
+    grid-area: account;
     justify-self: end;
     margin-inline-start: 0;
     margin-inline-end: 0;
@@ -142,6 +142,9 @@ body.nav-drawer-open .site-header.is-stuck {
   }
 
   .nav-cta .lang-switch { display: none !important; }
+
+  /* Mobile header: account/join only — no room for donate CTA */
+  .nav-cta .btn--accent { display: none !important; }
 
   .site-header:not(.is-stuck) .brand__logo,
   .site-header:not(.is-stuck) .brand__logo img {
@@ -157,7 +160,6 @@ body.nav-drawer-open .site-header.is-stuck {
   }
 
   .site-header--nav-split .nav-cta .btn--accent {
-    border-radius: 999px;
     padding-inline: clamp(18px, 2vw, 26px);
   }
 }

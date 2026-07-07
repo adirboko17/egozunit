@@ -119,12 +119,20 @@
   }
 
   function renderFoundationEvents(items) {
-    if (!eventsList || !items.length) return;
+    if (!eventsList) return;
+    if (!items.length) {
+      eventsList.innerHTML = '';
+      return;
+    }
     var preview = items.slice(0, 3);
     eventsList.innerHTML = preview.map(function (item) {
       var parts = EgozSupabasePublic.formatEventDateParts(item.event_date);
-      var url = item.cta_url || 'events.html';
-      var external = url.indexOf('http') === 0 ? ' target="_blank" rel="noopener noreferrer"' : '';
+      var url = item.slug ? ('event.html?slug=' + encodeURIComponent(item.slug)) : (item.cta_url || '#events');
+      var external = !item.slug && url.indexOf('http') === 0 ? ' target="_blank" rel="noopener noreferrer"' : '';
+      var metaParts = [];
+      if (item.location) metaParts.push(item.location);
+      if (item.event_time) metaParts.push(item.event_time);
+      var meta = metaParts.length ? metaParts.join(' · ') : (item.description || '');
 
       return (
         '<a class="evt-row" href="' + esc(url) + '"' + external + '>' +
@@ -134,7 +142,7 @@
           '</time>' +
           '<div class="evt-row__body">' +
             '<h3 class="evt-row__title">' + esc(item.title) + '</h3>' +
-            '<p class="evt-row__meta">' + esc(item.description || item.location || '') + '</p>' +
+            '<p class="evt-row__meta">' + esc(meta) + '</p>' +
           '</div>' +
           '<span class="evt-row__go" aria-label="לפרטים"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></span>' +
         '</a>'
@@ -151,7 +159,7 @@
     var results = await Promise.all([
       sb.from('site_projects').select('title, description, image_url, detail_url').eq('is_published', true).order('sort_order', { ascending: true }),
       sb.from('site_benefits').select('brand_name, category, title, offer_main, offer_sub, description, slug, image_url, redeem_url').eq('is_published', true).order('sort_order', { ascending: true }),
-      sb.from('site_events').select('title, description, event_date, location, cta_url').eq('is_published', true).order('event_date', { ascending: true }).order('sort_order', { ascending: true })
+      sb.from('site_events').select('title, description, event_date, event_time, location, cta_url, slug').eq('is_published', true).order('event_date', { ascending: false }).order('sort_order', { ascending: true })
     ]);
 
     if (results[0].data && results[0].data.length) renderProjects(results[0].data);

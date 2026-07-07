@@ -2,6 +2,7 @@
   'use strict';
 
   var products = [];
+  var openProductId = null;
 
   function escapeHtml(value) {
     return String(value == null ? '' : value)
@@ -11,10 +12,17 @@
       .replace(/"/g, '&quot;');
   }
 
+  function getLang() {
+    if (window.EgozI18n && typeof EgozI18n.getLang === 'function') {
+      return EgozI18n.getLang();
+    }
+    return document.documentElement.lang === 'en' ? 'en' : 'he';
+  }
+
   function formatPrice(value) {
     var num = Number(value);
     if (Number.isNaN(num)) return value;
-    return num.toLocaleString(document.documentElement.lang === 'en' ? 'en-IL' : 'he-IL', {
+    return num.toLocaleString(getLang() === 'en' ? 'en-IL' : 'he-IL', {
       minimumFractionDigits: 0,
       maximumFractionDigits: 2
     }) + ' ₪';
@@ -22,10 +30,25 @@
 
   function t(key, fallback) {
     if (window.EgozI18n && typeof EgozI18n.t === 'function') {
-      var value = EgozI18n.t('shop', key);
+      var value = EgozI18n.t('shop', key, getLang());
       if (value) return value;
     }
     return fallback;
+  }
+
+  function localizedProduct(product) {
+    if (!product) return { name: '', description: '' };
+    var lang = getLang();
+    if (lang === 'en') {
+      return {
+        name: product.name_en || product.name || '',
+        description: product.description_en || product.description || ''
+      };
+    }
+    return {
+      name: product.name || '',
+      description: product.description || ''
+    };
   }
 
   function animateCards(gridEl) {
@@ -46,10 +69,11 @@
 
   function productImageMarkup(product, className) {
     var esc = escapeHtml;
+    var localized = localizedProduct(product);
     if (product.image_url) {
-      return '<img src="' + esc(product.image_url) + '" alt="' + esc(product.name) + '" loading="lazy" decoding="async" />';
+      return '<img src="' + esc(product.image_url) + '" alt="' + esc(localized.name) + '" loading="lazy" decoding="async" />';
     }
-    return '<div class="' + className + '">' + esc(product.name.charAt(0) || '?') + '</div>';
+    return '<div class="' + className + '">' + esc(localized.name.charAt(0) || '?') + '</div>';
   }
 
   function openProductModal(product) {
@@ -62,11 +86,15 @@
 
     if (!modal || !product) return;
 
+    openProductId = product.id;
+    var localized = localizedProduct(product);
+
     media.innerHTML = productImageMarkup(product, 'shop-modal__placeholder');
-    title.textContent = product.name || '';
-    desc.textContent = product.description || t('modal.noDescription', 'אין תיאור נוסף למוצר זה.');
+    title.textContent = localized.name;
+    desc.textContent = localized.description || t('modal.noDescription', 'אין תיאור נוסף למוצר זה.');
     price.textContent = formatPrice(product.price);
     buy.href = product.purchase_url || '#';
+    buy.textContent = t('products.buy', 'לרכישה');
 
     modal.hidden = false;
     document.body.classList.add('shop-modal-open');
@@ -79,6 +107,7 @@
     var modal = document.getElementById('shopProductModal');
     if (!modal || modal.hidden) return;
 
+    openProductId = null;
     modal.classList.remove('is-open');
     document.body.classList.remove('shop-modal-open');
     window.setTimeout(function () {
@@ -88,6 +117,9 @@
 
   function bindModalEvents(gridEl) {
     gridEl.addEventListener('click', function (event) {
+      if (event.target.closest('.add-btn')) {
+        event.stopPropagation();
+      }
       var card = event.target.closest('.product');
       if (!card) return;
 
@@ -111,12 +143,64 @@
     });
   }
 
+  function renderProductCard(product) {
+    var esc = escapeHtml;
+    var localized = localizedProduct(product);
+    var detailsButtonLabel = t('products.moreDetails', 'פרטים נוספים');
+    var catLabel = t('products.category', 'מוצר אגוז');
+
+    return (
+      '<article class="product" data-product-id="' + esc(product.id) + '" role="button" tabindex="0" aria-label="' + esc(localized.name) + '">' +
+        '<div class="product__media">' +
+          '<span class="product__tag product__tag--hot">' + esc(catLabel) + '</span>' +
+          productImageMarkup(product, 'product__placeholder') +
+        '</div>' +
+        '<div class="product__body">' +
+          '<span class="product__cat">' + esc(catLabel) + '</span>' +
+          '<h3 class="product__name">' + esc(localized.name) + '</h3>' +
+          (localized.description
+            ? '<p class="product__desc">' + esc(localized.description) + '</p>'
+            : '') +
+          '<div class="product__foot">' +
+            '<span class="product__price">' + esc(formatPrice(product.price)) + '</span>' +
+            '<button class="add-btn" type="button">' + esc(detailsButtonLabel) + '</button>' +
+          '</div>' +
+        '</div>' +
+      '</article>'
+    );
+  }
+
+  function renderCatalogMeta(count) {
+    var heroLead = document.querySelector('[data-shop-hero-lead]');
+    var catalogLead = document.getElementById('shopCatalogLead');
+
+    if (heroLead) {
+      heroLead.textContent = t('hero.leadLive', 'מוצרי מורשת, לבוש ופריטים לקהילת אגוז — נרכשים בקישור חיצוני.');
+    }
+
+    if (catalogLead) {
+      catalogLead.textContent = count === 1
+        ? t('catalog.countOne', 'מוצר אחד זמין לרכישה')
+        : t('catalog.countMany', '{count} מוצרים זמינים לרכישה').replace('{count}', String(count));
+    }
+  }
+
+  function renderProductsGrid() {
+    var gridEl = document.getElementById('shopGrid');
+    if (!gridEl || !products.length) return;
+
+    gridEl.innerHTML = products.map(renderProductCard).join('');
+    animateCards(gridEl);
+
+    if (openProductId) {
+      openProductModal(findProduct(openProductId));
+    }
+  }
+
   async function loadProducts() {
     var soonSection = document.getElementById('shopEmpty');
     var catalogSection = document.getElementById('shopCatalog');
     var gridEl = document.getElementById('shopGrid');
-    var heroLead = document.querySelector('[data-shop-hero-lead]');
-    var catalogLead = document.getElementById('shopCatalogLead');
 
     if (!window.supabase || !window.EGOZ_SUPABASE) return;
 
@@ -127,57 +211,33 @@
 
     var result = await sb
       .from('shop_products')
-      .select('id, name, description, price, image_url, purchase_url')
+      .select('id, name, name_en, description, description_en, price, image_url, purchase_url')
       .eq('is_published', true)
       .order('sort_order', { ascending: true })
       .order('created_at', { ascending: false });
 
-    if (result.error || !result.data || !result.data.length) return;
+    if (result.error || !result.data || !result.data.length) {
+      if (soonSection) soonSection.hidden = false;
+      if (catalogSection) catalogSection.hidden = true;
+      return;
+    }
+
     products = result.data;
-
-    if (heroLead) {
-      heroLead.textContent = t('hero.leadLive', 'מוצרי מורשת, לבוש ופריטים לקהילת אגוז — נרכשים בקישור חיצוני.');
-    }
-
-    if (catalogLead) {
-      var countText = result.data.length === 1
-        ? t('catalog.countOne', 'מוצר אחד זמין לרכישה')
-        : t('catalog.countMany', '{count} מוצרים זמינים לרכישה').replace('{count}', String(result.data.length));
-      catalogLead.textContent = countText;
-    }
+    renderCatalogMeta(result.data.length);
 
     if (soonSection) soonSection.hidden = true;
     if (catalogSection) catalogSection.hidden = false;
 
-    gridEl.innerHTML = result.data.map(function (product) {
-      var esc = escapeHtml;
-      var detailsButtonLabel = t('products.moreDetails', 'פרטים נוספים');
-      var catLabel = t('products.category', 'מוצר אגוז');
-
-      return (
-        '<article class="product" data-product-id="' + esc(product.id) + '" role="button" tabindex="0" aria-label="' + esc(product.name) + '">' +
-          '<div class="product__media">' +
-            '<span class="product__tag product__tag--hot">' + esc(catLabel) + '</span>' +
-            productImageMarkup(product, 'product__placeholder') +
-          '</div>' +
-          '<div class="product__body">' +
-            '<span class="product__cat">' + esc(catLabel) + '</span>' +
-            '<h3 class="product__name">' + esc(product.name) + '</h3>' +
-            (product.description
-              ? '<p class="product__desc">' + esc(product.description) + '</p>'
-              : '') +
-            '<div class="product__foot">' +
-              '<span class="product__price">' + esc(formatPrice(product.price)) + '</span>' +
-              '<button class="add-btn" type="button">' + esc(detailsButtonLabel) + '</button>' +
-            '</div>' +
-          '</div>' +
-        '</article>'
-      );
-    }).join('');
+    gridEl.innerHTML = result.data.map(renderProductCard).join('');
 
     bindModalEvents(gridEl);
     animateCards(gridEl);
   }
+
+  document.addEventListener('egoz:langchange', function () {
+    renderCatalogMeta(products.length);
+    renderProductsGrid();
+  });
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', loadProducts);

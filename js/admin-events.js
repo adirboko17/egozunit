@@ -41,7 +41,7 @@
               '<b class="admin-product__name">' + esc(item.title) + '</b>' +
               '<span class="admin-product__price">' + esc(item.category === 'ceremony' ? 'טקס' : 'מפגש') + '</span>' +
             '</div>' +
-            '<p class="admin-product__desc">' + esc(item.location + (item.event_time ? ' · ' + item.event_time : '')) + '</p>' +
+            '<p class="admin-product__desc">' + esc((item.slug ? 'event.html?slug=' + item.slug : '') + (item.location ? (item.slug ? ' · ' : '') + item.location : '') + (item.event_time ? ' · ' + item.event_time : '')) + '</p>' +
             '<div class="admin-product__meta">' +
               '<span class="admin-product__badge' + (item.is_published ? ' is-live' : '') + '">' +
                 (item.is_published ? 'מפורסם' : 'טיוטה') +
@@ -74,6 +74,7 @@
       editingId = item.id;
       U.$('itemId').value = item.id;
       U.$('title').value = item.title || '';
+      U.$('slug').value = item.slug || '';
       U.$('description').value = item.description || '';
       U.$('eventDate').value = item.event_date || '';
       U.$('eventTime').value = item.event_time || '';
@@ -83,6 +84,7 @@
       U.$('badgeText').value = item.badge_text || '';
       U.$('ctaLabel').value = item.cta_label || 'פרטים';
       U.$('ctaUrl').value = item.cta_url || '';
+      U.$('imageUrl').value = item.image_url || '';
       U.$('itemSort').value = item.sort_order != null ? String(item.sort_order) : '0';
       U.$('itemPublished').checked = !!item.is_published;
       U.$('formTitle').textContent = 'עריכת אירוע';
@@ -123,7 +125,9 @@
     try {
       var payload = {
         title: title,
+        slug: U.$('slug').value.trim() || null,
         description: U.$('description').value.trim(),
+        image_url: U.$('imageUrl').value.trim() || null,
         event_date: eventDate,
         event_time: U.$('eventTime').value.trim(),
         location: U.$('location').value.trim(),

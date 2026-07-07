@@ -55,7 +55,9 @@
     return products.filter(function (product) {
       var haystack = [
         product.name,
+        product.name_en,
         product.description,
+        product.description_en,
         String(product.price),
         product.purchase_url
       ].join(' ').toLowerCase();
@@ -132,6 +134,8 @@
       $('productId').value = product.id;
       $('productName').value = product.name || '';
       $('productDescription').value = product.description || '';
+      if ($('productNameEn')) $('productNameEn').value = product.name_en || '';
+      if ($('productDescriptionEn')) $('productDescriptionEn').value = product.description_en || '';
       $('productPrice').value = product.price != null ? String(product.price) : '';
       $('productLink').value = product.purchase_url || '';
       $('productSort').value = product.sort_order != null ? String(product.sort_order) : '0';
@@ -183,7 +187,7 @@
 
     var result = await EgozAdminAuth.getClient()
       .from('shop_products')
-      .select('id, name, description, price, image_url, purchase_url, sort_order, is_published, updated_at')
+      .select('id, name, name_en, description, description_en, price, image_url, purchase_url, sort_order, is_published, updated_at')
       .order('sort_order', { ascending: true })
       .order('created_at', { ascending: false });
 
@@ -198,7 +202,9 @@
     hideAlert('formAlert');
 
     var name = $('productName').value.trim();
+    var nameEn = $('productNameEn') ? $('productNameEn').value.trim() : '';
     var description = $('productDescription').value.trim();
+    var descriptionEn = $('productDescriptionEn') ? $('productDescriptionEn').value.trim() : '';
     var price = Number($('productPrice').value);
     var purchaseUrl = $('productLink').value.trim();
     var sortOrder = Number($('productSort').value || 0);
@@ -221,7 +227,9 @@
 
       var payload = {
         name: name,
+        name_en: nameEn || null,
         description: description,
+        description_en: descriptionEn || null,
         price: price,
         purchase_url: purchaseUrl,
         sort_order: Number.isNaN(sortOrder) ? 0 : sortOrder,

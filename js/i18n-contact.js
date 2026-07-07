@@ -34,7 +34,7 @@
       'hero.img.alt': 'לוחמי אגוז',
       'form.kicker': 'יצירת קשר',
       'form.title': 'צרו קשר',
-      'form.lead': 'ליצירת קשר, מלאו את הטופס הבא. להרשמה לעמותה היכנסו ל<a href="index.html#join">עמוד הרשמה</a> או כתבו ל-<a href="mailto:office@egoz.org.il">office@egoz.org.il</a>',
+      'form.lead': 'ליצירת קשר, מלאו את הטופס הבא. להרשמה לעמותה כתבו ל-<a href="mailto:office@egoz.org.il">office@egoz.org.il</a>',
       'form.firstName': 'שם פרטי',
       'form.lastName': 'שם משפחה',
       'form.email': 'אימייל',
@@ -62,7 +62,7 @@
       'footer.contact.title': 'צרו קשר',
       'footer.address': 'יפו 161, ירושלים',
       'footer.registered': 'עמותה רשומה 580027720',
-      'footer.link1': 'ניהול תקין',
+      'footer.link1': 'תקנון',
       'footer.link2': 'סעיף 46',
       'footer.link3': 'הצהרת נגישות'
     },
@@ -98,7 +98,7 @@
       'hero.img.alt': 'Egoz fighters',
       'form.kicker': 'Get in touch',
       'form.title': 'Contact us',
-      'form.lead': 'To get in touch, please fill out the form below. To register with the association, visit the <a href="index.html#join">registration page</a> or email <a href="mailto:office@egoz.org.il">office@egoz.org.il</a>',
+      'form.lead': 'To get in touch, please fill out the form below. To register with the association, email <a href="mailto:office@egoz.org.il">office@egoz.org.il</a>',
       'form.firstName': 'First name',
       'form.lastName': 'Last name',
       'form.email': 'Email',
@@ -126,7 +126,7 @@
       'footer.contact.title': 'Contact',
       'footer.address': '161 Jaffa St, Jerusalem',
       'footer.registered': 'Registered association 580027720',
-      'footer.link1': 'Proper management',
+      'footer.link1': 'Bylaws',
       'footer.link2': 'Section 46',
       'footer.link3': 'Accessibility statement'
     }

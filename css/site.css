@@ -271,7 +271,7 @@ main > .section.yizkor {
   --btn-fg: var(--on-dark);
   display: inline-flex; align-items: center; justify-content: center; gap: 10px;
   font-family: var(--font-display); font-weight: 700; font-size: 1rem;
-  line-height: 1; padding: 15px 28px; border-radius: var(--r-sm);
+  line-height: 1; padding: 15px 28px; border-radius: 999px;
   background: var(--btn-bg); color: var(--btn-fg);
   border: 1.5px solid transparent;
   transition: transform .18s var(--ease), box-shadow .25s var(--ease), background .2s var(--ease), color .2s var(--ease);
@@ -628,13 +628,6 @@ html[dir="rtl"] .nav-dropdown.is-open .nav-dropdown__panel { transform: translat
 
 .nav-cta { display: flex; align-items: center; gap: 10px; flex: 0 0 auto; }
 
-/* Header join CTA — hidden for now; remove this rule to show again */
-.nav-cta > a[data-i18n="nav.join"],
-.nav-cta > a[href="join.html"],
-.nav-cta > a[href="./join.html"] {
-  display: none !important;
-}
-
 .lang-switch {
   display: inline-flex;
   align-items: center;
@@ -703,6 +696,24 @@ html[dir="ltr"] .give-cta__btn svg { transform: scaleX(-1); }
   background: transparent;
 }
 .site-header[data-transparent="true"]:not(.is-stuck) .btn--ghost { color: var(--on-dark); border-color: rgba(243,241,231,.4); }
+.site-header[data-transparent="true"]:not(.is-stuck) .nav-cta .btn--ghost-light {
+  color: var(--on-dark);
+  border: 1.5px solid rgba(243, 241, 231, 0.42);
+  background: rgba(255, 255, 255, 0.06);
+}
+/* Header CTA buttons (Join / Ambassadors) use --ghost-light because the header is transparent over
+   a dark hero by default; once the user scrolls and the header becomes "stuck" it turns light, so
+   these buttons need to flip to a dark-on-light look or they disappear (white text on white pill). */
+.site-header.is-stuck .nav-cta .btn--ghost-light {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.62);
+  border: 1.5px solid rgba(46, 74, 120, 0.28);
+}
+.site-header.is-stuck .nav-cta .btn--ghost-light:hover {
+  background: var(--olive-800);
+  color: var(--on-dark);
+  border-color: var(--olive-800);
+}
 .site-header.is-stuck .nav-bar {
   background: rgba(243, 246, 252, 0.68);
   border-bottom-color: rgba(195, 210, 233, 0.45);

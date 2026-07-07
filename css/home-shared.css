@@ -53,7 +53,7 @@
   .site-header--nav-split .nav-bar .container {
     display: grid;
     grid-template-columns: auto 1fr auto;
-    grid-template-areas: "menu logo donate";
+    grid-template-areas: "menu logo account";
     align-items: center;
     gap: 8px 12px;
   }
@@ -69,12 +69,13 @@
     justify-self: center;
   }
   .site-header--nav-split .nav-cta {
-    grid-area: donate;
+    grid-area: account;
     justify-self: end;
     margin-inline-start: 0;
     margin-inline-end: 0;
   }
   .site-header--nav-split .nav-cta .lang-switch { display: none; }
+  .site-header--nav-split .nav-cta .btn--accent { display: none; }
 }
 
 .site-header .brand__logo,
@@ -199,8 +200,17 @@
 }
 .site-header--nav-split.is-stuck .nav-end,
 .site-header--nav-split.is-stuck .nav-cta { margin-inline-start: 0; margin-inline-end: 0; }
+.site-header--nav-split.is-stuck .nav-cta .btn--ghost-light {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.62);
+  border: 1.5px solid rgba(46, 74, 120, 0.28);
+}
+.site-header--nav-split.is-stuck .nav-cta .btn--ghost-light:hover {
+  background: var(--olive-800);
+  color: var(--on-dark);
+  border-color: var(--olive-800);
+}
 .site-header--nav-split .nav-cta .btn--accent {
-  border-radius: 999px;
   padding-inline: clamp(18px, 2vw, 26px);
 }
 @media (max-width: 1080px) {
