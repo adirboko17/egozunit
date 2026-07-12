@@ -781,7 +781,6 @@ html[dir="ltr"] .give-cta__btn svg { transform: scaleX(-1); }
   overflow-x: hidden;
   overflow-y: auto;
 }
-html[dir="rtl"] .nav-drawer__panel { inset-inline-start: auto; inset-inline-end: 0; }
 .nav-drawer.is-open .nav-drawer__scrim { opacity: 1; }
 .nav-drawer__panel a.m-link {
   display: block;
