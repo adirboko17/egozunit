@@ -33,7 +33,7 @@
   color: var(--olive-800);
 }
 
-.join-page .auth-steps__item.is-active span {
+.join-page .auth-steps__item.is-active .auth-steps__num {
   background: var(--olive-800);
   border-color: var(--olive-800);
   color: var(--on-dark);
@@ -387,15 +387,23 @@
     padding: 12px 14px;
   }
 
-  .auth-steps {
+  .join-steps-bar .auth-steps {
+    gap: 10px;
+    justify-content: space-between;
+  }
+
+  .join-steps-bar .auth-steps__item {
+    flex: 1 1 0;
     gap: 8px;
+    font-size: .8rem;
   }
 
-  .auth-steps__item {
-    font-size: .82rem;
+  .join-steps-bar .auth-steps__label {
+    white-space: normal;
   }
 
-  .auth-steps__sep {
-    width: 24px;
+  .join-steps-bar .auth-steps__sep {
+    flex: 0 0 18px;
+    width: 18px;
   }
 }
