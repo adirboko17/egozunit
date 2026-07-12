@@ -2,6 +2,20 @@
 (function () {
   'use strict';
 
+  /* ---- Clamp accidental horizontal scroll (RTL overflow leftovers) ---- */
+  function resetHorizontalScroll() {
+    if (document.documentElement.scrollLeft !== 0) {
+      document.documentElement.scrollLeft = 0;
+    }
+    if (document.body.scrollLeft !== 0) {
+      document.body.scrollLeft = 0;
+    }
+  }
+  resetHorizontalScroll();
+  window.addEventListener('load', resetHorizontalScroll);
+  window.addEventListener('resize', resetHorizontalScroll);
+  window.addEventListener('orientationchange', resetHorizontalScroll);
+
   /* ---- Sticky header (spacer + hysteresis — smooth floating pill) ---- */
   var header = document.querySelector('.site-header');
   var heroStack = header && header.closest('.hero-stack');
