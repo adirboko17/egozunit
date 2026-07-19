@@ -15,6 +15,10 @@
   }
 
   function buildJgiveUrl(payload) {
+    var lang = window.EgozI18n ? EgozI18n.getLang() : 'he';
+    var base = window.EGOZ_JGIVE
+      ? EGOZ_JGIVE.getDonationUrl(lang)
+      : JGIVE_BASE_URL;
     var params = new URLSearchParams();
     params.set('currency', 'ils');
     if (payload.donation_amount) params.set('amount', String(payload.donation_amount));
@@ -24,7 +28,7 @@
     var nameParts = (payload.full_name || '').trim().split(/\s+/);
     if (nameParts[0]) params.set('firstName', nameParts[0]);
     if (nameParts.length > 1) params.set('lastName', nameParts.slice(1).join(' '));
-    return JGIVE_BASE_URL + '?' + params.toString();
+    return base + '?' + params.toString();
   }
 
   var client = null;

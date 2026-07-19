@@ -3,24 +3,23 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>פרויקטים — עמותת אגוז · הסיירת הצפונית</title>
-<meta name="description" content="הפרויקטים של עמותת הסיירת הצפונית — פיתוח מנהיגות, סיוע לפצועים, נטוורקינג, עזרה הדדית ועוד." />
+<title data-i18n-title="meta.title">תרומה — עמותת אגוז · הסיירת הצפונית</title>
+<meta name="description" content="תרמו לעמותת אגוז דרך JGive — תרומה מאובטחת, קבלה לפי סעיף 46, וכל שקל מגיע ישירות לעמותה." data-i18n-desc="meta.description" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="css/site.css" />
 <link rel="stylesheet" href="css/home-shared.css" />
-<link rel="stylesheet" href="css/projects.css" />
+<link rel="stylesheet" href="css/donate.css" />
 <script>(function(){var l=localStorage.getItem('egoz-lang');if(l==='en'){document.documentElement.lang='en';document.documentElement.dir='ltr';}})();</script>
 </head>
-<body class="projects-page" data-i18n-page="foundation">
-<a href="#main" class="skip-link">דלג לתוכן הראשי</a>
+<body class="donate-page" data-i18n-page="donate">
+<a href="#main" class="skip-link" data-i18n="skip">דלג לתוכן הראשי</a>
 
-<!-- ===== HERO ===== -->
 <div class="hero-stack hero-stack--page">
-  <section class="hero hero--projects">
+  <section class="hero hero--donate">
     <div class="hero__bg">
-      <img src="assets/formation.jpg" alt="לוחמי אגוז" decoding="async" />
+      <img src="assets/hero-patrol.jpg" data-i18n-alt="hero.img.alt" alt="לוחמי אגוז" decoding="async" />
     </div>
     <div class="hero__scrim"></div>
 
@@ -31,22 +30,22 @@
             <span data-i18n="util.registered">עמותה רשומה 580027720</span>
             <a href="mailto:office@egoz.org.il">office@egoz.org.il</a>
           </div>
-          <div class="util-social" aria-label="רשתות חברתיות">
-            <a href="https://www.facebook.com/amutat.egoz" aria-label="פייסבוק"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3l.4-3H14V4.5c0-.9.3-1.5 1.6-1.5H17V.2C16.7.1 15.6 0 14.4 0 11.9 0 10 1.5 10 4.3V6H7v3h3v9h4V9z"/></svg></a>
-            <a href="https://www.instagram.com/egoz_unit" aria-label="אינסטגרם"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-            <a href="https://egoz.org.il" aria-label="אתר העמותה"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18"/></svg></a>
+          <div class="util-social" data-i18n-aria="util.social" aria-label="רשתות חברתיות">
+            <a href="https://www.facebook.com/amutat.egoz" data-i18n-aria="util.facebook" aria-label="פייסבוק"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3l.4-3H14V4.5c0-.9.3-1.5 1.6-1.5H17V.2C16.7.1 15.6 0 14.4 0 11.9 0 10 1.5 10 4.3V6H7v3h3v9h4V9z"/></svg></a>
+            <a href="https://www.instagram.com/egoz_unit" data-i18n-aria="util.instagram" aria-label="אינסטגרם"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+            <a href="https://egoz.org.il" data-i18n-aria="util.website" aria-label="אתר העמותה"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18"/></svg></a>
           </div>
         </div>
       </div>
       <div class="nav-bar">
         <div class="container">
           <div class="nav-end">
-            <a href="index.html" class="brand" aria-label="עמותת אגוז — הסיירת הצפונית">
-              <span class="brand__logo"><img src="assets/egoz-logo.png" alt="עמותת אגוז — הסיירת הצפונית" /></span>
+            <a href="index.html" class="brand" data-i18n-aria="brand.aria" aria-label="עמותת אגוז — הסיירת הצפונית">
+              <span class="brand__logo"><img src="assets/egoz-logo.png" data-i18n-alt="brand.alt" alt="עמותת אגוז — הסיירת הצפונית" /></span>
             </a>
-            <button class="nav-toggle" aria-label="תפריט" aria-expanded="false" aria-controls="navDrawer"><span></span></button>
+            <button class="nav-toggle" data-i18n-aria="nav.menu" aria-label="תפריט" aria-expanded="false" aria-controls="navDrawer"><span></span></button>
           </div>
-          <nav class="nav-links" aria-label="ניווט ראשי">
+          <nav class="nav-links" data-i18n-aria="nav.aria" aria-label="ניווט ראשי">
             <a href="index.html" data-i18n="nav.home">בית</a>
             <a href="unit.html" data-i18n="nav.unit">יחידת אגוז</a>
             <a href="foundation.html" data-i18n="nav.foundation">עמותה</a>
@@ -55,12 +54,12 @@
             <a href="contact.html" data-i18n="nav.contact">צרו קשר</a>
           </nav>
           <div class="nav-cta">
-            <div class="lang-switch" role="group" aria-label="בחירת שפה">
-              <button type="button" class="lang-switch__btn is-active" data-lang="he" aria-pressed="true">עב</button>
-              <button type="button" class="lang-switch__btn" data-lang="en" aria-pressed="false">EN</button>
+            <div class="lang-switch" role="group" data-i18n-aria="lang.label" aria-label="בחירת שפה">
+              <button type="button" class="lang-switch__btn is-active" data-lang="he" aria-pressed="true" data-i18n="lang.he">עב</button>
+              <button type="button" class="lang-switch__btn" data-lang="en" aria-pressed="false" data-i18n="lang.en">EN</button>
             </div>
             <a href="login.html" class="btn btn--ghost-light btn--sm" data-i18n="nav.join">חבר עמותה</a>
-            <a href="donate.html" class="btn btn--accent btn--sm" data-i18n="nav.donate">לתרומה</a>
+            <a href="donate.html" class="btn btn--accent btn--sm is-active" data-i18n="nav.donate">לתרומה</a>
           </div>
         </div>
       </div>
@@ -68,21 +67,20 @@
 
     <div class="container hero__inner">
       <div class="hero__content">
-        <span class="eyebrow eyebrow--on-dark">עמותת אגוז · הסיירת הצפונית</span>
-        <h1 class="display">פרויקטים</h1>
-        <p class="lead">מה אנחנו עושים — עבור הבוגרים, הלוחמים והקהילה.</p>
+        <span class="eyebrow eyebrow--on-dark" data-i18n="hero.eyebrow">תרומה מאובטחת</span>
+        <h1 class="display" data-i18n="hero.title">תרמו לעמותת אגוז</h1>
+        <p class="lead" data-i18n="hero.lead">בוחרים סכום ומשלמים בעמוד מאובטח — כל תרומה תומכת בלוחמים, במשפחות ובפעילות העמותה.</p>
       </div>
     </div>
   </section>
 </div>
 
-<!-- ===== MOBILE NAV DRAWER ===== -->
 <div class="nav-drawer" id="navDrawer">
   <div class="nav-drawer__scrim"></div>
-  <div class="nav-drawer__panel" role="dialog" aria-label="תפריט ניווט" aria-modal="true">
+  <div class="nav-drawer__panel" role="dialog" data-i18n-aria="nav.drawer" aria-label="תפריט ניווט" aria-modal="true">
     <div class="nav-drawer__head">
       <span class="brand__txt"><b style="color:var(--on-dark);font-family:var(--font-display);font-size:1.3rem;" data-i18n="footer.brand">אגוז</b></span>
-      <button class="nav-drawer__close" aria-label="סגירה"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 5l10 10M15 5L5 15"/></svg></button>
+      <button class="nav-drawer__close" data-i18n-aria="nav.close" aria-label="סגירה"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 5l10 10M15 5L5 15"/></svg></button>
     </div>
     <a class="m-link" href="index.html" data-i18n="nav.home">בית</a>
     <a class="m-link" href="unit.html" data-i18n="nav.unit">יחידת אגוז</a>
@@ -90,71 +88,59 @@
     <a class="m-link" href="yizkor.html" data-i18n="nav.yizkor">יזכור</a>
     <a class="m-link" href="shop.html" data-i18n="nav.shop">חנות</a>
     <a class="m-link" href="contact.html" data-i18n="nav.contact">צרו קשר</a>
+    <a class="m-link is-active" href="donate.html" data-i18n="nav.donate">לתרומה</a>
     <a class="m-link" href="login.html" data-i18n="nav.join">חבר עמותה</a>
 </div>
 </div>
 
-<!-- ===== MAIN ===== -->
 <main id="main">
   <section class="section">
     <div class="container">
-
-      <!-- intro -->
-      <div class="projects-intro" data-reveal>
-        <div class="projects-intro__kicker kicker-row">
-          <span class="kicker-row__line"></span>
-          <span class="kicker-row__txt">מה אנחנו עושים</span>
+      <div class="donate-layout" data-reveal>
+        <div class="kicker-row">
+          <span class="kicker-row__no">01</span>
+          <span class="kicker-row__txt" data-i18n="section.kicker">תרומה</span>
           <span class="kicker-row__line"></span>
         </div>
-        <h2 class="h2" style="margin-top:8px;">שישה פרויקטים, שליחות אחת</h2>
-        <p class="lead">כל פרויקט הוא דרך אחרת לממש את ערכי היחידה — ערבות הדדית, מנהיגות ותמיכה בבוגרים ובלוחמים לאורך חייהם.</p>
-      </div>
+        <h2 class="h2" style="margin-top:6px;" data-i18n="section.title">טופס תרומה מאובטח</h2>
+        <p class="lead" style="margin-top:14px;" data-i18n="section.lead">התרומה מתבצעת דרך JGive — פלטפורמת התרומות המאובטחת בישראל. זכאות לזיכוי מס לפי סעיף 46.</p>
 
-      <!-- projects grid — filled by projects.js -->
-      <div class="projects-grid" id="projectsGrid" aria-live="polite" data-reveal-stagger>
-        <!-- skeleton shown by JS on load -->
-      </div>
-
-      <!-- join CTA -->
-      <div class="projects-join" data-reveal>
-        <h2>רוצה להשתתף?</h2>
-        <p>כדי להמשיך בעשייה אנחנו צריכים אתכם. הצטרפו לעמותה, שלמו דמי חבר ותיקחו חלק פעיל בפרויקטים.</p>
-        <div class="projects-join__btns">
-          <a href="contact.html" class="btn btn--accent btn--lg">הצטרפות לעמותה</a>
-          <a href="mailto:office@egoz.org.il" class="btn btn--ghost-light btn--lg">צרו קשר</a>
+        <div class="donate-card" style="margin-top:28px;">
+          <div class="donate-card__head">
+            <b data-i18n="section.title">טופס תרומה מאובטח</b>
+            <span class="jgive-badge"><span class="dot" aria-hidden="true"></span>JGive</span>
+          </div>
+          <div class="donate-card__body">
+            <div class="donate-fallback" id="jgiveFallback" hidden>
+              <p class="donate-fallback__title" data-i18n="fallback.title">הטופס המוטמע זמין רק באתר הרשמי</p>
+              <p class="donate-fallback__lead" data-i18n="fallback.lead">JGive מאשר הצגת iframe רק מ־egoz.org.il. בבדיקה מקומית (localhost) או מקובץ — הטופס לא ייטען. באתר החי הטופס יוצג כרגיל.</p>
+              <a href="https://www.jgive.com/new/he/ils/donation-targets/5545" target="_blank" rel="noopener" class="btn btn--accent btn--lg" id="jgiveFallbackBtn" data-i18n="fallback.btn">מעבר לתרומה ב-JGive</a>
+            </div>
+            <div class="donate-iframe-wrap" id="jgiveIframeWrap">
+              <iframe
+                id="jgive-iframe"
+                width="100%"
+                height="557"
+                src="https://www.jgive.com/new/he/ils/embeds/18f453e3-701e-4015-9041-a6d3d58acac5"
+                name="Jgive iframe"
+                title="טופס תרומה מאובטח — עמותת אגוז הסיירת הצפונית"
+                scrolling="auto"
+                allow="allow-forms; payment; clipboard-write;"
+              ></iframe>
+            </div>
+            <div class="donate-foot">
+              <span class="secure-note">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
+                <span data-i18n="secure.note">תשלום מאובטח (SSL) · קבלה מוכרת למס לפי סעיף 46</span>
+              </span>
+              <a href="https://www.jgive.com/new/he/ils/donation-targets/5545" target="_blank" rel="noopener" class="link-arrow" id="jgiveExternalLink" data-i18n="external.link">פתיחה בחלון נפרד ב-JGive</a>
+            </div>
+          </div>
         </div>
       </div>
-
     </div>
   </section>
 </main>
-
-<div class="project-modal" id="projectModal" hidden aria-hidden="true">
-  <div class="project-modal__scrim" data-project-close></div>
-  <div class="project-modal__panel" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle">
-    <button type="button" class="project-modal__close" data-project-close aria-label="סגירה">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
-    </button>
-    <div class="project-modal__scroll">
-      <figure class="project-modal__hero" id="projectModalHero" hidden></figure>
-      <div class="project-modal__inner">
-        <header class="project-modal__head">
-          <span class="project-modal__eyebrow">פרויקט העמותה</span>
-          <h2 class="project-modal__title" id="projectModalTitle"></h2>
-          <p class="project-modal__lead" id="projectModalLead" hidden></p>
-        </header>
-        <div class="project-modal__body" id="projectModalBody"></div>
-        <section class="project-modal__gallery-section" id="projectModalGallerySection" hidden>
-          <h3 class="project-modal__gallery-title">תמונות מהפרויקט</h3>
-          <div class="project-modal__gallery" id="projectModalGallery"></div>
-        </section>
-      </div>
-    </div>
-    <footer class="project-modal__foot">
-      <a href="contact.html" class="btn btn--accent btn--block">הצטרפות ומעורבות</a>
-    </footer>
-  </div>
-</div>
 
 <!-- ============ FOOTER ============ -->
 <footer class="site-footer">
@@ -213,19 +199,15 @@
   </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="js/supabase-config.js"></script>
-<script src="js/supabase-public.js"></script>
+<script src="js/jgive-config.js"></script>
 <script src="js/i18n.js"></script>
 <script src="js/i18n-shared.js"></script>
-<script src="js/i18n-foundation.js"></script>
+<script src="js/i18n-donate.js"></script>
 <script src="js/site.js"></script>
 <script src="js/member-nav.js"></script>
 <script src="js/nav-foundation.js"></script>
-<script src="js/projects.js"></script>
-<script>
-  EgozI18n.init('foundation');
-  document.getElementById('year').textContent = new Date().getFullYear();
-</script>
+<script src="js/donate.js"></script>
+<script src="https://www.jgive.com/embed/embedding-utm.js"></script>
+<script>EgozI18n.init('donate');</script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8" />
@@ -337,6 +337,152 @@
   .feature-list li { display: flex; gap: 13px; align-items: flex-start; }
   .feature-list .fi { flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%; background: var(--brass-200); color: var(--brass-800); display: grid; place-items: center; margin-top: 3px; }
   .feature-list .fi svg { width: 14px; height: 14px; }
+
+  /* ---- Chair & CEO message ---- */
+  .leadership-message {
+    position: relative;
+    overflow: hidden;
+    margin-inline: var(--surface-inset);
+    border-radius: var(--surface-radius);
+    box-shadow: var(--surface-shadow);
+    background:
+      radial-gradient(circle at 12% 12%, rgba(127, 168, 242, .18), transparent 32%),
+      linear-gradient(135deg, var(--olive-950), var(--olive-900));
+    color: var(--on-dark);
+  }
+  .leadership-message::before {
+    content: "״";
+    position: absolute;
+    inset-block-start: clamp(-56px, -4vw, -24px);
+    inset-inline-end: clamp(10px, 4vw, 72px);
+    color: rgba(255, 255, 255, .045);
+    font-family: Georgia, serif;
+    font-size: clamp(15rem, 30vw, 30rem);
+    line-height: 1;
+    pointer-events: none;
+  }
+  .leadership-message__grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.16fr) minmax(340px, .84fr);
+    gap: clamp(42px, 6vw, 92px);
+    align-items: start;
+  }
+  .leadership-message__copy { max-width: 760px; }
+  .leadership-message__copy .h2 { color: #fff; margin-top: 6px; }
+  .leadership-message__intro {
+    margin-top: 22px;
+    color: var(--brass-300);
+    font-family: var(--font-display);
+    font-size: clamp(1.08rem, 1.4vw, 1.24rem);
+    font-weight: 700;
+  }
+  .leadership-message__body {
+    display: grid;
+    gap: 16px;
+    margin-top: 18px;
+  }
+  .leadership-message__body p {
+    color: var(--on-dark-2);
+    font-size: clamp(.98rem, 1.1vw, 1.06rem);
+    line-height: 1.9;
+  }
+  .leadership-message__signoff {
+    margin-top: 26px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(226, 236, 252, .18);
+    color: var(--on-dark);
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.8;
+  }
+  .leadership-message__portraits {
+    position: sticky;
+    top: 126px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(18px, 2vw, 26px);
+  }
+  .leader-card {
+    position: relative;
+    min-width: 0;
+    margin: 0;
+    overflow: hidden;
+    border: 1px solid rgba(226, 236, 252, .22);
+    border-radius: var(--r-lg);
+    background: var(--olive-850);
+    box-shadow: 0 24px 54px rgba(3, 10, 27, .3);
+  }
+  .leader-card__media {
+    position: relative;
+    aspect-ratio: 16 / 12;
+    overflow: hidden;
+    background: var(--olive-850);
+  }
+  .leader-card__media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(6, 14, 34, .88) 0%, rgba(6, 14, 34, .38) 26%, transparent 52%);
+    pointer-events: none;
+  }
+  .leader-card img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+  .leader-card--chair img { object-position: 50% 22%; }
+  .leader-card--ceo img { object-position: 50% 30%; }
+  .leader-card figcaption {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    z-index: 1;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 14px 18px 15px;
+  }
+  .leader-card__name {
+    display: block;
+    color: #fff;
+    font-family: var(--font-display);
+    font-size: 1.08rem;
+    font-weight: 800;
+    line-height: 1.3;
+    text-shadow: 0 1px 8px rgba(4, 10, 26, .55);
+  }
+  .leader-card__role {
+    display: block;
+    color: var(--brass-300);
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: .86rem;
+    line-height: 1.45;
+    text-shadow: 0 1px 8px rgba(4, 10, 26, .55);
+  }
+  @media (max-width: 980px) {
+    .leadership-message__grid { grid-template-columns: 1fr; }
+    .leadership-message__portraits {
+      position: static;
+      top: auto;
+      width: 100%;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(12px, 2.4vw, 20px);
+    }
+    .leader-card__media { aspect-ratio: 4 / 5; }
+  }
+  @media (max-width: 520px) {
+    .leadership-message__portraits { grid-template-columns: 1fr; gap: 14px; }
+    .leader-card__media { aspect-ratio: 16 / 12; }
+    .leader-card figcaption { padding: 12px 14px 13px; }
+    .leader-card__name { font-size: .98rem; }
+    .leader-card__role { font-size: .78rem; }
+    .leadership-message__body p { line-height: 1.78; }
+  }
 
   /* ---- War rooms (חמ"לים) ---- */
   .hamal { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg); padding: clamp(24px, 2.4vw, 32px); transition: transform .3s var(--ease-out), box-shadow .3s var(--ease-out), border-color .3s; height: 100%; }
@@ -774,7 +920,7 @@
               <button type="button" class="lang-switch__btn" data-lang="en" aria-pressed="false" data-i18n="lang.en">EN</button>
             </div>
             <a href="login.html" class="btn btn--ghost-light btn--sm" data-i18n="nav.join">חבר עמותה</a>
-            <a href="https://www.jgive.com/new/he/ils/donation-targets/5545" target="_blank" rel="noopener" class="btn btn--accent btn--sm" data-i18n="nav.donate">לתרומה</a>
+            <a href="donate.html" class="btn btn--accent btn--sm" data-i18n="nav.donate">לתרומה</a>
           </div>
         </div>
       </div>
@@ -786,7 +932,7 @@
         <h1 class="display" id="heroTitle" data-reveal data-delay="1" data-i18n-html="hero.title">אחים בקרב.<br />משפחה לכל החיים.</h1>
         <p class="lead" data-reveal data-delay="2" data-i18n="hero.lead">הבית של בוגרי יחידת אגוז, המשפחות השכולות והפצועים. מאז ה־7 באוקטובר התגייסנו כולנו למשימה אחת — לתת מעטפת של ליווי, תמיכה וסיוע ללוחמי אגוז ולמשפחותיהם, בכל שלב וצומת בחיים.</p>
         <div class="hero__cta" data-reveal data-delay="3">
-          <a href="https://www.jgive.com/new/he/ils/donation-targets/5545" target="_blank" rel="noopener" class="btn btn--accent btn--lg" data-i18n="hero.cta.donate">לתרומה לעמותה</a>
+          <a href="donate.html" class="btn btn--accent btn--lg" data-i18n="hero.cta.donate">לתרומה לעמותה</a>
           <a href="unit.html" class="btn btn--ghost-light btn--lg" data-i18n="hero.cta.about">להכיר את אגוז</a>
         </div>
         <div class="hero__motto" data-reveal data-delay="4">
@@ -835,6 +981,52 @@
       </div>
       <div class="about-media" data-reveal="from-end" data-delay="1">
         <img src="assets/תמונות לאתר אגוז_Artboard 31.webp" data-i18n-alt="about.img.alt" alt="לוחמי אגוז במסדר יחידה" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHAIR & CEO MESSAGE ============ -->
+<section class="section leadership-message" id="leadership-message" data-scroll-panel>
+  <div class="container">
+    <div class="leadership-message__grid">
+      <div class="leadership-message__copy" data-reveal="from-start">
+        <div class="kicker-row kicker-row--light"><span class="kicker-row__txt" data-i18n="leadership.kicker">מהנהגת העמותה</span><span class="kicker-row__line"></span></div>
+        <h2 class="h2" data-i18n="leadership.title">דבר היו"ר והמנכ"לית</h2>
+        <p class="leadership-message__intro" data-i18n="leadership.greeting">חברות וחברי משפחת אגוז היקרים,</p>
+        <div class="leadership-message__body">
+          <p data-i18n="leadership.p1">השירות ביחידת אגוז מעולם לא היה אך ורק פרק זמן בשירות הצבאי; הוא מנוע ערכי, דרך חיים ושותפות גורל שנשארת איתנו לכל החיים.</p>
+          <p data-i18n="leadership.p2">הרוח המיוחדת של היחידה: רוח של נחישות, מצוינות, רעות עמוקה וצניעות, היא המצפן שמוביל אותנו הן בשירות הצבאי והן לאחריו בחיים האזרחיים.</p>
+          <p data-i18n="leadership.p3">העוצמה האמיתית של אגוז טמונה בקהילה שלה. אנו מאמינים כי הזיקה ליחידה אינה נמדדת בשנים, אלא בערכים המשותפים שמלכדים אותנו יחד, מלוחמי העבר שהקימו את היחידה ובנו את יסודותיה, ועד לצעירים שמשתחררים כעת וזקוקים לרוח הגבית שלנו.</p>
+          <p data-i18n="leadership.p4">עמותת אגוז הסיירת הצפונית הוקמה מתוך הבנה שהקשר בינינו הוא לעולם.</p>
+          <p data-i18n="leadership.p5">תפקידנו כעמותה הוא להוות עוגן, בית חם ורשת תמיכה, עבור כל מי שמשתייך למשפחת אגוז.</p>
+          <p data-i18n="leadership.p6">אנו פועלים ימים כלילות כדי להבטיח שאף לוחם או מפקד לא יישארו מאחור. אנו מחבקים ומלווים את המשפחות השכולות היקרות לנו מכל, מנציחים את זכר הנופלים, שומרים על קשר הדוק עם פצועי היחידה בתהליכי השיקום שלהם, ותומכים בלוחמי הסדיר והמילואים העומדים בחזית הגנת המדינה. במקביל, אנו משקיעים בדור העתיד של הבוגרים באמצעות מלגות, מסעות עיבוד צוותיים תוכניות נטוורקינג וליווי בחייהם האזרחיים. אנו גאים להוביל קשר בין דורי מובהק, שבו הניסיון, הבגרות והחוסן של דורות הבוגרים פוגשים את האנרגיה והתעוזה של דור העתיד.</p>
+          <p data-i18n="leadership.p7">אנו מזמינים אתכם להיות חלק פעיל מהעמותה, לקחת חלק בפרויקטים שלנו, ויחד בשותפות להמשיך להוביל, להשפיע ולשמור על רוח אגוז חיה, מתעצמת ויוזמת.</p>
+        </div>
+        <div class="leadership-message__signoff">
+          <span data-i18n="leadership.signoff">לצידכם שכם אל שכם,</span><br />
+          <span data-i18n-html="leadership.signature">ישי ניקריטין, יו"ר<br />הדר מוסאל, מנכ"לית העמותה</span>
+        </div>
+      </div>
+      <div class="leadership-message__portraits" data-reveal="from-end" data-delay="1">
+        <figure class="leader-card leader-card--chair">
+          <div class="leader-card__media">
+            <img src="assets/mancal/ysa.avif" alt="ישי ניקריטין, יו״ר עמותת אגוז" data-i18n-alt="leadership.chair.alt" loading="lazy" decoding="async" />
+          </div>
+          <figcaption>
+            <span class="leader-card__name" data-i18n="leadership.chair.name">ישי ניקריטין</span>
+            <span class="leader-card__role" data-i18n="leadership.chair.role">יו"ר עמותת אגוז</span>
+          </figcaption>
+        </figure>
+        <figure class="leader-card leader-card--ceo">
+          <div class="leader-card__media">
+            <img src="assets/mancal/hadar.JPG" alt="הדר מוסאל, מנכ״לית עמותת אגוז" data-i18n-alt="leadership.ceo.alt" loading="lazy" decoding="async" />
+          </div>
+          <figcaption>
+            <span class="leader-card__name" data-i18n="leadership.ceo.name">הדר מוסאל</span>
+            <span class="leader-card__role" data-i18n="leadership.ceo.role">מנכ"לית העמותה</span>
+          </figcaption>
+        </figure>
       </div>
     </div>
   </div>
@@ -1029,7 +1221,7 @@
           <a href="contact.html" class="btn btn--ghost-light btn--lg" data-i18n="join.btn2">הרשמה לניוזלטר</a>
         </div>
       </div>
-      <a class="give-cta" href="https://www.jgive.com/new/he/ils/donation-targets/5545" target="_blank" rel="noopener" data-reveal="from-end" data-delay="1" data-i18n-aria="join.give.aria" aria-label="מעבר לתרומה מאובטחת ב-JGive">
+      <a class="give-cta" href="donate.html" data-reveal="from-end" data-delay="1" data-i18n-aria="join.give.aria" aria-label="מעבר לתרומה מאובטחת ב-JGive">
         <span class="give-cta__head"><span class="jgive-logo"><span class="dot" aria-hidden="true"></span><span data-i18n="join.give.label">תרומה מאובטחת · JGive</span></span></span>
         <span class="give-cta__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 20.3l-1.45-1.32C5.4 14.36 2 11.28 2 7.5 2 4.42 4.42 2 7.5 2c1.74 0 3.41.81 4.5 2.09C13.09 2.81 14.76 2 16.5 2 19.58 2 22 4.42 22 7.5c0 3.78-3.4 6.86-8.55 11.49L12 20.3z"/></svg></span>
         <span class="give-cta__title" data-i18n="join.give.title">בואו לתת יד</span>
@@ -1069,7 +1261,7 @@
           <div><b style="font-family:var(--font-display);font-weight:900;font-size:1.4rem;color:var(--on-dark);display:block;line-height:1;" data-i18n="footer.brand">אגוז</b><span style="font-size:.82rem;color:var(--on-dark-3);" data-i18n="footer.tag">הסיירת הצפונית</span></div>
         </div>
         <p style="font-size:.96rem;max-width:36ch;" data-i18n="footer.about">הבית של בוגרי יחידת אגוז, המשפחות השכולות והפצועים — קהילה אחת שעומדת זה לצד זה הרבה אחרי השחרור.</p>
-        <a href="https://www.jgive.com/new/he/ils/donation-targets/5545" target="_blank" rel="noopener" class="btn btn--accent btn--sm" style="margin-top:20px;" data-i18n="footer.donate">תרמו לעמותה</a>
+        <a href="donate.html" class="btn btn--accent btn--sm" style="margin-top:20px;" data-i18n="footer.donate">תרמו לעמותה</a>
       </div>
       <div class="footer-col">
         <h4 data-i18n="footer.nav.title">ניווט</h4>
@@ -1088,7 +1280,7 @@
           <li><a href="login.html" data-i18n="nav.join">חבר עמותה</a></li>
           <li><a href="#delegations" data-i18n="footer.delegations">משלחות לחו״ל</a></li>
           <li><a href="#media" data-i18n="footer.media">עלינו בתקשורת</a></li>
-          <li><a href="https://www.jgive.com/new/he/ils/donation-targets/5545" target="_blank" rel="noopener" data-i18n="nav.donate">לתרומה</a></li>
+          <li><a href="donate.html" data-i18n="nav.donate">לתרומה</a></li>
         </ul>
       </div>
       <div class="footer-col">

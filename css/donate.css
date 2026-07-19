@@ -1,0 +1,120 @@
+.donate-page .hero--donate .hero__bg img {
+  object-position: center 35%;
+}
+
+.donate-layout {
+  max-width: 920px;
+  margin-inline: auto;
+}
+
+.donate-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  box-shadow: var(--sh-lg);
+  overflow: hidden;
+}
+
+.donate-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: clamp(18px, 2.4vw, 24px) clamp(20px, 2.6vw, 28px);
+  background: var(--olive-800);
+  color: var(--on-dark);
+}
+
+.donate-card__head b {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+}
+
+.jgive-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: .84rem;
+  color: var(--on-dark-2);
+}
+
+.jgive-badge .dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--brass-400);
+}
+
+.donate-card__body {
+  padding: clamp(18px, 2.4vw, 24px);
+}
+
+.donate-fallback {
+  min-height: 557px;
+  display: grid;
+  place-content: center;
+  gap: 16px;
+  text-align: center;
+  padding: clamp(28px, 4vw, 48px);
+  border-radius: var(--r-md);
+  border: 1px dashed var(--line-2);
+  background: var(--paper-2);
+}
+
+.donate-fallback__title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: var(--olive-800);
+  max-width: 42ch;
+  margin-inline: auto;
+}
+
+.donate-fallback__lead {
+  color: var(--text-2);
+  max-width: 52ch;
+  margin-inline: auto;
+  line-height: 1.65;
+}
+
+.donate-iframe-wrap {
+  border-radius: var(--r-md);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.donate-iframe-wrap iframe {
+  display: block;
+  width: 100%;
+  min-height: 557px;
+  border: 0;
+}
+
+.donate-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  color: var(--text-3);
+  font-size: .88rem;
+}
+
+.donate-foot .secure-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.donate-foot .secure-note svg {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+}
+
+.donate-foot .link-arrow {
+  font-size: .88rem;
+}
