@@ -78,6 +78,7 @@
       stickyTicking = true;
       requestAnimationFrame(function () {
         updateSticky();
+        resetHorizontalScroll();
         stickyTicking = false;
       });
     }

@@ -970,6 +970,7 @@ body[data-i18n-page="home"] [data-scroll-panel],
 body[data-i18n-page="unit"] [data-scroll-panel] {
   opacity: 0;
   transform: translate3d(0, 44px, 0) scale(0.988);
+  pointer-events: none;
   transition:
     opacity .82s var(--ease-out),
     transform .88s cubic-bezier(.22, 1, .36, 1);
@@ -978,6 +979,7 @@ body[data-i18n-page="home"] [data-scroll-panel].is-in,
 body[data-i18n-page="unit"] [data-scroll-panel].is-in {
   opacity: 1;
   transform: none;
+  pointer-events: auto;
 }
 
 @media (prefers-reduced-motion: reduce) {

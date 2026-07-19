@@ -262,6 +262,11 @@
   position: relative;
   z-index: 9000;
   overflow: visible;
+  pointer-events: none;
+}
+.hero-stack.is-nav-stuck .site-header,
+.hero-stack.is-nav-stuck .site-header * {
+  pointer-events: auto;
 }
 .hero-stack .hero {
   position: relative;

@@ -197,6 +197,7 @@ body.unit-page .unit-main .section-head .lead {
   gap: clamp(12px, 1.5vw, 18px);
   padding-inline-start: clamp(32px, 4vw, 48px);
   --timeline-progress: 0;
+  overflow-x: clip;
 }
 
 .unit-timeline__line {
@@ -223,16 +224,12 @@ body.unit-page .unit-main .section-head .lead {
 
 .unit-timeline[data-unit-timeline] .unit-timeline__item {
   opacity: 0;
-  transform: translate3d(40px, 24px, 0) scale(0.98);
+  transform: translate3d(0, 24px, 0) scale(0.98);
   transition:
     opacity .7s var(--ease-out),
     transform .78s cubic-bezier(.22, 1, .36, 1),
     box-shadow .35s,
     border-color .25s;
-}
-
-html[dir="ltr"] .unit-timeline[data-unit-timeline] .unit-timeline__item {
-  transform: translate3d(-40px, 24px, 0) scale(0.98);
 }
 
 .unit-timeline[data-unit-timeline] .unit-timeline__item.is-visible {
