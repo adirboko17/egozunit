@@ -1,9 +1,49 @@
 /* Site-wide mobile polish — loaded from site.css */
 
-/* ---- Nav drawer: correct slide direction in LTR ---- */
-.nav-drawer__panel { transform: translateX(-100%); }
-html[dir="rtl"] .nav-drawer__panel { transform: translateX(100%); }
-.nav-drawer.is-open .nav-drawer__panel { transform: translateX(0); }
+/*
+  Closed drawer must NOT sit off-screen via translateX — in RTL that expands
+  document scrollWidth and shifts the whole page (white gap until scroll).
+  Slide-in runs only while .is-open (parent clips overflow).
+*/
+.nav-drawer:not(.is-open) .nav-drawer__panel {
+  transform: none;
+  transition: none;
+  pointer-events: none;
+}
+.nav-drawer.is-open .nav-drawer__panel {
+  transform: none;
+  animation: nav-drawer-in-ltr .34s var(--ease-out);
+}
+html[dir="rtl"] .nav-drawer.is-open .nav-drawer__panel {
+  animation-name: nav-drawer-in-rtl;
+}
+@keyframes nav-drawer-in-ltr {
+  from { transform: translate3d(-100%, 0, 0); }
+  to { transform: none; }
+}
+@keyframes nav-drawer-in-rtl {
+  from { transform: translate3d(100%, 0, 0); }
+  to { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-drawer.is-open .nav-drawer__panel {
+    animation: none;
+  }
+}
+
+/* Horizontal reveal transforms also widen scrollWidth on small screens */
+@media (max-width: 640px) {
+  body[data-i18n-page="home"] [data-reveal="from-start"],
+  body[data-i18n-page="unit"] [data-reveal="from-start"],
+  body[data-i18n-page="home"] [data-reveal="from-end"],
+  body[data-i18n-page="unit"] [data-reveal="from-end"],
+  html[dir="ltr"] body[data-i18n-page="home"] [data-reveal="from-start"],
+  html[dir="ltr"] body[data-i18n-page="unit"] [data-reveal="from-start"],
+  html[dir="ltr"] body[data-i18n-page="home"] [data-reveal="from-end"],
+  html[dir="ltr"] body[data-i18n-page="unit"] [data-reveal="from-end"] {
+    transform: translate3d(0, 28px, 0) scale(0.975);
+  }
+}
 
 .nav-drawer__actions {
   display: none !important;

@@ -168,11 +168,13 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  min-width: 0;
   font-family: var(--font-display);
   font-weight: 700;
   font-size: .9rem;
 }
-.auth-steps__item span {
+.auth-steps__num {
+  flex: 0 0 auto;
   width: 26px;
   height: 26px;
   border-radius: 50%;
@@ -180,11 +182,29 @@
   display: grid;
   place-items: center;
   font-size: .82rem;
+  line-height: 1;
+}
+.auth-steps__label {
+  min-width: 0;
+  line-height: 1.25;
 }
 .auth-steps__item.is-active { color: var(--text); }
-.auth-steps__item.is-active span { background: var(--olive-800); border-color: var(--olive-800); color: var(--on-dark); }
-.auth-steps__item.is-done span { background: var(--brass-500); border-color: var(--brass-500); color: var(--ink); }
-.auth-steps__sep { width: 40px; height: 1px; background: var(--line-2); }
+.auth-steps__item.is-active .auth-steps__num {
+  background: var(--olive-800);
+  border-color: var(--olive-800);
+  color: var(--on-dark);
+}
+.auth-steps__item.is-done .auth-steps__num {
+  background: var(--brass-500);
+  border-color: var(--brass-500);
+  color: var(--ink);
+}
+.auth-steps__sep {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 1px;
+  background: var(--line-2);
+}
 
 .auth-subhead {
   font-family: var(--font-display);
