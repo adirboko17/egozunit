@@ -11,7 +11,7 @@ body.unit-page {
     linear-gradient(to top, rgba(10,20,46,calc(var(--hero-scrim) * .95)), rgba(10,20,46,calc(var(--hero-scrim) * .25)) 50%);
 }
 
-/* Main — stacked floating panels */
+/* Main - stacked floating panels */
 body.unit-page .unit-main {
   display: flex;
   flex-direction: column;
@@ -32,7 +32,7 @@ body.unit-page .unit-main > .section + .section {
   border-top: 0;
 }
 
-/* Plain sections — sit on site background, no floating panel */
+/* Plain sections - sit on site background, no floating panel */
 body.unit-page .unit-main > .section.unit-section--plain {
   margin-inline: 0;
   border-radius: 0;
@@ -61,7 +61,7 @@ body.unit-page .unit-main > .section.unit-section--plain .section-head .lead {
 .unit-panel--card { background: var(--card); }
 .unit-panel--paper { background: transparent; }
 
-/* Paper panels — on site background, no floating panel */
+/* Paper panels - on site background, no floating panel */
 body.unit-page .unit-main > .section.unit-panel--paper {
   margin-inline: 0;
   border-radius: 0;

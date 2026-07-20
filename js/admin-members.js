@@ -13,7 +13,7 @@
   }
 
   function fmtDate(value) {
-    if (!value) return '—';
+    if (!value) return '-';
     try { return new Date(value).toLocaleDateString('he-IL'); } catch (e) { return value; }
   }
 
@@ -66,7 +66,7 @@
   }
 
   function detailRow(label, value) {
-    return '<div class="admin-detail__row"><span class="admin-detail__label">' + esc(label) + '</span><span class="admin-detail__value">' + esc(value || '—') + '</span></div>';
+    return '<div class="admin-detail__row"><span class="admin-detail__label">' + esc(label) + '</span><span class="admin-detail__value">' + esc(value || '-') + '</span></div>';
   }
 
   function renderDetail(item) {

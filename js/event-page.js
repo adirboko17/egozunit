@@ -46,7 +46,7 @@
   }
 
   function render(event) {
-    if (pageTitleEl) pageTitleEl.textContent = event.title + ' — עמותת אגוז';
+    if (pageTitleEl) pageTitleEl.textContent = event.title + ' - עמותת אגוז';
     if (pageDescEl) pageDescEl.setAttribute('content', event.description ? event.description.split('\n')[0] : event.title);
     if (heroTitleEl) heroTitleEl.textContent = event.title;
 

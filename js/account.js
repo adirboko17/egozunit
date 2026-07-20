@@ -41,7 +41,7 @@
   }
 
   function formatDate(iso) {
-    if (!iso) return '—';
+    if (!iso) return '-';
     var parts = iso.split('-');
     if (parts.length !== 3) return iso;
     return parts[2] + '/' + parts[1] + '/' + parts[0];
@@ -119,7 +119,7 @@
       return (
         '<div class="account-stat">' +
           '<span class="account-stat__label">' + esc(field.label) + '</span>' +
-          '<span class="account-stat__value">' + esc(field.value || '—') + '</span>' +
+          '<span class="account-stat__value">' + esc(field.value || '-') + '</span>' +
         '</div>'
       );
     }).join('');
@@ -220,7 +220,7 @@
         '<div class="account-empty">' +
           '<div class="account-empty__icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>' +
           '<h3>' + esc(t('events.empty.title', 'אין אירועים קרובים כרגע')) + '</h3>' +
-          '<p>' + esc(t('events.empty.lead', 'אירועים חדשים מתפרסמים מעת לעת — חזרו לבקר או עברו לעמוד האירועים.')) + '</p>' +
+          '<p>' + esc(t('events.empty.lead', 'אירועים חדשים מתפרסמים מעת לעת - חזרו לבקר או עברו לעמוד האירועים.')) + '</p>' +
           '<a href="events.html" class="btn btn--ghost" style="margin-top:18px;">' + esc(t('events.empty.btn', 'לכל האירועים')) + '</a>' +
         '</div>';
       return;

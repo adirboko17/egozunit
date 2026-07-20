@@ -124,14 +124,14 @@
   function roleLabel(role) {
     if (role === 'fighter') return t('member.roleLabelFighter', 'לוחם');
     if (role === 'support') return t('member.roleLabelSupport', 'תומכ"ל');
-    return role || '—';
+    return role || '-';
   }
 
   function genderLabel(gender) {
     if (gender === 'male') return t('member.genderLabelMale', 'גבר');
     if (gender === 'female') return t('member.genderLabelFemale', 'אישה');
     if (gender === 'other') return t('member.genderLabelOther', 'אחר');
-    return gender || '—';
+    return gender || '-';
   }
 
   window.EgozMemberProfile = {

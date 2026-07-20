@@ -8,15 +8,15 @@
 
     he: {
 
-      'meta.title': 'הרשמה לעמותה — עמותת אגוז · הסיירת הצפונית',
+      'meta.title': 'הרשמה לעמותה - עמותת אגוז · הסיירת הצפונית',
 
-      'meta.description': 'הרשמה כחבר עמותת אגוז — פתיחת חשבון ומילוי פרטים.',
+      'meta.description': 'הרשמה כחבר עמותת אגוז - פתיחת חשבון ומילוי פרטים.',
 
       'hero.eyebrow': 'עמותת אגוז · הסיירת הצפונית',
 
       'hero.title': 'הרשמה לעמותה',
 
-      'hero.lead': 'הצטרפו למשפחת אגוז — פתיחת חשבון והשלמת פרטים.',
+      'hero.lead': 'הצטרפו למשפחת אגוז - פתיחת חשבון והשלמת פרטים.',
 
       'steps.step1': 'פתיחת חשבון',
 
@@ -26,7 +26,7 @@
 
       'aside.title': 'הצטרפו למשפחת אגוז',
 
-      'aside.lead': 'פתחו חשבון והשלימו את הפרטים — כדי לקבל גישה לאזור האישי, להטבות ולקהילה.',
+      'aside.lead': 'פתחו חשבון והשלימו את הפרטים - כדי לקבל גישה לאזור האישי, להטבות ולקהילה.',
 
       'aside.perk1': 'גישה לאזור האישי ולעדכון פרטים',
 
@@ -50,7 +50,7 @@
 
       'confirm.leadPrefix': 'שלחנו קישור לאימות לכתובת',
 
-      'confirm.hint': 'לחצו על הקישור במייל כדי לאשר את החשבון — לאחר מכן תועברו אוטומטית להשלמת ההרשמה (שלב ב׳).',
+      'confirm.hint': 'לחצו על הקישור במייל כדי לאשר את החשבון - לאחר מכן תועברו אוטומטית להשלמת ההרשמה (שלב ב׳).',
 
       'confirm.sub': 'לא קיבלתם? בדקו בתיקיית דואר זבל.',
 
@@ -80,21 +80,21 @@
 
       'success.homeBtn': 'חזרה לדף הבית',
 
-      'footer.copyright': '© {year} עמותת אגוז — הסיירת הצפונית · הבית של בוגרי היחידה · כל הזכויות שמורות'
+      'footer.copyright': '© {year} עמותת אגוז - הסיירת הצפונית · הבית של בוגרי היחידה · כל הזכויות שמורות'
 
     },
 
     en: {
 
-      'meta.title': 'Join the association — Egoz Association · Northern Command',
+      'meta.title': 'Join the association - Egoz Association · Northern Command',
 
-      'meta.description': 'Register as an Egoz Association member — create an account and complete your details.',
+      'meta.description': 'Register as an Egoz Association member - create an account and complete your details.',
 
       'hero.eyebrow': 'Egoz Association · Northern Command',
 
       'hero.title': 'Join the association',
 
-      'hero.lead': 'Join the Egoz family — create an account and complete your details.',
+      'hero.lead': 'Join the Egoz family - create an account and complete your details.',
 
       'steps.step1': 'Create account',
 
@@ -104,7 +104,7 @@
 
       'aside.title': 'Join the Egoz family',
 
-      'aside.lead': 'Create an account and complete your details — to access your member area, benefits, and community.',
+      'aside.lead': 'Create an account and complete your details - to access your member area, benefits, and community.',
 
       'aside.perk1': 'Access your account and update details',
 
@@ -128,7 +128,7 @@
 
       'confirm.leadPrefix': 'We sent a verification link to',
 
-      'confirm.hint': 'Click the link in the email to confirm your account — you will then be redirected to complete registration (step 2).',
+      'confirm.hint': 'Click the link in the email to confirm your account - you will then be redirected to complete registration (step 2).',
 
       'confirm.sub': 'Didn\'t receive it? Check your spam folder.',
 
@@ -158,7 +158,7 @@
 
       'success.homeBtn': 'Back to home',
 
-      'footer.copyright': '© {year} Egoz Association — Northern Command · Home of unit alumni · All rights reserved'
+      'footer.copyright': '© {year} Egoz Association - Northern Command · Home of unit alumni · All rights reserved'
 
     }
 

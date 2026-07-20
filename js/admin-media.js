@@ -61,7 +61,7 @@
               '<b class="admin-product__name">' + esc(item.title) + '</b>' +
               '<span class="admin-product__price">' + esc(TYPE_LABELS[item.media_type] || item.media_type) + '</span>' +
             '</div>' +
-            '<p class="admin-product__desc">' + esc(item.description || item.link_url || '—') + '</p>' +
+            '<p class="admin-product__desc">' + esc(item.description || item.link_url || '-') + '</p>' +
             '<div class="admin-product__meta">' +
               '<span class="admin-product__badge' + (item.is_published ? ' is-live' : '') + '">' +
                 (item.is_published ? 'מפורסם' : 'טיוטה') +

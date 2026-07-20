@@ -175,7 +175,7 @@
     var catalogLead = document.getElementById('shopCatalogLead');
 
     if (heroLead) {
-      heroLead.textContent = t('hero.leadLive', 'מוצרי מורשת, לבוש ופריטים לקהילת אגוז — נרכשים בקישור חיצוני.');
+      heroLead.textContent = t('hero.leadLive', 'מוצרי מורשת, לבוש ופריטים לקהילת אגוז - נרכשים בקישור חיצוני.');
     }
 
     if (catalogLead) {

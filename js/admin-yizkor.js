@@ -49,7 +49,7 @@
             '<div class="admin-product__head">' +
               '<b class="admin-product__name">' + esc(item.name) + '</b>' +
             '</div>' +
-            '<p class="admin-product__desc">' + esc(item.fall_date || '—') + '</p>' +
+            '<p class="admin-product__desc">' + esc(item.fall_date || '-') + '</p>' +
             '<div class="admin-product__meta">' +
               '<span class="admin-product__badge' + (item.is_published ? ' is-live' : '') + '">' +
                 (item.is_published ? 'מפורסם' : 'טיוטה') +

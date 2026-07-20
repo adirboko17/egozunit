@@ -8,9 +8,9 @@
 
     he: {
 
-      'meta.title': 'אזור אישי — עמותת אגוז · הסיירת הצפונית',
+      'meta.title': 'אזור אישי - עמותת אגוז · הסיירת הצפונית',
 
-      'meta.description': 'אזור אישי לחברי עמותת אגוז — עדכון פרטים, התנדבות ואירועים.',
+      'meta.description': 'אזור אישי לחברי עמותת אגוז - עדכון פרטים, התנדבות ואירועים.',
 
       'hero.eyebrow': 'אזור אישי · חבר עמותה',
 
@@ -50,7 +50,7 @@
 
       'panel.events.title': 'אירועי העמותה',
 
-      'panel.events.lead': 'אירועים קרובים של העמותה — הצטרפו, התחברו והישארו מעודכנים.',
+      'panel.events.lead': 'אירועים קרובים של העמותה - הצטרפו, התחברו והישארו מעודכנים.',
 
       'panel.updates.title': 'עדכונים',
 
@@ -68,9 +68,9 @@
 
       'consent.bylawsHtml': 'אני מאשר/ת את <a href="bylaws.html" target="_blank" rel="noopener">תקנון העמותה</a>',
 
-      'volunteer.vehicle': 'ג\'יפ, אופנוע או משאית להעמדה — פרטו',
+      'volunteer.vehicle': 'ג\'יפ, אופנוע או משאית להעמדה - פרטו',
 
-      'volunteer.eventBiz': 'בעל עסק בתחום האירועים — ציינו תחום',
+      'volunteer.eventBiz': 'בעל עסק בתחום האירועים - ציינו תחום',
 
       'updates.welcome.tag': 'ברוכים הבאים',
 
@@ -92,7 +92,7 @@
 
       'events.empty.title': 'אין אירועים קרובים כרגע',
 
-      'events.empty.lead': 'אירועים חדשים מתפרסמים מעת לעת — חזרו לבקר או עברו לעמוד האירועים.',
+      'events.empty.lead': 'אירועים חדשים מתפרסמים מעת לעת - חזרו לבקר או עברו לעמוד האירועים.',
 
       'events.empty.btn': 'לכל האירועים',
 
@@ -102,15 +102,15 @@
 
       'stat.addressCombined': 'כתובת',
 
-      'footer.copyright': '© {year} עמותת אגוז — הסיירת הצפונית · הבית של בוגרי היחידה · כל הזכויות שמורות'
+      'footer.copyright': '© {year} עמותת אגוז - הסיירת הצפונית · הבית של בוגרי היחידה · כל הזכויות שמורות'
 
     },
 
     en: {
 
-      'meta.title': 'My account — Egoz Association · Northern Command',
+      'meta.title': 'My account - Egoz Association · Northern Command',
 
-      'meta.description': 'Member account for Egoz Association — update details, volunteering, and events.',
+      'meta.description': 'Member account for Egoz Association - update details, volunteering, and events.',
 
       'hero.eyebrow': 'My account · Association member',
 
@@ -150,7 +150,7 @@
 
       'panel.events.title': 'Association events',
 
-      'panel.events.lead': 'Upcoming association events — join, connect, and stay updated.',
+      'panel.events.lead': 'Upcoming association events - join, connect, and stay updated.',
 
       'panel.updates.title': 'Updates',
 
@@ -168,9 +168,9 @@
 
       'consent.bylawsHtml': 'I accept the <a href="bylaws.html" target="_blank" rel="noopener">association bylaws</a>',
 
-      'volunteer.vehicle': 'Jeep, motorcycle, or truck available — specify',
+      'volunteer.vehicle': 'Jeep, motorcycle, or truck available - specify',
 
-      'volunteer.eventBiz': 'Events business owner — specify field',
+      'volunteer.eventBiz': 'Events business owner - specify field',
 
       'updates.welcome.tag': 'Welcome',
 
@@ -192,7 +192,7 @@
 
       'events.empty.title': 'No upcoming events right now',
 
-      'events.empty.lead': 'New events are published from time to time — check back or visit the events page.',
+      'events.empty.lead': 'New events are published from time to time - check back or visit the events page.',
 
       'events.empty.btn': 'All events',
 
@@ -202,7 +202,7 @@
 
       'stat.addressCombined': 'Address',
 
-      'footer.copyright': '© {year} Egoz Association — Northern Command · Home of unit alumni · All rights reserved'
+      'footer.copyright': '© {year} Egoz Association - Northern Command · Home of unit alumni · All rights reserved'
 
     }
 

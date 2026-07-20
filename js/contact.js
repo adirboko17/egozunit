@@ -38,7 +38,7 @@
     var body = [
       'שם: ' + data.get('firstName') + ' ' + data.get('lastName'),
       'אימייל: ' + data.get('email'),
-      'טלפון: ' + (data.get('phone') || '—'),
+      'טלפון: ' + (data.get('phone') || '-'),
       '',
       data.get('message')
     ].join('\n');

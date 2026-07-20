@@ -183,7 +183,7 @@ async function uploadImagesToSupabase(items, env) {
     });
 
     if (!uploadRes.ok) {
-      console.warn('\nSkip image (upload failed): ' + item.name + ' — ' + (await uploadRes.text()));
+      console.warn('\nSkip image (upload failed): ' + item.name + ' - ' + (await uploadRes.text()));
       continue;
     }
 

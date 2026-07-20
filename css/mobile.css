@@ -1,7 +1,7 @@
-/* Site-wide mobile polish — loaded from site.css */
+/* Site-wide mobile polish - loaded from site.css */
 
 /*
-  Closed drawer must NOT sit off-screen via translateX — in RTL that expands
+  Closed drawer must NOT sit off-screen via translateX - in RTL that expands
   document scrollWidth and shifts the whole page (white gap until scroll).
   Slide-in runs only while .is-open (parent clips overflow).
 */
@@ -183,7 +183,7 @@ body.nav-drawer-open .site-header.is-stuck {
 
   .nav-cta .lang-switch { display: none !important; }
 
-  /* Mobile header: account/join only — no room for donate CTA */
+  /* Mobile header: account/join only - no room for donate CTA */
   .nav-cta .btn--accent { display: none !important; }
 
   .site-header:not(.is-stuck) .brand__logo,

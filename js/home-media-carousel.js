@@ -1,4 +1,4 @@
-/* Home page — media carousel (one card per step, seamless infinite loop) */
+/* Home page - media carousel (one card per step, seamless infinite loop) */
 (function () {
   'use strict';
 

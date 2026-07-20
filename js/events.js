@@ -52,7 +52,7 @@
     var tag = filterLabel(activeFilter);
     var titleTpl = t('eventsPage.filterEmpty.title', 'כרגע אין אירועים בקטגוריה הזו');
     var title = titleTpl.indexOf('{tag}') > -1 ? titleTpl.replace('{tag}', tag) : titleTpl;
-    var lead = t('eventsPage.filterEmpty.lead', 'אירועים חדשים מתפרסמים כאן מעת לעת — נסו קטגוריה אחרת או חזרו לכל האירועים.');
+    var lead = t('eventsPage.filterEmpty.lead', 'אירועים חדשים מתפרסמים כאן מעת לעת - נסו קטגוריה אחרת או חזרו לכל האירועים.');
     var allLabel = t('eventsPage.filterEmpty.allBtn', 'הצג את כל האירועים');
 
     return (
@@ -182,7 +182,7 @@
     gridEl.innerHTML =
       '<div class="events-empty">' +
         '<h2>' + esc(t('eventsPage.empty.title', 'אין אירועים כרגע')) + '</h2>' +
-        '<p>' + esc(t('eventsPage.empty.lead', 'חזרו בקרוב — אירועים חדשים מתפרסמים כאן.')) + '</p>' +
+        '<p>' + esc(t('eventsPage.empty.lead', 'חזרו בקרוב - אירועים חדשים מתפרסמים כאן.')) + '</p>' +
       '</div>';
   }
 

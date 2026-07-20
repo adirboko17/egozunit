@@ -281,7 +281,7 @@
     if (!footerCopy || !year) return;
 
     var updateCopyright = function () {
-      var tpl = t('footer.copy', '© {year} עמותת אגוז — הסיירת הצפונית · הבית של בוגרי היחידה · כל הזכויות שמורות');
+      var tpl = t('footer.copy', '© {year} עמותת אגוז - הסיירת הצפונית · הבית של בוגרי היחידה · כל הזכויות שמורות');
       footerCopy.textContent = tpl.replace('{year}', year.textContent);
     };
 

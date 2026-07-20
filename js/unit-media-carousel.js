@@ -1,4 +1,4 @@
-/* Unit page — media carousel (3 cards per slide) */
+/* Unit page - media carousel (3 cards per slide) */
 (function () {
   'use strict';
 

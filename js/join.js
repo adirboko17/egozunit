@@ -336,7 +336,7 @@
 
     proceedToStepB(session.user, profile);
     if (profile && profile.registration_completed) {
-      showAlert('profileAlert', t('alert.profileComplete', 'כבר השלמתם את ההרשמה — ניתן לעדכן פרטים כאן או לעבור לאזור האישי'), 'info');
+      showAlert('profileAlert', t('alert.profileComplete', 'כבר השלמתם את ההרשמה - ניתן לעדכן פרטים כאן או לעבור לאזור האישי'), 'info');
     }
   }
 

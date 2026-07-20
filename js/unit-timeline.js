@@ -1,4 +1,4 @@
-/* Unit page — scroll-driven history timeline */
+/* Unit page - scroll-driven history timeline */
 (function () {
   'use strict';
 

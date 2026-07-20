@@ -1,4 +1,4 @@
-/* אגוז — Tweaks panel (vanilla, host-protocol aware) */
+/* אגוז - Tweaks panel (vanilla, host-protocol aware) */
 (function () {
   'use strict';
 

@@ -1,6 +1,6 @@
 /* ==========================================================================
-   אגוז — הסיירת הצפונית · Design System
-   "Olive Command" — deep field olive + ink + warm brass on paper
+   אגוז - הסיירת הצפונית · Design System
+   "Olive Command" - deep field olive + ink + warm brass on paper
    ========================================================================== */
 
 /* ---- Fonts ---- */
@@ -169,7 +169,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); font-weight: 800; line-he
   color: var(--brass-700);
 }
 
-/* Archival chapter marker — numbered, with trailing keyline (dossier feel) */
+/* Archival chapter marker - numbered, with trailing keyline (dossier feel) */
 .kicker-row { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
 .kicker-row__no { font-family: var(--font-display); font-weight: 800; font-size: .95rem; letter-spacing: .06em; color: var(--brass-600); font-variant-numeric: tabular-nums; flex: 0 0 auto; }
 .kicker-row__txt { font-family: var(--font-display); font-weight: 700; font-size: .8rem; letter-spacing: .18em; color: var(--text-3); white-space: nowrap; flex: 0 0 auto; }
@@ -210,7 +210,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); font-weight: 800; line-he
 .section-head .lead { margin-top: 16px; }
 .section-head--center { margin-inline: auto; text-align: center; }
 
-/* Floating edge panels — inset + rounded corners on full-bleed blocks */
+/* Floating edge panels - inset + rounded corners on full-bleed blocks */
 .surface-float,
 .hero-stack,
 .memorial,
@@ -254,7 +254,7 @@ main > .section.yizkor {
   margin-block-end: var(--surface-gap);
 }
 
-/* Paper sections — on site background, no floating panel */
+/* Paper sections - on site background, no floating panel */
 .section.paper-2 {
   background: transparent;
   margin-inline: 0;
@@ -351,7 +351,7 @@ main > .section.yizkor {
 .datechip__m { font-size: .78rem; font-weight: 700; letter-spacing: .08em; padding: 6px 0; background: var(--olive-800); color: var(--on-dark); }
 
 /* ==========================================================================
-   7. Decorative — tactical textures
+   7. Decorative - tactical textures
    ========================================================================== */
 .tex-topo {
   background-image:
@@ -521,7 +521,7 @@ main > .section.yizkor {
   background: transparent;
   transform: scale(1.06);
 }
-/* Active dropdown trigger — solid / stuck header only (not transparent hero) */
+/* Active dropdown trigger - solid / stuck header only (not transparent hero) */
 .site-header.is-stuck .nav-dropdown.is-active .nav-dropdown__trigger,
 .site-header:not([data-transparent="true"]) .nav-dropdown.is-active .nav-dropdown__trigger {
   color: var(--olive-800);
@@ -746,7 +746,7 @@ html[dir="ltr"] .give-cta__btn svg { transform: scaleX(-1); }
 .nav-toggle span, .nav-toggle span::before, .nav-toggle span::after { content: ""; display: block; width: 22px; height: 2px; background: currentColor; transition: transform .25s var(--ease), opacity .2s; }
 .nav-toggle span::before { transform: translateY(-7px); } .nav-toggle span::after { transform: translateY(5px); }
 
-/* mobile drawer — overflow clipped so closed/open slide never widens the page */
+/* mobile drawer - overflow clipped so closed/open slide never widens the page */
 .nav-drawer {
   position: fixed;
   inset: 0;
@@ -871,7 +871,7 @@ html[dir="ltr"] .give-cta__btn svg { transform: scaleX(-1); }
 [data-reveal][data-delay="3"] { transition-delay: .24s; }
 [data-reveal][data-delay="4"] { transition-delay: .32s; }
 
-/* Homepage + unit — richer scroll motion */
+/* Homepage + unit - richer scroll motion */
 body[data-i18n-page="home"] [data-reveal],
 body[data-i18n-page="unit"] [data-reveal] {
   opacity: 0;
@@ -1015,7 +1015,7 @@ image-slot { --slot-bg: var(--olive-800); display: block; }
 .maxw-prose { max-width: 62ch; }
 
 /* ==========================================================================
-   12. Ledger (record strip) + Charter (numbered objectives) — archival
+   12. Ledger (record strip) + Charter (numbered objectives) - archival
    ========================================================================== */
 .ledger { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line-2); border-bottom: 1px solid var(--line-2); }
 .ledger__item { padding: clamp(22px, 2.6vw, 36px) clamp(10px, 1.6vw, 26px); border-inline-start: 1px solid var(--line); }

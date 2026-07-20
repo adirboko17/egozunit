@@ -2,7 +2,7 @@
   "name": "egoz-site",
   "version": "1.0.0",
   "private": true,
-  "description": "עמותת אגוז — הסיירת הצפונית",
+  "description": "עמותת אגוז - הסיירת הצפונית",
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",

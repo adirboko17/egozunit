@@ -96,7 +96,7 @@
               '<b class="admin-product__name">' + esc(product.name) + '</b>' +
               '<span class="admin-product__price">' + esc(formatPrice(product.price)) + '</span>' +
             '</div>' +
-            '<p class="admin-product__desc">' + esc(product.description || '—') + '</p>' +
+            '<p class="admin-product__desc">' + esc(product.description || '-') + '</p>' +
             '<div class="admin-product__meta">' +
               '<span class="admin-product__badge' + (product.is_published ? ' is-live' : '') + '">' +
                 (product.is_published ? 'מפורסם' : 'טיוטה') +

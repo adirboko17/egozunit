@@ -47,12 +47,12 @@ app.use((_req, res) => {
 });
 
 const server = app.listen(PORT, () => {
-  console.log(`\n  עמותת אגוז — האתר רץ ב-localhost\n  http://localhost:${PORT}\n`);
+  console.log(`\n  עמותת אגוז - האתר רץ ב-localhost\n  http://localhost:${PORT}\n`);
 });
 
 server.on('error', (err) => {
   if (err.code === 'EADDRINUSE') {
-    console.error(`\n  פורט ${PORT} כבר בשימוש — השרver כנראה כבר רץ.\n  פתח בדפדפן: http://localhost:${PORT}\n`);
+    console.error(`\n  פורט ${PORT} כבר בשימוש - השרver כנראה כבר רץ.\n  פתח בדפדפן: http://localhost:${PORT}\n`);
     console.error(`  להפעלה מחדש: Ctrl+C בחלון הישן, או הרץ:\n  taskkill /PID <מספר> /F\n`);
     process.exit(1);
   }

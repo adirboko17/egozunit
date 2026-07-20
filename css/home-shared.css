@@ -525,7 +525,7 @@ html[dir="ltr"] .media-card:hover .media-card__action svg { transform: translate
   border-radius: var(--r-lg);
 }
 
-/* Home — tighter gap between about (01) and goals (02) */
+/* Home - tighter gap between about (01) and goals (02) */
 body[data-i18n-page="home"] #about {
   padding-bottom: clamp(20px, 2.5vw, 36px);
 }

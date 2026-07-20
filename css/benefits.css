@@ -116,7 +116,7 @@
   100% { background-position: -100% 0; }
 }
 
-/* Modal — mirrors projects modal */
+/* Modal - mirrors projects modal */
 body.benefits-modal-open { overflow: hidden; }
 
 body.benefits-modal-open .site-header.is-stuck {

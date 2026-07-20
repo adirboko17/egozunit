@@ -115,7 +115,7 @@
   text-align: center;
 }
 
-/* Step A — split panel */
+/* Step A - split panel */
 
 .join-panel {
   display: grid;
@@ -262,7 +262,7 @@
   margin: 0;
 }
 
-/* Step B — wide profile form */
+/* Step B - wide profile form */
 
 .join-step-b-head {
   padding: clamp(24px, 3.5vw, 36px) clamp(24px, 4vw, 44px);

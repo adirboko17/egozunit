@@ -1,4 +1,4 @@
-/* אגוז — shared site behaviour */
+/* אגוז - shared site behaviour */
 (function () {
   'use strict';
 
@@ -16,7 +16,7 @@
   window.addEventListener('resize', resetHorizontalScroll);
   window.addEventListener('orientationchange', resetHorizontalScroll);
 
-  /* ---- Sticky header (spacer + hysteresis — smooth floating pill) ---- */
+  /* ---- Sticky header (spacer + hysteresis - smooth floating pill) ---- */
   var header = document.querySelector('.site-header');
   var heroStack = header && header.closest('.hero-stack');
   if (header) {
@@ -172,7 +172,7 @@
   drawer && drawer.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', closeDrawer); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeDrawer(); });
 
-  /* ---- In-view helper (rect based — robust in preview/iframe contexts) ---- */
+  /* ---- In-view helper (rect based - robust in preview/iframe contexts) ---- */
   function inView(el, pad) {
     var r = el.getBoundingClientRect();
     var vh = window.innerHeight || document.documentElement.clientHeight;

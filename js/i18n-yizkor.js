@@ -3,7 +3,7 @@
 
   EgozI18n.register('yizkor', {
     he: {
-      'meta.title': 'יזכור — עמותת אגוז · הסיירת הצפונית',
+      'meta.title': 'יזכור - עמותת אגוז · הסיירת הצפונית',
       'meta.description': 'עמוד יזכור לזכר לוחמי יחידת אגוז שנפלו. זכרם בלבנו לעד.',
       'skip': 'דלג לתוכן הראשי',
       'util.registered': 'עמותה רשומה 580027720',
@@ -11,8 +11,8 @@
       'util.facebook': 'פייסבוק',
       'util.instagram': 'אינסטגרם',
       'util.website': 'אתר העמותה',
-      'brand.aria': 'עמותת אגוז — הסיירת הצפונית',
-      'brand.alt': 'עמותת אגוז — הסיירת הצפונית',
+      'brand.aria': 'עמותת אגוז - הסיירת הצפונית',
+      'brand.alt': 'עמותת אגוז - הסיירת הצפונית',
       'nav.aria': 'ניווט ראשי',
       'nav.home': 'בית',
       'nav.unit': 'יחידת אגוז',
@@ -51,7 +51,7 @@
       'grid.error': 'לא ניתן לטעון את רשימת הנופלים.',
       'footer.brand': 'אגוז',
       'footer.tag': 'הסיירת הצפונית',
-      'footer.about': 'הבית של בוגרי יחידת אגוז, המשפחות השכולות והפצועים — קהילה אחת שעומדת זה לצד זה הרבה אחרי השחרור.',
+      'footer.about': 'הבית של בוגרי יחידת אגוז, המשפחות השכולות והפצועים - קהילה אחת שעומדת זה לצד זה הרבה אחרי השחרור.',
       'footer.donate': 'תרמו לעמותה',
       'footer.nav.title': 'ניווט',
       'footer.community.title': 'קהילה',
@@ -63,10 +63,10 @@
       'footer.link1': 'תקנון',
       'footer.link2': 'סעיף 46',
       'footer.link3': 'הצהרת נגישות',
-      'footer.copy': '© {year} עמותת אגוז — הסיירת הצפונית · הבית של בוגרי היחידה · כל הזכויות שמורות'
+      'footer.copy': '© {year} עמותת אגוז - הסיירת הצפונית · הבית של בוגרי היחידה · כל הזכויות שמורות'
     },
     en: {
-      'meta.title': 'Yizkor — Egoz Association · Northern Command',
+      'meta.title': 'Yizkor - Egoz Association · Northern Command',
       'meta.description': 'Yizkor page in memory of Egoz Unit fighters who fell. Their memory lives in our hearts.',
       'skip': 'Skip to main content',
       'util.registered': 'Registered association 580027720',
@@ -74,8 +74,8 @@
       'util.facebook': 'Facebook',
       'util.instagram': 'Instagram',
       'util.website': 'Association website',
-      'brand.aria': 'Egoz Association — Northern Command',
-      'brand.alt': 'Egoz Association — Northern Command',
+      'brand.aria': 'Egoz Association - Northern Command',
+      'brand.alt': 'Egoz Association - Northern Command',
       'nav.aria': 'Main navigation',
       'nav.home': 'Home',
       'nav.unit': 'The Unit',
@@ -114,7 +114,7 @@
       'grid.error': 'Could not load the fallen list.',
       'footer.brand': 'Egoz',
       'footer.tag': 'Northern Command',
-      'footer.about': 'The home of Egoz Unit alumni, bereaved families, and wounded fighters — one community standing together long after discharge.',
+      'footer.about': 'The home of Egoz Unit alumni, bereaved families, and wounded fighters - one community standing together long after discharge.',
       'footer.donate': 'Donate',
       'footer.nav.title': 'Navigation',
       'footer.community.title': 'Community',
@@ -126,7 +126,7 @@
       'footer.link1': 'Bylaws',
       'footer.link2': 'Section 46',
       'footer.link3': 'Accessibility statement',
-      'footer.copy': '© {year} Egoz Association — Northern Command · Home of unit alumni · All rights reserved'
+      'footer.copy': '© {year} Egoz Association - Northern Command · Home of unit alumni · All rights reserved'
     }
   });
 })();

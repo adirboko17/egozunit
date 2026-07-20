@@ -12,12 +12,12 @@
   }
 
   function fmtDate(value) {
-    if (!value) return '—';
+    if (!value) return '-';
     try { return new Date(value).toLocaleDateString('he-IL'); } catch (e) { return value; }
   }
 
   function fmtAmount(item) {
-    if (!item.donation_amount) return '—';
+    if (!item.donation_amount) return '-';
     return item.donation_amount + ' ₪ · ' + (FREQ_LABELS[item.donation_frequency] || item.donation_frequency);
   }
 
@@ -67,7 +67,7 @@
   }
 
   function detailRow(label, value) {
-    return '<div class="admin-detail__row"><span class="admin-detail__label">' + esc(label) + '</span><span class="admin-detail__value">' + esc(value || '—') + '</span></div>';
+    return '<div class="admin-detail__row"><span class="admin-detail__label">' + esc(label) + '</span><span class="admin-detail__value">' + esc(value || '-') + '</span></div>';
   }
 
   function renderDetail(item) {
@@ -77,7 +77,7 @@
     html += detailRow('טלפון', item.phone);
     html += detailRow('כתובת', [item.address, item.city, item.zip, item.country].filter(Boolean).join(', '));
     html += detailRow('סוג תרומה', FREQ_LABELS[item.donation_frequency] || item.donation_frequency);
-    html += detailRow('סכום', item.donation_amount ? item.donation_amount + ' ₪' : '—');
+    html += detailRow('סכום', item.donation_amount ? item.donation_amount + ' ₪' : '-');
     html += detailRow('הצטרפות לאגודת ידידים', item.join_agudat_yedidim ? 'כן' : 'לא');
     html += detailRow('אישר הודעת פרטיות', item.accepted_privacy_policy ? 'כן' : 'לא');
     html += detailRow('נרשם בתאריך', fmtDate(item.created_at));

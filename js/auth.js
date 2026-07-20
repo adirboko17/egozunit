@@ -37,7 +37,7 @@
 
   var PASSWORD_RULES = [
     { key: 'length', label: 'לפחות 8 תווים', test: function (v) { return v.length >= 8; } },
-    { key: 'latinOnly', label: 'אותיות לועזיות בלבד — ללא עברית', test: function (v) { return !/[\u0590-\u05FF]/.test(v) && v.length > 0; } },
+    { key: 'latinOnly', label: 'אותיות לועזיות בלבד - ללא עברית', test: function (v) { return !/[\u0590-\u05FF]/.test(v) && v.length > 0; } },
     { key: 'upper', label: 'לפחות אות גדולה אחת: A–Z', test: function (v) { return /[A-Z]/.test(v); } },
     { key: 'lower', label: 'לפחות אות קטנה אחת: a–z', test: function (v) { return /[a-z]/.test(v); } },
     { key: 'digit', label: 'לפחות ספרה אחת: 0–9', test: function (v) { return /[0-9]/.test(v); } },
@@ -75,11 +75,11 @@
   function formatSignupError(err) {
     if (!err) return t('alert.signupFailed', 'ההרשמה נכשלה, נסו שוב');
     if (err.code === 'email_already_registered') {
-      return t('alert.emailExists', 'כתובת המייל כבר רשומה במערכת — התחברו דרך עמוד ההתחברות');
+      return t('alert.emailExists', 'כתובת המייל כבר רשומה במערכת - התחברו דרך עמוד ההתחברות');
     }
     var msg = err.message || '';
     if (/already registered|already exists|user already registered|email address is already registered/i.test(msg)) {
-      return t('alert.emailExists', 'כתובת המייל כבר רשומה במערכת — התחברו דרך עמוד ההתחברות');
+      return t('alert.emailExists', 'כתובת המייל כבר רשומה במערכת - התחברו דרך עמוד ההתחברות');
     }
     return msg || t('alert.signupFailed', 'ההרשמה נכשלה, נסו שוב');
   }
@@ -126,7 +126,7 @@
     if (!err) return 'האימות נכשל, נסו שוב';
     var msg = err.message || '';
     if (/invalid|expired|otp/i.test(msg)) {
-      return 'הקוד שגוי או שפג תוקפו — בדקו והזינו שוב, או בקשו קוד חדש';
+      return 'הקוד שגוי או שפג תוקפו - בדקו והזינו שוב, או בקשו קוד חדש';
     }
     return msg || 'האימות נכשל, נסו שוב';
   }

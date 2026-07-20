@@ -1,4 +1,4 @@
-/* Support page — auto-playing photo carousel (infinite fade loop) */
+/* Support page - auto-playing photo carousel (infinite fade loop) */
 (function () {
   'use strict';
 

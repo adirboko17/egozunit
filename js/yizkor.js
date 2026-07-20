@@ -98,7 +98,7 @@
     var local = getLocalMemorial(url);
     var cta = local ? t('grid.linkRead') : t('grid.link');
     var external = t('grid.external');
-    var label = name + (date ? ' — ' + date : '') + '. ' + cta + (local ? '' : '. ' + external);
+    var label = name + (date ? ' - ' + date : '') + '. ' + cta + (local ? '' : '. ' + external);
     var photoBlock =
       '<div class="yizkor-card__photo' + (item.image_url ? '' : ' yizkor-card__photo--empty') + '">' +
       photoHtml(item) +

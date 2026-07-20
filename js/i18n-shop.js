@@ -3,16 +3,16 @@
 
   EgozI18n.register('shop', {
     he: {
-      'meta.title': 'חנות — עמותת אגוז · הסיירת הצפונית',
-      'meta.description': 'חנות אגוז — מוצרי מורשת וקהילה. בקרוב.',
+      'meta.title': 'חנות - עמותת אגוז · הסיירת הצפונית',
+      'meta.description': 'חנות אגוז - מוצרי מורשת וקהילה. בקרוב.',
       'skip': 'דלג לתוכן הראשי',
       'util.registered': 'עמותה רשומה 580027720',
       'util.social': 'רשתות חברתיות',
       'util.facebook': 'פייסבוק',
       'util.instagram': 'אינסטגרם',
       'util.website': 'אתר העמותה',
-      'brand.aria': 'עמותת אגוז — הסיירת הצפונית',
-      'brand.alt': 'עמותת אגוז — הסיירת הצפונית',
+      'brand.aria': 'עמותת אגוז - הסיירת הצפונית',
+      'brand.alt': 'עמותת אגוז - הסיירת הצפונית',
       'nav.aria': 'ניווט ראשי',
       'nav.home': 'בית',
       'nav.unit': 'יחידת אגוז',
@@ -30,12 +30,12 @@
       'lang.en': 'EN',
       'hero.eyebrow': 'קהילת אגוז',
       'hero.title': 'חנות אגוז',
-      'hero.lead': 'מוצרי מורשת, לבוש ופריטים לקהילה — בקרוב אונליין.',
-      'hero.leadLive': 'מוצרי מורשת, לבוש ופריטים לקהילת אגוז — נרכשים בקישור חיצוני.',
+      'hero.lead': 'מוצרי מורשת, לבוש ופריטים לקהילה - בקרוב אונליין.',
+      'hero.leadLive': 'מוצרי מורשת, לבוש ופריטים לקהילת אגוז - נרכשים בקישור חיצוני.',
       'hero.img.alt': 'לוחמי אגוז',
       'catalog.eyebrow': 'קהילת אגוז',
       'catalog.title': 'מוצרי החנות',
-      'catalog.lead': 'מוצרי מורשת, לבוש ופריטים לקהילת אגוז — נרכשים בקישור חיצוני.',
+      'catalog.lead': 'מוצרי מורשת, לבוש ופריטים לקהילת אגוז - נרכשים בקישור חיצוני.',
       'catalog.countOne': 'מוצר אחד זמין לרכישה',
       'catalog.countMany': '{count} מוצרים זמינים לרכישה',
       'catalog.impact': 'כל רכישה תומכת בפעילות העמותה',
@@ -58,7 +58,7 @@
       'soon.home': 'חזרה לדף הבית',
       'footer.brand': 'אגוז',
       'footer.tag': 'הסיירת הצפונית',
-      'footer.about': 'הבית של בוגרי יחידת אגוז, המשפחות השכולות והפצועים — קהילה אחת שעומדת זה לצד זה הרבה אחרי השחרור.',
+      'footer.about': 'הבית של בוגרי יחידת אגוז, המשפחות השכולות והפצועים - קהילה אחת שעומדת זה לצד זה הרבה אחרי השחרור.',
       'footer.donate': 'תרמו לעמותה',
       'footer.nav.title': 'ניווט',
       'footer.community.title': 'קהילה',
@@ -71,16 +71,16 @@
       'footer.link3': 'הצהרת נגישות'
     },
     en: {
-      'meta.title': 'Shop — Egoz Association · Northern Command',
-      'meta.description': 'Egoz shop — heritage and community products. Coming soon.',
+      'meta.title': 'Shop - Egoz Association · Northern Command',
+      'meta.description': 'Egoz shop - heritage and community products. Coming soon.',
       'skip': 'Skip to main content',
       'util.registered': 'Registered NGO 580027720',
       'util.social': 'Social media',
       'util.facebook': 'Facebook',
       'util.instagram': 'Instagram',
       'util.website': 'Association website',
-      'brand.aria': 'Egoz Association — Northern Command',
-      'brand.alt': 'Egoz Association — Northern Command',
+      'brand.aria': 'Egoz Association - Northern Command',
+      'brand.alt': 'Egoz Association - Northern Command',
       'nav.aria': 'Main navigation',
       'nav.home': 'Home',
       'nav.unit': 'Egoz Unit',
@@ -98,12 +98,12 @@
       'lang.en': 'EN',
       'hero.eyebrow': 'Egoz community',
       'hero.title': 'Egoz Shop',
-      'hero.lead': 'Heritage apparel and community items — online soon.',
-      'hero.leadLive': 'Heritage apparel and community items for the Egoz community — purchase via external link.',
+      'hero.lead': 'Heritage apparel and community items - online soon.',
+      'hero.leadLive': 'Heritage apparel and community items for the Egoz community - purchase via external link.',
       'hero.img.alt': 'Egoz fighters',
       'catalog.eyebrow': 'Egoz community',
       'catalog.title': 'Shop products',
-      'catalog.lead': 'Heritage apparel and community items for the Egoz community — purchase via external link.',
+      'catalog.lead': 'Heritage apparel and community items for the Egoz community - purchase via external link.',
       'catalog.countOne': '1 product available',
       'catalog.countMany': '{count} products available',
       'catalog.impact': 'Every purchase supports the association',
@@ -126,7 +126,7 @@
       'soon.home': 'Back to home',
       'footer.brand': 'Egoz',
       'footer.tag': 'Northern Command',
-      'footer.about': 'The home of Egoz alumni, bereaved families, and wounded fighters — one community standing together long after discharge.',
+      'footer.about': 'The home of Egoz alumni, bereaved families, and wounded fighters - one community standing together long after discharge.',
       'footer.donate': 'Donate',
       'footer.nav.title': 'Navigation',
       'footer.community.title': 'Community',
@@ -147,8 +147,8 @@
       if (footerCopy && year) {
         var updateCopyright = function () {
           var lang = EgozI18n.getLang();
-          var tpl = '© {year} עמותת אגוז — הסיירת הצפונית · הבית של בוגרי היחידה · כל הזכויות שמורות';
-          if (lang === 'en') tpl = '© {year} Egoz Association — Northern Command · Home of unit alumni · All rights reserved';
+          var tpl = '© {year} עמותת אגוז - הסיירת הצפונית · הבית של בוגרי היחידה · כל הזכויות שמורות';
+          if (lang === 'en') tpl = '© {year} Egoz Association - Northern Command · Home of unit alumni · All rights reserved';
           footerCopy.textContent = tpl.replace('{year}', year.textContent);
         };
         updateCopyright();
