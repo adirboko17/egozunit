@@ -108,6 +108,7 @@
     if (!input) return;
     input.addEventListener('change', function (event) {
       var file = event.target.files && event.target.files[0];
+      updateUploadState(input, file || null);
       if (typeof onFile === 'function') onFile(file || null);
       if (!file) {
         setPreview(previewId, '');
@@ -115,6 +116,57 @@
       }
       setPreview(previewId, URL.createObjectURL(file));
     });
+  }
+
+  function updateUploadState(input, file) {
+    var upload = input && input.closest('.admin-upload');
+    if (!upload) return;
+    var name = upload.querySelector('[data-upload-name]');
+    if (name) name.textContent = file ? file.name : '';
+    upload.classList.toggle('has-file', !!file);
+  }
+
+  function resetUploadState(inputId) {
+    var input = typeof inputId === 'string' ? $(inputId) : inputId;
+    if (!input) return;
+    updateUploadState(input, input.files && input.files[0] ? input.files[0] : null);
+  }
+
+  function enhanceUploadInput(input) {
+    var upload = input.closest('.admin-upload');
+    if (!upload || upload.dataset.uploadEnhanced === 'true') return;
+    upload.dataset.uploadEnhanced = 'true';
+
+    input.addEventListener('change', function () {
+      updateUploadState(input, input.files && input.files[0] ? input.files[0] : null);
+    });
+
+    ['dragenter', 'dragover'].forEach(function (eventName) {
+      upload.addEventListener(eventName, function (event) {
+        event.preventDefault();
+        upload.classList.add('is-dragging');
+      });
+    });
+
+    ['dragleave', 'drop'].forEach(function (eventName) {
+      upload.addEventListener(eventName, function () {
+        upload.classList.remove('is-dragging');
+      });
+    });
+
+    upload.addEventListener('drop', function (event) {
+      event.preventDefault();
+      var files = event.dataTransfer && event.dataTransfer.files;
+      if (!files || !files.length) return;
+      var transfer = new DataTransfer();
+      transfer.items.add(files[0]);
+      input.files = transfer.files;
+      input.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+  }
+
+  function enhanceUploadInputs() {
+    document.querySelectorAll('.admin-upload input[type="file"]').forEach(enhanceUploadInput);
   }
 
   function getSelectedImageFile(inputId, pendingFile) {
@@ -149,7 +201,14 @@
     uploadImage: uploadImage,
     bindModalClose: bindModalClose,
     bindImageInput: bindImageInput,
+    resetUploadState: resetUploadState,
     getSelectedImageFile: getSelectedImageFile,
     updateCount: updateCount
   };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', enhanceUploadInputs);
+  } else {
+    enhanceUploadInputs();
+  }
 })();

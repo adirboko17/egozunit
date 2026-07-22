@@ -130,7 +130,15 @@
 
           <div class="admin-field admin-field--full">
             <label for="productImage">תמונת מוצר</label>
-            <input id="productImage" name="productImage" type="file" accept="image/jpeg,image/png,image/webp,image/gif" />
+            <div class="admin-upload">
+              <input id="productImage" name="productImage" type="file" accept="image/jpeg,image/png,image/webp,image/gif" />
+              <div class="admin-upload__content">
+                <span class="admin-upload__icon" aria-hidden="true">↑</span>
+                <span class="admin-upload__title"><strong>לחצו לבחירת תמונה</strong> או גררו לכאן</span>
+                <span class="admin-upload__hint">JPG, PNG, WEBP או GIF</span>
+                <span class="admin-upload__name" data-upload-name></span>
+              </div>
+            </div>
             <img class="admin-form__preview" id="imagePreview" alt="" hidden />
           </div>
         </div>
@@ -147,6 +155,7 @@
   <script src="/js/supabase-config.js"></script>
   <script src="/js/admin-auth.js"></script>
   <script src="/js/admin-shell.js"></script>
+  <script src="/js/admin-utils.js"></script>
   <script src="/js/admin-shop.js"></script>
 </body>
 </html>

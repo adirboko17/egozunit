@@ -73,7 +73,15 @@
           </div>
           <div class="admin-field admin-field--full">
             <label for="itemImage">העלאת / החלפת תמונה</label>
-            <input id="itemImage" type="file" accept="image/jpeg,image/png,image/webp,image/gif" />
+            <div class="admin-upload">
+              <input id="itemImage" type="file" accept="image/jpeg,image/png,image/webp,image/gif" />
+              <div class="admin-upload__content">
+                <span class="admin-upload__icon" aria-hidden="true">↑</span>
+                <span class="admin-upload__title"><strong>לחצו לבחירת תמונה</strong> או גררו לכאן</span>
+                <span class="admin-upload__hint">JPG, PNG, WEBP או GIF</span>
+                <span class="admin-upload__name" data-upload-name></span>
+              </div>
+            </div>
             <img class="admin-form__preview visually-hidden" id="imagePreview" alt="" hidden />
           </div>
           <div class="admin-field"><label for="itemSort">סדר תצוגה</label><input id="itemSort" type="number" value="0" /></div>

@@ -120,6 +120,7 @@
     $('productId').value = '';
     $('imagePreview').hidden = true;
     $('imagePreview').removeAttribute('src');
+    if (window.EgozAdminUtils) EgozAdminUtils.resetUploadState('productImage');
     $('formTitle').textContent = 'מוצר חדש';
     $('saveBtn').textContent = 'הוספת מוצר';
     hideAlert('formAlert');

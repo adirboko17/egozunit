@@ -75,7 +75,19 @@
           <div class="admin-field admin-field--full"><label for="name">שם</label><input id="name" type="text" required placeholder="סגן אבנר סעדון" /></div>
           <div class="admin-field admin-field--full"><label for="fallDate">תאריכים</label><input id="fallDate" type="text" placeholder="18.02.1952 - 16.09.1972 | קרית גת" /></div>
           <div class="admin-field admin-field--full"><label for="memorialUrl">קישור לעמוד ההנצחה</label><input id="memorialUrl" type="url" required placeholder="https://..." dir="ltr" /></div>
-          <div class="admin-field admin-field--full"><label for="itemImage">תמונה</label><input id="itemImage" type="file" accept="image/jpeg,image/png,image/webp,image/gif" /><img class="admin-form__preview" id="imagePreview" alt="" hidden /></div>
+          <div class="admin-field admin-field--full">
+            <label for="itemImage">תמונה</label>
+            <div class="admin-upload">
+              <input id="itemImage" type="file" accept="image/jpeg,image/png,image/webp,image/gif" />
+              <div class="admin-upload__content">
+                <span class="admin-upload__icon" aria-hidden="true">↑</span>
+                <span class="admin-upload__title"><strong>לחצו לבחירת תמונה</strong> או גררו לכאן</span>
+                <span class="admin-upload__hint">JPG, PNG, WEBP או GIF</span>
+                <span class="admin-upload__name" data-upload-name></span>
+              </div>
+            </div>
+            <img class="admin-form__preview" id="imagePreview" alt="" hidden />
+          </div>
           <div class="admin-field"><label for="itemSort">סדר תצוגה</label><input id="itemSort" type="number" value="0" /></div>
           <div class="admin-field admin-field--checkbox"><label class="admin-check"><input id="itemPublished" type="checkbox" checked /><span>מפורסם באתר</span></label></div>
         </div>
