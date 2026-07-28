@@ -90,7 +90,7 @@
       email: email,
       password: password,
       options: {
-        emailRedirectTo: window.location.origin + '/join.html?step=2'
+        emailRedirectTo: window.location.origin + '/join?step=2'
       }
     });
     if (result.error) throw result.error;
@@ -115,7 +115,7 @@
       type: 'signup',
       email: email,
       options: {
-        emailRedirectTo: window.location.origin + '/join.html?step=2'
+        emailRedirectTo: window.location.origin + '/join?step=2'
       }
     });
     if (result.error) throw result.error;
@@ -186,15 +186,15 @@
 
   async function resolvePostLoginRedirect() {
     var session = await getSession();
-    if (!session) return 'login.html';
+    if (!session) return '/login';
     var profile = null;
     try {
       profile = await getMemberProfile(session.user.id);
     } catch (e) {
       profile = null;
     }
-    if (profile && profile.registration_completed) return 'account.html';
-    return 'join.html?step=2';
+    if (profile && profile.registration_completed) return '/account';
+    return '/join?step=2';
   }
 
   async function redirectIfAuthed(target) {
@@ -211,7 +211,7 @@
   async function requireAuth() {
     var session = await getSession();
     if (!session) {
-      window.location.replace('/login.html?redirect=account.html');
+      window.location.replace('/login?redirect=account');
       return null;
     }
     return session;

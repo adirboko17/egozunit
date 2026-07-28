@@ -41,7 +41,7 @@
               '<b class="admin-product__name">' + esc(item.title) + '</b>' +
               '<span class="admin-product__price">' + esc(item.category === 'ceremony' ? 'טקס' : 'מפגש') + '</span>' +
             '</div>' +
-            '<p class="admin-product__desc">' + esc((item.slug ? 'event.html?slug=' + item.slug : '') + (item.location ? (item.slug ? ' · ' : '') + item.location : '') + (item.event_time ? ' · ' + item.event_time : '')) + '</p>' +
+            '<p class="admin-product__desc">' + esc((item.slug ? '/event?slug=' + item.slug : '') + (item.location ? (item.slug ? ' · ' : '') + item.location : '') + (item.event_time ? ' · ' + item.event_time : '')) + '</p>' +
             '<div class="admin-product__meta">' +
               '<span class="admin-product__badge' + (item.is_published ? ' is-live' : '') + '">' +
                 (item.is_published ? 'מפורסם' : 'טיוטה') +

@@ -3,12 +3,12 @@
   'use strict';
 
   var ITEMS = [
-    { href: 'foundation.html', i18n: 'nav.foundationSub.about', page: 'foundation', hash: '' },
-    { href: 'support.html', i18n: 'nav.support', page: 'support', hash: '' },
-    { href: 'heritage.html', i18n: 'nav.heritage', page: 'heritage', hash: '' },
-    { href: 'projects.html', i18n: 'nav.foundationSub.projects', page: 'projects', hash: '' },
-    { href: 'benefits.html', i18n: 'nav.foundationSub.benefits', page: 'benefits', hash: '' },
-    { href: 'events.html', i18n: 'nav.foundationSub.events', page: 'events', hash: '' }
+    { href: '/foundation', i18n: 'nav.foundationSub.about', page: 'foundation', hash: '' },
+    { href: '/support', i18n: 'nav.support', page: 'support', hash: '' },
+    { href: '/heritage', i18n: 'nav.heritage', page: 'heritage', hash: '' },
+    { href: '/projects', i18n: 'nav.foundationSub.projects', page: 'projects', hash: '' },
+    { href: '/benefits', i18n: 'nav.foundationSub.benefits', page: 'benefits', hash: '' },
+    { href: '/events', i18n: 'nav.foundationSub.events', page: 'events', hash: '' }
   ];
 
   var LABELS_HE = {
@@ -35,7 +35,7 @@
 
   function pageName() {
     var path = window.location.pathname || '';
-    var file = path.split('/').pop() || 'index.html';
+    var file = path.split('/').pop() || 'index';
     return file.replace(/\.html$/, '') || 'index';
   }
 
@@ -71,7 +71,7 @@
 
     var link = document.createElement('a');
     link.className = 'nav-dropdown__trigger';
-    link.href = 'foundation.html';
+    link.href = '/foundation';
     var label = trigger.textContent.trim() || 'עמותה';
     link.innerHTML = '<span data-i18n="nav.foundation">' + label + '</span><svg class="nav-dropdown__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>';
 
@@ -192,10 +192,10 @@
   }
 
   function init() {
-    var desktop = document.querySelector('.nav-links a[href="foundation.html"], .nav-links a[href="./foundation.html"]');
+    var desktop = document.querySelector('.nav-links a[href="/foundation"], .nav-links a[href="/foundation"]');
     if (desktop) buildDesktopDropdown(desktop);
 
-    var mobile = document.querySelector('#navDrawer a.m-link[href="foundation.html"], #navDrawer a.m-link[href="./foundation.html"]');
+    var mobile = document.querySelector('#navDrawer a.m-link[href="/foundation"], #navDrawer a.m-link[href="/foundation"]');
     if (mobile) buildMobileGroup(mobile);
 
     applyI18nToNav();

@@ -58,14 +58,14 @@
   async function requireAdmin() {
     var session = await getSession();
     if (!session) {
-      window.location.replace('/admin/login.html');
+      window.location.replace('/admin/login');
       return null;
     }
 
     var allowed = await isAdminUser(session.user.id);
     if (!allowed) {
       await signOut();
-      window.location.replace('/admin/login.html?error=unauthorized');
+      window.location.replace('/admin/login?error=unauthorized');
       return null;
     }
 

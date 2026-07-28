@@ -10,12 +10,12 @@
   var docs = {
     privacy: {
       title: 'מדיניות הפרטיות',
-      url: 'privacy.html',
+      url: '/privacy',
       selector: '.privacy-doc'
     },
     bylaws: {
       title: 'תקנון העמותה',
-      url: 'bylaws.html',
+      url: '/bylaws',
       selector: '.bylaws-doc'
     }
   };

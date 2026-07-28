@@ -32,7 +32,7 @@
       if (logoutBtn) {
         logoutBtn.addEventListener('click', function () {
           EgozAdminAuth.signOut().then(function () {
-            window.location.replace('/admin/login.html');
+            window.location.replace('/admin/login');
           });
         });
       }

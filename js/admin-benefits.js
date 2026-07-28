@@ -19,7 +19,7 @@
 
   function syncRedeemUrl() {
     var slug = U.$('itemSlug').value.trim();
-    U.$('redeemUrl').value = slug ? ('benefits.html#' + slug) : '';
+    U.$('redeemUrl').value = slug ? ('/benefits#' + slug) : '';
   }
 
   function renderLogoPreview(item) {
@@ -164,7 +164,7 @@
         description: U.$('description').value.trim(),
         body: U.$('itemBody').value.trim() || null,
         slug: slugValue,
-        redeem_url: 'benefits.html#' + slugValue,
+        redeem_url: '/benefits#' + slugValue,
         sort_order: Number(U.$('itemSort').value || 0),
         is_published: U.$('itemPublished').checked
       };

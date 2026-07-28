@@ -114,7 +114,7 @@
       ? '<div class="event-card__media"><img src="' + esc(event.image_url) + '" alt="" loading="lazy" decoding="async" /></div>'
       : '';
 
-    var url = event.slug ? ('event.html?slug=' + encodeURIComponent(event.slug)) : (event.cta_url || '#');
+    var url = event.slug ? ('/event?slug=' + encodeURIComponent(event.slug)) : (event.cta_url || '#');
     var desc = excerpt(event.description, 140);
 
     return (

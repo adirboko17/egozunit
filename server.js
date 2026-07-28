@@ -12,16 +12,14 @@ app.get('/', (_req, res) => {
 });
 
 const legacyRedirects = {
-  '/events/family-ceremony/': '/event.html?slug=family-ceremony',
-  '/events/family-ceremony': '/event.html?slug=family-ceremony',
-  '/events': '/events.html',
-  '/donate': '/donate.html',
-  '/jobs.html': '/contact.html',
-  '/jobs': '/contact.html',
-  '/blog.html': '/index.html',
-  '/blog': '/index.html',
-  '/pros.html': '/contact.html',
-  '/pros': '/contact.html',
+  '/events/family-ceremony/': '/event?slug=family-ceremony',
+  '/events/family-ceremony': '/event?slug=family-ceremony',
+  '/jobs.html': '/contact',
+  '/jobs': '/contact',
+  '/blog.html': '/',
+  '/blog': '/',
+  '/pros.html': '/contact',
+  '/pros': '/contact',
 };
 
 Object.entries(legacyRedirects).forEach(([from, to]) => {

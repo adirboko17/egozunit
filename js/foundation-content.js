@@ -88,7 +88,7 @@
     if (!benefitsGrid || !items.length) return;
     benefitsGrid.innerHTML = items.map(function (item) {
       var localized = localizeBenefit(item);
-      var detailUrl = localized.slug ? ('benefits.html#' + localized.slug) : (localized.redeem_url || 'benefits.html');
+      var detailUrl = localized.slug ? ('/benefits#' + localized.slug) : (localized.redeem_url || '/benefits');
       var logoHtml = localized.image_url
         ? '<div class="ben__media-frame"><img src="' + esc(localized.image_url) + '" alt="' + esc(localized.brand_name || localized.title) + '" loading="lazy" decoding="async" /></div>'
         : esc(localized.brand_name || '');
@@ -127,7 +127,7 @@
     var preview = items.slice(0, 3);
     eventsList.innerHTML = preview.map(function (item) {
       var parts = EgozSupabasePublic.formatEventDateParts(item.event_date);
-      var url = item.slug ? ('event.html?slug=' + encodeURIComponent(item.slug)) : (item.cta_url || '#events');
+      var url = item.slug ? ('/event?slug=' + encodeURIComponent(item.slug)) : (item.cta_url || '#events');
       var external = !item.slug && url.indexOf('http') === 0 ? ' target="_blank" rel="noopener noreferrer"' : '';
       var metaParts = [];
       if (item.location) metaParts.push(item.location);

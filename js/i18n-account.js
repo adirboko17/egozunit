@@ -66,7 +66,7 @@
 
       'consent.privacy': 'אני מאשר/ת את מדיניות הפרטיות',
 
-      'consent.bylawsHtml': 'אני מאשר/ת את <a href="bylaws.html" target="_blank" rel="noopener">תקנון העמותה</a>',
+      'consent.bylawsHtml': 'אני מאשר/ת את <a href="/bylaws" target="_blank" rel="noopener">תקנון העמותה</a>',
 
       'volunteer.vehicle': 'ג\'יפ, אופנוע או משאית להעמדה - פרטו',
 
@@ -82,13 +82,13 @@
 
       'updates.ambassadors.title': 'הפכו לשגרירי אגוז',
 
-      'updates.ambassadors.bodyHtml': 'תרומה קבועה או חד-פעמית עוזרת לנו לתמוך בלוחמים, במשפחות ובפעילות העמותה. <a href="ambassadors.html">לפרטים והצטרפות</a>',
+      'updates.ambassadors.bodyHtml': 'תרומה קבועה או חד-פעמית עוזרת לנו לתמוך בלוחמים, במשפחות ובפעילות העמותה. <a href="/ambassadors">לפרטים והצטרפות</a>',
 
       'updates.events.tag': 'אירועים',
 
       'updates.events.title': 'הישארו מחוברים',
 
-      'updates.events.bodyHtml': 'אירועי העמותה מתפרסמים בעמוד האירועים ובקטע "אירועי העמותה" כאן באזור האישי. <a href="events.html">לכל האירועים</a>',
+      'updates.events.bodyHtml': 'אירועי העמותה מתפרסמים בעמוד האירועים ובקטע "אירועי העמותה" כאן באזור האישי. <a href="/events">לכל האירועים</a>',
 
       'events.empty.title': 'אין אירועים קרובים כרגע',
 
@@ -166,7 +166,7 @@
 
       'consent.privacy': 'I accept the privacy policy',
 
-      'consent.bylawsHtml': 'I accept the <a href="bylaws.html" target="_blank" rel="noopener">association bylaws</a>',
+      'consent.bylawsHtml': 'I accept the <a href="/bylaws" target="_blank" rel="noopener">association bylaws</a>',
 
       'volunteer.vehicle': 'Jeep, motorcycle, or truck available - specify',
 
@@ -182,13 +182,13 @@
 
       'updates.ambassadors.title': 'Become an Egoz Ambassador',
 
-      'updates.ambassadors.bodyHtml': 'A recurring or one-time donation helps us support fighters, families, and association activities. <a href="ambassadors.html">Details and sign-up</a>',
+      'updates.ambassadors.bodyHtml': 'A recurring or one-time donation helps us support fighters, families, and association activities. <a href="/ambassadors">Details and sign-up</a>',
 
       'updates.events.tag': 'Events',
 
       'updates.events.title': 'Stay connected',
 
-      'updates.events.bodyHtml': 'Association events are published on the events page and in the "Association events" section here in your account. <a href="events.html">All events</a>',
+      'updates.events.bodyHtml': 'Association events are published on the events page and in the "Association events" section here in your account. <a href="/events">All events</a>',
 
       'events.empty.title': 'No upcoming events right now',
 

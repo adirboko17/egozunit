@@ -11,7 +11,7 @@
   window.EGOZ_JGIVE = {
     embedId: EMBED_ID,
     donationTarget: DONATION_TARGET,
-    donatePage: 'donate.html',
+    donatePage: '/donate',
     getEmbedUrl: function (lang) {
       return 'https://www.jgive.com/new/' + langCode(lang) + '/ils/embeds/' + EMBED_ID;
     },

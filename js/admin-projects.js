@@ -12,7 +12,7 @@
 
   function syncDetailUrl() {
     var slug = U.$('itemSlug').value.trim();
-    U.$('detailUrl').value = slug ? ('projects.html#' + slug) : '';
+    U.$('detailUrl').value = slug ? ('/projects#' + slug) : '';
   }
 
   function renderProjectImages(item) {
@@ -173,7 +173,7 @@
         description: U.$('description').value.trim(),
         body: U.$('itemBody').value.trim() || null,
         slug: slugValue,
-        detail_url: 'projects.html#' + slugValue,
+        detail_url: '/projects#' + slugValue,
         sort_order: Number(U.$('itemSort').value || 0),
         is_published: U.$('itemPublished').checked
       };

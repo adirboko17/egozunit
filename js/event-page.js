@@ -83,9 +83,9 @@
 
     rootEl.innerHTML =
       '<nav class="event-crumb" aria-label="מיקום בעמוד">' +
-        '<a href="foundation.html">עמותה</a>' +
+        '<a href="/foundation">עמותה</a>' +
         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>' +
-        '<a href="events.html">אירועים</a>' +
+        '<a href="/events">אירועים</a>' +
         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>' +
         '<span>' + esc(event.title) + '</span>' +
       '</nav>' +
@@ -111,7 +111,7 @@
       '<div class="event-empty">' +
         '<h2>האירוע לא נמצא</h2>' +
         '<p>ייתכן שהאירוע הוסר או שהקישור שגוי.</p>' +
-        '<a href="events.html" class="btn btn--accent" style="margin-top:20px;">חזרה לאירועים</a>' +
+        '<a href="/events" class="btn btn--accent" style="margin-top:20px;">חזרה לאירועים</a>' +
       '</div>';
   }
 

@@ -38,7 +38,7 @@
 
       'formA.title': 'פתיחת חשבון',
 
-      'formA.subHtml': 'כבר נרשמתם בעבר? <a href="login.html">התחברות</a>',
+      'formA.subHtml': 'כבר נרשמתם בעבר? <a href="/login">התחברות</a>',
 
       'form.email': 'מייל',
 
@@ -116,7 +116,7 @@
 
       'formA.title': 'Create account',
 
-      'formA.subHtml': 'Already registered? <a href="login.html">Sign in</a>',
+      'formA.subHtml': 'Already registered? <a href="/login">Sign in</a>',
 
       'form.email': 'Email',
 

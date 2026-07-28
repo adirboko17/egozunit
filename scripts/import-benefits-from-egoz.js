@@ -97,7 +97,7 @@ async function main() {
       description: body.slice(0, 280),
       body: body,
       image_url: imageLocal,
-      redeem_url: 'benefits.html#' + slug,
+      redeem_url: '/benefits#' + slug,
       sort_order: i + 1,
       is_published: true
     });
