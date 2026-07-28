@@ -427,6 +427,9 @@
 
       EgozAuth.saveMemberProfile(user.id, payload)
         .then(function () {
+          return EgozAuth.syncMemberToMonday();
+        })
+        .then(function () {
           window.location.href = '/donate?welcome=1';
         })
         .catch(function (err) {

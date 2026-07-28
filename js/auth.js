@@ -163,6 +163,25 @@
     return result.data;
   }
 
+  async function syncMemberToMonday() {
+    var sb = getClient();
+    var result = await sb.functions.invoke('sync-member-to-monday', {
+      method: 'POST',
+      body: {}
+    });
+    if (result.error) {
+      var message = t('alert.mondaySyncError', 'הפרטים נשמרו, אך הסנכרון נכשל. נסו לשלוח שוב');
+      if (result.error.context && typeof result.error.context.json === 'function') {
+        try {
+          var details = await result.error.context.json();
+          if (details && details.error) message = details.error;
+        } catch (e) {}
+      }
+      throw new Error(message);
+    }
+    return result.data;
+  }
+
   async function updatePassword(newPassword) {
     var sb = getClient();
     var result = await sb.auth.updateUser({ password: newPassword });
@@ -230,6 +249,7 @@
     signOut: signOut,
     getMemberProfile: getMemberProfile,
     saveMemberProfile: saveMemberProfile,
+    syncMemberToMonday: syncMemberToMonday,
     updatePassword: updatePassword,
     getPublishedEvents: getPublishedEvents,
     resolvePostLoginRedirect: resolvePostLoginRedirect,
