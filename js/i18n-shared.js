@@ -210,7 +210,7 @@
       'footer.nav.title': 'Navigate',
       'footer.community.title': 'Community',
       'footer.contact.title': 'Contact',
-      'footer.address': '11 Shikterman, Ramat Ef'al',
+      'footer.address': '11 Shikterman, Ramat Ef’al',
       'footer.registered': 'Registered NGO 580027720',
       'footer.link1': 'Bylaws',
       'footer.link2': 'Section 46',

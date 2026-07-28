@@ -185,20 +185,12 @@
     }
   }
 
-  function applyI18nToNav() {
-    var pageId = document.body.getAttribute('data-i18n-page');
-    if (!pageId || !window.EgozI18n) return;
-    EgozI18n.apply(pageId);
-  }
-
   function init() {
     var desktop = document.querySelector('.nav-links a[href="/foundation"], .nav-links a[href="/foundation"]');
     if (desktop) buildDesktopDropdown(desktop);
 
     var mobile = document.querySelector('#navDrawer a.m-link[href="/foundation"], #navDrawer a.m-link[href="/foundation"]');
     if (mobile) buildMobileGroup(mobile);
-
-    applyI18nToNav();
   }
 
   if (document.readyState === 'loading') {
@@ -207,6 +199,4 @@
     init();
   }
 
-  document.addEventListener('DOMContentLoaded', applyI18nToNav);
-  document.addEventListener('egoz:langchange', applyI18nToNav);
 })();

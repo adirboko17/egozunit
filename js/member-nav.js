@@ -64,17 +64,15 @@
     getClient().auth.onAuthStateChange(function (_event, session) {
       updateMemberNav(!!session);
     });
-
-    document.addEventListener('egoz:langchange', function () {
-      syncFromSession().catch(function () {});
-    });
   }
 
+  document.addEventListener('egoz:langchange', function () {
+    syncFromSession().catch(function () {});
+  });
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function () {
-      setTimeout(boot, 0);
-    });
+    document.addEventListener('DOMContentLoaded', boot);
   } else {
-    setTimeout(boot, 0);
+    boot();
   }
 })();

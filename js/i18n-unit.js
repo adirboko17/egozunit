@@ -207,7 +207,7 @@
       'footer.delegations': 'Delegations abroad',
       'footer.media': 'In the media',
       'footer.contact.title': 'Contact',
-      'footer.address': '11 Shikterman, Ramat Ef'al',
+      'footer.address': '11 Shikterman, Ramat Ef’al',
       'footer.registered': 'Registered NGO 580027720',
       'footer.copyright': '© {year} Egoz Association - Northern Command · Home of unit alumni · All rights reserved',
       'footer.link1': 'Bylaws',
