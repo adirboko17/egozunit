@@ -37,6 +37,31 @@
 
 .contact-form-card form { margin-top: clamp(24px, 3vw, 32px); }
 
+.contact-honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.contact-form-error {
+  margin-top: 18px;
+  padding: 12px 14px;
+  border: 1px solid rgba(158, 42, 43, .28);
+  border-radius: var(--r);
+  background: rgba(158, 42, 43, .07);
+  color: var(--maroon-600);
+  font-size: .9rem;
+  line-height: 1.5;
+}
+
+.contact-form-card #contactSubmit:disabled {
+  opacity: .65;
+  cursor: wait;
+}
+
 .contact-info {
   position: sticky;
   top: 100px;

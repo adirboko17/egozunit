@@ -1,9 +1,28 @@
+require('dotenv').config();
+
 const express = require('express');
 const path = require('path');
+const { sendContactEmail } = require('./lib/contact-email');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 const ROOT = __dirname;
+
+app.use(express.json({ limit: '20kb' }));
+
+app.post('/api/contact', async (req, res) => {
+  try {
+    const result = await sendContactEmail(req.body);
+    res.status(200).json({ ok: true, id: result.id || null });
+  } catch (error) {
+    if (error.code === 'missing_fields' || error.code === 'invalid_email') {
+      return res.status(400).json({ error: error.code });
+    }
+
+    console.error('Contact email failed:', error.code || error.message);
+    res.status(500).json({ error: 'send_failed' });
+  }
+});
 
 app.use(express.static(ROOT, { extensions: ['html'] }));
 

@@ -127,8 +127,13 @@
                 <label for="c-message" data-i18n="form.message">הודעה</label>
                 <textarea class="textarea" id="c-message" name="message" rows="6" required></textarea>
               </div>
+              <div class="contact-honeypot" aria-hidden="true">
+                <label for="c-website">Website</label>
+                <input id="c-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+              </div>
             </div>
-            <button type="submit" class="btn btn--accent btn--lg" style="margin-top:24px;" data-i18n="form.submit">שליחה</button>
+            <div class="contact-form-error" id="contactError" role="alert" hidden data-i18n="form.sendError">לא הצלחנו לשלוח את ההודעה. נסו שוב בעוד כמה רגעים.</div>
+            <button type="submit" class="btn btn--accent btn--lg" id="contactSubmit" style="margin-top:24px;" data-i18n="form.submit">שליחה</button>
           </form>
 
           <div class="contact-success" id="contactSuccess" aria-live="polite">

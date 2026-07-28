@@ -4,7 +4,33 @@
   var form = document.getElementById('contactForm');
   var success = document.getElementById('contactSuccess');
   var resetBtn = document.getElementById('contactReset');
+  var submitBtn = document.getElementById('contactSubmit');
+  var errorBox = document.getElementById('contactError');
   if (!form || !success) return;
+
+  function t(key, fallback) {
+    if (!window.EgozI18n) return fallback;
+    return EgozI18n.t('contact', key, EgozI18n.getLang()) || fallback;
+  }
+
+  function showError() {
+    if (!errorBox) return;
+    errorBox.hidden = false;
+    errorBox.textContent = t('form.sendError', 'לא הצלחנו לשלוח את ההודעה. נסו שוב בעוד כמה רגעים.');
+    errorBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function hideError() {
+    if (errorBox) errorBox.hidden = true;
+  }
+
+  function setSubmitting(submitting) {
+    if (!submitBtn) return;
+    submitBtn.disabled = submitting;
+    submitBtn.textContent = submitting
+      ? t('form.sending', 'שולח...')
+      : t('form.submit', 'שליחה');
+  }
 
   function showSuccess() {
     form.classList.add('is-hidden');
@@ -16,39 +42,50 @@
     form.reset();
     form.classList.remove('is-hidden');
     success.classList.remove('is-active');
+    hideError();
+    setSubmitting(false);
     form.querySelectorAll('.input, .textarea').forEach(function (el) {
       el.style.borderColor = '';
     });
   }
 
-  form.addEventListener('submit', function (e) {
+  form.addEventListener('submit', async function (e) {
     e.preventDefault();
-    var reqs = form.querySelectorAll('[required]');
-    var ok = true;
-    reqs.forEach(function (el) {
-      var valid = !!el.value.trim();
-      el.style.borderColor = valid ? '' : 'var(--maroon-600)';
-      if (!valid && ok) el.focus();
-      if (!valid) ok = false;
-    });
-    if (!ok) return;
+    hideError();
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
 
     var data = new FormData(form);
-    var subject = data.get('subject') || 'פנייה מאתר אגוז';
-    var body = [
-      'שם: ' + data.get('firstName') + ' ' + data.get('lastName'),
-      'אימייל: ' + data.get('email'),
-      'טלפון: ' + (data.get('phone') || '-'),
-      '',
-      data.get('message')
-    ].join('\n');
+    var payload = {};
+    data.forEach(function (value, key) {
+      payload[key] = String(value);
+    });
 
-    var mailto = 'mailto:office@egoz.org.il'
-      + '?subject=' + encodeURIComponent(subject)
-      + '&body=' + encodeURIComponent(body);
-    window.location.href = mailto;
-    showSuccess();
+    setSubmitting(true);
+
+    try {
+      var response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) throw new Error('send_failed');
+      showSuccess();
+    } catch (error) {
+      showError();
+    } finally {
+      setSubmitting(false);
+    }
   });
 
   if (resetBtn) resetBtn.addEventListener('click', resetForm);
+
+  document.addEventListener('egoz:langchange', function () {
+    if (submitBtn && !submitBtn.disabled) setSubmitting(false);
+    if (errorBox && !errorBox.hidden) showError();
+  });
 })();
