@@ -64,48 +64,97 @@
   padding: clamp(32px, 4vw, 48px);
 }
 
-.confirm-link {
+.otp-verify {
   text-align: center;
 }
 
-.confirm-link__badge {
+.otp-verify__badge {
   margin-inline: auto;
 }
 
-.confirm-link__lead {
+.otp-verify__lead {
   margin-top: 10px;
   font-size: .96rem;
   line-height: 1.6;
   color: var(--text-2);
 }
 
-.confirm-link__lead strong {
+.otp-verify__lead strong {
   color: var(--text);
   font-weight: 700;
   word-break: break-all;
 }
 
-.confirm-link__hint {
+.otp-verify__hint {
   margin-top: 12px;
   font-size: .9rem;
   line-height: 1.55;
   color: var(--text-2);
-  max-width: 38ch;
+  max-width: 40ch;
   margin-inline: auto;
 }
 
-.confirm-link__sub {
-  margin-top: 10px;
+.otp-verify__sub {
+  margin-top: 14px;
   font-size: .86rem;
   color: var(--text-3);
 }
 
-.confirm-link__actions {
+.otp-verify #otpForm {
+  margin-top: 22px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-  margin-top: 22px;
+  gap: 16px;
+}
+
+.otp-inputs {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.otp-inputs__cell {
+  width: 46px;
+  height: 52px;
+  padding: 0;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  border-radius: var(--r-lg);
+  border: 1.5px solid var(--line-2);
+  background: var(--paper);
+}
+
+.otp-inputs__cell:focus {
+  border-color: var(--olive-700);
+  box-shadow: 0 0 0 3px rgba(46, 118, 230, .12);
+  outline: none;
+}
+
+.otp-inputs__cell.is-invalid {
+  border-color: var(--maroon-600);
+  box-shadow: 0 0 0 3px rgba(158, 42, 43, .1);
+}
+
+.otp-verify #otpVerifyBtn {
+  width: 100%;
+  max-width: 280px;
+}
+
+.otp-verify__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.otp-verify #otpResendBtn:disabled {
+  opacity: .55;
+  cursor: not-allowed;
 }
 
 .join-page #joinSuccess.auth-card {
@@ -405,5 +454,15 @@
   .join-steps-bar .auth-steps__sep {
     flex: 0 0 18px;
     width: 18px;
+  }
+
+  .otp-inputs {
+    gap: 6px;
+  }
+
+  .otp-inputs__cell {
+    width: 40px;
+    height: 48px;
+    font-size: 1.2rem;
   }
 }

@@ -123,12 +123,12 @@
   }
 
   function formatOtpError(err) {
-    if (!err) return 'האימות נכשל, נסו שוב';
+    if (!err) return t('otp.error', 'האימות נכשל, נסו שוב');
     var msg = err.message || '';
     if (/invalid|expired|otp/i.test(msg)) {
-      return 'הקוד שגוי או שפג תוקפו - בדקו והזינו שוב, או בקשו קוד חדש';
+      return t('otp.errorExpired', 'הקוד שגוי או שפג תוקפו - בדקו והזינו שוב, או בקשו קוד חדש');
     }
-    return msg || 'האימות נכשל, נסו שוב';
+    return msg || t('otp.error', 'האימות נכשל, נסו שוב');
   }
 
   async function signIn(email, password) {

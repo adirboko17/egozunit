@@ -46,17 +46,29 @@
 
       'form.password2': 'אימות סיסמה',
 
-      'confirm.title': 'בדקו את תיבת המייל',
+      'otp.title': 'אימות כתובת המייל',
 
-      'confirm.leadPrefix': 'שלחנו קישור לאימות לכתובת',
+      'otp.leadPrefix': 'שלחנו קוד בן 6 ספרות לכתובת',
 
-      'confirm.hint': 'לחצו על הקישור במייל כדי לאשר את החשבון - לאחר מכן תועברו אוטומטית להשלמת ההרשמה (שלב ב׳).',
+      'otp.hint': 'הזינו את הקוד שקיבלתם במייל כדי לאשר את החשבון ולהמשיך להשלמת ההרשמה.',
 
-      'confirm.sub': 'לא קיבלתם? בדקו בתיקיית דואר זבל.',
+      'otp.sub': 'לא קיבלתם? בדקו בתיקיית דואר זבל.',
 
-      'confirm.continueBtn': 'כבר אישרתם? המשיכו מכאן',
+      'otp.verifyBtn': 'אימות והמשך',
 
-      'confirm.backBtn': 'חזרה לפתיחת חשבון',
+      'otp.resendBtn': 'שליחת קוד מחדש',
+
+      'otp.resendWait': 'שליחה מחדש בעוד {seconds} שניות',
+
+      'otp.resendSent': 'קוד חדש נשלח למייל',
+
+      'otp.backBtn': 'חזרה לפתיחת חשבון',
+
+      'otp.invalidCode': 'יש להזין קוד בן 6 ספרות',
+
+      'otp.error': 'האימות נכשל, נסו שוב',
+
+      'otp.errorExpired': 'הקוד שגוי או שפג תוקפו - בדקו והזינו שוב, או בקשו קוד חדש',
 
       'stepB.kicker': 'פרטי הרשמה',
 
@@ -124,17 +136,29 @@
 
       'form.password2': 'Confirm password',
 
-      'confirm.title': 'Check your inbox',
+      'otp.title': 'Verify your email',
 
-      'confirm.leadPrefix': 'We sent a verification link to',
+      'otp.leadPrefix': 'We sent a 6-digit code to',
 
-      'confirm.hint': 'Click the link in the email to confirm your account - you will then be redirected to complete registration (step 2).',
+      'otp.hint': 'Enter the code from your email to confirm your account and continue registration.',
 
-      'confirm.sub': 'Didn\'t receive it? Check your spam folder.',
+      'otp.sub': 'Didn\'t receive it? Check your spam folder.',
 
-      'confirm.continueBtn': 'Already confirmed? Continue here',
+      'otp.verifyBtn': 'Verify and continue',
 
-      'confirm.backBtn': 'Back to account creation',
+      'otp.resendBtn': 'Resend code',
+
+      'otp.resendWait': 'Resend in {seconds}s',
+
+      'otp.resendSent': 'A new code was sent to your email',
+
+      'otp.backBtn': 'Back to account creation',
+
+      'otp.invalidCode': 'Please enter a 6-digit code',
+
+      'otp.error': 'Verification failed, please try again',
+
+      'otp.errorExpired': 'The code is invalid or expired - check and try again, or request a new code',
 
       'stepB.kicker': 'Registration details',
 

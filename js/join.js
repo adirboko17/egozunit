@@ -63,11 +63,181 @@
     try { sessionStorage.removeItem(PENDING_EMAIL_KEY); } catch (e) {}
   }
 
-  function showConfirmLink(email) {
+  function showOtpStep(email) {
     savePendingEmail(email);
     var display = $('confirmEmailDisplay');
     if (display) display.textContent = email;
+    resetOtpInputs();
+    hideAlert('otpAlert');
     showOnly('confirmNotice');
+    var firstCell = document.querySelector('#otpInputs .otp-inputs__cell');
+    if (firstCell) firstCell.focus();
+    startResendCooldown();
+  }
+
+  function getOtpCells() {
+    return Array.prototype.slice.call(document.querySelectorAll('#otpInputs .otp-inputs__cell'));
+  }
+
+  function resetOtpInputs() {
+    getOtpCells().forEach(function (cell) {
+      cell.value = '';
+      cell.classList.remove('is-invalid');
+    });
+  }
+
+  function getOtpValue() {
+    return getOtpCells().map(function (cell) { return cell.value.trim(); }).join('');
+  }
+
+  function setOtpInvalid(invalid) {
+    getOtpCells().forEach(function (cell) {
+      cell.classList.toggle('is-invalid', invalid);
+    });
+  }
+
+  function fillOtpFromString(value) {
+    var digits = String(value || '').replace(/\D/g, '').slice(0, 6);
+    var cells = getOtpCells();
+    cells.forEach(function (cell, i) {
+      cell.value = digits[i] || '';
+      cell.classList.remove('is-invalid');
+    });
+    if (digits.length === 6) {
+      cells[5].focus();
+    } else if (digits.length > 0) {
+      cells[Math.min(digits.length, 5)].focus();
+    }
+  }
+
+  var resendTimer = null;
+
+  function startResendCooldown(seconds) {
+    var btn = $('otpResendBtn');
+    if (!btn) return;
+    if (resendTimer) clearInterval(resendTimer);
+    var remaining = typeof seconds === 'number' ? seconds : 60;
+    btn.disabled = true;
+    btn.textContent = t('otp.resendWait', 'שליחה מחדש בעוד {seconds} שניות').replace('{seconds}', String(remaining));
+    resendTimer = setInterval(function () {
+      remaining -= 1;
+      if (remaining <= 0) {
+        clearInterval(resendTimer);
+        resendTimer = null;
+        btn.disabled = false;
+        btn.textContent = t('otp.resendBtn', 'שליחת קוד מחדש');
+        return;
+      }
+      btn.textContent = t('otp.resendWait', 'שליחה מחדש בעוד {seconds} שניות').replace('{seconds}', String(remaining));
+    }, 1000);
+  }
+
+  function initOtpInputs() {
+    var cells = getOtpCells();
+    if (!cells.length) return;
+
+    cells.forEach(function (cell, index) {
+      cell.addEventListener('input', function () {
+        cell.classList.remove('is-invalid');
+        hideAlert('otpAlert');
+        var digit = cell.value.replace(/\D/g, '').slice(-1);
+        cell.value = digit;
+        if (digit && index < cells.length - 1) cells[index + 1].focus();
+      });
+
+      cell.addEventListener('keydown', function (e) {
+        if (e.key === 'Backspace' && !cell.value && index > 0) {
+          cells[index - 1].focus();
+          cells[index - 1].value = '';
+        }
+        if (e.key === 'ArrowLeft' && index > 0) cells[index - 1].focus();
+        if (e.key === 'ArrowRight' && index < cells.length - 1) cells[index + 1].focus();
+      });
+
+      cell.addEventListener('paste', function (e) {
+        e.preventDefault();
+        var pasted = (e.clipboardData || window.clipboardData).getData('text') || '';
+        fillOtpFromString(pasted);
+      });
+    });
+  }
+
+  function initOtpStep() {
+    initOtpInputs();
+
+    var form = $('otpForm');
+    var verifyBtn = $('otpVerifyBtn');
+    var resendBtn = $('otpResendBtn');
+    var backBtn = $('confirmBackBtn');
+    if (!form) return;
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      hideAlert('otpAlert');
+
+      var email = loadPendingEmail();
+      var code = getOtpValue();
+      if (!/^\d{6}$/.test(code)) {
+        setOtpInvalid(true);
+        return showAlert('otpAlert', t('otp.invalidCode', 'יש להזין קוד בן 6 ספרות'), 'error');
+      }
+
+      verifyBtn.disabled = true;
+      verifyBtn.textContent = t('btn.verifying', 'מאמת...');
+
+      EgozAuth.verifySignupOtp(email, code)
+        .then(function (data) {
+          if (data.session) {
+            proceedToStepB(data.session.user);
+            return;
+          }
+          showAlert('otpAlert', t('otp.error', 'האימות נכשל, נסו שוב'), 'error');
+        })
+        .catch(function (err) {
+          setOtpInvalid(true);
+          showAlert('otpAlert', EgozAuth.formatOtpError(err), 'error');
+        })
+        .finally(function () {
+          verifyBtn.disabled = false;
+          verifyBtn.textContent = t('otp.verifyBtn', 'אימות והמשך');
+        });
+    });
+
+    if (resendBtn) {
+      resendBtn.addEventListener('click', function () {
+        if (resendBtn.disabled) return;
+        hideAlert('otpAlert');
+        var email = loadPendingEmail();
+        if (!email) return;
+
+        resendBtn.disabled = true;
+        EgozAuth.resendSignupOtp(email)
+          .then(function () {
+            resetOtpInputs();
+            showAlert('otpAlert', t('otp.resendSent', 'קוד חדש נשלח למייל'), 'success');
+            startResendCooldown(60);
+          })
+          .catch(function (err) {
+            showAlert('otpAlert', EgozAuth.formatOtpError(err), 'error');
+            resendBtn.disabled = false;
+            resendBtn.textContent = t('otp.resendBtn', 'שליחת קוד מחדש');
+          });
+      });
+    }
+
+    if (backBtn) {
+      backBtn.addEventListener('click', function () {
+        clearPendingEmail();
+        resetOtpInputs();
+        hideAlert('otpAlert');
+        if (resendTimer) {
+          clearInterval(resendTimer);
+          resendTimer = null;
+        }
+        showOnly('stepA');
+        setStepIndicator(1);
+      });
+    }
   }
 
   function waitForAuthSession(timeoutMs) {
@@ -134,13 +304,7 @@
   }
 
   function initConfirmLink() {
-    var backBtn = $('confirmBackBtn');
-    if (!backBtn) return;
-    backBtn.addEventListener('click', function () {
-      clearPendingEmail();
-      showOnly('stepA');
-      setStepIndicator(1);
-    });
+    initOtpStep();
   }
 
   function initStepA() {
@@ -180,7 +344,7 @@
             proceedToStepB(data.session.user);
             return;
           }
-          showConfirmLink(email);
+          showOtpStep(email);
         })
         .catch(function (err) {
           showAlert('signupAlert', EgozAuth.formatSignupError(err), 'error');
@@ -283,6 +447,14 @@
       if (!input) return;
       updatePasswordToggleAria(btn, input.type === 'text');
     });
+    var verifyBtn = $('otpVerifyBtn');
+    if (verifyBtn && !verifyBtn.disabled) {
+      verifyBtn.textContent = t('otp.verifyBtn', 'אימות והמשך');
+    }
+    var resendBtn = $('otpResendBtn');
+    if (resendBtn && !resendBtn.disabled) {
+      resendBtn.textContent = t('otp.resendBtn', 'שליחת קוד מחדש');
+    }
   }
 
   async function boot() {
@@ -313,7 +485,7 @@
     if (!session) {
       var pendingEmail = loadPendingEmail();
       if (pendingEmail) {
-        showConfirmLink(pendingEmail);
+        showOtpStep(pendingEmail);
         setStepIndicator(1);
         return;
       }
