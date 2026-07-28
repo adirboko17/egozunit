@@ -20,6 +20,8 @@ const legacyRedirects = {
   '/blog': '/',
   '/pros.html': '/contact',
   '/pros': '/contact',
+  '/ambassadors.html': '/donate',
+  '/ambassadors': '/donate',
 };
 
 Object.entries(legacyRedirects).forEach(([from, to]) => {

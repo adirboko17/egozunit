@@ -1,5 +1,73 @@
 .donate-page .hero--donate .hero__bg img {
-  object-position: center 35%;
+  object-position: 50% 35%;
+}
+
+.donate-page main > .section:first-of-type {
+  padding-bottom: clamp(20px, 2.5vw, 32px);
+}
+
+.donate-page main > .section.section--tight {
+  padding-top: clamp(20px, 2.5vw, 32px);
+}
+
+.donate-intro {
+  max-width: 920px;
+  margin-inline: auto;
+}
+
+.amb-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(20px, 3vw, 32px);
+  margin-top: clamp(28px, 3.5vw, 44px);
+}
+
+@media (max-width: 720px) {
+  .amb-grid { grid-template-columns: 1fr; }
+}
+
+.amb-block {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: clamp(20px, 2.4vw, 28px);
+}
+
+.amb-block h3 { margin-bottom: 14px; }
+
+.amb-list {
+  display: grid;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+}
+
+.amb-list li {
+  position: relative;
+  padding-inline-start: 24px;
+  color: var(--text-2);
+  line-height: 1.5;
+}
+
+.amb-list li::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  top: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--brass-500);
+}
+
+.donate-welcome-banner {
+  margin-top: 20px;
+  padding: 14px 18px;
+  border-radius: var(--r-md);
+  background: var(--olive-50, #f4f6f0);
+  border: 1px solid var(--line);
+  color: var(--olive-800);
+  font-weight: 600;
 }
 
 .donate-layout {

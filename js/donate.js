@@ -18,4 +18,9 @@
   document.addEventListener('egoz:langchange', function (e) {
     applyLang(e.detail && e.detail.lang);
   });
+
+  if (new URLSearchParams(window.location.search).get('welcome') === '1') {
+    var welcome = document.getElementById('welcomeBanner');
+    if (welcome) welcome.hidden = false;
+  }
 })();

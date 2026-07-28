@@ -82,7 +82,7 @@
 
       'updates.ambassadors.title': 'הפכו לשגרירי אגוז',
 
-      'updates.ambassadors.bodyHtml': 'תרומה קבועה או חד-פעמית עוזרת לנו לתמוך בלוחמים, במשפחות ובפעילות העמותה. <a href="/ambassadors">לפרטים והצטרפות</a>',
+      'updates.ambassadors.bodyHtml': 'תרומה קבועה או חד-פעמית עוזרת לנו לתמוך בלוחמים, במשפחות ובפעילות העמותה. <a href="/donate">לפרטים ותרומה</a>',
 
       'updates.events.tag': 'אירועים',
 
@@ -182,7 +182,7 @@
 
       'updates.ambassadors.title': 'Become an Egoz Ambassador',
 
-      'updates.ambassadors.bodyHtml': 'A recurring or one-time donation helps us support fighters, families, and association activities. <a href="/ambassadors">Details and sign-up</a>',
+      'updates.ambassadors.bodyHtml': 'A recurring or one-time donation helps us support fighters, families, and association activities. <a href="/donate">Details and donate</a>',
 
       'updates.events.tag': 'Events',
 

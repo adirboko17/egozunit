@@ -9,6 +9,8 @@
     { "source": "/blog.html", "destination": "/", "permanent": true },
     { "source": "/blog", "destination": "/", "permanent": true },
     { "source": "/pros.html", "destination": "/contact", "permanent": true },
-    { "source": "/pros", "destination": "/contact", "permanent": true }
+    { "source": "/pros", "destination": "/contact", "permanent": true },
+    { "source": "/ambassadors.html", "destination": "/donate", "permanent": true },
+    { "source": "/ambassadors", "destination": "/donate", "permanent": true }
   ]
 }

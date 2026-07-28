@@ -263,7 +263,7 @@
 
       EgozAuth.saveMemberProfile(user.id, payload)
         .then(function () {
-          window.location.href = '/ambassadors?welcome=1';
+          window.location.href = '/donate?welcome=1';
         })
         .catch(function (err) {
           showAlert('profileAlert', err.message || t('alert.profileSaveError', 'שגיאה בשמירת הפרטים, נסו שוב'), 'error');
