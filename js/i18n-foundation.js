@@ -17,7 +17,7 @@
       'nav.home': 'בית',
       'nav.unit': 'יחידת אגוז',
       'nav.foundation': 'עמותה',
-      'nav.support': 'תמיכה בנפגעים',
+      'nav.support': 'ליווי פצועי היחידה',
       'nav.yizkor': 'יזכור',
       'nav.shop': 'חנות',
       'nav.contact': 'צרו קשר',

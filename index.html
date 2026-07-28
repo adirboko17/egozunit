@@ -484,8 +484,11 @@
     position: sticky;
     top: 126px;
     display: grid;
+    width: 90%;
+    max-width: 360px;
+    justify-self: center;
     grid-template-columns: 1fr;
-    gap: clamp(18px, 2vw, 26px);
+    gap: clamp(16px, 1.7vw, 22px);
   }
   .leader-card {
     position: relative;
@@ -563,6 +566,102 @@
     .leader-card__name { font-size: 1rem; }
     .leader-card__role { font-size: .78rem; }
     .leadership-message__body p { line-height: 1.78; }
+  }
+
+  /* ---- Friends of Egoz ---- */
+  .friends-egoz {
+    margin-inline: var(--surface-inset);
+    margin-bottom: clamp(14px, 2vw, 24px);
+    overflow: hidden;
+    border-radius: var(--surface-radius);
+    background: #dfe7f2;
+    box-shadow: var(--surface-shadow);
+  }
+  .friends-egoz__inner {
+    direction: ltr;
+    text-align: left;
+  }
+  .friends-egoz__head {
+    max-width: 820px;
+  }
+  .friends-egoz__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--olive-700);
+    font-family: var(--font-display);
+    font-size: .82rem;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+  .friends-egoz__eyebrow::before {
+    content: "";
+    width: 34px;
+    height: 2px;
+    background: var(--brass-500);
+  }
+  .friends-egoz__title {
+    margin-top: 12px;
+  }
+  .friends-egoz__intro {
+    margin-top: 18px;
+    color: var(--text-2);
+    font-size: clamp(1rem, 1.2vw, 1.1rem);
+    line-height: 1.8;
+  }
+  .friends-egoz__subhead {
+    margin-top: clamp(34px, 5vw, 54px);
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 2vw, 1.75rem);
+    font-weight: 800;
+    color: var(--text);
+  }
+  .friends-egoz__goals {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+    counter-reset: friends-goals;
+  }
+  .friends-egoz__goal {
+    position: relative;
+    padding: clamp(24px, 3vw, 34px);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    background: var(--card);
+    box-shadow: var(--sh-sm);
+    counter-increment: friends-goals;
+  }
+  .friends-egoz__goal:last-child {
+    grid-column: 1 / -1;
+  }
+  .friends-egoz__goal::before {
+    content: "0" counter(friends-goals);
+    display: block;
+    margin-bottom: 18px;
+    color: var(--brass-700);
+    font-family: var(--font-display);
+    font-size: .82rem;
+    font-weight: 900;
+    letter-spacing: .1em;
+  }
+  .friends-egoz__goal h3 {
+    font-family: var(--font-display);
+    font-size: clamp(1.08rem, 1.4vw, 1.24rem);
+    line-height: 1.35;
+    color: var(--text);
+  }
+  .friends-egoz__goal p {
+    margin-top: 12px;
+    color: var(--text-2);
+    line-height: 1.75;
+  }
+  @media (max-width: 720px) {
+    .friends-egoz__goals { grid-template-columns: 1fr; }
+    .friends-egoz__goal:last-child { grid-column: auto; }
   }
 
   /* ---- Program cards (shared card style) ---- */
@@ -1136,7 +1235,6 @@
     <div class="section-head" style="max-width:680px;" data-reveal>
       <div class="kicker-row"><span class="kicker-row__no">02</span><span class="kicker-row__txt" data-i18n="goals.kicker">המטרות שלנו</span><span class="kicker-row__line"></span></div>
       <h2 class="h2" style="margin-top:6px;" data-i18n="goals.title">חמישה צירי פעולה, מטרה אחת</h2>
-      <p class="lead" style="margin-top:14px;" data-i18n="goals.lead">העמותה פועלת מהרגע שהלוחם מגיע ליחידה ולאורך כל חייו - בשדה, בשחרור, בשיקום ובזיכרון.</p>
     </div>
     <div class="charter" data-reveal-stagger>
       <div class="charter__item"><div class="charter__no">01</div><h3 data-i18n="goals.c1.title">ליווי הפצועים, שיקום וצמיחה</h3><p data-i18n="goals.c1.text">הדרך להחלמה מפציעה לעולם אינה קו ישר. אנחנו מתחייבים לצעוד יד ביד עם פצועינו לאורך כל הדרך: בשיקום הפיזי, בריפוי הנפשי ובתהליך המורכב של בניית החיים מחדש. אנחנו כאן כדי להבטיח שאף לוחם לא יישאר לבד במערכה הזו.</p></div>
@@ -1173,7 +1271,7 @@
       <div data-reveal="from-start">
         <div class="kicker-row kicker-row--light"><span class="kicker-row__no">04</span><span class="kicker-row__txt" data-i18n="wounded.kicker">ליווי פצועים</span><span class="kicker-row__line"></span></div>
         <h2 class="h2" style="color:var(--on-dark);margin-top:6px;" data-i18n="wounded.title">מלווים את הפצועים - עד שהם חוזרים הביתה</h2>
-        <p class="lead" style="color:var(--on-dark-2);margin-top:16px;" data-i18n="wounded.lead">בכל פצוע אנו רואים שליחות אישית. הלוחמים הפצועים עוברים טיפול ושיקום ומקבלים את הטיפול הרפואי הטוב ביותר, והעמותה משלימה כל מה שטרם קיבל מענה - בריאות הגוף והנפש, ליווי משפטי וכלכלי, ומעטפת רחבה למשפחות.</p>
+        <p class="lead" style="color:var(--on-dark-2);margin-top:16px;" data-i18n="wounded.lead">בכל פצוע אנו רואים שליחות אישית. הלוחמים הפצועים עוברים טיפול ושיקום ומקבלים את הטיפול הרפואי הטוב ביותר, והעמותה משלימה כל מה שטרם קיבל מענה - בריאות הגוף והנפש ומעטפת רחבה למשפחות.</p>
         <div class="wounded__figs">
           <div class="wounded__fig"><b data-i18n="wounded.f1.b">מעל 400</b><span data-i18n="wounded.f1">חיילים פצועים ביחידה בליווי העמותה</span></div>
         </div>
@@ -1305,6 +1403,41 @@
         <a href="contact.html" class="btn btn--accent mt-m" data-i18n="deleg.btn">דברו איתנו</a>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ============ FRIENDS OF EGOZ ============ -->
+<section class="section friends-egoz" id="friends-of-egoz" lang="en" dir="ltr" data-scroll-panel>
+  <div class="container friends-egoz__inner">
+    <header class="friends-egoz__head" data-reveal="from-start">
+      <span class="friends-egoz__eyebrow">United States</span>
+      <h2 class="h2 friends-egoz__title">Friends of Egoz</h2>
+      <p class="friends-egoz__intro">Friends of Egoz Inc. was established in 2023. It is composed of unit veterans and generous individuals from the United States. The foundation’s goals are to support the unit, its fighters, and veterans, as well as to commemorate the unit’s fallen soldiers. The foundation members volunteer their time and skills as individuals in their spare time.</p>
+    </header>
+
+    <h3 class="friends-egoz__subhead" data-reveal>Key Activities &amp; Goals</h3>
+    <ol class="friends-egoz__goals" data-reveal-stagger>
+      <li class="friends-egoz__goal">
+        <h3>Helping wounded soldiers overcome their injuries</h3>
+        <p>For the men who return home wounded, recovery is rarely a straight line. The organization is committed to walking that road with them, supporting physical rehabilitation, mental and emotional healing, and the long, patient work of rebuilding a life after injury.</p>
+      </li>
+      <li class="friends-egoz__goal">
+        <h3>Helping teams return to civilian life</h3>
+        <p>Egoz soldiers fight in tight, close-knit teams, and the bonds formed under fire do not simply switch off at discharge. Through dedicated combat-processing workshops, these original teams will come back together in a structured setting to process what they experienced and make the transition back into society alongside the people who understand it best.</p>
+      </li>
+      <li class="friends-egoz__goal">
+        <h3>Caring for a place of remembrance in northern Israel</h3>
+        <p>Memory is a responsibility. The organization will take on the stewardship of a remembrance site at Nimrod Fortress in the rolling landscape of northern Israel, also known as Qal’at Namrud or Mivtzar Nimrod—a dignified place where the fallen are honored, and where families, alumni, and the next generation can gather to remember.</p>
+      </li>
+      <li class="friends-egoz__goal">
+        <h3>Standing with the families of the fallen and wounded</h3>
+        <p>When a soldier is killed or wounded, an entire family carries it for the rest of their lives. We are committed to being there for them, not only in the immediate aftermath, but in the years that follow, through ongoing support and a community that does not forget them.</p>
+      </li>
+      <li class="friends-egoz__goal">
+        <h3>Strengthening the pride and bond of Egoz alumni</h3>
+        <p>Belonging to Egoz is a defining chapter in these men’s lives. The organization will invest in deepening that sense of identity and brotherhood among alumni, keeping the community connected, engaged, and proud of what they were part of.</p>
+      </li>
+    </ol>
   </div>
 </section>
 

@@ -29,7 +29,7 @@
       'nav.foundationSub.projects': 'פרויקטים',
       'nav.foundationSub.benefits': 'הטבות',
       'nav.foundationSub.events': 'אירועים',
-      'nav.support': 'תמיכה בנפגעים',
+      'nav.support': 'ליווי פצועי היחידה',
       'nav.heritage': 'אגוז לדורותיה',
       'nav.foundationMenu': 'תת-עמודי עמותה',
       'nav.foundationExpand': 'פתיחת תפריט עמותה',

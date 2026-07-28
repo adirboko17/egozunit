@@ -139,9 +139,13 @@
       if (!fallen.length) {
         countEl.textContent = '';
       } else if (!searchQuery.trim()) {
-        countEl.textContent = t('search.count').replace('{count}', String(fallen.length));
+        var countTemplate = t('search.count') ||
+          (document.documentElement.lang === 'en' ? '{count} fallen' : '{count} חללים');
+        countEl.textContent = countTemplate.replace('{count}', String(fallen.length));
       } else {
-        countEl.textContent = t('search.countFiltered')
+        var filteredTemplate = t('search.countFiltered') ||
+          (document.documentElement.lang === 'en' ? '{shown} of {total}' : '{shown} מתוך {total}');
+        countEl.textContent = filteredTemplate
           .replace('{shown}', String(count))
           .replace('{total}', String(fallen.length));
       }
