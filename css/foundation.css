@@ -398,28 +398,34 @@ html[dir="ltr"] .evt-row__go svg { transform: scaleX(-1); }
 }
 @media (max-width: 880px) { .foundation-transparency { grid-template-columns: 1fr; } }
 .foundation-docs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  padding: clamp(16px, 2.5vw, 24px);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: 0 16px 42px rgba(20, 22, 14, .07);
 }
 .foundation-docs a {
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: .88rem;
+  font-weight: 700;
+  font-size: 1rem;
   color: var(--olive-800);
-  padding: 11px 16px;
+  min-height: 64px;
+  padding: 14px 18px;
   border: 1px solid var(--line-2);
-  border-radius: var(--r-sm);
+  border-radius: 12px;
   background: var(--paper);
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 8px;
-  transition: background .15s, border-color .15s;
+  gap: 12px;
+  transition: background .2s, border-color .2s, color .2s, transform .2s, box-shadow .2s;
 }
 .foundation-docs a::before {
   content: "";
-  width: 14px;
-  height: 14px;
+  width: 20px;
+  height: 20px;
   flex: 0 0 auto;
   background: currentColor;
   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2'%3E%3Cpath d='M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z'/%3E%3Cpath d='M14 2v6h6'/%3E%3C/svg%3E") center / contain no-repeat;
@@ -427,7 +433,20 @@ html[dir="ltr"] .evt-row__go svg { transform: scaleX(-1); }
   color: var(--brass-700);
   opacity: .85;
 }
-.foundation-docs a:hover {
-  background: var(--paper-2);
-  border-color: var(--brass-400);
+.foundation-docs a::after {
+  content: "←";
+  margin-inline-start: auto;
+  color: var(--olive-400);
+  font-size: 1.15rem;
+  transition: transform .2s;
 }
+.foundation-docs a:hover {
+  background: var(--card);
+  border-color: var(--brass-400);
+  color: var(--ink);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(20, 22, 14, .08);
+}
+.foundation-docs a:hover::after { transform: translateX(-3px); }
+html[dir="ltr"] .foundation-docs a::after { content: "→"; }
+html[dir="ltr"] .foundation-docs a:hover::after { transform: translateX(3px); }
