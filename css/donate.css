@@ -50,34 +50,6 @@
   padding: clamp(18px, 2.4vw, 24px);
 }
 
-.donate-fallback {
-  min-height: 557px;
-  display: grid;
-  place-content: center;
-  gap: 16px;
-  text-align: center;
-  padding: clamp(28px, 4vw, 48px);
-  border-radius: var(--r-md);
-  border: 1px dashed var(--line-2);
-  background: var(--paper-2);
-}
-
-.donate-fallback__title {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 1.15rem;
-  color: var(--olive-800);
-  max-width: 42ch;
-  margin-inline: auto;
-}
-
-.donate-fallback__lead {
-  color: var(--text-2);
-  max-width: 52ch;
-  margin-inline: auto;
-  line-height: 1.65;
-}
-
 .donate-iframe-wrap {
   border-radius: var(--r-md);
   overflow: hidden;

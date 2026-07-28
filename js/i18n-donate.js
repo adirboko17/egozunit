@@ -14,10 +14,7 @@
       'section.lead': 'התרומה מתבצעת דרך JGive - פלטפורמת התרומות המאובטחת בישראל. זכאות לזיכוי מס לפי סעיף 46.',
       'iframe.title': 'טופס תרומה מאובטח - עמותת אגוז הסיירת הצפונית',
       'secure.note': 'תשלום מאובטח (SSL) · קבלה מוכרת למס לפי סעיף 46',
-      'external.link': 'פתיחה בחלון נפרד ב-JGive',
-      'fallback.title': 'הטופס המוטמע זמין רק באתר הרשמי',
-      'fallback.lead': 'JGive מאשר הצגת iframe רק מ־egoz.org.il. בבדיקה מקומית (localhost) או מקובץ - הטופס לא ייטען. באתר החי הטופס יוצג כרגיל.',
-      'fallback.btn': 'מעבר לתרומה ב-JGive'
+      'external.link': 'פתיחה בחלון נפרד ב-JGive'
     },
     en: {
       'meta.title': 'Donate - Egoz Association · Northern Commandos',
@@ -31,10 +28,7 @@
       'section.lead': 'Donations are processed through JGive - Israel\'s secure donation platform. Eligible for Section 46 tax credit.',
       'iframe.title': 'Secure donation form - Egoz Association Northern Commandos',
       'secure.note': 'Secure payment (SSL) · Section 46 tax receipt',
-      'external.link': 'Open in a separate JGive window',
-      'fallback.title': 'The embedded form is only available on the official site',
-      'fallback.lead': 'JGive only allows iframe embedding from egoz.org.il. When testing locally (localhost) or from a file, the form will not load. On the live site it will display normally.',
-      'fallback.btn': 'Continue to donate on JGive'
+      'external.link': 'Open in a separate JGive window'
     }
   });
 })();
