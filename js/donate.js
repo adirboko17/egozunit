@@ -8,10 +8,10 @@
   var externalLink = document.getElementById('jgiveExternalLink');
   if (!iframe || !window.EGOZ_JGIVE) return;
 
-  function isEmbedAllowedHost() {
+  function isLocalDev() {
     var host = window.location.hostname;
-    if (host === 'egoz.org.il') return true;
-    if (host.slice(-12) === '.egoz.org.il') return true;
+    if (window.location.protocol === 'file:') return true;
+    if (host === 'localhost' || host === '127.0.0.1' || host === '[::1]') return true;
     return false;
   }
 
@@ -22,7 +22,7 @@
     if (externalLink) externalLink.href = donationUrl;
     if (fallbackBtn) fallbackBtn.href = donationUrl;
 
-    if (!isEmbedAllowedHost()) {
+    if (isLocalDev()) {
       if (iframeWrap) iframeWrap.hidden = true;
       if (fallback) fallback.hidden = false;
       iframe.removeAttribute('src');
