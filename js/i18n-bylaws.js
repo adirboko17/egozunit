@@ -3,8 +3,8 @@
 
   EgozI18n.register('bylaws', {
     he: {
-      'meta.title': 'תקנון - עמותת אגוז · הסיירת הצפונית',
-      'meta.description': 'תקנון עמותת הסיירת הצפונית (עמותת אגוז) - מטרות, חברות, מוסדות, כספים וכללי התנהלות.',
+      'meta.title': 'תקנון אתר עמותת אגוז הסיירת הצפונית (ע"ר)',
+      'meta.description': 'תקנון האתר ותנאי השימוש באתר עמותת אגוז הסיירת הצפונית.',
       'skip': 'דלג לתוכן הראשי',
       'util.registered': 'עמותה רשומה 580027720',
       'util.social': 'רשתות חברתיות',
@@ -29,8 +29,8 @@
       'lang.he': 'עב',
       'lang.en': 'EN',
       'hero.eyebrow': 'עמותת אגוז · הסיירת הצפונית',
-      'hero.title': 'תקנון העמותה',
-      'hero.lead': 'כללי ההתנהלות, החברות והמטרות של עמותת הסיירת הצפונית.',
+      'hero.title': 'תקנון אתר עמותת אגוז הסיירת הצפונית (ע"ר)',
+      'hero.lead': 'תנאי השימוש באתר עמותת אגוז הסיירת הצפונית.',
       'hero.img.alt': 'לוחמי אגוז',
       'body.intro': 'להלן תקנון עמותת הסיירת הצפונית (ע"ר 580027720), המופיעה גם בשם «עמותת אגוז». התקנון מנחה את פעילות העמותה, את יחסי החברים בה ואת מוסדותיה.',
       'body.ch1.title': 'פרק א׳ - כללי',
@@ -97,8 +97,8 @@
       'footer.link3': 'הצהרת נגישות'
     },
     en: {
-      'meta.title': 'Bylaws - Egoz Association · Northern Commandos',
-      'meta.description': 'Bylaws of the Northern Command Association (Egoz) - purposes, membership, governance, and finances.',
+      'meta.title': 'Website Terms - Egoz Association · Northern Commandos',
+      'meta.description': 'Website terms of use for the Egoz Association.',
       'skip': 'Skip to main content',
       'util.registered': 'Registered association 580027720',
       'util.social': 'Social media',
@@ -123,8 +123,8 @@
       'lang.he': 'HE',
       'lang.en': 'EN',
       'hero.eyebrow': 'Egoz Association · Northern Commandos',
-      'hero.title': 'Association bylaws',
-      'hero.lead': 'Rules of membership, purpose, and governance of the Northern Command Association.',
+      'hero.title': 'Website Terms of Use',
+      'hero.lead': 'Terms governing use of the Egoz Association website.',
       'hero.img.alt': 'Egoz fighters',
       'body.intro': 'These are the bylaws of the Northern Command Association (Reg. 580027720), also known as the Egoz Association. They guide the association’s activity, membership, and institutions.',
       'body.ch1.title': 'Chapter 1 - General',
