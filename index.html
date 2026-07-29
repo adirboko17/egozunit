@@ -671,6 +671,45 @@
   .hamal__ic svg { width: 25px; height: 25px; }
   .hamal h3 { font-size: 1.2rem; margin-bottom: 7px; }
   .hamal p { color: var(--text-2); font-size: .96rem; }
+  .resilience-contact {
+    display: grid;
+    grid-template-columns: 150px minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(24px, 4vw, 42px);
+    max-width: 760px;
+    margin-top: clamp(24px, 3vw, 36px);
+    margin-inline: auto;
+    padding: clamp(24px, 3vw, 34px);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    background: linear-gradient(135deg, var(--card) 0%, var(--brass-200) 180%);
+    box-shadow: var(--sh-sm);
+  }
+  .resilience-contact__profile { margin: 0; text-align: center; }
+  .resilience-contact__photo {
+    display: block;
+    width: 110px;
+    height: 110px;
+    margin-inline: auto;
+    border: 4px solid #fff;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 30%;
+    box-shadow: 0 8px 24px rgba(15, 28, 60, .16);
+  }
+  .resilience-contact__name { display: block; margin-top: 10px; color: var(--text); font-size: 1rem; font-weight: 800; line-height: 1.25; }
+  .resilience-contact__role { display: block; margin-top: 3px; color: var(--text-2); font-size: .86rem; line-height: 1.3; }
+  .resilience-contact__copy { min-width: 0; padding-inline-start: clamp(24px, 3vw, 36px); border-inline-start: 1px solid var(--line-2); text-align: start; }
+  .resilience-contact__title { display: block; margin-bottom: 7px; color: var(--brass-700); font-size: .84rem; font-weight: 800; letter-spacing: .03em; }
+  .resilience-contact__copy p { margin: 0 0 16px; color: var(--text); font-size: clamp(1rem, 1.4vw, 1.1rem); line-height: 1.65; font-weight: 600; }
+  .resilience-contact__email { display: inline-flex; align-items: center; gap: 9px; max-width: 100%; padding: 10px 16px; border-radius: 999px; background: var(--olive-800); color: #fff; font-size: .94rem; font-weight: 700; direction: ltr; overflow-wrap: anywhere; transition: background .2s, transform .2s; }
+  .resilience-contact__email:hover { background: var(--olive-700); transform: translateY(-2px); }
+  .resilience-contact__email svg { width: 18px; height: 18px; flex: 0 0 auto; }
+  @media (max-width: 520px) {
+    .resilience-contact { grid-template-columns: 1fr; gap: 20px; text-align: center; }
+    .resilience-contact__copy { padding: 20px 0 0; border-inline-start: 0; border-top: 1px solid var(--line-2); text-align: center; }
+    .resilience-contact__email { font-size: .85rem; padding-inline: 13px; }
+  }
 
   /* ---- Wounded deep ---- */
   #wounded { position: relative; }
@@ -1319,6 +1358,23 @@
         <p data-i18n="programs.p1.text">סדנת הכנה לאזרחות לכל מחזור משוחרר - מפגש עם מעסיקים מובילים, הרצאות הכנה ללימודים, וקבלה חמה אל החיים שאחרי השירות.</p>
       </article>
     </div>
+    <aside class="resilience-contact" data-reveal>
+      <figure class="resilience-contact__profile">
+        <img class="resilience-contact__photo" src="assets/adigold.jpg" alt="עדי גולדברג, מנהלת חוסן" data-i18n-alt="programs.resilience.alt" loading="lazy" decoding="async" />
+        <figcaption>
+          <span class="resilience-contact__name" data-i18n="programs.resilience.name">עדי גולדברג</span>
+          <span class="resilience-contact__role" data-i18n="programs.resilience.role">מנהלת חוסן</span>
+        </figcaption>
+      </figure>
+      <div class="resilience-contact__copy">
+        <span class="resilience-contact__title" data-i18n="programs.resilience.title">תוכניות חוסן</span>
+        <p data-i18n="programs.resilience.contact">לפרטים ולפניות בנושא תוכניות החוסן, ניתן ליצור קשר עם עדי במייל:</p>
+        <a class="resilience-contact__email" href="mailto:takingcareof@egoz.org.il">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg>
+          <span>takingcareof@egoz.org.il</span>
+        </a>
+      </div>
+    </aside>
   </div>
 </section>
 
