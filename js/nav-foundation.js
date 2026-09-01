@@ -8,7 +8,8 @@
     { href: '/heritage', i18n: 'nav.heritage', page: 'heritage', hash: '' },
     { href: '/projects', i18n: 'nav.foundationSub.projects', page: 'projects', hash: '' },
     { href: '/benefits', i18n: 'nav.foundationSub.benefits', page: 'benefits', hash: '' },
-    { href: '/events', i18n: 'nav.foundationSub.events', page: 'events', hash: '' }
+    { href: '/events', i18n: 'nav.foundationSub.events', page: 'events', hash: '' },
+    { href: '/community', i18n: 'nav.foundationSub.community', page: 'community', hash: '' }
   ];
 
   var LABELS_HE = {
@@ -16,6 +17,7 @@
     'nav.foundationSub.projects': 'פרויקטים',
     'nav.foundationSub.benefits': 'הטבות',
     'nav.foundationSub.events': 'אירועים',
+    'nav.foundationSub.community': 'למען קהילת אגוז',
     'nav.support': 'ליווי פצועי היחידה',
     'nav.heritage': 'אגוז לדורותיה',
     'nav.foundation': 'עמותה'
@@ -54,12 +56,13 @@
     if (item.page === 'heritage' && page === 'heritage') return true;
     if (item.page === 'benefits' && page === 'benefits') return true;
     if (item.page === 'projects' && page === 'projects') return true;
+    if (item.page === 'community' && page === 'community') return true;
     return false;
   }
 
   function isFoundationSectionActive() {
     var page = pageName();
-    return page === 'foundation' || page === 'support' || page === 'heritage' || page === 'projects' || page === 'benefits' || page === 'events' || page === 'event';
+    return page === 'foundation' || page === 'support' || page === 'heritage' || page === 'projects' || page === 'benefits' || page === 'events' || page === 'event' || page === 'community';
   }
 
   function buildDesktopDropdown(trigger) {
